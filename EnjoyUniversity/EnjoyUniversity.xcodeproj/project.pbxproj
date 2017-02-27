@@ -11,6 +11,14 @@
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
 		36BDBB121E640A390075A3ED /* EnjoyUniversityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB111E640A390075A3ED /* EnjoyUniversityTests.swift */; };
 		36BDBB1D1E640A390075A3ED /* EnjoyUniversityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB1C1E640A390075A3ED /* EnjoyUniversityUITests.swift */; };
+		36BDBB391E64135A0075A3ED /* EUMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB381E64135A0075A3ED /* EUMainViewController.swift */; };
+		36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB3A1E6416840075A3ED /* EUBaseViewController.swift */; };
+		36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB3C1E6416A50075A3ED /* EUNavigationController.swift */; };
+		36BDBB3F1E6416FF0075A3ED /* EUHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB3E1E6416FF0075A3ED /* EUHomeViewController.swift */; };
+		36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB401E64170D0075A3ED /* EUDiscoverViewController.swift */; };
+		36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB421E6417180075A3ED /* EUMessageViewController.swift */; };
+		36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB441E6417280075A3ED /* EUProfileViewController.swift */; };
+		36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB471E641E190075A3ED /* Bundle+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +49,14 @@
 		36BDBB181E640A390075A3ED /* EnjoyUniversityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnjoyUniversityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBB1C1E640A390075A3ED /* EnjoyUniversityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnjoyUniversityUITests.swift; sourceTree = "<group>"; };
 		36BDBB1E1E640A390075A3ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		36BDBB381E64135A0075A3ED /* EUMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMainViewController.swift; sourceTree = "<group>"; };
+		36BDBB3A1E6416840075A3ED /* EUBaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUBaseViewController.swift; sourceTree = "<group>"; };
+		36BDBB3C1E6416A50075A3ED /* EUNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNavigationController.swift; sourceTree = "<group>"; };
+		36BDBB3E1E6416FF0075A3ED /* EUHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeViewController.swift; sourceTree = "<group>"; };
+		36BDBB401E64170D0075A3ED /* EUDiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUDiscoverViewController.swift; sourceTree = "<group>"; };
+		36BDBB421E6417180075A3ED /* EUMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageViewController.swift; sourceTree = "<group>"; };
+		36BDBB441E6417280075A3ED /* EUProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUProfileViewController.swift; sourceTree = "<group>"; };
+		36BDBB471E641E190075A3ED /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +107,7 @@
 		36BDBAFB1E640A390075A3ED /* EnjoyUniversity */ = {
 			isa = PBXGroup;
 			children = (
+				36BDBB2C1E6412C60075A3ED /* Classes */,
 				36BDBAFC1E640A390075A3ED /* AppDelegate.swift */,
 				36BDBB031E640A390075A3ED /* Assets.xcassets */,
 				36BDBB081E640A390075A3ED /* Info.plist */,
@@ -114,6 +131,102 @@
 				36BDBB1E1E640A390075A3ED /* Info.plist */,
 			);
 			path = EnjoyUniversityUITests;
+			sourceTree = "<group>";
+		};
+		36BDBB2C1E6412C60075A3ED /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB2F1E6412C60075A3ED /* View */,
+				36BDBB351E6412C60075A3ED /* ViewModel */,
+				36BDBB2D1E6412C60075A3ED /* Model */,
+				36BDBB2E1E6412C60075A3ED /* Tools */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		36BDBB2D1E6412C60075A3ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		36BDBB2E1E6412C60075A3ED /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB461E641DFF0075A3ED /* Extension */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		36BDBB2F1E6412C60075A3ED /* View */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB321E6412C60075A3ED /* Main */,
+				36BDBB311E6412C60075A3ED /* Home */,
+				36BDBB301E6412C60075A3ED /* Discover */,
+				36BDBB331E6412C60075A3ED /* Message */,
+				36BDBB341E6412C60075A3ED /* Profile */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		36BDBB301E6412C60075A3ED /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB401E64170D0075A3ED /* EUDiscoverViewController.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
+		36BDBB311E6412C60075A3ED /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB3E1E6416FF0075A3ED /* EUHomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		36BDBB321E6412C60075A3ED /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB381E64135A0075A3ED /* EUMainViewController.swift */,
+				36BDBB3A1E6416840075A3ED /* EUBaseViewController.swift */,
+				36BDBB3C1E6416A50075A3ED /* EUNavigationController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		36BDBB331E6412C60075A3ED /* Message */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB421E6417180075A3ED /* EUMessageViewController.swift */,
+			);
+			path = Message;
+			sourceTree = "<group>";
+		};
+		36BDBB341E6412C60075A3ED /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB441E6417280075A3ED /* EUProfileViewController.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		36BDBB351E6412C60075A3ED /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			path = EnjoyUniversity/Classes/ViewModel;
+			sourceTree = SOURCE_ROOT;
+		};
+		36BDBB461E641DFF0075A3ED /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				36BDBB471E641E190075A3ED /* Bundle+Extension.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +366,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
+				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
+				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,
+				36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */,
+				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
+				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
+				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
+				36BDBB3F1E6416FF0075A3ED /* EUHomeViewController.swift in Sources */,
+				36BDBB391E64135A0075A3ED /* EUMainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
