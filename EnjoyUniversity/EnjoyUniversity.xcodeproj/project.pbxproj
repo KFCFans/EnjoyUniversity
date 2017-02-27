@@ -8,10 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFC1E640A390075A3ED /* AppDelegate.swift */; };
-		36BDBAFF1E640A390075A3ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFE1E640A390075A3ED /* ViewController.swift */; };
-		36BDBB021E640A390075A3ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB001E640A390075A3ED /* Main.storyboard */; };
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
-		36BDBB071E640A390075A3ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB051E640A390075A3ED /* LaunchScreen.storyboard */; };
 		36BDBB121E640A390075A3ED /* EnjoyUniversityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB111E640A390075A3ED /* EnjoyUniversityTests.swift */; };
 		36BDBB1D1E640A390075A3ED /* EnjoyUniversityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB1C1E640A390075A3ED /* EnjoyUniversityUITests.swift */; };
 /* End PBXBuildFile section */
@@ -36,10 +33,7 @@
 /* Begin PBXFileReference section */
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		36BDBAFE1E640A390075A3ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		36BDBB011E640A390075A3ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		36BDBB031E640A390075A3ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		36BDBB061E640A390075A3ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36BDBB081E640A390075A3ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36BDBB0D1E640A390075A3ED /* EnjoyUniversityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EnjoyUniversityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBB111E640A390075A3ED /* EnjoyUniversityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnjoyUniversityTests.swift; sourceTree = "<group>"; };
@@ -98,10 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				36BDBAFC1E640A390075A3ED /* AppDelegate.swift */,
-				36BDBAFE1E640A390075A3ED /* ViewController.swift */,
-				36BDBB001E640A390075A3ED /* Main.storyboard */,
 				36BDBB031E640A390075A3ED /* Assets.xcassets */,
-				36BDBB051E640A390075A3ED /* LaunchScreen.storyboard */,
 				36BDBB081E640A390075A3ED /* Info.plist */,
 			);
 			path = EnjoyUniversity;
@@ -187,6 +178,7 @@
 		36BDBAF11E640A380075A3ED /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = EU;
 				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = lip;
@@ -235,9 +227,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36BDBB071E640A390075A3ED /* LaunchScreen.storyboard in Resources */,
 				36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */,
-				36BDBB021E640A390075A3ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,7 +252,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36BDBAFF1E640A390075A3ED /* ViewController.swift in Sources */,
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,25 +286,6 @@
 			targetProxy = 36BDBB191E640A390075A3ED /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		36BDBB001E640A390075A3ED /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				36BDBB011E640A390075A3ED /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		36BDBB051E640A390075A3ED /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				36BDBB061E640A390075A3ED /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		36BDBB1F1E640A390075A3ED /* Debug */ = {
@@ -413,8 +383,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = HR6CZ7SBBE;
 				INFOPLIST_FILE = EnjoyUniversity/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lip.EnjoyUniversity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,8 +398,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				DEVELOPMENT_TEAM = HR6CZ7SBBE;
 				INFOPLIST_FILE = EnjoyUniversity/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lip.EnjoyUniversity;
 				PRODUCT_NAME = "$(TARGET_NAME)";
