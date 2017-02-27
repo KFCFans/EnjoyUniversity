@@ -19,6 +19,9 @@
 		36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB421E6417180075A3ED /* EUMessageViewController.swift */; };
 		36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB441E6417280075A3ED /* EUProfileViewController.swift */; };
 		36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB471E641E190075A3ED /* Bundle+Extension.swift */; };
+		36BDBB4A1E6452090075A3ED /* CommunityWall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB491E6452090075A3ED /* CommunityWall.swift */; };
+		36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */; };
+		36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 		36BDBB421E6417180075A3ED /* EUMessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageViewController.swift; sourceTree = "<group>"; };
 		36BDBB441E6417280075A3ED /* EUProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUProfileViewController.swift; sourceTree = "<group>"; };
 		36BDBB471E641E190075A3ED /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
+		36BDBB491E6452090075A3ED /* CommunityWall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityWall.swift; sourceTree = "<group>"; };
+		36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityWallCell.swift; sourceTree = "<group>"; };
+		36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUCommunityWallCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +153,7 @@
 		36BDBB2D1E6412C60075A3ED /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				36BDBB491E6452090075A3ED /* CommunityWall.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -175,6 +182,8 @@
 			isa = PBXGroup;
 			children = (
 				36BDBB401E64170D0075A3ED /* EUDiscoverViewController.swift */,
+				36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */,
+				36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */,
+				36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,6 +382,8 @@
 				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
+				36BDBB4A1E6452090075A3ED /* CommunityWall.swift in Sources */,
+				36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */,
 				36BDBB3F1E6416FF0075A3ED /* EUHomeViewController.swift in Sources */,
 				36BDBB391E64135A0075A3ED /* EUMainViewController.swift in Sources */,
 			);
@@ -607,6 +619,7 @@
 				36BDBB231E640A390075A3ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36BDBB241E640A390075A3ED /* Build configuration list for PBXNativeTarget "EnjoyUniversityTests" */ = {
 			isa = XCConfigurationList;
@@ -615,6 +628,7 @@
 				36BDBB261E640A390075A3ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		36BDBB271E640A390075A3ED /* Build configuration list for PBXNativeTarget "EnjoyUniversityUITests" */ = {
 			isa = XCConfigurationList;
@@ -623,6 +637,7 @@
 				36BDBB291E640A390075A3ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
