@@ -56,6 +56,12 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="communityBGI" destination="zUi-aj-Fzr" id="C9H-XI-udK"/>
+                <outlet property="communityIcon" destination="R0A-7b-38o" id="0iL-4G-xed"/>
+                <outlet property="communityIntro" destination="2f6-MC-I4u" id="YgT-sx-lzn"/>
+                <outlet property="communityName" destination="4en-qH-yzV" id="AWv-Gb-IVB"/>
+            </connections>
             <point key="canvasLocation" x="67" y="-122.5"/>
         </view>
     </objects>
