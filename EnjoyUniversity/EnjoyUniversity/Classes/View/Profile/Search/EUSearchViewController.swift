@@ -16,7 +16,8 @@ class EUSearchViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        searchcontroller.searchBar.placeholder = "Ohhhhhhhhh"
+        searchcontroller.dimsBackgroundDuringPresentation = false
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,16 +34,11 @@ class EUSearchViewController: EUBaseViewController {
 // MARK: - UI 相关方法
 extension EUSearchViewController{
     
-//    override func setupNavItem() {
+    override func setupNavItem() {
+                
+        navitem.titleView = searchcontroller.searchBar
         
-//        let backbtn = UIBarButtonItem(image: UIImage(named: "tabbar_back"), style: .plain, target: nil, action: #selector(goBack))
-//        let navitem = UINavigationItem()
-//        navbar.items = [navitem]
-//        navitem.leftBarButtonItem = backbtn
-//        
-//        navitem.titleView = searchcontroller.searchBar
-        
-//    }
+    }
     
 }
 

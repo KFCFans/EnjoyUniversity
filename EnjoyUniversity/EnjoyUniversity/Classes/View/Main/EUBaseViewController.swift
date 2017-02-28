@@ -77,6 +77,7 @@ extension EUBaseViewController{
         
     }
 
+    /// 子类重写设置 navItem ，父类中没有任何方法
     func setupNavItem(){
     
     }

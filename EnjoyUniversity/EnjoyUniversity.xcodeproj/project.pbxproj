@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B164191E65A59E00B589B4 /* EUSearchViewController.swift */; };
-		36B1641E1E65AED200B589B4 /* TestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B1641D1E65AED200B589B4 /* TestVC.swift */; };
 		36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFC1E640A390075A3ED /* AppDelegate.swift */; };
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
 		36BDBB121E640A390075A3ED /* EnjoyUniversityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB111E640A390075A3ED /* EnjoyUniversityTests.swift */; };
@@ -45,7 +44,6 @@
 
 /* Begin PBXFileReference section */
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
-		36B1641D1E65AED200B589B4 /* TestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestVC.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		36BDBB031E640A390075A3ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -98,7 +96,6 @@
 			isa = PBXGroup;
 			children = (
 				36B164191E65A59E00B589B4 /* EUSearchViewController.swift */,
-				36B1641D1E65AED200B589B4 /* TestVC.swift */,
 			);
 			name = Search;
 			path = Profile/Search;
@@ -398,7 +395,6 @@
 				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
-				36B1641E1E65AED200B589B4 /* TestVC.swift in Sources */,
 				36BDBB4A1E6452090075A3ED /* CommunityWall.swift in Sources */,
 				36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */,
 				36BDBB3F1E6416FF0075A3ED /* EUHomeViewController.swift in Sources */,

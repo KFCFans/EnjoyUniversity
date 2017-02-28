@@ -69,7 +69,8 @@ extension EUDiscoverViewController{
     @objc fileprivate func shouldStartSearch(){
 //        present(EUSearchViewController(), animated: true, completion: nil)
 
-        navigationController?.pushViewController(TestVC(), animated: true)
+        navigationController?.pushViewController(EUSearchViewController(), animated: true)
+//        navigationController?.pushViewController(TestVC(), animated: true)
     }
     
 }
