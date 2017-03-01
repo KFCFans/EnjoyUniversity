@@ -31,8 +31,9 @@ class EUDiscoverViewController: EUBaseViewController {
 extension EUDiscoverViewController{
 
 
-    override func setupNavItem() {
+    override func setupNavBar() {
         
+        super.setupNavBar()
         navitem.title = "社团墙"
         let searchbtn = UIBarButtonItem(image: UIImage(named: "tabbar_search"), style: .plain, target: nil, action: #selector(shouldStartSearch))
         navitem.rightBarButtonItem = searchbtn

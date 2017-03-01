@@ -10,14 +10,14 @@ import UIKit
 
 class EUSearchViewController: EUBaseViewController {
     
-    // 搜索控制器
-    var searchcontroller = UISearchController(searchResultsController: nil)
+
+    let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 60, height: 30))
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        searchcontroller.searchBar.placeholder = "Ohhhhhhhhh"
-        searchcontroller.dimsBackgroundDuringPresentation = false
+
+        setupSearchBar()
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,11 +34,27 @@ class EUSearchViewController: EUBaseViewController {
 // MARK: - UI 相关方法
 extension EUSearchViewController{
     
-    override func setupNavItem() {
-                
-        navitem.titleView = searchcontroller.searchBar
+    /// 设置导航栏
+    override func setupNavBar() {
+        
+        super.setupNavBar()
+        let v = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
+        v.addSubview(searchbar)
+        navitem.titleView = v
         
     }
+    
+    /// 设置搜索栏
+    fileprivate func setupSearchBar(){
+        
+        //FIXME: - 自定义 UISearchBar ，修改字体颜色
+        searchbar.placeholder = "搜索                                                              "
+        searchbar.searchBarStyle = .minimal
+        searchbar.barTintColor = UIColor.white
+        
+        
+    }
+    
     
 }
 

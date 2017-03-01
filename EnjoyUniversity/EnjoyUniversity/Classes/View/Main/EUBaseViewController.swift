@@ -58,6 +58,13 @@ extension EUBaseViewController{
         
         view.addSubview(tableview)
         
+        setupNavBar()
+        
+    }
+
+    /// 子类重写设置 navItem ，父类中没有任何方法
+    func setupNavBar(){
+        
         navbar.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         navbar.setBackgroundImage(UIImage(), for: .default)
         view.addSubview(navbar)
@@ -72,13 +79,6 @@ extension EUBaseViewController{
         tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 0, 0)
         
         navbar.items = [navitem]
-        
-        setupNavItem()
-        
-    }
-
-    /// 子类重写设置 navItem ，父类中没有任何方法
-    func setupNavItem(){
     
     }
     
