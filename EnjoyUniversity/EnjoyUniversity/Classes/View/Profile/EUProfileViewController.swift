@@ -9,10 +9,18 @@
 import UIKit
 
 class EUProfileViewController: EUBaseViewController {
+    
+    //FIXME: -判断服务器又无数据，若无数据或请求失败则使用本地数据
+    let profile = [
+        0:["我的社团","我的活动","我的收藏"],
+        1:["系统设置","系统客服"],
+        2:["关于我们","分享我们"]
+    ]
+    let PROFILECELL = "PROFILECELL"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        print(profile.count)
         setupProfilePage()
     }
 
@@ -117,7 +125,53 @@ extension EUProfileViewController{
                                                   multiplier: 1.0,
                                                   constant: 6))
         
+        tableview.tableHeaderView = headview
+        tableview.sectionHeaderHeight = 12
+        tableview.register(UITableViewCell.self, forCellReuseIdentifier: PROFILECELL)
+        tableview.separatorStyle = .none
+
+        
         
     }
+    
+}
+
+
+// MARK: - 代理方法
+extension EUProfileViewController{
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return profile.count
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return profile[section]?.count ?? 0
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        guard let data = profile[indexPath.section],
+            let cell = tableview.dequeueReusableCell(withIdentifier: PROFILECELL)   else{
+            return UITableViewCell()
+        }
+        cell.textLabel?.text = data[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
+        return cell
+        
+    }
+    
+    // 返回分割线
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "      "
+    }
+    
+    // 监听响应
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath)
+    }
+    
+    
     
 }
