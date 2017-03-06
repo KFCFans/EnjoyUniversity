@@ -9,6 +9,9 @@
 import UIKit
 
 class EUHomeViewController: EUBaseViewController {
+    
+    // 搜索栏
+    let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 100, height: 30))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +31,23 @@ class EUHomeViewController: EUBaseViewController {
 
 // MARK: - UI 相关方法
 extension EUHomeViewController{
+    
+    override func setupNavBar() {
+        super.setupNavBar()
+        
+        let leftbtn = UIBarButtonItem(image: #imageLiteral(resourceName: "nav_qrcode"), style: .plain, target: nil, action: nil)
+        navitem.leftBarButtonItem = leftbtn
+        
+        let rightbtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        navitem.rightBarButtonItem = rightbtn
+        
+        let v = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
+        searchbar.searchBarStyle = .minimal
+        v.addSubview(searchbar)
+        navitem.titleView = v
+    
+        
+    }
 
 
 

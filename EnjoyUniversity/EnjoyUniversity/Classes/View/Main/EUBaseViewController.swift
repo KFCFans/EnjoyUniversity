@@ -66,7 +66,7 @@ extension EUBaseViewController{
     func setupNavBar(){
         
         // 利用核心绘图创建背景图片
-        let img = createImage(size: CGSize(width: UIScreen.main.bounds.width, height: 64), color: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))
+        let img = createImage(size: CGSize(width: UIScreen.main.bounds.width, height: 64), color: UIColor.red)  //#colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
         
         // 设置导航栏背景图片
         navbar.setBackgroundImage(img, for: .default)
