@@ -51,6 +51,9 @@ extension EUHomeViewController{
         // 搜索框视图
         let searchbarview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
         searchbar.searchBarStyle = .minimal
+        searchbar.barTintColor = UIColor.white
+        searchbar.placeholder = "搜索活动、社团、人"
+        
         searchbarview.addSubview(searchbar)
         navitem.titleView = searchbarview
     
@@ -69,8 +72,16 @@ extension EUHomeViewController{
             
         }
         
-        let vp = SwiftyViewPager(viewpagerHeight: 200.0, imageArray: imgarray)
-        tableview.tableHeaderView = vp
+        let vp = SwiftyViewPager(viewpagerHeight: 180.0, imageArray: imgarray)
+//        tableview.tableHeaderView = vp
+        
+        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 250.0))
+        headview.addSubview(vp)
+        
+        let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
+        headview.addSubview(view2)
+        
+        tableview.tableHeaderView = headview
     }
 
 

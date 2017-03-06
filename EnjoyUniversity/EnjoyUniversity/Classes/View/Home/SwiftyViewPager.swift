@@ -39,7 +39,7 @@ class SwiftyViewPager: UIView {
     var currentIndex:Int = 1{
         
         didSet{
-            print("currentIndex\(currentIndex)")
+//            print("currentIndex\(currentIndex)")
             pageIndictor?.currentPage = currentIndex - 1
         }
         
