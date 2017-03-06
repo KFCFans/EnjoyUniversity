@@ -30,7 +30,8 @@ class EUHomeHeadView: UIView {
         addSubview(activityView)
         addSubview(communityView)
         
-        setupActivityView()
+        setupMiniHeadView(title: "活动", detail: "活出精彩", image: #imageLiteral(resourceName: "home_activity"), superview: activityView, selector: nil)
+        setupMiniHeadView(title: "社团", detail: "释放热情", image: #imageLiteral(resourceName: "home_organization"), superview: communityView, selector: nil)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -42,42 +43,33 @@ class EUHomeHeadView: UIView {
 // MARK: - UI 相关方法
 extension EUHomeHeadView{
     
-    fileprivate func setupActivityView(){
-        let activitytitle = UILabel()
-        activitytitle.text = "活动"
-        activitytitle.font = UIFont.boldSystemFont(ofSize: 16)
-        activitytitle.sizeToFit()
-        activitytitle.textColor = UIColor.white
-        activityView.addSubview(activitytitle)
-        
-        let activitydetail = UILabel()
-        activitydetail.text = "活出精彩"
-        activitydetail.font = UIFont.boldSystemFont(ofSize: 15)
-        activitydetail.sizeToFit()
-        activitydetail.textColor = UIColor.white
-        activityView.addSubview(activitydetail)
-        
-        let activityimage = UIImageView(image: #imageLiteral(resourceName: "home_activity"))
-        activityView.addSubview(activityimage)
-        
-        setupAutoLayout(title: activitytitle, detail: activitydetail, image: activityimage, superview: activityView)
-    }
+
     
-    fileprivate func setupCommunityView(){
+    fileprivate func setupMiniHeadView(title:String,detail:String,image:UIImage,superview:UIView,selector:Selector?){
         
+        let titlelabel = UILabel()
+        titlelabel.text = title
+        titlelabel.font = UIFont.boldSystemFont(ofSize: 16)
+        titlelabel.sizeToFit()
+        titlelabel.textColor = UIColor.white
+        superview.addSubview(titlelabel)
         
+        let detaillabel = UILabel()
+        detaillabel.text = detail
+        detaillabel.font = UIFont.boldSystemFont(ofSize: 15)
+        detaillabel.sizeToFit()
+        detaillabel.textColor = UIColor.white
+        superview.addSubview(detaillabel)
         
-    }
-    
-    fileprivate func setupAutoLayout(title:UILabel,detail:UILabel,image:UIImageView,superview:UIView){
-        
+        let imageview = UIImageView(image: image)
+        superview.addSubview(imageview)
         
         // 自动布局
-        detail.translatesAutoresizingMaskIntoConstraints = false
-        title.translatesAutoresizingMaskIntoConstraints = false
-        image.translatesAutoresizingMaskIntoConstraints = false
+        detaillabel.translatesAutoresizingMaskIntoConstraints = false
+        titlelabel.translatesAutoresizingMaskIntoConstraints = false
+        imageview.translatesAutoresizingMaskIntoConstraints = false
         
-        superview.addConstraint(NSLayoutConstraint(item: title,
+        superview.addConstraint(NSLayoutConstraint(item: titlelabel,
                                                       attribute: .top,
                                                       relatedBy: .equal,
                                                       toItem: superview,
@@ -85,7 +77,7 @@ extension EUHomeHeadView{
                                                       multiplier: 1.0,
                                                       constant: 6))
         
-        superview.addConstraint(NSLayoutConstraint(item: title,
+        superview.addConstraint(NSLayoutConstraint(item: titlelabel,
                                                       attribute: .left,
                                                       relatedBy: .equal,
                                                       toItem: superview,
@@ -93,23 +85,23 @@ extension EUHomeHeadView{
                                                       multiplier: 1.0,
                                                       constant: 17))
         
-        superview.addConstraint(NSLayoutConstraint(item: detail,
+        superview.addConstraint(NSLayoutConstraint(item: detaillabel,
                                                       attribute: .top,
                                                       relatedBy: .equal,
-                                                      toItem: title,
+                                                      toItem: titlelabel,
                                                       attribute: .bottom,
                                                       multiplier: 1.0,
                                                       constant: 4))
         
-        superview.addConstraint(NSLayoutConstraint(item: detail,
+        superview.addConstraint(NSLayoutConstraint(item: detaillabel,
                                                       attribute: .left,
                                                       relatedBy: .equal,
-                                                      toItem: title,
+                                                      toItem: titlelabel,
                                                       attribute: .left,
                                                       multiplier: 1.0,
                                                       constant: 0))
         
-        image.addConstraint(NSLayoutConstraint(item: image,
+        imageview.addConstraint(NSLayoutConstraint(item: imageview,
                                                attribute: .width,
                                                relatedBy: .equal,
                                                toItem: nil,
@@ -117,7 +109,7 @@ extension EUHomeHeadView{
                                                multiplier: 1.0,
                                                constant: 30))
         
-        image.addConstraint(NSLayoutConstraint(item: image,
+        imageview.addConstraint(NSLayoutConstraint(item: imageview,
                                                attribute: .height,
                                                relatedBy: .equal,
                                                toItem: nil,
@@ -125,7 +117,7 @@ extension EUHomeHeadView{
                                                multiplier: 1.0,
                                                constant: 30))
         
-        superview.addConstraint(NSLayoutConstraint(item: image,
+        superview.addConstraint(NSLayoutConstraint(item: imageview,
                                                       attribute: .right,
                                                       relatedBy: .equal,
                                                       toItem: superview,
@@ -133,7 +125,7 @@ extension EUHomeHeadView{
                                                       multiplier: 1.0,
                                                       constant: -18))
         
-        superview.addConstraint(NSLayoutConstraint(item: image,
+        superview.addConstraint(NSLayoutConstraint(item: imageview,
                                                       attribute: .centerY,
                                                       relatedBy: .equal,
                                                       toItem: superview,
