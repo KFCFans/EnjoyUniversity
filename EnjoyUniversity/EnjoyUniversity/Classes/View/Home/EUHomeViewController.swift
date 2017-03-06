@@ -32,3 +32,25 @@ extension EUHomeViewController{
 
 
 }
+
+// MARK: - 代理相关方法
+extension EUHomeViewController{
+    
+    // 实现导航栏随着视图滑动而变化
+    // 初值 －64 向下拉值变大
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let barimg = self.navbar.subviews.first
+        let offsetY = scrollView.contentOffset.y + 64
+        if offsetY > 120 {
+            barimg?.alpha = 1
+        }
+        else if offsetY < 0{
+            barimg?.alpha = 0
+        }
+        else{
+            barimg?.alpha = offsetY / 120.0
+        }
+    }
+    
+}

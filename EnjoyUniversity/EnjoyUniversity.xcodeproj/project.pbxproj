@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3695A2BD1E6D4DD200F02B8E /* CoreImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BC1E6D4DD200F02B8E /* CoreImage.swift */; };
 		36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B164191E65A59E00B589B4 /* EUSearchViewController.swift */; };
 		36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFC1E640A390075A3ED /* AppDelegate.swift */; };
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3695A2BC1E6D4DD200F02B8E /* CoreImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImage.swift; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				36BDBB461E641DFF0075A3ED /* Extension */,
+				3695A2BC1E6D4DD200F02B8E /* CoreImage.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -393,6 +396,7 @@
 				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,
 				36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */,
 				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
+				3695A2BD1E6D4DD200F02B8E /* CoreImage.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
 				36BDBB4A1E6452090075A3ED /* CommunityWall.swift in Sources */,

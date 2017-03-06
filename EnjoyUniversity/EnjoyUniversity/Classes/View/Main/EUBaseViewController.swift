@@ -65,8 +65,13 @@ extension EUBaseViewController{
     /// 子类重写设置 navItem ，父类中没有任何方法
     func setupNavBar(){
         
-        navbar.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-        navbar.setBackgroundImage(UIImage(), for: .default)
+        // 利用核心绘图创建背景图片
+        let img = createImage(size: CGSize(width: UIScreen.main.bounds.width, height: 64), color: #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1))
+        
+        // 设置导航栏背景图片
+        navbar.setBackgroundImage(img, for: .default)
+        navbar.shadowImage = UIImage()
+        
         view.addSubview(navbar)
         
         // 设置 NavigationBar 标题颜色
