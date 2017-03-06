@@ -10,28 +10,30 @@ import UIKit
 
 class EUHomeHeadView: UIView {
     
-    var activityView:UIView
+    var activityView:UIButton
     
-    var communityView:UIView
+    var communityView:UIButton
 
 
     override init(frame: CGRect) {
         
-//        activityView = UIImageView(image: #imageLiteral(resourceName: "home_background3"))
-//        activityView.frame = CGRect(x: 6, y: 6, width: frame.size.width / 2 - 7.5, height: frame.size.height)
-        activityView = UIView(frame: CGRect(x: 10, y: 0, width: frame.size.width / 2 - 15, height: frame.size.height))
+
+        activityView = UIButton(frame: CGRect(x: 10, y: 0, width: frame.size.width / 2 - 15, height: frame.size.height))
         activityView.backgroundColor = #colorLiteral(red: 0.00265219924, green: 0.7488125563, blue: 0.7883973718, alpha: 1)
-//        communityView = UIImageView(image: #imageLiteral(resourceName: "home_background2"))
-//        communityView.frame = CGRect(x: frame.size.width / 2 + 1.5, y: 6, width: frame.size.width / 2 - 7.5, height: frame.size.height)
-        communityView = UIView(frame: CGRect(x: frame.size.width / 2 + 5, y: 0, width: frame.size.width / 2 - 15, height: frame.size.height))
+
+        communityView = UIButton(frame: CGRect(x: frame.size.width / 2 + 5, y: 0, width: frame.size.width / 2 - 15, height: frame.size.height))
         communityView.backgroundColor = #colorLiteral(red: 0.4545698166, green: 0.699503541, blue: 0.2102472186, alpha: 1)
         super.init(frame: frame)
+        
+        activityView.addTarget(nil, action: #selector(didClickMyActivity), for: .touchUpInside)
+        communityView.addTarget(nil, action: #selector(didClickMyCommunity), for: .touchUpInside)
         
         addSubview(activityView)
         addSubview(communityView)
         
-        setupMiniHeadView(title: "活动", detail: "活出精彩", image: #imageLiteral(resourceName: "home_activity"), superview: activityView, selector: nil)
-        setupMiniHeadView(title: "社团", detail: "释放热情", image: #imageLiteral(resourceName: "home_organization"), superview: communityView, selector: nil)
+        setupMiniHeadView(title: "活动", detail: "活出精彩", image: #imageLiteral(resourceName: "home_activity"), superview: activityView)
+        
+        setupMiniHeadView(title: "社团", detail: "释放热情", image: #imageLiteral(resourceName: "home_organization"), superview: communityView)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -45,7 +47,7 @@ extension EUHomeHeadView{
     
 
     
-    fileprivate func setupMiniHeadView(title:String,detail:String,image:UIImage,superview:UIView,selector:Selector?){
+    fileprivate func setupMiniHeadView(title:String,detail:String,image:UIImage,superview:UIView){
         
         let titlelabel = UILabel()
         titlelabel.text = title
@@ -135,6 +137,21 @@ extension EUHomeHeadView{
         
         
         
+    }
+    
+}
+
+
+// MARK: - 监听方法
+extension EUHomeHeadView{
+    
+    @objc fileprivate func didClickMyActivity(){
+        print("Activity")
+    }
+    
+    
+    @objc fileprivate func didClickMyCommunity(){
+        print("Commnuity")
     }
     
 }
