@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3695A2BD1E6D4DD200F02B8E /* CoreImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BC1E6D4DD200F02B8E /* CoreImage.swift */; };
+		3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */; };
 		36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B164191E65A59E00B589B4 /* EUSearchViewController.swift */; };
 		36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFC1E640A390075A3ED /* AppDelegate.swift */; };
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		3695A2BC1E6D4DD200F02B8E /* CoreImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImage.swift; sourceTree = "<group>"; };
+		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyViewPager.swift; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				36BDBB3E1E6416FF0075A3ED /* EUHomeViewController.swift */,
+				3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			files = (
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
+				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
 				36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */,
 				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,
 				36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */,

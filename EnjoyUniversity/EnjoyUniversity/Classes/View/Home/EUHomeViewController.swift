@@ -15,6 +15,10 @@ class EUHomeViewController: EUBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navbar.subviews.first?.alpha = 0
+        
+        setupViewPager()
 
         
     }
@@ -32,21 +36,41 @@ class EUHomeViewController: EUBaseViewController {
 // MARK: - UI 相关方法
 extension EUHomeViewController{
     
+    // 设置导航栏
     override func setupNavBar() {
         super.setupNavBar()
         
+        // 导航栏左部扫描二维码按钮
         let leftbtn = UIBarButtonItem(image: #imageLiteral(resourceName: "nav_qrcode"), style: .plain, target: nil, action: nil)
         navitem.leftBarButtonItem = leftbtn
         
+        // 导航栏右部更多菜单按钮
         let rightbtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
         navitem.rightBarButtonItem = rightbtn
         
-        let v = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
+        // 搜索框视图
+        let searchbarview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
         searchbar.searchBarStyle = .minimal
-        v.addSubview(searchbar)
-        navitem.titleView = v
+        searchbarview.addSubview(searchbar)
+        navitem.titleView = searchbarview
     
         
+    }
+    
+    // 设置轮播图
+    func setupViewPager(){
+        
+        // FIXME: - 轮播图需从网上加载 改进SwiftyViewPager！
+        var imgarray = [UIImage]()
+        for i in 1...4{
+            
+            let img = UIImage(named: "viewpager_\(i)") ?? UIImage()
+            imgarray.append(img)
+            
+        }
+        
+        let vp = SwiftyViewPager(viewpagerHeight: 200.0, imageArray: imgarray)
+        tableview.tableHeaderView = vp
     }
 
 
@@ -57,18 +81,20 @@ extension EUHomeViewController{
 extension EUHomeViewController{
     
     // 实现导航栏随着视图滑动而变化
-    // 初值 －64 向下拉值变大
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let barimg = self.navbar.subviews.first
-        let offsetY = scrollView.contentOffset.y + 64
+        let offsetY = scrollView.contentOffset.y 
         if offsetY > 120 {
+            
+            navbar.isHidden = false
             barimg?.alpha = 1
         }
         else if offsetY < 0{
-            barimg?.alpha = 0
+            navbar.isHidden = true
         }
         else{
+            navbar.isHidden = false
             barimg?.alpha = offsetY / 120.0
         }
     }

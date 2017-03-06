@@ -62,7 +62,7 @@ extension EUBaseViewController{
         
     }
 
-    /// 子类重写设置 navItem ，父类中没有任何方法
+    /// MARK: - 如果 pop 回页面发现导航栏变成系统自带的，需要将此函数放在 viewWillAppear中
     func setupNavBar(){
         
         // 利用核心绘图创建背景图片
@@ -80,8 +80,6 @@ extension EUBaseViewController{
         // 设置 NavigationBar 按钮颜色
         navbar.tintColor = UIColor.white
         
-        // 缩进 tableview ，防止被 navbar 遮挡
-        tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 0, 0)
         
         navbar.items = [navitem]
     

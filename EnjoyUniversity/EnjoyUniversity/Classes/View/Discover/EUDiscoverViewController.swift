@@ -38,6 +38,9 @@ extension EUDiscoverViewController{
         let searchbtn = UIBarButtonItem(image: UIImage(named: "tabbar_search"), style: .plain, target: nil, action: #selector(shouldStartSearch))
         navitem.rightBarButtonItem = searchbtn
         
+        // 缩进 tableview ，防止被 navbar 遮挡
+        tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 0, 0)
+        
     }
     
 }
