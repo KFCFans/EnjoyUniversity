@@ -43,67 +43,73 @@ class EUHomeHeadView: UIView {
 extension EUHomeHeadView{
     
     fileprivate func setupActivityView(){
+        let activitytitle = UILabel()
+        activitytitle.text = "活动"
+        activitytitle.font = UIFont.boldSystemFont(ofSize: 16)
+        activitytitle.sizeToFit()
+        activitytitle.textColor = UIColor.white
+        activityView.addSubview(activitytitle)
+        
+        let activitydetail = UILabel()
+        activitydetail.text = "活出精彩"
+        activitydetail.font = UIFont.boldSystemFont(ofSize: 15)
+        activitydetail.sizeToFit()
+        activitydetail.textColor = UIColor.white
+        activityView.addSubview(activitydetail)
+        
+        let activityimage = UIImageView(image: #imageLiteral(resourceName: "home_activity"))
+        activityView.addSubview(activityimage)
+        
+        setupAutoLayout(title: activitytitle, detail: activitydetail, image: activityimage, superview: activityView)
+    }
+    
+    fileprivate func setupCommunityView(){
         
         
         
-//        let avimgview = UIImageView(image: #imageLiteral(resourceName: "home_activity"))
-//        activityView.addSubview(avimgview)
+    }
+    
+    fileprivate func setupAutoLayout(title:UILabel,detail:UILabel,image:UIImageView,superview:UIView){
         
-        let avtitle = UILabel()
-        avtitle.text = "活动"
-        avtitle.font = UIFont.boldSystemFont(ofSize: 16)
-        avtitle.sizeToFit()
-        avtitle.textColor = UIColor.white
-        activityView.addSubview(avtitle)
-        
-        let avdetail = UILabel()
-        avdetail.text = "活出精彩"
-        avdetail.font = UIFont.boldSystemFont(ofSize: 15)
-        avdetail.sizeToFit()
-        avdetail.textColor = UIColor.white
-        activityView.addSubview(avdetail)
-        
-        let avimg = UIImageView(image: #imageLiteral(resourceName: "home_activity"))
-        activityView.addSubview(avimg)
         
         // 自动布局
-        avdetail.translatesAutoresizingMaskIntoConstraints = false
-        avtitle.translatesAutoresizingMaskIntoConstraints = false
-        avimg.translatesAutoresizingMaskIntoConstraints = false
+        detail.translatesAutoresizingMaskIntoConstraints = false
+        title.translatesAutoresizingMaskIntoConstraints = false
+        image.translatesAutoresizingMaskIntoConstraints = false
         
-        activityView.addConstraint(NSLayoutConstraint(item: avtitle,
+        superview.addConstraint(NSLayoutConstraint(item: title,
                                                       attribute: .top,
                                                       relatedBy: .equal,
-                                                      toItem: activityView,
+                                                      toItem: superview,
                                                       attribute: .top,
                                                       multiplier: 1.0,
                                                       constant: 6))
         
-        activityView.addConstraint(NSLayoutConstraint(item: avtitle,
+        superview.addConstraint(NSLayoutConstraint(item: title,
                                                       attribute: .left,
                                                       relatedBy: .equal,
-                                                      toItem: activityView,
+                                                      toItem: superview,
                                                       attribute: .left,
                                                       multiplier: 1.0,
                                                       constant: 17))
         
-        activityView.addConstraint(NSLayoutConstraint(item: avdetail,
+        superview.addConstraint(NSLayoutConstraint(item: detail,
                                                       attribute: .top,
                                                       relatedBy: .equal,
-                                                      toItem: avtitle,
+                                                      toItem: title,
                                                       attribute: .bottom,
                                                       multiplier: 1.0,
                                                       constant: 4))
         
-        activityView.addConstraint(NSLayoutConstraint(item: avdetail,
+        superview.addConstraint(NSLayoutConstraint(item: detail,
                                                       attribute: .left,
                                                       relatedBy: .equal,
-                                                      toItem: avtitle,
+                                                      toItem: title,
                                                       attribute: .left,
                                                       multiplier: 1.0,
                                                       constant: 0))
         
-        avimg.addConstraint(NSLayoutConstraint(item: avimg,
+        image.addConstraint(NSLayoutConstraint(item: image,
                                                attribute: .width,
                                                relatedBy: .equal,
                                                toItem: nil,
@@ -111,7 +117,7 @@ extension EUHomeHeadView{
                                                multiplier: 1.0,
                                                constant: 30))
         
-        avimg.addConstraint(NSLayoutConstraint(item: avimg,
+        image.addConstraint(NSLayoutConstraint(item: image,
                                                attribute: .height,
                                                relatedBy: .equal,
                                                toItem: nil,
@@ -119,18 +125,18 @@ extension EUHomeHeadView{
                                                multiplier: 1.0,
                                                constant: 30))
         
-        activityView.addConstraint(NSLayoutConstraint(item: avimg,
+        superview.addConstraint(NSLayoutConstraint(item: image,
                                                       attribute: .right,
                                                       relatedBy: .equal,
-                                                      toItem: activityView,
+                                                      toItem: superview,
                                                       attribute: .right,
                                                       multiplier: 1.0,
                                                       constant: -18))
         
-        activityView.addConstraint(NSLayoutConstraint(item: avimg,
+        superview.addConstraint(NSLayoutConstraint(item: image,
                                                       attribute: .centerY,
                                                       relatedBy: .equal,
-                                                      toItem: activityView,
+                                                      toItem: superview,
                                                       attribute: .centerY,
                                                       multiplier: 1.0,
                                                       constant: 0))
