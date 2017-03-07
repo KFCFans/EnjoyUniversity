@@ -69,6 +69,7 @@
                 <constraints>
                     <constraint firstItem="zd6-Ej-VjI" firstAttribute="leading" secondItem="T75-di-K9O" secondAttribute="trailing" constant="11" id="4bf-4i-jH8"/>
                     <constraint firstItem="WFZ-Qc-D2i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="10" id="6Gg-z9-MEr"/>
+                    <constraint firstAttribute="bottom" secondItem="WT8-od-f0H" secondAttribute="bottom" constant="23" id="7zv-pm-D41"/>
                     <constraint firstItem="hPO-FT-lCs" firstAttribute="leading" secondItem="f8a-WX-xU5" secondAttribute="trailing" constant="11" id="96i-gk-659"/>
                     <constraint firstItem="f8a-WX-xU5" firstAttribute="leading" secondItem="WFZ-Qc-D2i" secondAttribute="trailing" constant="11" id="Cfp-Tv-5QM"/>
                     <constraint firstItem="zos-Aw-AnR" firstAttribute="leading" secondItem="WT8-od-f0H" secondAttribute="trailing" constant="11" id="EiD-m5-bLg"/>
@@ -81,6 +82,7 @@
                     <constraint firstItem="T75-di-K9O" firstAttribute="leading" secondItem="WFZ-Qc-D2i" secondAttribute="trailing" constant="11" id="WTz-oP-EnL"/>
                     <constraint firstItem="WT8-od-f0H" firstAttribute="leading" secondItem="WFZ-Qc-D2i" secondAttribute="trailing" constant="11" id="fIS-TG-IM7"/>
                     <constraint firstItem="zd6-Ej-VjI" firstAttribute="centerY" secondItem="T75-di-K9O" secondAttribute="centerY" id="myL-mY-8r4"/>
+                    <constraint firstAttribute="bottom" secondItem="WFZ-Qc-D2i" secondAttribute="bottom" constant="16" id="wg6-aQ-Fkm"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

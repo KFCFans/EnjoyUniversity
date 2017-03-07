@@ -26,7 +26,6 @@ class EUHomeViewController: EUBaseViewController {
         
         setupViewPager()
 
-        tableview.reloadData()
         
     }
 

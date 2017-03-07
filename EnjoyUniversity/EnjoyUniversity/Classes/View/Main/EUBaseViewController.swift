@@ -54,7 +54,7 @@ extension EUBaseViewController{
         //关闭自动缩进来自定义tableview位置，使其完全显示
         automaticallyAdjustsScrollViewInsets = false
         
-        // 预估行高
+        // 预估行高 ⚠️：预估行高只能在布局中使用自动布局填充满，这样系统才能自动推测（不能只靠左上角和长宽来确定行高）
         tableview.rowHeight = UITableViewAutomaticDimension
         tableview.estimatedRowHeight = 98.0
         
