@@ -41,10 +41,7 @@ extension EUBaseViewController{
         
         
         view.backgroundColor = UIColor.white
-        
-        // 预估行高
-        tableview.rowHeight = UITableViewAutomaticDimension
-        tableview.estimatedRowHeight = 240
+
         
         // tableview 的代理和数据源方法
         tableview.dataSource = self
@@ -56,6 +53,10 @@ extension EUBaseViewController{
         
         //关闭自动缩进来自定义tableview位置，使其完全显示
         automaticallyAdjustsScrollViewInsets = false
+        
+        // 预估行高
+        tableview.rowHeight = UITableViewAutomaticDimension
+        tableview.estimatedRowHeight = 98.0
         
         view.addSubview(tableview)
         

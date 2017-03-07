@@ -13,13 +13,20 @@ class EUHomeViewController: EUBaseViewController {
     // 搜索栏
     let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 100, height: 30))
 
+    // 活动 Cell Id
+    let ACTIVITYCELL = "EUACTIVITYCELL"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navbar.subviews.first?.alpha = 0
         
+
+        tableview.register(UINib(nibName: "EUActivityCell", bundle: nil), forCellReuseIdentifier: ACTIVITYCELL)
+        
         setupViewPager()
 
+        tableview.reloadData()
         
     }
 
@@ -109,6 +116,22 @@ extension EUHomeViewController{
             barimg?.alpha = offsetY / 120.0
         }
     }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableview.dequeueReusableCell(withIdentifier: ACTIVITYCELL) as! EUActivityCell
+        
+        return cell
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 93.0
+//    }
+    
     
 }
 

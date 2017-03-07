@@ -44,12 +44,16 @@
                 <constraint firstAttribute="trailing" secondItem="zUi-aj-Fzr" secondAttribute="trailing" id="3cj-dR-Klx"/>
                 <constraint firstItem="4en-qH-yzV" firstAttribute="centerY" secondItem="zUi-aj-Fzr" secondAttribute="centerY" id="72H-JN-668"/>
                 <constraint firstAttribute="trailing" secondItem="2f6-MC-I4u" secondAttribute="trailing" constant="20" id="AGL-Mb-OLm"/>
+                <constraint firstItem="zUi-aj-Fzr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AYO-Ii-sH7"/>
                 <constraint firstItem="R0A-7b-38o" firstAttribute="centerX" secondItem="zUi-aj-Fzr" secondAttribute="centerX" id="GPv-dF-buS"/>
                 <constraint firstAttribute="bottom" secondItem="zUi-aj-Fzr" secondAttribute="bottom" id="GpM-VK-Fsz"/>
                 <constraint firstItem="zUi-aj-Fzr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="I1Y-ug-IZe"/>
                 <constraint firstItem="2f6-MC-I4u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="P1U-zi-D8G"/>
                 <constraint firstAttribute="bottom" secondItem="2f6-MC-I4u" secondAttribute="bottom" constant="70" id="RWz-VF-vlF"/>
                 <constraint firstItem="4en-qH-yzV" firstAttribute="centerX" secondItem="zUi-aj-Fzr" secondAttribute="centerX" id="WPZ-ty-ky1"/>
+                <constraint firstItem="zUi-aj-Fzr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iBR-Ot-cyM"/>
+                <constraint firstAttribute="bottom" secondItem="zUi-aj-Fzr" secondAttribute="bottom" id="izC-7t-8nM"/>
+                <constraint firstAttribute="trailing" secondItem="zUi-aj-Fzr" secondAttribute="trailing" id="q4H-zU-VwR"/>
                 <constraint firstItem="R0A-7b-38o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="v3F-No-zO9"/>
                 <constraint firstItem="zUi-aj-Fzr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="whQ-Rz-T7n"/>
                 <constraint firstItem="2f6-MC-I4u" firstAttribute="centerX" secondItem="zUi-aj-Fzr" secondAttribute="centerX" id="yBr-6U-E5I"/>
