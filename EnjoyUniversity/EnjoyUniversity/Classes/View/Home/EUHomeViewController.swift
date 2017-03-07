@@ -41,7 +41,7 @@ extension EUHomeViewController{
         super.setupNavBar()
         
         // 导航栏左部扫描二维码按钮
-        let leftbtn = UIBarButtonItem(image: #imageLiteral(resourceName: "nav_qrcode"), style: .plain, target: nil, action: nil)
+        let leftbtn = UIBarButtonItem(image: #imageLiteral(resourceName: "nav_qrcode"), style: .plain, target: nil, action: #selector(didClickQRCodeScanner))
         navitem.leftBarButtonItem = leftbtn
         
         // 导航栏右部更多菜单按钮
@@ -75,7 +75,7 @@ extension EUHomeViewController{
         let vp = SwiftyViewPager(viewpagerHeight: 180.0, imageArray: imgarray)
 //        tableview.tableHeaderView = vp
         
-        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 250.0))
+        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))
         headview.addSubview(vp)
         
         let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
@@ -108,6 +108,18 @@ extension EUHomeViewController{
             navbar.isHidden = false
             barimg?.alpha = offsetY / 120.0
         }
+    }
+    
+}
+
+// MARK: - 监听方法
+extension EUHomeViewController{
+    
+    @objc fileprivate func didClickQRCodeScanner(){
+        
+        let scanner = EUQRScanViewController()
+        navigationController?.pushViewController(scanner, animated: true)
+        
     }
     
 }

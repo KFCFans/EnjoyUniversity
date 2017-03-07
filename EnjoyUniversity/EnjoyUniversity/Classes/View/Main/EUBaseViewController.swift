@@ -39,6 +39,7 @@ extension EUBaseViewController{
     
     fileprivate func setupUI(){
         
+        
         view.backgroundColor = UIColor.white
         
         // 预估行高
