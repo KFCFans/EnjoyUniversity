@@ -22,14 +22,39 @@ class EUMessageViewController: EUBaseViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+}
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+// MARK: - UI 相关方法
+extension EUMessageViewController{
+    
+    override func setupNavBar() {
+        super.setupNavBar()
+        
+        navitem.title = "消息"
+        
+        // 缩进 tableview ，防止被 navbar 遮挡
+        tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 0, 0)
     }
-    */
+    
+}
 
+
+
+// MARK: - 代理方法
+extension EUMessageViewController{
+ 
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 3
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        return UITableViewCell()
+        
+    }
+    
+    
+    
 }

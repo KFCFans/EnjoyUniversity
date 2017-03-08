@@ -64,9 +64,16 @@
                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="免费" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovf-Ox-NJN">
+                        <rect key="frame" x="371" y="71.5" width="31" height="18"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" red="0.32156862745098042" green="0.67450980392156867" blue="0.2627450980392157" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="zd6-Ej-VjI" firstAttribute="leading" secondItem="T75-di-K9O" secondAttribute="trailing" constant="11" id="4bf-4i-jH8"/>
+                    <constraint firstAttribute="trailing" secondItem="Ovf-Ox-NJN" secondAttribute="trailing" constant="11" id="55o-u7-QgL"/>
                     <constraint firstItem="WFZ-Qc-D2i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="6Gg-z9-MEr"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WT8-od-f0H" secondAttribute="bottom" constant="10" id="7zv-pm-D41"/>
                     <constraint firstItem="hPO-FT-lCs" firstAttribute="leading" secondItem="f8a-WX-xU5" secondAttribute="trailing" constant="11" id="96i-gk-659"/>
@@ -81,6 +88,7 @@
                     <constraint firstItem="T75-di-K9O" firstAttribute="leading" secondItem="WFZ-Qc-D2i" secondAttribute="trailing" constant="11" id="WTz-oP-EnL"/>
                     <constraint firstItem="WT8-od-f0H" firstAttribute="leading" secondItem="WFZ-Qc-D2i" secondAttribute="trailing" constant="11" id="fIS-TG-IM7"/>
                     <constraint firstItem="zd6-Ej-VjI" firstAttribute="centerY" secondItem="T75-di-K9O" secondAttribute="centerY" id="myL-mY-8r4"/>
+                    <constraint firstAttribute="bottom" secondItem="Ovf-Ox-NJN" secondAttribute="bottom" constant="12" id="nyV-Wr-58s"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WFZ-Qc-D2i" secondAttribute="bottom" constant="10" id="wg6-aQ-Fkm"/>
                 </constraints>
             </tableViewCellContentView>
