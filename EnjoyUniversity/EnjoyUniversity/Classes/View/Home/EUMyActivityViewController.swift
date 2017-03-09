@@ -38,7 +38,7 @@ class EUMyActivityViewController: UIViewController {
     var createdtableView:UITableView?
     
     // 表格视图 Cell ID
-    let EUMYACTIITYCELL = "EUMYACTIVITYCELL"
+    let EUMYACTIITYCELLID = "EUMYACTIVITYCELL"
     
     // 是否为第一页判断
     var isFirstPageSelected = true{
@@ -56,7 +56,6 @@ class EUMyActivityViewController: UIViewController {
         setupUI()
 
     }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -131,6 +130,13 @@ extension EUMyActivityViewController{
         scrollView.delegate = self
         view.addSubview(scrollView)
         
+        let nib = UINib(nibName: "EUActivityCell", bundle: nil)
+        joinedtableView.register(nib, forCellReuseIdentifier: EUMYACTIITYCELLID)
+        createdtableView.register(nib, forCellReuseIdentifier: EUMYACTIITYCELLID)
+        joinedtableView.estimatedRowHeight = 80.0
+        joinedtableView.rowHeight = UITableViewAutomaticDimension
+        createdtableView.estimatedRowHeight = 80.0
+        createdtableView.rowHeight = UITableViewAutomaticDimension
         joinedtableView.delegate = self
         joinedtableView.dataSource = self
         createdtableView.delegate = self
@@ -156,23 +162,28 @@ extension EUMyActivityViewController{
 // MARK: - 代理方法
 extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
     
+    /// 用 tableview 的 Tag 来区分是哪一块的数据
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "zzzzz"
+        let cell = tableView.dequeueReusableCell(withIdentifier: EUMYACTIITYCELLID) as! EUActivityCell
+        
         return cell
         
     }
     
+   
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offsetX = scrollView.contentOffset.x
-        print(offsetX)
-        indicatorView?.setContentOffset(CGPoint(x: -offsetX/2, y: indicatorView?.contentOffset.y ?? 44), animated: true)
+        if offsetX > 0 {
+            indicatorView?.setContentOffset(CGPoint(x: -offsetX/2, y: indicatorView?.contentOffset.y ?? 44), animated: true)
+
+        }
         if offsetX > swidth / 2 {
             isFirstPageSelected = false
             
