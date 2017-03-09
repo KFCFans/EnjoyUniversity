@@ -31,7 +31,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="震惊，千万新生上大学不在迷茫，原来都是因为它！" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U0C-Nb-kFs">
-                        <rect key="frame" x="61" y="39" width="305" height="16"/>
+                        <rect key="frame" x="61" y="39" width="300" height="16"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" red="0.41568627450980394" green="0.41568627450980394" blue="0.41568627450980394" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
@@ -54,6 +54,7 @@
                 <constraints>
                     <constraint firstItem="MRq-TI-HaN" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="17" id="0y2-Q5-nr0"/>
                     <constraint firstItem="qMR-La-7aY" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="35i-fA-CCS"/>
+                    <constraint firstItem="U0C-Nb-kFs" firstAttribute="trailing" relation="lessThanOrEqual" secondItem="qMR-La-7aY" secondAttribute="trailing" constant="-20" id="B71-TH-vsk"/>
                     <constraint firstAttribute="bottom" secondItem="U0C-Nb-kFs" secondAttribute="bottom" constant="7" id="Bxz-ay-Sjb"/>
                     <constraint firstAttribute="trailing" secondItem="qMR-La-7aY" secondAttribute="trailing" constant="74" id="ExB-6b-HSg"/>
                     <constraint firstAttribute="bottom" secondItem="qMR-La-7aY" secondAttribute="bottom" constant="10" id="IRh-ig-PDe"/>

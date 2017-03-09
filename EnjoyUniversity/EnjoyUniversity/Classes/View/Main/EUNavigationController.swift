@@ -29,6 +29,12 @@ class EUNavigationController: UINavigationController {
                 
                 vc.navitem.leftBarButtonItem = backbtn
             }
+            
+            if let vc2 = viewController as? EUMyActivityViewController {
+                let backbtn = UIBarButtonItem(image: UIImage(named: "tabbar_back"), style: .plain, target: nil, action: #selector(popToParent))
+                
+                vc2.navitem.leftBarButtonItem = backbtn
+            }
         }
         super.pushViewController(viewController, animated: true)
     }

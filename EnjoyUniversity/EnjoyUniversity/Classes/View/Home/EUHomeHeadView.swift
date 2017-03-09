@@ -14,6 +14,8 @@ class EUHomeHeadView: UIView {
     
     var communityView:UIButton
 
+    // 用于跳转
+    var navigationController:UINavigationController?
 
     override init(frame: CGRect) {
         
@@ -38,6 +40,10 @@ class EUHomeHeadView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func giveNavigationController(navc:UINavigationController?){
+        navigationController = navc
     }
     
 }
@@ -147,6 +153,9 @@ extension EUHomeHeadView{
     
     @objc fileprivate func didClickMyActivity(){
         print("Activity")
+        
+        navigationController?.pushViewController(EUMyActivityViewController(), animated: true)
+        
     }
     
     

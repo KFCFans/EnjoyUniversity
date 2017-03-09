@@ -61,8 +61,5 @@ extension EUSearchViewController{
 // MARK: - 监听方法
 extension EUSearchViewController{
     
-    @objc fileprivate func goBack(){
-        dismiss(animated: true, completion: nil)
-    }
     
 }

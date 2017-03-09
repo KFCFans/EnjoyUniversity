@@ -9,11 +9,16 @@
 import UIKit
 
 class EUMessageViewController: EUBaseViewController {
+    
+    let EUMESSAGECELL = "EUMESSAGECELL"
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tableview.register(UINib(nibName: "EUMessageCell", bundle: nil), forCellReuseIdentifier: EUMESSAGECELL)
+        
+        // 巧妙解决 tableview 下面多余的分割线
+        tableview.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -51,7 +56,8 @@ extension EUMessageViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        let cell = tableview.dequeueReusableCell(withIdentifier: EUMESSAGECELL) as! EUMessageCell
+        return cell
         
     }
     

@@ -87,6 +87,8 @@ extension EUHomeViewController{
         let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
         headview.addSubview(view2)
         
+        view2.giveNavigationController(navc: navigationController)
+        
         tableview.tableHeaderView = headview
     }
 

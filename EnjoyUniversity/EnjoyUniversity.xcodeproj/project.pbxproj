@@ -11,6 +11,7 @@
 		365E1A691E6EC8C000193214 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365E1A671E6EC8C000193214 /* EUActivityCell.xib */; };
 		3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */; };
 		3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */; };
+		3666ABFE1E70524F008E4B6B /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */; };
 		3695A2BD1E6D4DD200F02B8E /* CoreImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BC1E6D4DD200F02B8E /* CoreImage.swift */; };
 		3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */; };
 		3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */; };
@@ -56,6 +57,7 @@
 		365E1A671E6EC8C000193214 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
 		3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUMessageCell.xib; sourceTree = "<group>"; };
+		3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
 		3695A2BC1E6D4DD200F02B8E /* CoreImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreImage.swift; sourceTree = "<group>"; };
 		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
@@ -228,6 +230,7 @@
 				3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */,
 				365E1A661E6EC8C000193214 /* EUActivityCell.swift */,
 				365E1A671E6EC8C000193214 /* EUActivityCell.xib */,
+				3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */,
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
 				36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */,
+				3666ABFE1E70524F008E4B6B /* EUMyActivityViewController.swift in Sources */,
 				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,
 				365E1A681E6EC8C000193214 /* EUActivityCell.swift in Sources */,
 				36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */,
