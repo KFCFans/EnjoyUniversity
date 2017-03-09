@@ -49,15 +49,9 @@ class EUPlusButtonView: UIView {
         
         self.addSubview(plusBtn)
         
-        let anim = CABasicAnimation(keyPath: "transform.rotation")
-        anim.toValue = M_PI / 4
-        anim.duration = 0.25
-        anim.repeatCount = 1
-        anim.isRemovedOnCompletion = false
-        // 动画结束后保持状态
-        anim.fillMode = kCAFillModeForwards
-        
-        plusBtn.layer.add(anim, forKey: "xuanzhuan")
+        UIView.animate(withDuration: 0.25) { 
+            plusBtn.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 4))
+        }
    
         rootvc.view.addSubview(self)
     }
@@ -72,21 +66,15 @@ extension EUPlusButtonView{
     @objc fileprivate func didClickScreen(){
         
 
-            self.plusBtn?.layer.removeAllAnimations()
+        UIView.animate(withDuration: 0.25) {
+            self.plusBtn?.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI / 4))
+            self.alpha = 0
+        }
 
-
-//        anim.toValue = M_PI / 4
-//        anim.duration = 0.25
-//        anim.repeatCount = 1
-//        anim.isRemovedOnCompletion = true
-//        // 动画结束后保持状态
-//        plusBtn?.layer.add(anim, forKey: nil)
-        
-//        // 延迟执行
-//        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
-//            self.removeFromSuperview()
-//        }
-        removeFromSuperview()
+        // 延迟执行
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+            self.removeFromSuperview()
+        }
         
         
     }
