@@ -66,13 +66,14 @@ extension EUPlusButtonView{
     @objc fileprivate func didClickScreen(){
         
 
+        // 动画隐藏当前视图
         UIView.animate(withDuration: 0.25) {
-            self.plusBtn?.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI / 4))
+            self.plusBtn?.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 2) )
             self.alpha = 0
         }
 
-        // 延迟执行
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.25) {
+        // 移除当前视图
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.3) {
             self.removeFromSuperview()
         }
         
