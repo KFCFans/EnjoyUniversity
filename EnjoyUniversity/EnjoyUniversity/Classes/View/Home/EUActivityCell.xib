@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="413" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="413" height="101"/>
+                <rect key="frame" x="0.0" y="0.0" width="413" height="102"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_justjoker" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-Qc-D2i">
@@ -90,6 +90,7 @@
                     <constraint firstItem="zd6-Ej-VjI" firstAttribute="centerY" secondItem="T75-di-K9O" secondAttribute="centerY" id="myL-mY-8r4"/>
                     <constraint firstAttribute="bottom" secondItem="Ovf-Ox-NJN" secondAttribute="bottom" constant="12" id="nyV-Wr-58s"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="WFZ-Qc-D2i" secondAttribute="bottom" constant="10" id="wg6-aQ-Fkm"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hPO-FT-lCs" secondAttribute="trailing" constant="10" id="xDy-ZX-sIq"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
