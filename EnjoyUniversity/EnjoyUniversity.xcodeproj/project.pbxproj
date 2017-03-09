@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
 		365E1A681E6EC8C000193214 /* EUActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365E1A661E6EC8C000193214 /* EUActivityCell.swift */; };
 		365E1A691E6EC8C000193214 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365E1A671E6EC8C000193214 /* EUActivityCell.xib */; };
 		3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */; };
@@ -53,6 +54,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
 		365E1A661E6EC8C000193214 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
 		365E1A671E6EC8C000193214 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
@@ -119,6 +121,14 @@
 			);
 			name = Search;
 			path = Profile/Search;
+			sourceTree = "<group>";
+		};
+		360EC8A31E7177C60009B08E /* PlusButton */ = {
+			isa = PBXGroup;
+			children = (
+				360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */,
+			);
+			path = PlusButton;
 			sourceTree = "<group>";
 		};
 		36BDBAF01E640A380075A3ED = {
@@ -206,6 +216,7 @@
 				36BDBB301E6412C60075A3ED /* Discover */,
 				36BDBB331E6412C60075A3ED /* Message */,
 				36BDBB341E6412C60075A3ED /* Profile */,
+				360EC8A31E7177C60009B08E /* PlusButton */,
 				360219881E65933100371230 /* Search */,
 				36ECC2381E6E60CF0003C4D8 /* QRCode */,
 			);
@@ -439,6 +450,7 @@
 				36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */,
 				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
 				3695A2BD1E6D4DD200F02B8E /* CoreImage.swift in Sources */,
+				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
 				3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */,

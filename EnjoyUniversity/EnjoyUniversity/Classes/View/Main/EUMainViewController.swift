@@ -80,8 +80,8 @@ extension EUMainViewController{
     fileprivate func setupPlusButton(){
         
         let btn = UIButton()
-        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
-        btn.setImage(UIImage(named: "tabbar_compose_icon_add"), for: .normal)
+//        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
+        btn.setImage(UIImage(named: "tabbar_plus"), for: .normal)
         
         let width = UIScreen.main.bounds.width / 5
         let height = tabBar.bounds.height
@@ -97,9 +97,14 @@ extension EUMainViewController{
 // MARK: - 监听方法
 extension EUMainViewController{
     
+    /// PlusButton 监听
     @objc fileprivate func plusButtonWasClicked(){
      
-        print("Plus!")
+        
+        let v = EUPlusButtonView()
+        
+        
+        v.showPlusButtonView()
     }
     
 }

@@ -152,7 +152,6 @@ extension EUHomeHeadView{
 extension EUHomeHeadView{
     
     @objc fileprivate func didClickMyActivity(){
-        print("Activity")
         
         navigationController?.pushViewController(EUMyActivityViewController(), animated: true)
         
@@ -160,7 +159,8 @@ extension EUHomeHeadView{
     
     
     @objc fileprivate func didClickMyCommunity(){
-        print("Commnuity")
+        
+        
     }
     
 }
