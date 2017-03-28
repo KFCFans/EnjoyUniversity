@@ -11,6 +11,8 @@ import Alamofire
 
 class EUHomeViewController: EUBaseViewController {
     
+    lazy var viewpagerlist = VPListViewModel()
+    
     // 搜索栏
     let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 100, height: 30))
 
@@ -64,40 +66,36 @@ extension EUHomeViewController{
         searchbarview.addSubview(searchbar)
         navitem.titleView = searchbarview
         
-        //FIXME: 网络请求
-        let urlstring = "https://euswag.com/eu/activity/collectedav"
-        var parmzzzz:Parameters = Parameters()
-        parmzzzz["uid"] = 15061883391
-        EUNetworkManager.shared.tokenRequest(urlString: urlstring, parameters: parmzzzz) { (json, _) in
-            print(json)
-        }
-
     }
     
     // 设置轮播图
     func setupViewPager(){
         
         // FIXME: - 轮播图需从网上加载 改进SwiftyViewPager！
-        var imgarray = [UIImage]()
-        for i in 1...4{
+//        var imgarray = [UIImage]()
+//        for i in 1...4{
+//            
+//            let img = UIImage(named: "viewpager_\(i)") ?? UIImage()
+//            imgarray.append(img)
+//            
+//        }
+        viewpagerlist.loadViewPagers { (_) in
             
-            let img = UIImage(named: "viewpager_\(i)") ?? UIImage()
-            imgarray.append(img)
+            let vp = SwiftyViewPager(viewpagerHeight: 180.0, imageArray: self.viewpagerlist.imgArray)
+            //        tableview.tableHeaderView = vp
+            
+            let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))
+            headview.addSubview(vp)
+            
+            let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
+            headview.addSubview(view2)
+            
+            view2.giveNavigationController(navc: self.navigationController)
+            
+            self.tableview.tableHeaderView = headview
             
         }
         
-        let vp = SwiftyViewPager(viewpagerHeight: 180.0, imageArray: imgarray)
-//        tableview.tableHeaderView = vp
-        
-        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))
-        headview.addSubview(vp)
-        
-        let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
-        headview.addSubview(view2)
-        
-        view2.giveNavigationController(navc: navigationController)
-        
-        tableview.tableHeaderView = headview
     }
 
 
