@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class EUHomeViewController: EUBaseViewController {
     
@@ -62,8 +63,15 @@ extension EUHomeViewController{
         
         searchbarview.addSubview(searchbar)
         navitem.titleView = searchbarview
-    
         
+        //FIXME: 网络请求
+        let urlstring = "https://euswag.com/eu/activity/collectedav"
+        var parmzzzz:Parameters = Parameters()
+        parmzzzz["uid"] = 15061883391
+        EUNetworkManager.shared.tokenRequest(urlString: urlstring, parameters: parmzzzz) { (json, _) in
+            print(json)
+        }
+
     }
     
     // 设置轮播图

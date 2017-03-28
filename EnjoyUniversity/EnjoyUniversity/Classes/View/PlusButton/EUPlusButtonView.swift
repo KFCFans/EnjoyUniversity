@@ -33,7 +33,7 @@ class EUPlusButtonView: UIView {
         let height = rootvc.tabBar.frame.height
         
         // 点击识别
-        let taprecognizer = UITapGestureRecognizer(target: self, action: #selector(didClickScreen))
+        let taprecognizer = UITapGestureRecognizer(target: self, action: #selector(removeCurrentView))
         self.addGestureRecognizer(taprecognizer)
         
         plusBtn = UIButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: height))
@@ -41,6 +41,7 @@ class EUPlusButtonView: UIView {
             return
         }
         plusBtn.setImage(#imageLiteral(resourceName: "tabbar_plus"), for: .normal)
+        plusBtn.addTarget(nil, action: #selector(removeCurrentView), for: .touchUpInside)
         
         let ef = UIBlurEffect(style: .dark)
         let efv = UIVisualEffectView(effect: ef)
@@ -63,8 +64,8 @@ class EUPlusButtonView: UIView {
 extension EUPlusButtonView{
     
     
-    @objc fileprivate func didClickScreen(){
-        
+    /// 删除当前视图
+    @objc fileprivate func removeCurrentView(){
 
         // 动画隐藏当前视图
         UIView.animate(withDuration: 0.25) {
