@@ -8,7 +8,6 @@
 
 import Foundation
 import SwiftyJSON
-import Kingfisher
 
 class VPListViewModel{
  

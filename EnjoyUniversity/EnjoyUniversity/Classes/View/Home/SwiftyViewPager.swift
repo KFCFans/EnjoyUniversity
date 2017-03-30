@@ -68,6 +68,10 @@ class SwiftyViewPager: UIView {
     
     func loadViewPager(imageArray:[String]){
         
+        if(imageArray.count==0){
+            return
+        }
+        
         scrollView?.subviews[0].removeFromSuperview()
         
         //1.赋值&初始化
