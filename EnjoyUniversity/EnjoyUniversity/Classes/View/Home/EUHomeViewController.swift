@@ -72,16 +72,10 @@ extension EUHomeViewController{
     func setupViewPager(){
         
         // FIXME: - 轮播图需从网上加载 改进SwiftyViewPager！
-//        var imgarray = [UIImage]()
-//        for i in 1...4{
-//            
-//            let img = UIImage(named: "viewpager_\(i)") ?? UIImage()
-//            imgarray.append(img)
-//            
-//        }
+
         viewpagerlist.loadViewPagers { (_) in
             
-            let vp = SwiftyViewPager(viewpagerHeight: 180.0, imageArray: self.viewpagerlist.imgArray)
+            let vp = SwiftyViewPager(viewpagerHeight: 180.0, imageArray: self.viewpagerlist.imageArray)
             //        tableview.tableHeaderView = vp
             
             let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))

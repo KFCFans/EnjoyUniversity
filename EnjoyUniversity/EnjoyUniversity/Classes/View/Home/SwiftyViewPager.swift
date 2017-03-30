@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class SwiftyViewPager: UIView {
     
@@ -15,7 +16,7 @@ class SwiftyViewPager: UIView {
     var imageCount:Int = 0
     
     /// 图片数组
-    var imageArray:[UIImage]?
+    var imageArray:[String]?
     
     /// 自动滚动间隔，默认 2.5s
     var ViewPagerTimeInterval:TimeInterval = 2.5
@@ -47,7 +48,7 @@ class SwiftyViewPager: UIView {
     
     
     // MARK: - 便利构造函数创建 ViewPager
-    convenience init(viewpagerHeight:CGFloat,imageArray:[UIImage],timeInterval:TimeInterval = 2.5) {
+    convenience init(viewpagerHeight:CGFloat,imageArray:[String],timeInterval:TimeInterval = 2.5) {
         
         // 创建 SwiftyViewPager！
         self.init(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: viewpagerHeight))
@@ -103,7 +104,13 @@ extension SwiftyViewPager{
             // 设置‘前部’缓冲图片为最后一张图片
             if i == 0{
                 
-                let iv = UIImageView(image: imageArray[imageCount - 1])
+                let iv = UIImageView()
+                let url = URL(string: imageArray[imageCount - 1])!
+                iv.kf.setImage(with: url,
+                                      placeholder: nil,
+                                      options: [.transition(.fade(1))],
+                                      progressBlock: nil,
+                                      completionHandler: nil)
                 iv.isUserInteractionEnabled = false
                 scrollView.addSubview(iv)
                 iv.frame = CGRect(x: 0, y: 0, width: vpWidth, height: vpHeight)
@@ -113,7 +120,14 @@ extension SwiftyViewPager{
             // 设置‘后部’缓冲图片为第一张图片
             if i == (imageCount + 1){
                 
-                let iv = UIImageView(image: imageArray[0])
+                let iv = UIImageView()
+                let url = URL(string: imageArray[0])!
+                iv.kf.setImage(with: url,
+                               placeholder: nil,
+                               options: [.transition(.fade(1))],
+                               progressBlock: nil,
+                               completionHandler: nil)
+                iv.isUserInteractionEnabled = false
                 scrollView.addSubview(iv)
                 iv.isUserInteractionEnabled = false
                 iv.frame = CGRect(x: CGFloat(imageCount + 1) * vpWidth, y: 0, width: vpWidth, height: vpHeight)
@@ -122,7 +136,14 @@ extension SwiftyViewPager{
             }
             
             // 设置轮播图片
-            let iv = UIImageView(image: imageArray[i - 1])
+            let iv = UIImageView()
+            let url = URL(string: imageArray[i - 1])!
+            iv.kf.setImage(with: url,
+                           placeholder: nil,
+                           options: [.transition(.fade(1))],
+                           progressBlock: nil,
+                           completionHandler: nil)
+            iv.isUserInteractionEnabled = false
             iv.isUserInteractionEnabled = false
             scrollView.addSubview(iv)
             iv.frame = CGRect(x: CGFloat(i) * vpWidth, y: 0, width: vpWidth, height: vpHeight)
@@ -159,6 +180,11 @@ extension SwiftyViewPager{
         pageIndictor.center.x = scrollView?.center.x ?? self.center.x
         pageIndictor.center.y = vpHeight - 20
         
+        
+    }
+    
+    /// 重新加载数据
+    func reloadViewPager(imageArray:[String]){
         
     }
     
