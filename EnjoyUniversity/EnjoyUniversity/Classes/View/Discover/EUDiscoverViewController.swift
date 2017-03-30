@@ -12,6 +12,9 @@ class EUDiscoverViewController: EUBaseViewController {
 
     let COMMUNITYWALLCELLID = "COMMUNITYCELLID"
     
+    // 下拉刷新控件
+    let refreshControl = EZRefreshControl()
+    
     lazy var communityListVM = CommunityListViewModel()
     
     override func viewDidLoad() {
@@ -31,9 +34,13 @@ class EUDiscoverViewController: EUBaseViewController {
     
     
     fileprivate func loadData(){
+        
+        refreshControl.beginRefreshing()
+        
         communityListVM.loadCommunityList { (isSuccess) in
             // 处理刷新数据成功的逻辑，比如收回下拉刷新控件
             self.tableview.reloadData()
+            self.refreshControl.endRefreshing()
         }
     }
     
@@ -54,6 +61,9 @@ extension EUDiscoverViewController{
         
         // 缩进 tableview ，防止被 navbar 遮挡
         tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 0, 0)
+        
+        // 添加下拉刷新控件
+        tableview.addSubview(refreshControl)
         
     }
     
