@@ -28,9 +28,9 @@ class ActivityListViewModel{
             }
             
             for model in modelarray{
-                print(model)
                 self.vmlist.append(ActivityViewModel(model: model))
             }
+            completion(true)
             
             
             

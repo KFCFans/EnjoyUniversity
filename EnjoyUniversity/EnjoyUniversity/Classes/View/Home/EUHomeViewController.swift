@@ -18,6 +18,9 @@ class EUHomeViewController: EUBaseViewController {
     
     lazy var activitylist = ActivityListViewModel()
     
+    // 轮播图控件
+    let viewpager = SwiftyViewPager(viewpagerHeight: 180.0)
+    
     // 搜索栏
     let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 100, height: 30))
 
@@ -45,7 +48,19 @@ class EUHomeViewController: EUBaseViewController {
     }
     
     @objc func loadData(){
+        
+        
+        // 加载轮播图
+        viewpagerlist.loadViewPagers { (_) in
+            
+            self.viewpager.loadViewPager(imageArray: self.viewpagerlist.imageArray)
+            
+        }
+        
         activitylist.loadActivityList { (isSuccess) in
+         
+            self.refreshControl.endRefreshing()
+            self.tableview.reloadData()
             
         }
         
@@ -89,11 +104,10 @@ extension EUHomeViewController{
     // 设置轮播图
     func setupViewPager(){
         
-        let vp = SwiftyViewPager(viewpagerHeight: 180.0)
         //        tableview.tableHeaderView = vp
         
         let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))
-        headview.addSubview(vp)
+        headview.addSubview(viewpager)
         
         let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
         headview.addSubview(view2)
@@ -101,14 +115,6 @@ extension EUHomeViewController{
         view2.giveNavigationController(navc: self.navigationController)
         
         self.tableview.tableHeaderView = headview
-        
-        // FIXME: - 轮播图需从网上加载 改进SwiftyViewPager！
-
-        viewpagerlist.loadViewPagers { (_) in
-            
-            vp.loadViewPager(imageArray: self.viewpagerlist.imageArray)
-            
-        }
         
     }
 
@@ -139,12 +145,13 @@ extension EUHomeViewController{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return activitylist.vmlist.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableview.dequeueReusableCell(withIdentifier: ACTIVITYCELL) as! EUActivityCell
+        cell.activityVM = activitylist.vmlist[indexPath.row]
         
         return cell
     }

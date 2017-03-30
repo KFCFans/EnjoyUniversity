@@ -7,8 +7,26 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EUActivityCell: UITableViewCell {
+    
+    var activityVM:ActivityViewModel?{
+        
+        didSet{
+         
+            activityName.text = activityVM?.activitymodel.avTitle
+            activityTime.text = activityVM?.startTime
+            let iconurl = URL(string: activityVM?.activitymodel.avLogo ?? "")
+            activityIcon.kf.setImage(with: iconurl,
+                                     placeholder: nil,
+                                     options: nil,
+                                     progressBlock: nil,
+                                     completionHandler: nil)
+            
+        }
+        
+    }
     
     @IBOutlet weak var activityIcon: UIImageView!
     @IBOutlet weak var activityName: UILabel!
