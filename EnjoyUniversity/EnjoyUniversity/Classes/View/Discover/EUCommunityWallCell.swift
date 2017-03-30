@@ -7,8 +7,31 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EUCommunityWallCell: UITableViewCell {
+    
+    var communityModel:Community?{
+        
+        didSet{
+            communityName.text = communityModel?.cmName
+            communityIntro.text = communityModel?.cmDetail
+            let logourl = URL(string: communityModel?.cmLogo ?? "")
+            let bgiurl = URL(string: communityModel?.cmBackground ?? "")
+            communityIcon.kf.setImage(with: logourl,
+                                      placeholder: UIImage(named: "Facebook_25"),
+                                      options: [.transition(.fade(1))],
+                                      progressBlock: nil,
+                                      completionHandler: nil)
+            communityBGI.kf.setImage(with: bgiurl,
+                                      placeholder: UIImage(named: "wallbackground"),
+                                      options: [.transition(.fade(1))],
+                                      progressBlock: nil,
+                                      completionHandler: nil)
+        }
+        
+    }
+    
     
     // 图标
     @IBOutlet weak var communityIcon: UIImageView!

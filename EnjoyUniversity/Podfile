@@ -6,7 +6,7 @@ target 'EnjoyUniversity' do
   use_frameworks!
   pod 'Alamofire', '~> 4.4'
   pod 'Kingfisher'
-  pod 'SwiftyJSON'
+  pod 'YYModel'
 
   # Pods for EnjoyUniversity
 

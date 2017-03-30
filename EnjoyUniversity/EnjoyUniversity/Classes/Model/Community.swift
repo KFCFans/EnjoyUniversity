@@ -8,7 +8,7 @@
 
 import Foundation
 
-class CommunityWall:NSObject{
+class Community:NSObject{
     
     // 社团 ID
     var cmid:Int = 0
@@ -37,7 +37,9 @@ class CommunityWall:NSObject{
     // 社团热度，后期用于排序
     var  cmHeat:Int = 0
     
-    
+    override var description: String{
+        return yy_modelDescription()
+    }
     
     
 }

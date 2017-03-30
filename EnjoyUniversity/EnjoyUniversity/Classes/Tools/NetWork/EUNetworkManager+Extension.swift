@@ -24,4 +24,18 @@ extension EUNetworkManager{
         
     }
     
+    /// 获取社团数据
+    func getCommunityList(completion:@escaping ([[String:Any]]?,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/commoncm"
+        
+        request(urlString: url, parameters: nil) { (json, isSuccess) in
+            
+            let array = json as? [[String:Any]]
+            completion(array, isSuccess)
+            
+        }
+        
+    }
+    
 }
