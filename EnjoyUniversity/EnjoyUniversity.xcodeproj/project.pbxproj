@@ -38,9 +38,9 @@
 		36BDBB4A1E6452090075A3ED /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB491E6452090075A3ED /* Community.swift */; };
 		36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */; };
 		36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */; };
-		36E0D5F41E8D40D00072E8C2 /* EZRefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F11E8D40D00072E8C2 /* EZRefreshControl.swift */; };
-		36E0D5F51E8D40D00072E8C2 /* EZRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F21E8D40D00072E8C2 /* EZRefreshView.swift */; };
-		36E0D5F61E8D40D00072E8C2 /* EZRefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E0D5F31E8D40D00072E8C2 /* EZRefreshView.xib */; };
+		36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */; };
+		36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */; };
+		36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */; };
 		36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ECC2391E6E61160003C4D8 /* EUQRScanViewController.swift */; };
 		36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ECC23B1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift */; };
 		4A09239C9EBBFB7FAA027601 /* Pods_EnjoyUniversity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BCCA5B4356283FD015B60FB /* Pods_EnjoyUniversity.framework */; };
@@ -103,9 +103,9 @@
 		36BDBB491E6452090075A3ED /* Community.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityWallCell.swift; sourceTree = "<group>"; };
 		36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUCommunityWallCell.xib; sourceTree = "<group>"; };
-		36E0D5F11E8D40D00072E8C2 /* EZRefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZRefreshControl.swift; sourceTree = "<group>"; };
-		36E0D5F21E8D40D00072E8C2 /* EZRefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EZRefreshView.swift; sourceTree = "<group>"; };
-		36E0D5F31E8D40D00072E8C2 /* EZRefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EZRefreshView.xib; sourceTree = "<group>"; };
+		36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshControl.swift; sourceTree = "<group>"; };
+		36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshView.swift; sourceTree = "<group>"; };
+		36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EURefreshView.xib; sourceTree = "<group>"; };
 		36ECC2391E6E61160003C4D8 /* EUQRScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUQRScanViewController.swift; sourceTree = "<group>"; };
 		36ECC23B1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUScannerBackgroundView.swift; sourceTree = "<group>"; };
 		3D885B98299ED2C5A1AA6E7F /* Pods_EnjoyUniversityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EnjoyUniversityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -350,9 +350,9 @@
 		36E0D5F01E8D40BB0072E8C2 /* EURefreshControl */ = {
 			isa = PBXGroup;
 			children = (
-				36E0D5F11E8D40D00072E8C2 /* EZRefreshControl.swift */,
-				36E0D5F21E8D40D00072E8C2 /* EZRefreshView.swift */,
-				36E0D5F31E8D40D00072E8C2 /* EZRefreshView.xib */,
+				36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */,
+				36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */,
+				36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */,
 			);
 			path = EURefreshControl;
 			sourceTree = "<group>";
@@ -500,7 +500,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				365E1A691E6EC8C000193214 /* EUActivityCell.xib in Resources */,
-				36E0D5F61E8D40D00072E8C2 /* EZRefreshView.xib in Resources */,
+				36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */,
 				3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */,
 				36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */,
 				36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */,
@@ -667,7 +667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */,
-				36E0D5F41E8D40D00072E8C2 /* EZRefreshControl.swift in Sources */,
+				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
@@ -685,7 +685,7 @@
 				3695A2BD1E6D4DD200F02B8E /* CoreImage.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
-				36E0D5F51E8D40D00072E8C2 /* EZRefreshView.swift in Sources */,
+				36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
 				3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */,
 				36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 
 // 刷新控件 － 负责'逻辑'控制
-class EZRefreshControl: UIControl {
+class EURefreshControl: UIControl {
     
     // MARK: - contentSize，contentOffset和contentInset的学习
     
@@ -26,7 +26,7 @@ class EZRefreshControl: UIControl {
     private weak var scrollView:UIScrollView?
     
     /// 下拉刷新刷新视图
-    let refreshView = EZRefreshView.ezRefreshView()
+    let refreshView = EURefreshView.euRefreshView()
     
     /// 最少下拉量
     let MINPullToRefreshHeight:CGFloat = 60
@@ -166,7 +166,7 @@ class EZRefreshControl: UIControl {
 
 }
 
-extension EZRefreshControl{
+extension EURefreshControl{
     
     fileprivate func setupUI(){
         

@@ -9,21 +9,21 @@
 import UIKit
 
 // 刷新视图 － 负责显示刷新控件 UI
-class EZRefreshView: UIView {
+class EURefreshView: UIView {
     
     //MARK: -  刷新控件状态
     ///
     /// - Normal: 正常状态，无法刷新
     /// - CanRefresh: 下拉超过最低值，松手即可刷新
     /// - IsRefreshing: 正在刷新
-    enum EZRefreshState {
+    enum EURefreshState {
         case Normal
         case CanRefresh
         case IsRefreshing
     }
 
     /// 刷新状态
-    var refreshState:EZRefreshState = .Normal{
+    var refreshState:EURefreshState = .Normal{
         
         didSet{
             switch refreshState {
@@ -61,11 +61,11 @@ class EZRefreshView: UIView {
     
     
     // 类方法加载 XIB
-    class func ezRefreshView()->EZRefreshView{
+    class func euRefreshView()->EURefreshView{
         
-        let nib = UINib(nibName: "EZRefreshView", bundle: nil)
+        let nib = UINib(nibName: "EURefreshView", bundle: nil)
         
-        let view = nib.instantiate(withOwner: nil, options: nil)[0] as! EZRefreshView
+        let view = nib.instantiate(withOwner: nil, options: nil)[0] as! EURefreshView
         
         return view
         

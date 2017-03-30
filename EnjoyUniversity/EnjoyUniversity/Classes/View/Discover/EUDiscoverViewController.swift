@@ -13,7 +13,7 @@ class EUDiscoverViewController: EUBaseViewController {
     let COMMUNITYWALLCELLID = "COMMUNITYCELLID"
     
     // 下拉刷新控件
-    let refreshControl = EZRefreshControl()
+    let refreshControl = EURefreshControl()
     
     lazy var communityListVM = CommunityListViewModel()
     
@@ -33,7 +33,7 @@ class EUDiscoverViewController: EUBaseViewController {
     }
     
     
-    fileprivate func loadData(){
+    @objc fileprivate func loadData(){
         
         refreshControl.beginRefreshing()
         
@@ -64,6 +64,7 @@ extension EUDiscoverViewController{
         
         // 添加下拉刷新控件
         tableview.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
     }
     
