@@ -27,13 +27,13 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="江南大学 iOS 开发俱乐部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4en-qH-yzV">
-                    <rect key="frame" x="111.5" y="129" width="236.5" height="26"/>
+                    <rect key="frame" x="110.5" y="129" width="237" height="26"/>
                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="真正的科学家应当是个幻想家；谁不是幻想家，谁就只能把自己称为实践家。 —— 巴尔扎克" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2f6-MC-I4u">
-                    <rect key="frame" x="20" y="181.5" width="418" height="31.5"/>
+                    <rect key="frame" x="20" y="182" width="418" height="31.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -41,15 +41,16 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="2f6-MC-I4u" firstAttribute="top" secondItem="4en-qH-yzV" secondAttribute="bottom" constant="27" id="29o-Id-tRj"/>
                 <constraint firstAttribute="trailing" secondItem="zUi-aj-Fzr" secondAttribute="trailing" id="3cj-dR-Klx"/>
                 <constraint firstItem="4en-qH-yzV" firstAttribute="centerY" secondItem="zUi-aj-Fzr" secondAttribute="centerY" id="72H-JN-668"/>
                 <constraint firstAttribute="trailing" secondItem="2f6-MC-I4u" secondAttribute="trailing" constant="20" id="AGL-Mb-OLm"/>
                 <constraint firstItem="zUi-aj-Fzr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AYO-Ii-sH7"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2f6-MC-I4u" secondAttribute="bottom" constant="20" id="B1V-f1-iBU"/>
                 <constraint firstItem="R0A-7b-38o" firstAttribute="centerX" secondItem="zUi-aj-Fzr" secondAttribute="centerX" id="GPv-dF-buS"/>
                 <constraint firstAttribute="bottom" secondItem="zUi-aj-Fzr" secondAttribute="bottom" id="GpM-VK-Fsz"/>
                 <constraint firstItem="zUi-aj-Fzr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="I1Y-ug-IZe"/>
                 <constraint firstItem="2f6-MC-I4u" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="P1U-zi-D8G"/>
-                <constraint firstAttribute="bottom" secondItem="2f6-MC-I4u" secondAttribute="bottom" constant="70" id="RWz-VF-vlF"/>
                 <constraint firstItem="4en-qH-yzV" firstAttribute="centerX" secondItem="zUi-aj-Fzr" secondAttribute="centerX" id="WPZ-ty-ky1"/>
                 <constraint firstItem="zUi-aj-Fzr" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iBR-Ot-cyM"/>
                 <constraint firstAttribute="bottom" secondItem="zUi-aj-Fzr" secondAttribute="bottom" id="izC-7t-8nM"/>
