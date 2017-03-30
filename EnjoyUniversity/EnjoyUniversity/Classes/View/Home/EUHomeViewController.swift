@@ -71,22 +71,24 @@ extension EUHomeViewController{
     // 设置轮播图
     func setupViewPager(){
         
+        let vp = SwiftyViewPager(viewpagerHeight: 180.0)
+        //        tableview.tableHeaderView = vp
+        
+        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))
+        headview.addSubview(vp)
+        
+        let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
+        headview.addSubview(view2)
+        
+        view2.giveNavigationController(navc: self.navigationController)
+        
+        self.tableview.tableHeaderView = headview
+        
         // FIXME: - 轮播图需从网上加载 改进SwiftyViewPager！
 
         viewpagerlist.loadViewPagers { (_) in
             
-            let vp = SwiftyViewPager(viewpagerHeight: 180.0, imageArray: self.viewpagerlist.imageArray)
-            //        tableview.tableHeaderView = vp
-            
-            let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))
-            headview.addSubview(vp)
-            
-            let view2 = EUHomeHeadView(frame: CGRect(x: 0, y: 185, width: UIScreen.main.bounds.width, height: 50.0))
-            headview.addSubview(view2)
-            
-            view2.giveNavigationController(navc: self.navigationController)
-            
-            self.tableview.tableHeaderView = headview
+            vp.loadViewPager(imageArray: self.viewpagerlist.imageArray)
             
         }
         

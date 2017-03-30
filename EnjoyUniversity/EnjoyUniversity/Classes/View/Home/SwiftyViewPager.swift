@@ -48,17 +48,31 @@ class SwiftyViewPager: UIView {
     
     
     // MARK: - 便利构造函数创建 ViewPager
-    convenience init(viewpagerHeight:CGFloat,imageArray:[String],timeInterval:TimeInterval = 2.5) {
+    convenience init(viewpagerHeight:CGFloat,timeInterval:TimeInterval = 2.5) {
         
         // 创建 SwiftyViewPager！
         self.init(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: viewpagerHeight))
         
-        //1.赋值&初始化
-        self.imageArray = imageArray
-        self.imageCount = imageArray.count
+
         self.ViewPagerTimeInterval = timeInterval
         self.vpHeight = viewpagerHeight
         self.scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: vpWidth, height: vpHeight))
+        
+        //2.
+        let placeholder = UIImageView(image: UIImage(named: "home_justjoker"))
+        placeholder.frame = (scrollView?.frame)!
+        scrollView?.addSubview(placeholder)
+
+        
+    }
+    
+    func loadViewPager(imageArray:[String]){
+        
+        scrollView?.subviews[0].removeFromSuperview()
+        
+        //1.赋值&初始化
+        self.imageArray = imageArray
+        self.imageCount = imageArray.count
         
         //2.设置 UI
         setupUI()
@@ -68,7 +82,6 @@ class SwiftyViewPager: UIView {
         
         //4.设置定时器
         setupTimer()
-        
     }
     
     
