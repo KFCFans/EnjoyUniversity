@@ -38,4 +38,19 @@ extension EUNetworkManager{
         
     }
     
+    /// 获取活动数据
+    func getActivityList(completion:@escaping ([[String:Any]]?,Bool)->()){
+     
+        let url = SERVERADDRESS + "/eu/activity/commonav"
+        
+        request(urlString: url, parameters: nil) { (json, isSuccess) in
+            guard let array = json as? [[String:Any]] else{
+                completion(nil, false)
+                return
+            }
+            completion(array,true)
+        }
+        
+    }
+    
 }

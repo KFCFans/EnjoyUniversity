@@ -11,7 +11,12 @@ import Alamofire
 
 class EUHomeViewController: EUBaseViewController {
     
+    // 下拉刷新控件
+    let refreshControl = EURefreshControl()
+    
     lazy var viewpagerlist = VPListViewModel()
+    
+    lazy var activitylist = ActivityListViewModel()
     
     // 搜索栏
     let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 100, height: 30))
@@ -27,6 +32,8 @@ class EUHomeViewController: EUBaseViewController {
 
         tableview.register(UINib(nibName: "EUActivityCell", bundle: nil), forCellReuseIdentifier: ACTIVITYCELL)
         
+        loadData()
+        
         setupViewPager()
 
         
@@ -35,6 +42,14 @@ class EUHomeViewController: EUBaseViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    @objc func loadData(){
+        activitylist.loadActivityList { (isSuccess) in
+            
+        }
+        
+        
     }
     
 
@@ -65,6 +80,9 @@ extension EUHomeViewController{
         
         searchbarview.addSubview(searchbar)
         navitem.titleView = searchbarview
+        
+        tableview.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
     }
     

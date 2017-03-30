@@ -38,3 +38,25 @@ func createImage(size:CGSize,color:UIColor)->UIImage{
     return img ?? UIImage()
     
 }
+
+
+/// 时间戳转时间函数
+///
+/// - Parameter timeStamp: 时间戳
+/// - Returns: 人看得懂的时间
+func timeStampToString(timeStamp:String?)->String? {
+    
+    guard let timeStamp = timeStamp else{
+        return nil
+    }
+    
+    let string = NSString(string: timeStamp)
+    
+    let timeSta:TimeInterval = string.doubleValue
+    let dfmatter = DateFormatter()
+    dfmatter.dateFormat="yyyy年MM月dd日"
+    
+    let date = NSDate(timeIntervalSince1970: timeSta/1000)
+    
+    return dfmatter.string(from: date as Date)
+}

@@ -84,7 +84,6 @@ extension EUDiscoverViewController{
         let cell = tableview.dequeueReusableCell(withIdentifier: COMMUNITYWALLCELLID, for: indexPath) as! EUCommunityWallCell
         cell.communityModel = communityListVM.modelList[indexPath.row]
         
-        print(communityListVM.modelList[indexPath.row])
         return cell
     }
     
