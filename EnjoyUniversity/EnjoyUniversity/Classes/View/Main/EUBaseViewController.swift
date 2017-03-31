@@ -13,6 +13,9 @@ class EUBaseViewController: UIViewController {
     // 表格视图（每个子视图都要用到）
     lazy var tableview = UITableView(frame: UIScreen.main.bounds, style: .plain)
     
+    // 下拉刷新控件
+    let refreshControl = EURefreshControl()
+    
     // 导航栏
     lazy var navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64))
     
@@ -22,6 +25,7 @@ class EUBaseViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
+        loadData()
      
 
     }
@@ -29,6 +33,10 @@ class EUBaseViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         
+    }
+    
+    func loadData(){
+        refreshControl.endRefreshing()
     }
     
 
@@ -59,6 +67,10 @@ extension EUBaseViewController{
         tableview.estimatedRowHeight = 98.0
         
         view.addSubview(tableview)
+        
+        // 添加下拉刷新控件
+        tableview.addSubview(refreshControl)
+        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
         setupNavBar()
         

@@ -11,8 +11,6 @@ import Alamofire
 
 class EUHomeViewController: EUBaseViewController {
     
-    // 下拉刷新控件
-    let refreshControl = EURefreshControl()
     
     lazy var viewpagerlist = VPListViewModel()
     
@@ -47,26 +45,21 @@ class EUHomeViewController: EUBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @objc func loadData(){
-        
+    override func loadData(){
         
         if viewpagerlist.imageArray.count == 0{
             // 加载轮播图
             viewpagerlist.loadViewPagers { (_) in
                 
                 self.viewpager.loadViewPager(imageArray: self.viewpagerlist.imageArray)
-                
             }
         }
         
-        activitylist.loadActivityList { (isSuccess) in
+        activitylist.loadActivityList { (isSuccess,needReload) in
          
             self.refreshControl.endRefreshing()
-            self.tableview.reloadData()
-            
+            needReload ? self.tableview.reloadData() : ()
         }
-        
-        
     }
     
 
@@ -98,8 +91,6 @@ extension EUHomeViewController{
         searchbarview.addSubview(searchbar)
         navitem.titleView = searchbarview
         
-        tableview.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
         
