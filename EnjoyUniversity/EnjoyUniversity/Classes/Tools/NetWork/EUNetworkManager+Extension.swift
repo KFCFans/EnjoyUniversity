@@ -7,7 +7,7 @@
 //
 
 // MARK: - 封装具体的网络接口
-
+import Alamofire
 
 extension EUNetworkManager{
     
@@ -39,11 +39,21 @@ extension EUNetworkManager{
     }
     
     /// 获取活动数据
-    func getActivityList(completion:@escaping ([[String:Any]]?,Bool)->()){
+    func getActivityList(mintime:String?,maxtime:String?,count:Int = 10,completion:@escaping ([[String:Any]]?,Bool)->()){
      
         let url = SERVERADDRESS + "/eu/activity/commonav"
         
-        request(urlString: url, parameters: nil) { (json, isSuccess) in
+        var parameters = Parameters()
+        
+        if let mintime = mintime {
+            parameters["mintime"] = mintime
+        }
+        
+        if let maxtime = maxtime {
+            parameters["maxtime"] = maxtime
+        }
+        
+        request(urlString: url, parameters: parameters) { (json, isSuccess) in
             guard let array = json as? [[String:Any]] else{
                 completion(nil, false)
                 return
