@@ -69,7 +69,7 @@ class EUHomeViewController: EUBaseViewController {
          
             self.refreshControl.endRefreshing()
             if needReload {
-                print("Reload")
+
                 self.tableview.reloadData()
                 self.isPullUp = false
             }

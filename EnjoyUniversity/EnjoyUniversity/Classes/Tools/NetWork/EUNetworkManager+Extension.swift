@@ -39,7 +39,7 @@ extension EUNetworkManager{
     }
     
     /// 获取活动数据
-    func getActivityList(mintime:String?,maxtime:String?,count:Int = 7,completion:@escaping ([[String:Any]]?,Bool)->()){
+    func getActivityList(mintime:String?,maxtime:String?,count:Int = 10,completion:@escaping ([[String:Any]]?,Bool)->()){
      
         let url = SERVERADDRESS + "/eu/activity/commonav"
         
@@ -61,6 +61,50 @@ extension EUNetworkManager{
             }
             completion(array,true)
         }
+        
+    }
+    
+    /// 获取我参加的活动数据
+    func getParticipatedActivityList(completion:@escaping ([[String:Any]]?,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/joinedav"
+        
+        var parameters = Parameters()
+        // FIXME: 用户登录后，获取用户 uid
+        parameters["uid"] = "15061883391"
+        
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
+            
+            guard let array = json as? [[String:Any]] else{
+                completion(nil,false)
+                return
+            }
+            completion(array,true)
+            
+        }
+        
+        
+    }
+    
+    /// 获取我创建的活动数据
+    func getCreatedActivityList(completion:@escaping ([[String:Any]]?,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/createdav"
+        
+        var parameters = Parameters()
+        // FIXME: 用户登录后，获取用户 uid
+        parameters["uid"] = "15061883391"
+        
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
+            
+            guard let array = json as? [[String:Any]] else{
+                completion(nil,false)
+                return
+            }
+            completion(array,true)
+            
+        }
+        
         
     }
     

@@ -12,7 +12,14 @@ import YYModel
 
 class ActivityListViewModel{
     
+    // 获取当前活动
     var vmlist = [ActivityViewModel]()
+    
+    // 获取用户参加的所有活动
+    var participatedlist = [ActivityViewModel]()
+    
+    // 用户创建的所有活动
+    var createdlist = [ActivityViewModel]()
     
     /// 加载活动数据
     ///
@@ -72,6 +79,83 @@ class ActivityListViewModel{
             completion(true, true)
             
         }
+        
+    }
+    
+    
+    /// 我参加的活动
+    ///
+    /// - Parameter completion: 是否需要刷新表格
+    func loadParticipatdActivity(completion:@escaping (Bool)->()){
+        
+        EUNetworkManager.shared.getParticipatedActivityList { (array, isSuccess) in
+            
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            
+            guard let modelarray = NSArray.yy_modelArray(with: Activity.self, json: array ?? []) as? [Activity] else{
+                completion(false)
+                return
+            }
+            
+            // 判断是否需要刷新
+            if modelarray.count == 0{
+                completion(true)
+                return
+            }
+            
+            // 接受数据
+            var tempvmlist = [ActivityViewModel]()
+            
+            for model in modelarray{
+                tempvmlist.append(ActivityViewModel(model: model))
+            }
+            
+            self.participatedlist = tempvmlist
+            completion(true)
+
+        }
+        
+        
+    }
+    
+    /// 我创建的活动
+    ///
+    /// - Parameter completion: 是否需要刷新表格
+    func loadCreatedActivity(completion:@escaping (Bool)->()){
+        
+        EUNetworkManager.shared.getCreatedActivityList { (array, isSuccess) in
+            
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            
+            guard let modelarray = NSArray.yy_modelArray(with: Activity.self, json: array ?? []) as? [Activity] else{
+                completion(false)
+                return
+            }
+            
+            // 判断是否需要刷新
+            if modelarray.count == 0{
+                completion(true)
+                return
+            }
+            
+            // 接受数据
+            var tempvmlist = [ActivityViewModel]()
+            
+            for model in modelarray{
+                tempvmlist.append(ActivityViewModel(model: model))
+            }
+            
+            self.createdlist = tempvmlist
+            completion(true)
+            
+        }
+        
         
     }
     

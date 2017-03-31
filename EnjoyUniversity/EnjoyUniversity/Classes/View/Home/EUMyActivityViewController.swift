@@ -10,6 +10,10 @@ import UIKit
 
 class EUMyActivityViewController: UIViewController {
     
+    // 活动视图模型
+    lazy var activitylistviewmodel = ActivityListViewModel()
+    
+    
     // 屏幕参数
     let swidth = UIScreen.main.bounds.width
     let sheight = UIScreen.main.bounds.height
@@ -40,6 +44,10 @@ class EUMyActivityViewController: UIViewController {
     // 表格视图 Cell ID
     let EUMYACTIITYCELLID = "EUMYACTIVITYCELL"
     
+    // 下拉刷新指示器
+    let joinedIndicator = EURefreshControl()
+    let createdIndicator = EURefreshControl()
+    
     // 是否为第一页判断
     var isFirstPageSelected = true{
         didSet{
@@ -52,14 +60,43 @@ class EUMyActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadParticipatedActivityData()
+        loadCreatedActivityData()
         setupNavBar()
         setupUI()
+        
+        EUNetworkManager.shared.getParticipatedActivityList { (_, z) in
+            
+        }
 
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // 加载我参加的活动数据
+    func loadParticipatedActivityData(){
+        
+        activitylistviewmodel.loadParticipatdActivity { (needRefresh) in
+            if needRefresh{
+                self.joinedtableView?.reloadData()
+            }
+        }
+        
+    }
+    
+    // 加载我创建的活动数据
+    func loadCreatedActivityData(){
+        
+        activitylistviewmodel.loadCreatedActivity { (needRefresh) in
+            if needRefresh{
+                self.createdtableView?.reloadData()
+            }
+        }
+    }
+    
+    
     
 
 }
@@ -137,6 +174,8 @@ extension EUMyActivityViewController{
         joinedtableView.rowHeight = UITableViewAutomaticDimension
         createdtableView.estimatedRowHeight = 80.0
         createdtableView.rowHeight = UITableViewAutomaticDimension
+        joinedtableView.separatorStyle = .none
+        createdtableView.separatorStyle = .none
         joinedtableView.delegate = self
         joinedtableView.dataSource = self
         createdtableView.delegate = self
@@ -152,6 +191,13 @@ extension EUMyActivityViewController{
         indicatorView.addSubview(indicator)
         view.addSubview(indicatorView)
        
+        // 添加指示器
+        joinedtableView.addSubview(joinedIndicator)
+        createdtableView.addSubview(createdIndicator)
+        
+        // 指示器绑定方法
+        joinedIndicator.addTarget(nil, action: #selector(loadParticipatedActivityData), for: .valueChanged)
+        createdIndicator.addTarget(nil, action: #selector(loadCreatedActivityData), for: .valueChanged)
         
     }
     
@@ -162,15 +208,23 @@ extension EUMyActivityViewController{
 // MARK: - 代理方法
 extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
     
-    /// 用 tableview 的 Tag 来区分是哪一块的数据
+    /// 用 tableview 的 Tag 来区分是哪一块的数据 0代表参加的活动 1代表创建的活动
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        
+        return tableView.tag == 0 ? activitylistviewmodel.participatedlist.count : activitylistviewmodel.createdlist.count
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: EUMYACTIITYCELLID) as! EUActivityCell
+        
+        if tableView.tag == 0 {
+            cell.activityVM = activitylistviewmodel.participatedlist[indexPath.row]
+        }else{
+            cell.activityVM = activitylistviewmodel.createdlist[indexPath.row]
+        }
         
         return cell
         
