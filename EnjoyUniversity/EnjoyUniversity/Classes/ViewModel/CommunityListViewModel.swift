@@ -14,18 +14,40 @@ class CommunityListViewModel{
     lazy var modelList = [Community]()
     
     
-    func loadCommunityList(completion:@escaping (Bool)->()){
+    func loadCommunityList(isPullUp:Bool,completion:@escaping (Bool,Bool)->()){
         
-        EUNetworkManager.shared.getCommunityList { (list, isSuccess) in
+        var page = 1
+        let rows = EUREQUESTCOUNT
+        
+        if isPullUp {
+            
+            if modelList.count > 0 {
+                
+                // swift 整数相处直接舍弃余数
+                page = modelList.count / rows + 1
+            }
+        }
+        
+        EUNetworkManager.shared.getCommunityList(page: page,rows: rows) { (list, isSuccess) in
             
             // 1.字典数组转模型数组
             guard let modelArray = NSArray.yy_modelArray(with: Community.self, json: list ?? []) as? [Community] else{
+                completion(false,false)
                 return
             }
-    
-            self.modelList += modelArray
             
-            completion(isSuccess)
+            if modelArray.count == 0{
+                completion(true,false)
+                return
+            }
+            
+            if isPullUp {
+                self.modelList = self.modelList + modelArray
+            }else{
+                self.modelList = modelArray
+            }
+    
+            completion(true,true)
         }
         
         

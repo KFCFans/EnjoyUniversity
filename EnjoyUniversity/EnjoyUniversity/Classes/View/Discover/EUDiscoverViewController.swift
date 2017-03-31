@@ -9,6 +9,15 @@
 import UIKit
 
 class EUDiscoverViewController: EUBaseViewController {
+    
+    // 上拉加载标记，防止重复刷新
+    var isPullUp = false
+    
+    // 底部刷新指示器
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    
+    // 底部说明文本
+    let indicatorlabel = UILabel()
 
     let COMMUNITYWALLCELLID = "COMMUNITYCELLID"
     
@@ -18,7 +27,7 @@ class EUDiscoverViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        tableview.register(UINib(nibName: "EUCommunityWallCell", bundle: nil), forCellReuseIdentifier: COMMUNITYWALLCELLID)
+        setupTableView()
         
         
         
@@ -34,10 +43,19 @@ class EUDiscoverViewController: EUBaseViewController {
         
         refreshControl.beginRefreshing()
         
-        communityListVM.loadCommunityList { (isSuccess) in
+        communityListVM.loadCommunityList(isPullUp: true) { (isSuccess,needRefresh) in
             // 处理刷新数据成功的逻辑，比如收回下拉刷新控件
-            self.tableview.reloadData()
             self.refreshControl.endRefreshing()
+            self.isPullUp = false
+            
+            if isSuccess && needRefresh{
+                self.tableview.reloadData()
+            }
+            if isSuccess && !needRefresh{
+                self.indicator.isHidden = true
+                self.indicatorlabel.isHidden = false
+            }
+            
         }
     }
     
@@ -62,6 +80,37 @@ extension EUDiscoverViewController{
         
     }
     
+    func setupTableView(){
+        
+        
+
+        // 注册可重用 Cell
+        tableview.register(UINib(nibName: "EUCommunityWallCell", bundle: nil), forCellReuseIdentifier: COMMUNITYWALLCELLID)
+
+        // 底部加载视图
+        let loadmoreview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        tableview.tableFooterView = loadmoreview
+        
+        // 设置指示器
+        indicator.color = UIColor.darkGray
+        indicator.center.x = loadmoreview.center.x
+        indicator.center.y = loadmoreview.bounds.height / 2
+        indicator.startAnimating()
+        
+        // 设置提醒文字
+        indicatorlabel.text = "没有更多了"
+        indicatorlabel.font = UIFont.boldSystemFont(ofSize: 12)
+        indicatorlabel.sizeToFit()
+        indicatorlabel.textColor = UIColor.lightGray
+        indicatorlabel.center.x = loadmoreview.center.x
+        indicatorlabel.center.y = 10
+        indicatorlabel.isHidden = true
+        loadmoreview.addSubview(indicatorlabel)
+        
+        loadmoreview.addSubview(indicator)
+    }
+
+    
 }
 
 
@@ -84,6 +133,27 @@ extension EUDiscoverViewController{
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return UIScreen.main.bounds.width * 0.618
+    }
+    
+    // 封装上拉刷新逻辑
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let  section = tableView.numberOfSections - 1
+        let  maxrow = tableView.numberOfRows(inSection: section)
+        let currentrow = indexPath.row
+        
+        if maxrow < EUREQUESTCOUNT {
+            indicator.isHidden = true
+            indicatorlabel.isHidden = false
+            return
+        }
+        
+        // 只有当前数量大于请求条数才能加载更多（小于一次请求数说明数据条数很少，无需上拉加载更多）
+        if (currentrow == maxrow - 1) && !isPullUp  {
+            isPullUp = true
+            loadData()
+        }
+        
     }
     
 }

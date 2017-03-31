@@ -37,11 +37,8 @@ class EUHomeViewController: EUBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+                
         navbar.subviews.first?.alpha = 0
-        
-
-        tableview.register(UINib(nibName: "EUActivityCell", bundle: nil), forCellReuseIdentifier: ACTIVITYCELL)
         
         setupViewPager()
         
@@ -122,6 +119,9 @@ extension EUHomeViewController{
         
         // 表格视图的底部缩进
         tableview.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
+        
+        // 注册可重用 Cell
+        tableview.register(UINib(nibName: "EUActivityCell", bundle: nil), forCellReuseIdentifier: ACTIVITYCELL)
         
         // 底部加载视图
         let loadmoreview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
@@ -214,6 +214,13 @@ extension EUHomeViewController{
         let  section = tableView.numberOfSections - 1
         let  maxrow = tableView.numberOfRows(inSection: section)
         let currentrow = indexPath.row
+        
+        // 数据条数非常少时，无需使用上拉加载更多
+        if maxrow < EUREQUESTCOUNT {
+            indicator.isHidden = true
+            indicatorlabel.isHidden = false
+            return
+        }
         
         if (currentrow == maxrow - 1) && !isPullUp && activitylist.vmlist.count > 0 {
             isPullUp = true

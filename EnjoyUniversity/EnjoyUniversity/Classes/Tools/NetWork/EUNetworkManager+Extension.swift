@@ -24,12 +24,17 @@ extension EUNetworkManager{
         
     }
     
-    /// 获取社团数据
-    func getCommunityList(completion:@escaping ([[String:Any]]?,Bool)->()){
+    /// 获取社团数据 注意：page的0和1一样
+    func getCommunityList(page:Int = 1,rows:Int = EUREQUESTCOUNT,completion:@escaping ([[String:Any]]?,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/community/commoncm"
         
-        request(urlString: url, parameters: nil) { (json, isSuccess) in
+        var paramters = Parameters()
+        
+        paramters["page"] = page
+        paramters["rows"] = rows
+        
+        request(urlString: url, parameters: paramters) { (json, isSuccess) in
             
             let array = json as? [[String:Any]]
             completion(array, isSuccess)
@@ -39,7 +44,7 @@ extension EUNetworkManager{
     }
     
     /// 获取活动数据
-    func getActivityList(mintime:String?,maxtime:String?,count:Int = 10,completion:@escaping ([[String:Any]]?,Bool)->()){
+    func getActivityList(mintime:String?,maxtime:String?,count:Int = EUREQUESTCOUNT,completion:@escaping ([[String:Any]]?,Bool)->()){
      
         let url = SERVERADDRESS + "/eu/activity/commonav"
         
