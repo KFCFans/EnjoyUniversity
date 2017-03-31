@@ -16,11 +16,21 @@ class EUHomeViewController: EUBaseViewController {
     
     lazy var activitylist = ActivityListViewModel()
     
+    // 上拉加载标记，防止重复刷新
+    var isPullUp = false
+    
     // 轮播图控件
     let viewpager = SwiftyViewPager(viewpagerHeight: 180.0)
     
     // 搜索栏
     let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 100, height: 30))
+    
+    // 底部刷新指示器
+    let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
+    
+    // 底部说明文本
+    let indicatorlabel = UILabel()
+
 
     // 活动 Cell Id
     let ACTIVITYCELL = "EUACTIVITYCELL"
@@ -33,9 +43,9 @@ class EUHomeViewController: EUBaseViewController {
 
         tableview.register(UINib(nibName: "EUActivityCell", bundle: nil), forCellReuseIdentifier: ACTIVITYCELL)
         
-        loadData()
-        
         setupViewPager()
+        
+        setupTableView()
 
         
     }
@@ -55,10 +65,23 @@ class EUHomeViewController: EUBaseViewController {
             }
         }
         
-        activitylist.loadActivityList { (isSuccess,needReload) in
+        activitylist.loadActivityList(isPullingUp: isPullUp) { (isSuccess,needReload) in
          
             self.refreshControl.endRefreshing()
-            needReload ? self.tableview.reloadData() : ()
+            if needReload {
+                print("Reload")
+                self.tableview.reloadData()
+                self.isPullUp = false
+            }
+            
+            if isSuccess && !needReload{
+                self.isPullUp = false
+                
+                self.indicator.isHidden = true
+                self.indicatorlabel.isHidden = false
+                
+            }
+            
         }
     }
     
@@ -92,14 +115,42 @@ extension EUHomeViewController{
         navitem.titleView = searchbarview
         
         
-        tableview.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
         
     }
+    
+    func setupTableView(){
+        
+        // 表格视图的底部缩进
+        tableview.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
+        
+        // 底部加载视图
+        let loadmoreview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
+        tableview.tableFooterView = loadmoreview
+        
+        // 设置指示器
+        indicator.color = UIColor.darkGray
+        indicator.center.x = loadmoreview.center.x
+        indicator.center.y = loadmoreview.bounds.height / 2
+        indicator.startAnimating()
+        
+        // 设置提醒文字
+        indicatorlabel.text = "没有更多了"
+        indicatorlabel.font = UIFont.boldSystemFont(ofSize: 12)
+        indicatorlabel.sizeToFit()
+        indicatorlabel.textColor = UIColor.lightGray
+        indicatorlabel.center.x = loadmoreview.center.x
+        indicatorlabel.center.y = 10
+        indicatorlabel.isHidden = true
+        loadmoreview.addSubview(indicatorlabel)
+        
+        loadmoreview.addSubview(indicator)
+    }
+    
     
     // 设置轮播图
     func setupViewPager(){
         
-        //        tableview.tableHeaderView = vp
+        
         
         let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 242.0))
         headview.addSubview(viewpager)
@@ -154,6 +205,22 @@ extension EUHomeViewController{
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 93.0
 //    }
+    
+
+    
+    // 封装上拉刷新逻辑
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let  section = tableView.numberOfSections - 1
+        let  maxrow = tableView.numberOfRows(inSection: section)
+        let currentrow = indexPath.row
+        
+        if (currentrow == maxrow - 1) && !isPullUp && activitylist.vmlist.count > 0 {
+            isPullUp = true
+            loadData()
+        }
+        
+    }
     
     
 }

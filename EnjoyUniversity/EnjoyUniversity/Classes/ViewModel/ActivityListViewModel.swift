@@ -49,8 +49,15 @@ class ActivityListViewModel{
                 return
             }
             
+            // 判断是否已加载全部数据
+            if modelarray.count == 0{
+                completion(true,false)
+                return
+            }
+            
             // 接受数据
             var tempvmlist = [ActivityViewModel]()
+            
             for model in modelarray{
                 tempvmlist.append(ActivityViewModel(model: model))
             }
@@ -61,6 +68,7 @@ class ActivityListViewModel{
             }else{
                 self.vmlist = tempvmlist + self.vmlist
             }
+            print("加载到的数据条数:\(tempvmlist.count)")
             completion(true, true)
             
         }

@@ -39,11 +39,12 @@ extension EUNetworkManager{
     }
     
     /// 获取活动数据
-    func getActivityList(mintime:String?,maxtime:String?,count:Int = 10,completion:@escaping ([[String:Any]]?,Bool)->()){
+    func getActivityList(mintime:String?,maxtime:String?,count:Int = 7,completion:@escaping ([[String:Any]]?,Bool)->()){
      
         let url = SERVERADDRESS + "/eu/activity/commonav"
         
         var parameters = Parameters()
+        parameters["count"] = count
         
         if let mintime = mintime {
             parameters["mintime"] = mintime
