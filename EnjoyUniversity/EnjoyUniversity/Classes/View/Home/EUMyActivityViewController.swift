@@ -77,10 +77,11 @@ class EUMyActivityViewController: UIViewController {
     
     // 加载我参加的活动数据
     func loadParticipatedActivityData(){
-        
+        joinedIndicator.beginRefreshing()
         activitylistviewmodel.loadParticipatdActivity { (needRefresh) in
             if needRefresh{
                 self.joinedtableView?.reloadData()
+                self.joinedIndicator.endRefreshing()
             }
         }
         
@@ -88,10 +89,11 @@ class EUMyActivityViewController: UIViewController {
     
     // 加载我创建的活动数据
     func loadCreatedActivityData(){
-        
+        createdIndicator.beginRefreshing()
         activitylistviewmodel.loadCreatedActivity { (needRefresh) in
             if needRefresh{
                 self.createdtableView?.reloadData()
+                self.createdIndicator.endRefreshing()
             }
         }
     }
