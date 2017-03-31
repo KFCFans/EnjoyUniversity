@@ -25,6 +25,7 @@
 		3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */; };
 		3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */; };
 		3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */; };
+		369A6EB51E8E94F000A33981 /* EUActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */; };
 		36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B164191E65A59E00B589B4 /* EUSearchViewController.swift */; };
 		36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFC1E640A390075A3ED /* AppDelegate.swift */; };
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
@@ -73,20 +74,21 @@
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
-		365E1A661E6EC8C000193214 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
-		365E1A671E6EC8C000193214 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
+		365E1A661E6EC8C000193214 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUActivityCell.swift; path = ../../Home/EUActivityCell.swift; sourceTree = "<group>"; };
+		365E1A671E6EC8C000193214 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EUActivityCell.xib; path = ../../Home/EUActivityCell.xib; sourceTree = "<group>"; };
 		36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNetworkManager.swift; sourceTree = "<group>"; };
 		36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EUNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		36638A7B1E8A785700E6DF17 /* EUCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommon.swift; sourceTree = "<group>"; };
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
 		3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUMessageCell.xib; sourceTree = "<group>"; };
-		3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
+		3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUMyActivityViewController.swift; path = ../../Home/EUMyActivityViewController.swift; sourceTree = "<group>"; };
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		36839BFD1E8D476300612729 /* AvtivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvtivityViewModel.swift; sourceTree = "<group>"; };
 		36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
 		3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
 		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
+		369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -190,6 +192,10 @@
 		369A6EB31E8E947100A33981 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				365E1A661E6EC8C000193214 /* EUActivityCell.swift */,
+				365E1A671E6EC8C000193214 /* EUActivityCell.xib */,
+				3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */,
+				369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */,
 			);
 			name = Activity;
 			path = Profile/Activity;
@@ -310,9 +316,6 @@
 				36BDBB3E1E6416FF0075A3ED /* EUHomeViewController.swift */,
 				3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */,
 				3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */,
-				365E1A661E6EC8C000193214 /* EUActivityCell.swift */,
-				365E1A671E6EC8C000193214 /* EUActivityCell.xib */,
-				3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -687,6 +690,7 @@
 				36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */,
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
+				369A6EB51E8E94F000A33981 /* EUActivityViewController.swift in Sources */,
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
 				36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */,
