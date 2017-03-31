@@ -50,11 +50,13 @@ class EUHomeViewController: EUBaseViewController {
     @objc func loadData(){
         
         
-        // 加载轮播图
-        viewpagerlist.loadViewPagers { (_) in
-            
-            self.viewpager.loadViewPager(imageArray: self.viewpagerlist.imageArray)
-            
+        if viewpagerlist.imageArray.count == 0{
+            // 加载轮播图
+            viewpagerlist.loadViewPagers { (_) in
+                
+                self.viewpager.loadViewPager(imageArray: self.viewpagerlist.imageArray)
+                
+            }
         }
         
         activitylist.loadActivityList { (isSuccess) in
