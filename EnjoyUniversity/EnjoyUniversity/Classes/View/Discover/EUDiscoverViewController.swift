@@ -52,7 +52,7 @@ class EUDiscoverViewController: EUBaseViewController {
                 self.tableview.reloadData()
             }
             if isSuccess && !needRefresh{
-                self.indicator.isHidden = true
+                self.indicator.stopAnimating()
                 self.indicatorlabel.isHidden = false
             }
             
@@ -95,7 +95,6 @@ extension EUDiscoverViewController{
         indicator.color = UIColor.darkGray
         indicator.center.x = loadmoreview.center.x
         indicator.center.y = loadmoreview.bounds.height / 2
-        indicator.startAnimating()
         
         // 设置提醒文字
         indicatorlabel.text = "没有更多了"
@@ -103,7 +102,7 @@ extension EUDiscoverViewController{
         indicatorlabel.sizeToFit()
         indicatorlabel.textColor = UIColor.lightGray
         indicatorlabel.center.x = loadmoreview.center.x
-        indicatorlabel.center.y = 10
+        indicatorlabel.center.y = 16
         indicatorlabel.isHidden = true
         loadmoreview.addSubview(indicatorlabel)
         
@@ -151,6 +150,7 @@ extension EUDiscoverViewController{
         // 只有当前数量大于请求条数才能加载更多（小于一次请求数说明数据条数很少，无需上拉加载更多）
         if (currentrow == maxrow - 1) && !isPullUp  {
             isPullUp = true
+            indicator.startAnimating()
             loadData()
         }
         

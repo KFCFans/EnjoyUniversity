@@ -74,7 +74,7 @@ class EUHomeViewController: EUBaseViewController {
             if isSuccess && !needReload{
                 self.isPullUp = false
                 
-                self.indicator.isHidden = true
+                self.indicator.stopAnimating()
                 self.indicatorlabel.isHidden = false
                 
             }
@@ -131,7 +131,7 @@ extension EUHomeViewController{
         indicator.color = UIColor.darkGray
         indicator.center.x = loadmoreview.center.x
         indicator.center.y = loadmoreview.bounds.height / 2
-        indicator.startAnimating()
+        
         
         // 设置提醒文字
         indicatorlabel.text = "没有更多了"
@@ -139,7 +139,7 @@ extension EUHomeViewController{
         indicatorlabel.sizeToFit()
         indicatorlabel.textColor = UIColor.lightGray
         indicatorlabel.center.x = loadmoreview.center.x
-        indicatorlabel.center.y = 10
+        indicatorlabel.center.y = 16
         indicatorlabel.isHidden = true
         loadmoreview.addSubview(indicatorlabel)
         
@@ -224,6 +224,7 @@ extension EUHomeViewController{
         
         if (currentrow == maxrow - 1) && !isPullUp && activitylist.vmlist.count > 0 {
             isPullUp = true
+            indicator.startAnimating()
             loadData()
         }
         
