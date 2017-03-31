@@ -187,6 +187,14 @@
 			path = NetWork;
 			sourceTree = "<group>";
 		};
+		369A6EB31E8E947100A33981 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Activity;
+			path = Profile/Activity;
+			sourceTree = "<group>";
+		};
 		36BDBAF01E640A380075A3ED = {
 			isa = PBXGroup;
 			children = (
@@ -278,6 +286,7 @@
 				36BDBB301E6412C60075A3ED /* Discover */,
 				36BDBB331E6412C60075A3ED /* Message */,
 				36BDBB341E6412C60075A3ED /* Profile */,
+				369A6EB31E8E947100A33981 /* Activity */,
 				360EC8A31E7177C60009B08E /* PlusButton */,
 				360219881E65933100371230 /* Search */,
 				36ECC2381E6E60CF0003C4D8 /* QRCode */,
