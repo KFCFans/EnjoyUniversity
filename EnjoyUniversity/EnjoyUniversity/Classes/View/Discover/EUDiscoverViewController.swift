@@ -60,7 +60,8 @@ extension EUDiscoverViewController{
         navitem.rightBarButtonItem = searchbtn
         
         // 缩进 tableview ，防止被 navbar 遮挡
-        tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 0, 0)
+        tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 40, 0)
+        
         
         // 添加下拉刷新控件
         tableview.addSubview(refreshControl)

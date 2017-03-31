@@ -17,6 +17,7 @@ class EUActivityCell: UITableViewCell {
          
             activityName.text = activityVM?.activitymodel.avTitle
             activityTime.text = activityVM?.startTime
+            activityLocation.text = activityVM?.activitymodel.avPlace
             let iconurl = URL(string: activityVM?.activitymodel.avLogo ?? "")
             activityIcon.kf.setImage(with: iconurl,
                                      placeholder: nil,

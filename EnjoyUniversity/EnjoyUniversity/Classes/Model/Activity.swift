@@ -49,6 +49,9 @@ class Activity:NSObject{
     // 活动报名截止时间
     var avEnrolldeadline:String?
     
+    // 活动地点
+    var avPlace:String?
+    
     override var description: String{
         return yy_modelDescription()
     }

@@ -101,6 +101,8 @@ extension EUHomeViewController{
         tableview.addSubview(refreshControl)
         refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
         
+        tableview.contentInset = UIEdgeInsetsMake(0, 0, 40, 0)
+        
     }
     
     // 设置轮播图
