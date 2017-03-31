@@ -29,7 +29,7 @@ class ActivityViewModel{
         
         activitymodel = model
         
-        price = activitymodel.avPrice == 0 ? "免费": "¥\(model.avPrice)元"
+        price = activitymodel.avPrice == 0 ? "免费": "¥\(Int(model.avPrice))"
         
         startTime = timeStampToString(timeStamp: activitymodel.avStarttime)
         endTime = timeStampToString(timeStamp: activitymodel.avEndtime)

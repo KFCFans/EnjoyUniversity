@@ -15,7 +15,7 @@
             <rect key="frame" x="0.0" y="0.0" width="413" height="102"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="413" height="102"/>
+                <rect key="frame" x="0.0" y="0.0" width="413" height="101"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="home_justjoker" translatesAutoresizingMaskIntoConstraints="NO" id="WFZ-Qc-D2i">
@@ -97,6 +97,7 @@
                 <outlet property="activityIcon" destination="WFZ-Qc-D2i" id="zMp-F2-mXa"/>
                 <outlet property="activityLocation" destination="zd6-Ej-VjI" id="fzx-Xa-n0e"/>
                 <outlet property="activityName" destination="hPO-FT-lCs" id="pXs-eq-cu4"/>
+                <outlet property="activityPrice" destination="Ovf-Ox-NJN" id="MSG-Kz-2xn"/>
                 <outlet property="activityTime" destination="zos-Aw-AnR" id="rRt-sD-YDb"/>
             </connections>
             <point key="canvasLocation" x="8.5" y="35"/>

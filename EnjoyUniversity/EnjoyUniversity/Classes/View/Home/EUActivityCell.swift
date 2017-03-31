@@ -18,6 +18,7 @@ class EUActivityCell: UITableViewCell {
             activityName.text = activityVM?.activitymodel.avTitle
             activityTime.text = activityVM?.startTime
             activityLocation.text = activityVM?.activitymodel.avPlace
+            activityPrice.text = activityVM?.price
             let iconurl = URL(string: activityVM?.activitymodel.avLogo ?? "")
             activityIcon.kf.setImage(with: iconurl,
                                      placeholder: nil,
@@ -33,6 +34,7 @@ class EUActivityCell: UITableViewCell {
     @IBOutlet weak var activityName: UILabel!
     @IBOutlet weak var activityLocation: UILabel!
     @IBOutlet weak var activityTime: UILabel!
+    @IBOutlet weak var activityPrice: UILabel!
 
     
 
