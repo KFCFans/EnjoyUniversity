@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class ActivityViewModel{
  
@@ -17,6 +18,8 @@ class ActivityViewModel{
     
     var endTime:String?
     
+    var allTime:String?
+    
     var price:String?
     
     var expectPeople:String?
@@ -24,6 +27,12 @@ class ActivityViewModel{
     var status:String?
     
     var enrollDeadline:String?
+    
+    /// 需要签到／无需签到
+    var needRegister:String?
+    
+    /// 计算文本杭高
+    var detailHeight:CGFloat = 0
     
     init(model:Activity) {
         
@@ -33,7 +42,21 @@ class ActivityViewModel{
         
         startTime = timeStampToString(timeStamp: activitymodel.avStarttime)
         endTime = timeStampToString(timeStamp: activitymodel.avEndtime)
+        allTime = (startTime ?? "") + " ~ " + (endTime ?? "")
         enrollDeadline = timeStampToString(timeStamp: activitymodel.avEnrolldeadline)
+        needRegister = activitymodel.avRegister == -1 ? "无需签到" : "需要签到"
+        calculateDetailLabelHright()
+        
+    }
+    
+    private func calculateDetailLabelHright(){
+        // 计算文本所需高度
+        let text = activitymodel.avDetail ?? ""
+        let size = CGSize(width: UIScreen.main.bounds.width - 40, height: 5000)
+        detailHeight = (text as NSString).boundingRect(with: size,
+                                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                                     attributes: [NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14)],
+                                                     context: nil).height
         
     }
     

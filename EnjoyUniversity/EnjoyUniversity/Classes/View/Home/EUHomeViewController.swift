@@ -202,9 +202,16 @@ extension EUHomeViewController{
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 93.0
-//    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let av = EUActivityViewController()
+        av.viewmodel = activitylist.vmlist[indexPath.row]
+        navigationController?.pushViewController(av, animated: true)
+//        navigationController?.present(av, animated: true, completion: nil)
+        
+    }
+    
+
     
 
     

@@ -11,7 +11,6 @@ import UIKit
 
 class EUActivityViewController: UIViewController {
     
-    
     /// 头部视图，到时候可以抽取成父类
     // 背景图片
     var backgroudImage = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 180))
@@ -46,6 +45,27 @@ class EUActivityViewController: UIViewController {
     
     // 人数
     var numLabel = UILabel()
+    
+    // 活动详情
+    let detailLabel = UILabel()
+    
+    // 活动详情文本高度
+    var detailHeight:CGFloat = 0
+    
+    /// ViewModel 数据源
+    var viewmodel:ActivityViewModel?{
+        
+        didSet{
+            titleLabel.text = viewmodel?.activitymodel.avTitle ?? "标题加载失败"
+            placeLabel.text = viewmodel?.activitymodel.avPlace
+            timeLabel.text = viewmodel?.allTime
+            priceLabel.text = viewmodel?.price
+            detailLabel.text = viewmodel?.activitymodel.avDetail ?? "详情加载失败"
+            detailHeight = viewmodel?.detailHeight ?? 0.0
+            
+        }
+        
+    }
 
     
     
@@ -69,30 +89,33 @@ extension EUActivityViewController{
         
         // FIXME: 在视图模型中计算 ContenSize
         // 设置滚动视图
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height + 100)
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 510 + detailHeight)
         view.addSubview(scrollView)
         // 使用 F2F2F2 配色
         scrollView.backgroundColor = UIColor.init(colorLiteralRed: 242.0/255.0, green: 242.0/255.0, blue: 242/255.0, alpha: 1)
         view.backgroundColor = UIColor.init(colorLiteralRed: 242.0/255.0, green: 242.0/255.0, blue: 242/255.0, alpha: 1)
         
         // 背景图(后面用 Kingfisher 加载)
-        backgroudImage.image = UIImage(named: "background")
+        backgroudImage.image = UIImage(named: "tempbackground")
         backgroudImage.clipsToBounds = true
         
         // 返回按钮
         backBtn.setImage(UIImage(named: "nav_back"), for: .normal)
         backBtn.frame = CGRect(x: 20, y: 30, width: 24, height: 24)
+        backBtn.addTarget(nil, action: #selector(backButtonIsClicked), for: .touchUpInside)
         
         // 分享按钮
         shareBtn.setImage(UIImage(named: "nav_share"), for: .normal)
         shareBtn.frame = CGRect(x: UIScreen.main.bounds.width - 88, y: 30, width: 24, height: 24)
+        shareBtn.addTarget(nil, action: #selector(shareButtonIsClicked), for: .touchUpInside)
         
         // 收藏按钮
         collectBtn.setImage(UIImage(named: "nav_collect"), for: .normal)
         collectBtn.frame = CGRect(x: UIScreen.main.bounds.width - 44, y: 30, width: 24, height: 24)
+        collectBtn.addTarget(nil, action: #selector(collectButtonIsClicked), for: .touchUpInside)
         
         // 标题
-        titleLabel.text = "我是标题党"
+        titleLabel.frame = CGRect(x: 12, y: 125, width: 200, height: 17)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
         titleLabel.textColor = UIColor.white
         
@@ -101,7 +124,7 @@ extension EUActivityViewController{
         noticeview.backgroundColor = UIColor.darkGray
         noticeview.alpha = 0.4
         
-        let warn = UIImageView(image: UIImage(named: "nav_warn"))
+        let warn = UIImageView(image: UIImage(named: "av_notice"))
         warn.frame = CGRect(x: 3, y: 1.5, width: 15, height: 15)
         noticeview.addSubview(warn)
         
@@ -129,7 +152,7 @@ extension EUActivityViewController{
         scrollView.addSubview(leaderView)
         
         let headimg = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
-        headimg.image = UIImage(named: "nav_avat")
+        headimg.image = UIImage(named: "av_leader")
         leaderView.addSubview(headimg)
         
         let nicknamelabel = UILabel(frame: CGRect(x: 72, y: 20, width: 200, height: 15))
@@ -163,7 +186,6 @@ extension EUActivityViewController{
         avpriceimg.image = UIImage(named: "av_price")
         activityinfoview.addSubview(avpriceimg)
         
-        priceLabel.text = "免费"
         priceLabel.textColor = UIColor.darkGray
         priceLabel.frame = CGRect(x: 40, y: 17, width: 100, height: 10)
         priceLabel.font = UIFont.boldSystemFont(ofSize: 10)
@@ -174,7 +196,6 @@ extension EUActivityViewController{
         avplaceimg.image = UIImage(named: "av_place")
         activityinfoview.addSubview(avplaceimg)
         
-        placeLabel.text = "江南大学图书馆"
         placeLabel.textColor = UIColor.darkGray
         placeLabel.frame = CGRect(x: 40, y: 61, width: 200, height: 10)
         placeLabel.font = UIFont.boldSystemFont(ofSize: 10)
@@ -185,7 +206,6 @@ extension EUActivityViewController{
         avtimeimg.image = UIImage(named: "av_time")
         activityinfoview.addSubview(avtimeimg)
         
-        timeLabel.text = "04-28 10:00 ~ 04-29 10:00"
         timeLabel.textColor = UIColor.darkGray
         timeLabel.frame = CGRect(x: 40, y: 105, width: 200, height: 10)
         timeLabel.font = UIFont.boldSystemFont(ofSize: 10)
@@ -219,16 +239,10 @@ extension EUActivityViewController{
     
     fileprivate func setupActivityDetailUI(){
         
-        // 计算文本所需高度
-        let text = "我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是详情我是"
-        let size = CGSize(width: UIScreen.main.bounds.width - 40, height: 5000)
-        let height = (text as NSString).boundingRect(with: size,
-                                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                     attributes: [NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14)],
-                                                     context: nil).height
+
         
         // 活动详情视图
-        let detailview = UIView(frame: CGRect(x: 5, y: 456, width: UIScreen.main.bounds.width - 10, height: 44 + height + 10))
+        let detailview = UIView(frame: CGRect(x: 5, y: 456, width: UIScreen.main.bounds.width - 10, height: 44 + detailHeight + 10))
         detailview.backgroundColor = UIColor.white
         scrollView.addSubview(detailview)
         
@@ -239,9 +253,8 @@ extension EUActivityViewController{
         detailview.addSubview(dtitle)
         
         // 详情
-        let detailLabel = UILabel(frame: CGRect(x: 15, y: 44, width: UIScreen.main.bounds.width - 30, height: height))
+        detailLabel.frame = CGRect(x: 15, y: 44, width: UIScreen.main.bounds.width - 30, height: detailHeight)
         detailLabel.numberOfLines = 0
-        detailLabel.text = text
         detailLabel.backgroundColor = UIColor.white
         detailLabel.textColor = UIColor.darkGray
         detailLabel.font = UIFont.boldSystemFont(ofSize: 14)
@@ -265,6 +278,7 @@ extension EUActivityViewController{
 extension EUActivityViewController{
     
     @objc fileprivate func backButtonIsClicked(){
+        _ = navigationController?.popViewController(animated: true)
         
     }
     

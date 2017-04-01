@@ -10,22 +10,22 @@
 		262F97B75474F25664E9074A /* Pods_EnjoyUniversityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D885B98299ED2C5A1AA6E7F /* Pods_EnjoyUniversityUITests.framework */; };
 		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
 		3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */; };
+		362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665701E8FE118005ED501 /* EUActivityViewController.swift */; };
+		362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665721E8FE162005ED501 /* EUActivityCell.swift */; };
+		362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362665731E8FE162005ED501 /* EUActivityCell.xib */; };
+		362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665741E8FE162005ED501 /* EUMyActivityViewController.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
-		365E1A681E6EC8C000193214 /* EUActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365E1A661E6EC8C000193214 /* EUActivityCell.swift */; };
-		365E1A691E6EC8C000193214 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 365E1A671E6EC8C000193214 /* EUActivityCell.xib */; };
 		36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */; };
 		36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */; };
 		36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A7B1E8A785700E6DF17 /* EUCommon.swift */; };
 		3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */; };
 		3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */; };
-		3666ABFE1E70524F008E4B6B /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */; };
 		36839BFC1E8D457800612729 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFB1E8D457800612729 /* Activity.swift */; };
 		36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFD1E8D476300612729 /* AvtivityViewModel.swift */; };
 		36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */; };
 		3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */; };
 		3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */; };
 		3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */; };
-		369A6EB51E8E94F000A33981 /* EUActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */; };
 		36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B164191E65A59E00B589B4 /* EUSearchViewController.swift */; };
 		36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFC1E640A390075A3ED /* AppDelegate.swift */; };
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
@@ -73,22 +73,22 @@
 		33300CEBB8EF0944BE216447 /* Pods-EnjoyUniversity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversity.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversity/Pods-EnjoyUniversity.release.xcconfig"; sourceTree = "<group>"; };
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
+		362665701E8FE118005ED501 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
+		362665721E8FE162005ED501 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
+		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
+		362665741E8FE162005ED501 /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
-		365E1A661E6EC8C000193214 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUActivityCell.swift; path = ../Home/EUActivityCell.swift; sourceTree = "<group>"; };
-		365E1A671E6EC8C000193214 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EUActivityCell.xib; path = ../Home/EUActivityCell.xib; sourceTree = "<group>"; };
 		36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNetworkManager.swift; sourceTree = "<group>"; };
 		36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EUNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		36638A7B1E8A785700E6DF17 /* EUCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommon.swift; sourceTree = "<group>"; };
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
 		3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUMessageCell.xib; sourceTree = "<group>"; };
-		3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUMyActivityViewController.swift; path = ../Home/EUMyActivityViewController.swift; sourceTree = "<group>"; };
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		36839BFD1E8D476300612729 /* AvtivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvtivityViewModel.swift; sourceTree = "<group>"; };
 		36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
 		3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
 		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
-		369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUActivityViewController.swift; path = ../Profile/Activity/EUActivityViewController.swift; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -183,10 +183,10 @@
 		3626656F1E8FE02F005ED501 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				365E1A661E6EC8C000193214 /* EUActivityCell.swift */,
-				365E1A671E6EC8C000193214 /* EUActivityCell.xib */,
-				3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */,
-				369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */,
+				362665721E8FE162005ED501 /* EUActivityCell.swift */,
+				362665731E8FE162005ED501 /* EUActivityCell.xib */,
+				362665741E8FE162005ED501 /* EUMyActivityViewController.swift */,
+				362665701E8FE118005ED501 /* EUActivityViewController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -519,11 +519,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				365E1A691E6EC8C000193214 /* EUActivityCell.xib in Resources */,
 				36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */,
 				3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */,
 				36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */,
 				36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */,
+				362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,19 +689,18 @@
 				36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */,
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
-				369A6EB51E8E94F000A33981 /* EUActivityViewController.swift in Sources */,
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
+				362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */,
 				36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */,
 				36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */,
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
 				36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */,
-				3666ABFE1E70524F008E4B6B /* EUMyActivityViewController.swift in Sources */,
 				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,
-				365E1A681E6EC8C000193214 /* EUActivityCell.swift in Sources */,
 				3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */,
 				36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */,
 				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
+				362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
 				36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */,
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
@@ -718,6 +717,7 @@
 				36BDBB3F1E6416FF0075A3ED /* EUHomeViewController.swift in Sources */,
 				36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */,
 				36BDBB391E64135A0075A3ED /* EUMainViewController.swift in Sources */,
+				362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
