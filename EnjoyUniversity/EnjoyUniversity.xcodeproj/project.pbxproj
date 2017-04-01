@@ -74,21 +74,21 @@
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
-		365E1A661E6EC8C000193214 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUActivityCell.swift; path = ../../Home/EUActivityCell.swift; sourceTree = "<group>"; };
-		365E1A671E6EC8C000193214 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EUActivityCell.xib; path = ../../Home/EUActivityCell.xib; sourceTree = "<group>"; };
+		365E1A661E6EC8C000193214 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUActivityCell.swift; path = ../Home/EUActivityCell.swift; sourceTree = "<group>"; };
+		365E1A671E6EC8C000193214 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = EUActivityCell.xib; path = ../Home/EUActivityCell.xib; sourceTree = "<group>"; };
 		36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNetworkManager.swift; sourceTree = "<group>"; };
 		36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EUNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		36638A7B1E8A785700E6DF17 /* EUCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommon.swift; sourceTree = "<group>"; };
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
 		3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUMessageCell.xib; sourceTree = "<group>"; };
-		3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUMyActivityViewController.swift; path = ../../Home/EUMyActivityViewController.swift; sourceTree = "<group>"; };
+		3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUMyActivityViewController.swift; path = ../Home/EUMyActivityViewController.swift; sourceTree = "<group>"; };
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		36839BFD1E8D476300612729 /* AvtivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvtivityViewModel.swift; sourceTree = "<group>"; };
 		36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
 		3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
 		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
-		369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
+		369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EUActivityViewController.swift; path = ../Profile/Activity/EUActivityViewController.swift; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -180,16 +180,7 @@
 			path = PlusButton;
 			sourceTree = "<group>";
 		};
-		36638A761E8A4E5D00E6DF17 /* NetWork */ = {
-			isa = PBXGroup;
-			children = (
-				36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */,
-				36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */,
-			);
-			path = NetWork;
-			sourceTree = "<group>";
-		};
-		369A6EB31E8E947100A33981 /* Activity */ = {
+		3626656F1E8FE02F005ED501 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
 				365E1A661E6EC8C000193214 /* EUActivityCell.swift */,
@@ -197,8 +188,16 @@
 				3666ABFD1E70524F008E4B6B /* EUMyActivityViewController.swift */,
 				369A6EB41E8E94F000A33981 /* EUActivityViewController.swift */,
 			);
-			name = Activity;
-			path = Profile/Activity;
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		36638A761E8A4E5D00E6DF17 /* NetWork */ = {
+			isa = PBXGroup;
+			children = (
+				36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */,
+				36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */,
+			);
+			path = NetWork;
 			sourceTree = "<group>";
 		};
 		36BDBAF01E640A380075A3ED = {
@@ -292,7 +291,7 @@
 				36BDBB301E6412C60075A3ED /* Discover */,
 				36BDBB331E6412C60075A3ED /* Message */,
 				36BDBB341E6412C60075A3ED /* Profile */,
-				369A6EB31E8E947100A33981 /* Activity */,
+				3626656F1E8FE02F005ED501 /* Activity */,
 				360EC8A31E7177C60009B08E /* PlusButton */,
 				360219881E65933100371230 /* Search */,
 				36ECC2381E6E60CF0003C4D8 /* QRCode */,
