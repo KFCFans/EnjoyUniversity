@@ -187,8 +187,8 @@ extension EUActivityViewController{
         activityinfoview.addSubview(avpriceimg)
         
         priceLabel.textColor = UIColor.darkGray
-        priceLabel.frame = CGRect(x: 40, y: 17, width: 100, height: 10)
-        priceLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        priceLabel.frame = CGRect(x: 40, y: 15, width: 100, height: 14)
+        priceLabel.font = UIFont.boldSystemFont(ofSize: 14)
         activityinfoview.addSubview(priceLabel)
         
         // 地点
@@ -197,8 +197,8 @@ extension EUActivityViewController{
         activityinfoview.addSubview(avplaceimg)
         
         placeLabel.textColor = UIColor.darkGray
-        placeLabel.frame = CGRect(x: 40, y: 61, width: 200, height: 10)
-        placeLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        placeLabel.frame = CGRect(x: 40, y: 59, width: 200, height: 14)
+        placeLabel.font = UIFont.boldSystemFont(ofSize: 14)
         activityinfoview.addSubview(placeLabel)
         
         // 时间
@@ -207,8 +207,8 @@ extension EUActivityViewController{
         activityinfoview.addSubview(avtimeimg)
         
         timeLabel.textColor = UIColor.darkGray
-        timeLabel.frame = CGRect(x: 40, y: 105, width: 200, height: 10)
-        timeLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        timeLabel.frame = CGRect(x: 40, y: 103, width: UIScreen.main.bounds.width, height: 14)
+        timeLabel.font = UIFont.boldSystemFont(ofSize: 14)
         activityinfoview.addSubview(timeLabel)
         
         
@@ -222,8 +222,8 @@ extension EUActivityViewController{
         
         numLabel.text = "已报名30人/限100人"
         numLabel.textColor = UIColor.darkGray
-        numLabel.frame = CGRect(x: 40, y: 17, width: 200, height: 10)
-        numLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        numLabel.frame = CGRect(x: 40, y: 15, width: 200, height: 14)
+        numLabel.font = UIFont.boldSystemFont(ofSize: 14)
         numview.addSubview(numLabel)
         
         let moreimg = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 28, y: 14, width: 16, height: 16))

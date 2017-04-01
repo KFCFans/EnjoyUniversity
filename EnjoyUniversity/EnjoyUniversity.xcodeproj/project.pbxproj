@@ -15,6 +15,8 @@
 		362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362665731E8FE162005ED501 /* EUActivityCell.xib */; };
 		362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665741E8FE162005ED501 /* EUMyActivityViewController.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
+		365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */; };
+		365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */; };
 		36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */; };
 		36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */; };
 		36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A7B1E8A785700E6DF17 /* EUCommon.swift */; };
@@ -78,6 +80,8 @@
 		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		362665741E8FE162005ED501 /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
+		365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCreatedActivityViewController.swift; sourceTree = "<group>"; };
+		365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUBaseAvtivityViewController.swift; sourceTree = "<group>"; };
 		36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNetworkManager.swift; sourceTree = "<group>"; };
 		36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EUNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		36638A7B1E8A785700E6DF17 /* EUCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommon.swift; sourceTree = "<group>"; };
@@ -187,6 +191,8 @@
 				362665731E8FE162005ED501 /* EUActivityCell.xib */,
 				362665741E8FE162005ED501 /* EUMyActivityViewController.swift */,
 				362665701E8FE118005ED501 /* EUActivityViewController.swift */,
+				365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */,
+				365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -687,6 +693,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */,
+				365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */,
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
@@ -703,6 +710,7 @@
 				362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
 				36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */,
+				365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */,
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
