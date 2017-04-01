@@ -11,7 +11,12 @@ import UIKit
 
 class EUActivityViewController: EUBaseAvtivityViewController {
     
+    // 分享按钮
+    var shareBtn = UIButton()
     
+    // 收藏按钮
+    var collectBtn = UIButton()
+
     // 地点
     var placeLabel = UILabel()
     
@@ -50,6 +55,7 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavUI()
         setupLeaderInfoUI()
         setupActivityInfoUI()
         setupActivityDetailUI()
@@ -61,6 +67,21 @@ class EUActivityViewController: EUBaseAvtivityViewController {
 
 // MARK: - UI 相关方法
 extension EUActivityViewController{
+    
+    fileprivate func setupNavUI(){
+        // 分享按钮
+        shareBtn.setImage(UIImage(named: "nav_share"), for: .normal)
+        shareBtn.frame = CGRect(x: UIScreen.main.bounds.width - 88, y: 30, width: 24, height: 24)
+        shareBtn.addTarget(nil, action: #selector(shareButtonIsClicked), for: .touchUpInside)
+        
+        // 收藏按钮
+        collectBtn.setImage(UIImage(named: "nav_collect"), for: .normal)
+        collectBtn.frame = CGRect(x: UIScreen.main.bounds.width - 44, y: 30, width: 24, height: 24)
+        collectBtn.addTarget(nil, action: #selector(collectButtonIsClicked), for: .touchUpInside)
+        
+        view.addSubview(shareBtn)
+        view.addSubview(collectBtn)
+    }
     
         
     fileprivate func setupLeaderInfoUI(){
@@ -87,7 +108,7 @@ extension EUActivityViewController{
         leaderView.addSubview(reputationlabel)
         
         let phonebtn = UIButton(frame: CGRect(x: leaderView.frame.width - 60, y: 10, width: 50, height: 50))
-        phonebtn.setImage(UIImage(named: "nav_call"), for: .normal)
+        phonebtn.setImage(UIImage(named: "av_call"), for: .normal)
         leaderView.addSubview(phonebtn)
         phonebtn.addTarget(nil, action: #selector(callButtonIsClicked), for: .touchUpInside)
         
@@ -202,12 +223,22 @@ extension EUActivityViewController{
 
     
     @objc fileprivate func callButtonIsClicked(){
-        print("发起电话")
+        
+        UIApplication.shared.open(URL(string: "telprompt://15061884797")!, options: [:], completionHandler: nil)
+
     }
     
     // 获取参与者列表
     @objc fileprivate func showParticipators(){
         print("showDetail")
+        
+    }
+    
+    @objc fileprivate func shareButtonIsClicked(){
+        
+    }
+    
+    @objc fileprivate func collectButtonIsClicked(){
         
     }
     

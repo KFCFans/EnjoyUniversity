@@ -16,12 +16,7 @@ class EUBaseAvtivityViewController: UIViewController {
     // 返回按钮
     var backBtn = UIButton()
     
-    // 分享按钮
-    var shareBtn = UIButton()
-    
-    // 收藏按钮
-    var collectBtn = UIButton()
-    
+        
     // 活动标题文本
     var titleLabel = UILabel()
     
@@ -34,7 +29,7 @@ class EUBaseAvtivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupHeadUI()
+        setupCommonUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -49,7 +44,7 @@ class EUBaseAvtivityViewController: UIViewController {
 // MARK: - UI 相关方法
 extension EUBaseAvtivityViewController{
     
-    fileprivate func setupHeadUI(){
+    fileprivate func setupCommonUI(){
         
         // 设置滚动视图
         view.addSubview(scrollView)
@@ -66,15 +61,7 @@ extension EUBaseAvtivityViewController{
         backBtn.frame = CGRect(x: 20, y: 30, width: 24, height: 24)
         backBtn.addTarget(nil, action: #selector(backButtonIsClicked), for: .touchUpInside)
         
-        // 分享按钮
-        shareBtn.setImage(UIImage(named: "nav_share"), for: .normal)
-        shareBtn.frame = CGRect(x: UIScreen.main.bounds.width - 88, y: 30, width: 24, height: 24)
-        shareBtn.addTarget(nil, action: #selector(shareButtonIsClicked), for: .touchUpInside)
-        
-        // 收藏按钮
-        collectBtn.setImage(UIImage(named: "nav_collect"), for: .normal)
-        collectBtn.frame = CGRect(x: UIScreen.main.bounds.width - 44, y: 30, width: 24, height: 24)
-        collectBtn.addTarget(nil, action: #selector(collectButtonIsClicked), for: .touchUpInside)
+
         
         // 标题
         titleLabel.frame = CGRect(x: 12, y: 125, width: 200, height: 17)
@@ -99,8 +86,7 @@ extension EUBaseAvtivityViewController{
         
         scrollView.addSubview(backgroudImage)
         view.addSubview(backBtn)
-        view.addSubview(shareBtn)
-        view.addSubview(collectBtn)
+
         backgroudImage.addSubview(titleLabel)
         backgroudImage.addSubview(noticeview)
         
@@ -116,12 +102,5 @@ extension EUBaseAvtivityViewController{
         
     }
     
-    @objc fileprivate func shareButtonIsClicked(){
-        
-    }
-    
-    @objc fileprivate func collectButtonIsClicked(){
-        
-    }
     
 }
