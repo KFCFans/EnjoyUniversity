@@ -48,6 +48,8 @@ class EUMyActivityViewController: UIViewController {
     let joinedIndicator = EURefreshControl()
     let createdIndicator = EURefreshControl()
     
+    let indicator = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width / 2, height: 2))
+    
     // 是否为第一页判断
     var isFirstPageSelected = true{
         didSet{
@@ -65,14 +67,20 @@ class EUMyActivityViewController: UIViewController {
         setupNavBar()
         setupUI()
         
-        EUNetworkManager.shared.getParticipatedActivityList { (_, z) in
-            
-        }
 
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // 勉强解决
+    override func viewWillAppear(_ animated: Bool) {
+
+
+        if !isFirstPageSelected {
+            indicatorView?.setContentOffset(CGPoint(x: -swidth/2, y: 0), animated: false)
+        }
     }
     
     // 加载我参加的活动数据
@@ -188,8 +196,9 @@ extension EUMyActivityViewController{
         scrollView.addSubview(joinedtableView)
         scrollView.addSubview(createdtableView)
         
-        let indicator = UIView(frame: CGRect(x: 0, y: 0, width: swidth / 2, height: 2))
+        
         indicator.backgroundColor = UIColor.green
+        indicatorView.contentSize = CGSize(width: swidth , height: 2)
         indicatorView.addSubview(indicator)
         view.addSubview(indicatorView)
        
@@ -200,6 +209,8 @@ extension EUMyActivityViewController{
         // 指示器绑定方法
         joinedIndicator.addTarget(nil, action: #selector(loadParticipatedActivityData), for: .valueChanged)
         createdIndicator.addTarget(nil, action: #selector(loadCreatedActivityData), for: .valueChanged)
+        
+        
         
     }
     
@@ -236,6 +247,7 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offsetX = scrollView.contentOffset.x
+        print(offsetX)
         if offsetX > 0 {
             indicatorView?.setContentOffset(CGPoint(x: -offsetX/2, y: indicatorView?.contentOffset.y ?? 44), animated: true)
 
@@ -255,15 +267,19 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
             let vc = EUCreatedActivityViewController()
             vc.viewmodel = activitylistviewmodel.createdlist[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
+            
         }else if tableView.tag == 0{
             
             let vc = EUActivityViewController()
             vc.viewmodel = activitylistviewmodel.participatedlist[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
             
+            
         }
         
     }
+    
+    
     
 }
 
