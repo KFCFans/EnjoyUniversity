@@ -186,6 +186,13 @@
 			path = PlusButton;
 			sourceTree = "<group>";
 		};
+		3619C4AF1E90E3C6005FEA5E /* Community */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Community;
+			sourceTree = "<group>";
+		};
 		3626656F1E8FE02F005ED501 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
@@ -301,6 +308,7 @@
 				36BDBB331E6412C60075A3ED /* Message */,
 				36BDBB341E6412C60075A3ED /* Profile */,
 				3626656F1E8FE02F005ED501 /* Activity */,
+				3619C4AF1E90E3C6005FEA5E /* Community */,
 				360EC8A31E7177C60009B08E /* PlusButton */,
 				360219881E65933100371230 /* Search */,
 				36ECC2381E6E60CF0003C4D8 /* QRCode */,

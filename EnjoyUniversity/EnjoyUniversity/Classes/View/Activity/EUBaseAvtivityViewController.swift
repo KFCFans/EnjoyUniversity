@@ -10,6 +10,11 @@ import UIKit
 
 class EUBaseAvtivityViewController: UIViewController {
     
+    // 隐藏状态栏
+    override var prefersStatusBarHidden: Bool{
+        return true
+    }
+    
     // 背景图片
     var backgroudImage = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 180))
     
