@@ -9,6 +9,17 @@
 import UIKit
 
 class EUCreatedActivityViewController: EUBaseAvtivityViewController {
+    
+    var viewmodel:ActivityViewModel?{
+        didSet{
+            titleLabel.text = viewmodel?.activitymodel.avTitle
+            placeLabel.text = viewmodel?.activitymodel.avPlace
+            priceLabel.text = viewmodel?.price
+            timeLabel.text = viewmodel?.allTime
+            detailLabel.text = viewmodel?.activitymodel.avDetail
+            detailHeight = viewmodel?.detailHeight ?? 0
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,7 +58,7 @@ extension EUCreatedActivityViewController{
     
     fileprivate func setupFunctionUI(){
         
-        let functionview = UIView(frame: CGRect(x: 5, y: 190, width: UIScreen.main.bounds.width - 10, height: 75))
+        let functionview = UIView(frame: CGRect(x: 5, y: 190, width: UIScreen.main.bounds.width - 10, height: 70))
         functionview.backgroundColor = UIColor.white
         scrollView.addSubview(functionview)
      

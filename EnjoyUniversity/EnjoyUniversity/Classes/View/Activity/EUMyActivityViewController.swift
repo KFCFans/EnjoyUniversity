@@ -249,6 +249,16 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
         }
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView.tag == 1 {
+            let vc = EUCreatedActivityViewController()
+            vc.viewmodel = activitylistviewmodel.createdlist[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
 }
 
 // MARK: - 监听方法

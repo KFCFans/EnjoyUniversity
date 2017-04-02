@@ -23,6 +23,25 @@ class EUBaseAvtivityViewController: UIViewController {
     // 是否需要签到
     var warnLabel = UILabel()
     
+    // 地点
+    var placeLabel = UILabel()
+    
+    // 时间
+    var timeLabel = UILabel()
+    
+    // 价格
+    var priceLabel = UILabel()
+    
+    // 人数
+    var numLabel = UILabel()
+    
+    // 活动详情
+    let detailLabel = UILabel()
+    
+    // 活动详情文本高度
+    var detailHeight:CGFloat = 0
+
+    
     // 滑动视图
     var scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 60))
 
@@ -30,6 +49,8 @@ class EUBaseAvtivityViewController: UIViewController {
         super.viewDidLoad()
 
         setupCommonUI()
+        setupActivityInfoUI()
+        setupActivityDetailUI()
     }
 
     override func didReceiveMemoryWarning() {
@@ -95,6 +116,97 @@ extension EUBaseAvtivityViewController{
         backgroudImage.addSubview(noticeview)
         
     }
+    
+    fileprivate func setupActivityInfoUI(){
+        
+        /// 设置滚动空间
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 510 + detailHeight)
+        
+        /// 活动信息视图
+        let activityinfoview = UIView(frame: CGRect(x: 5, y: 270, width: UIScreen.main.bounds.width - 10, height: 176))
+        activityinfoview.backgroundColor = UIColor.white
+        scrollView.addSubview(activityinfoview)
+        
+        // 价格
+        let avpriceimg = UIImageView(frame: CGRect(x: 12, y: 14, width: 16, height: 16))
+        avpriceimg.image = UIImage(named: "av_price")
+        activityinfoview.addSubview(avpriceimg)
+        
+        priceLabel.textColor = UIColor.darkGray
+        priceLabel.frame = CGRect(x: 40, y: 15, width: 100, height: 14)
+        priceLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        activityinfoview.addSubview(priceLabel)
+        
+        // 地点
+        let avplaceimg = UIImageView(frame: CGRect(x: 12, y: 58, width: 16, height: 16))
+        avplaceimg.image = UIImage(named: "av_place")
+        activityinfoview.addSubview(avplaceimg)
+        
+        placeLabel.textColor = UIColor.darkGray
+        placeLabel.frame = CGRect(x: 40, y: 59, width: 200, height: 14)
+        placeLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        activityinfoview.addSubview(placeLabel)
+        
+        // 时间
+        let avtimeimg = UIImageView(frame: CGRect(x: 12, y: 102, width: 16, height: 16))
+        avtimeimg.image = UIImage(named: "av_time")
+        activityinfoview.addSubview(avtimeimg)
+        
+        timeLabel.textColor = UIColor.darkGray
+        timeLabel.frame = CGRect(x: 40, y: 103, width: UIScreen.main.bounds.width, height: 14)
+        timeLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        activityinfoview.addSubview(timeLabel)
+        
+        
+        // 人数
+        let numview = UIImageView(frame: CGRect(x: 0, y: 132, width: activityinfoview.frame.width, height: 44))
+        activityinfoview.addSubview(numview)
+        
+        let avenrollimg = UIImageView(frame: CGRect(x: 12, y: 14, width: 16, height: 16))
+        avenrollimg.image = UIImage(named: "av_enroll")
+        numview.addSubview(avenrollimg)
+        
+        numLabel.text = "已报名30人/限100人"
+        numLabel.textColor = UIColor.darkGray
+        numLabel.frame = CGRect(x: 40, y: 15, width: 200, height: 14)
+        numLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        numview.addSubview(numLabel)
+        
+        let moreimg = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 28, y: 14, width: 16, height: 16))
+        moreimg.image = UIImage(named: "nav_more")
+        numview.addSubview(moreimg)
+        
+        // 添加点击响应事件
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(showParticipators))
+        numview.isUserInteractionEnabled = true
+        numview.addGestureRecognizer(tapgesture)
+        
+    }
+    
+    fileprivate func setupActivityDetailUI(){
+        
+        
+        
+        // 活动详情视图
+        let detailview = UIView(frame: CGRect(x: 5, y: 456, width: UIScreen.main.bounds.width - 10, height: 44 + detailHeight + 10))
+        detailview.backgroundColor = UIColor.white
+        scrollView.addSubview(detailview)
+        
+        let dtitle = UILabel(frame: CGRect(x: 15, y: 15, width: 100, height: 15))
+        dtitle.textColor = UIColor.black
+        dtitle.text = "活动详情"
+        dtitle.font = UIFont.boldSystemFont(ofSize: 15)
+        detailview.addSubview(dtitle)
+        
+        // 详情
+        detailLabel.frame = CGRect(x: 15, y: 44, width: UIScreen.main.bounds.width - 30, height: detailHeight)
+        detailLabel.numberOfLines = 0
+        detailLabel.backgroundColor = UIColor.white
+        detailLabel.textColor = UIColor.darkGray
+        detailLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        detailview.addSubview(detailLabel)
+        
+    }
 
 }
 
@@ -103,6 +215,12 @@ extension EUBaseAvtivityViewController{
     
     @objc fileprivate func backButtonIsClicked(){
         _ = navigationController?.popViewController(animated: true)
+        
+    }
+    
+    // 获取参与者列表
+    @objc fileprivate func showParticipators(){
+        print("showDetail")
         
     }
     
