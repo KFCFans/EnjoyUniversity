@@ -247,7 +247,6 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         let offsetX = scrollView.contentOffset.x
-        print(offsetX)
         if offsetX > 0 {
             indicatorView?.setContentOffset(CGPoint(x: -offsetX/2, y: indicatorView?.contentOffset.y ?? 44), animated: true)
 
