@@ -27,6 +27,7 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
         setupNavUI()
         setupFunctionUI()
         setupQRCodeUI()
+        setupChangeButton()
 
     }
 
@@ -43,7 +44,6 @@ extension EUCreatedActivityViewController{
     
     fileprivate func setupNavUI(){
         
-        view.backgroundColor  = UIColor.lightGray
         
         let rightshadow = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 50, y: 30, width: 30, height: 30))
         rightshadow.image = UIImage(named: "nav_background")
@@ -82,11 +82,38 @@ extension EUCreatedActivityViewController{
         
     }
     
+    
     fileprivate func setupQRCodeUI(){
         
         let qrcodeview = UIView(frame: CGRect(x: 5, y: 520 + detailHeight, width: UIScreen.main.bounds.width - 10, height: 80))
         qrcodeview.backgroundColor = UIColor.white
         scrollView.addSubview(qrcodeview)
+        
+        let qrtitlelabel = UILabel(frame: CGRect(x: 15, y: 20, width: 150, height: 15))
+        qrtitlelabel.text = "活动专属二维码"
+        qrtitlelabel.textColor = UIColor.black
+        qrtitlelabel.font = UIFont.boldSystemFont(ofSize: 15)
+        qrcodeview.addSubview(qrtitlelabel)
+        
+        let qrdetaillabel = UILabel(frame: CGRect(x: 15, y: 50, width: 150, height: 14))
+        qrdetaillabel.text = "扫一扫了解详情"
+        qrdetaillabel.textColor = UIColor.lightGray
+        qrdetaillabel.font = UIFont.boldSystemFont(ofSize: 14)
+        qrcodeview.addSubview(qrdetaillabel)
+        
+        let qrBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 54, y: 32, width: 32, height: 32))
+        qrBtn.setImage(UIImage(named: "av_qrcode"), for: .normal)
+        qrBtn.addTarget(nil, action: #selector(showQRCode), for: .touchUpInside)
+        qrcodeview.addSubview(qrBtn)
+        
+    }
+    
+    fileprivate func setupChangeButton(){
+        
+        let changeButton = UIButton(frame: CGRect(x: 12, y: UIScreen.main.bounds.height - 50, width: UIScreen.main.bounds.width - 24, height: 44))
+        changeButton.backgroundColor = UIColor.orange
+        changeButton.setTitle("修改活动", for: .normal)
+        view.addSubview(changeButton)
         
     }
     
@@ -103,6 +130,10 @@ extension EUCreatedActivityViewController{
     
     @objc fileprivate func checkBtnIsClicked(){
         print("zzzzz")
+    }
+    
+    @objc fileprivate func showQRCode(){
+        
     }
     
 }
