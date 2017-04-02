@@ -16,6 +16,7 @@
 		362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665721E8FE162005ED501 /* EUActivityCell.swift */; };
 		362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362665731E8FE162005ED501 /* EUActivityCell.xib */; };
 		362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665741E8FE162005ED501 /* EUMyActivityViewController.swift */; };
+		3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
 		365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */; };
 		365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */; };
@@ -83,6 +84,7 @@
 		362665721E8FE162005ED501 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
 		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		362665741E8FE162005ED501 /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
+		3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
 		365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCreatedActivityViewController.swift; sourceTree = "<group>"; };
 		365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUBaseAvtivityViewController.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */,
+				3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */,
 				3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */,
 				36839BFD1E8D476300612729 /* AvtivityViewModel.swift */,
 				36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */,
@@ -726,6 +729,7 @@
 				362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
 				36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */,
+				3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */,
 				365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */,
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,

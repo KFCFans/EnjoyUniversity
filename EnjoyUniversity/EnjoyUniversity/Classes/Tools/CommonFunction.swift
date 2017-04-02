@@ -60,3 +60,24 @@ func timeStampToString(timeStamp:String?)->String? {
     
     return dfmatter.string(from: date as Date)
 }
+
+
+/// 计算文本高度
+///
+/// - Parameters:
+///   - text: 文本
+///   - width: 目标区域宽度
+///   - font: 文本字体大小
+/// - Returns: 文本高度
+func calculateLabelHeight(text:String,width:CGFloat,font:CGFloat)->CGFloat{
+    
+    let textfont = UIFont.boldSystemFont(ofSize: font)
+    
+    let size = CGSize(width: width, height: 5000)
+    
+    let height = (text as NSString).boundingRect(with: size,
+                                                 options: NSStringDrawingOptions.usesLineFragmentOrigin,
+                                                 attributes: [NSFontAttributeName:textfont],
+                                                 context: nil).height
+    return height
+}

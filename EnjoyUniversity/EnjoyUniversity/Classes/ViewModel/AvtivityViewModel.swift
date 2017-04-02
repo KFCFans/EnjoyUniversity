@@ -45,20 +45,11 @@ class ActivityViewModel{
         allTime = (startTime ?? "") + " ~ " + (endTime ?? "")
         enrollDeadline = timeStampToString(timeStamp: activitymodel.avEnrolldeadline)
         needRegister = activitymodel.avRegister == -1 ? "无需签到" : "需要签到"
-        calculateDetailLabelHright()
+        detailHeight = calculateLabelHeight(text: activitymodel.avDetail ?? "",width: UIScreen.main.bounds.width - 40,font: 14)
         
     }
     
-    private func calculateDetailLabelHright(){
-        // 计算文本所需高度
-        let text = activitymodel.avDetail ?? ""
-        let size = CGSize(width: UIScreen.main.bounds.width - 40, height: 5000)
-        detailHeight = (text as NSString).boundingRect(with: size,
-                                                     options: NSStringDrawingOptions.usesLineFragmentOrigin,
-                                                     attributes: [NSFontAttributeName:UIFont.boldSystemFont(ofSize: 14)],
-                                                     context: nil).height
-        
-    }
+
     
     
     
