@@ -51,17 +51,26 @@ extension EUActivityViewController{
     
     fileprivate func setupNavUI(){
         // 分享按钮
+        let shareshadow = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 94, y: 30, width: 30, height: 30))
+        shareshadow.image = UIImage(named: "nav_background")
+        shareshadow.alpha = 0.7
+        view.addSubview(shareshadow)
         shareBtn.setImage(UIImage(named: "nav_share"), for: .normal)
-        shareBtn.frame = CGRect(x: UIScreen.main.bounds.width - 88, y: 30, width: 24, height: 24)
+        shareBtn.frame = CGRect(x: 3, y: 3, width: 24, height: 24)
+        shareshadow.isUserInteractionEnabled = true
+        shareshadow.addSubview(shareBtn)
         shareBtn.addTarget(nil, action: #selector(shareButtonIsClicked), for: .touchUpInside)
         
         // 收藏按钮
+        let collectshadow = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 50, y: 30, width: 30, height: 30))
+        collectshadow.image = UIImage(named: "nav_background")
+        collectshadow.alpha = 0.7
+        collectshadow.isUserInteractionEnabled = true
+        view.addSubview(collectshadow)
         collectBtn.setImage(UIImage(named: "nav_collect"), for: .normal)
-        collectBtn.frame = CGRect(x: UIScreen.main.bounds.width - 44, y: 30, width: 24, height: 24)
+        collectBtn.frame = CGRect(x: 3, y: 3, width: 24, height: 24)
         collectBtn.addTarget(nil, action: #selector(collectButtonIsClicked), for: .touchUpInside)
-        
-        view.addSubview(shareBtn)
-        view.addSubview(collectBtn)
+        collectshadow.addSubview(collectBtn)
     }
     
         
