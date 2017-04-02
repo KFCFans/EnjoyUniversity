@@ -57,9 +57,15 @@ extension EUBaseAvtivityViewController{
         backgroudImage.clipsToBounds = true
         
         // 返回按钮
+        let rightshadow = UIImageView(frame: CGRect(x: 20, y: 30, width: 30, height: 30))
+        rightshadow.alpha = 0.7
+        rightshadow.image = UIImage(named: "nav_background")
+        view.addSubview(rightshadow)
+        
         backBtn.setImage(UIImage(named: "nav_back"), for: .normal)
-        backBtn.frame = CGRect(x: 20, y: 30, width: 24, height: 24)
+        backBtn.frame = CGRect(x: 3, y: 3, width: 24, height: 24)
         backBtn.addTarget(nil, action: #selector(backButtonIsClicked), for: .touchUpInside)
+        rightshadow.addSubview(backBtn)
         
 
         
@@ -85,8 +91,6 @@ extension EUBaseAvtivityViewController{
         
         
         scrollView.addSubview(backgroudImage)
-        view.addSubview(backBtn)
-
         backgroudImage.addSubview(titleLabel)
         backgroudImage.addSubview(noticeview)
         
