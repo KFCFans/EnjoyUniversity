@@ -26,10 +26,13 @@ class Community:NSObject{
     var cmBackground:String?
     
     // 社团类型
-    var cmType:String?
+    var cmType:Int = 0
     
     // 社团属性
-    var cmAttr:String?
+    var cmAttr:Int = 0
+    
+    // 社团公告
+    var cmAnnouncement:String?
     
     // 社团是否开启招新 默认0不开启
     var cmRecruit:Int = 0

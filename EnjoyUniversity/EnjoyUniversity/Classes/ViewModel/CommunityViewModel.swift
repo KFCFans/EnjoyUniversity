@@ -30,6 +30,41 @@ class CommunityViewModel{
      
         communitymodel = model
         
+        // 计算公告高度
+        announcementHeight = calculateLabelHeight(text: model.cmAnnouncement ?? "", width: UIScreen.main.bounds.width - 30, font: 13)
+        
+        // 计算简介高度
+        detailHeight = calculateLabelHeight(text: model.cmDetail ?? "", width: UIScreen.main.bounds.width - 30, font: 14)
+        
+        // 社团属性
+        switch model.cmAttr {
+        case 0:
+            communityAttr = "学生组织"
+            break
+        case 1:
+            communityAttr = "院级社团"
+            break
+        case 2:
+            communityAttr = "校级社团"
+            break
+        default:
+            communityAttr = ""
+        }
+        
+        // 社团类型
+        switch model.cmType {
+        case 0:
+            communityType = "兴趣社团"
+            break
+        case 1:
+            communityType = "学术社团"
+            break
+        case 2:
+            communityType = "运动社团"
+        default:
+            communityType = ""
+        }
+        
     }
     
 

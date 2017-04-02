@@ -11,13 +11,13 @@ import Kingfisher
 
 class EUCommunityWallCell: UITableViewCell {
     
-    var communityModel:Community?{
+    var communityModel:CommunityViewModel?{
         
         didSet{
-            communityName.text = communityModel?.cmName
-            communityIntro.text = communityModel?.cmDetail
-            let logourl = URL(string: communityModel?.cmLogo ?? "")
-            let bgiurl = URL(string: communityModel?.cmBackground ?? "")
+            communityName.text = communityModel?.communitymodel?.cmName
+            communityIntro.text = communityModel?.communitymodel?.cmDetail
+            let logourl = URL(string: communityModel?.communitymodel?.cmLogo ?? "")
+            let bgiurl = URL(string: communityModel?.communitymodel?.cmBackground ?? "")
             communityIcon.kf.setImage(with: logourl,
                                       placeholder: UIImage(named: "Facebook_25"),
                                       options: [.transition(.fade(1))],

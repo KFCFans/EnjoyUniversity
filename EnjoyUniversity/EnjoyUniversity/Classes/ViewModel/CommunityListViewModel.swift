@@ -11,7 +11,7 @@ import YYModel
 
 class CommunityListViewModel{
     
-    lazy var modelList = [Community]()
+    lazy var modelList = [CommunityViewModel]()
     
     
     func loadCommunityList(isPullUp:Bool,completion:@escaping (Bool,Bool)->()){
@@ -41,10 +41,15 @@ class CommunityListViewModel{
                 return
             }
             
+            var temp = [CommunityViewModel]()
+            for model in modelArray {
+                temp.append(CommunityViewModel(model: model))
+            }
+            
             if isPullUp {
-                self.modelList = self.modelList + modelArray
+                self.modelList = self.modelList + temp
             }else{
-                self.modelList = modelArray
+                self.modelList = temp
             }
     
             completion(true,true)
