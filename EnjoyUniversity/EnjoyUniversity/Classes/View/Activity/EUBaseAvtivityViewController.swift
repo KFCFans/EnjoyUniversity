@@ -85,6 +85,8 @@ extension EUBaseAvtivityViewController{
         
         backBtn.setImage(UIImage(named: "nav_back"), for: .normal)
         backBtn.frame = CGRect(x: 3, y: 3, width: 24, height: 24)
+        backBtn.isUserInteractionEnabled = true
+        rightshadow.isUserInteractionEnabled = true
         backBtn.addTarget(nil, action: #selector(backButtonIsClicked), for: .touchUpInside)
         rightshadow.addSubview(backBtn)
         
@@ -214,6 +216,7 @@ extension EUBaseAvtivityViewController{
 extension EUBaseAvtivityViewController{
     
     @objc fileprivate func backButtonIsClicked(){
+        
         _ = navigationController?.popViewController(animated: true)
         
     }

@@ -56,14 +56,14 @@ extension EUActivityButton{
                                              toItem: nil,
                                              attribute: .notAnAttribute,
                                              multiplier: 1.0,
-                                             constant: 40))
+                                             constant: 35))
         shadowimg.addConstraint(NSLayoutConstraint(item: shadowimg,
                                              attribute: .height,
                                              relatedBy: .equal,
                                              toItem: nil,
                                              attribute: .notAnAttribute,
                                              multiplier: 1.0,
-                                             constant: 40))
+                                             constant: 35))
         self.addConstraint(NSLayoutConstraint(item: shadowimg,
                                              attribute: .centerX,
                                              relatedBy: .equal,
@@ -86,14 +86,14 @@ extension EUActivityButton{
                                                    toItem: nil,
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1.0,
-                                                   constant: 30))
+                                                   constant: 20))
         img.addConstraint(NSLayoutConstraint(item: img,
                                                    attribute: .height,
                                                    relatedBy: .equal,
                                                    toItem: nil,
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1.0,
-                                                   constant: 30))
+                                                   constant: 20))
         shadowimg.addConstraint(NSLayoutConstraint(item: img,
                                               attribute: .centerX,
                                               relatedBy: .equal,

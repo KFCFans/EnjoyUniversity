@@ -255,6 +255,12 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
             let vc = EUCreatedActivityViewController()
             vc.viewmodel = activitylistviewmodel.createdlist[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
+        }else if tableView.tag == 0{
+            
+            let vc = EUActivityViewController()
+            vc.viewmodel = activitylistviewmodel.participatedlist[indexPath.row]
+            navigationController?.pushViewController(vc, animated: true)
+            
         }
         
     }
