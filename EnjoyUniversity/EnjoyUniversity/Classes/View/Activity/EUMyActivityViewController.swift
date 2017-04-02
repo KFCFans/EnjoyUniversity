@@ -76,8 +76,7 @@ class EUMyActivityViewController: UIViewController {
     
     // 勉强解决
     override func viewWillAppear(_ animated: Bool) {
-
-
+        
         if !isFirstPageSelected {
             indicatorView?.setContentOffset(CGPoint(x: -swidth/2, y: 0), animated: false)
         }
@@ -210,6 +209,7 @@ extension EUMyActivityViewController{
         joinedIndicator.addTarget(nil, action: #selector(loadParticipatedActivityData), for: .valueChanged)
         createdIndicator.addTarget(nil, action: #selector(loadCreatedActivityData), for: .valueChanged)
         
+        self.automaticallyAdjustsScrollViewInsets = false
         
         
     }

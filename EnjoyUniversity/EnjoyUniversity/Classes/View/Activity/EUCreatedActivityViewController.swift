@@ -26,6 +26,7 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
         
         setupNavUI()
         setupFunctionUI()
+        setupQRCodeUI()
 
     }
 
@@ -54,6 +55,8 @@ extension EUCreatedActivityViewController{
         moreactionBtn.addTarget(nil, action: #selector(moreActionBtnIsClicked), for: .touchUpInside)
         rightshadow.addSubview(moreactionBtn)
         
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 610 + detailHeight)
+        
     }
     
     fileprivate func setupFunctionUI(){
@@ -76,6 +79,14 @@ extension EUCreatedActivityViewController{
         
         let registerBtn = EUActivityButton(frame: CGRect(x: margin * 4 + buttonWidth * 3, y: 8, width: buttonWidth, height: buttonWidth), image: UIImage(named: "av_register")!, text: "签到", shadowimage: UIImage(named: "av_shadow_purple")!)
         functionview.addSubview(registerBtn)
+        
+    }
+    
+    fileprivate func setupQRCodeUI(){
+        
+        let qrcodeview = UIView(frame: CGRect(x: 5, y: 520 + detailHeight, width: UIScreen.main.bounds.width - 10, height: 80))
+        qrcodeview.backgroundColor = UIColor.white
+        scrollView.addSubview(qrcodeview)
         
     }
     
