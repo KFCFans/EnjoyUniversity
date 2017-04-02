@@ -26,12 +26,18 @@ class CommunityViewModel{
     /// 社团属性 0学生组织 1院级社团 2校级社团
     var communityAttr:String = "社团性质:"
     
+    /// 所属学校
+    var communitySchool:String = "所属学校:"
+    
     init(model:Community) {
      
         communitymodel = model
         
         // 计算公告高度
         announcementHeight = calculateLabelHeight(text: model.cmAnnouncement ?? "", width: UIScreen.main.bounds.width - 30, font: 13)
+        
+        // 所属学校
+        communitySchool += model.cmSchool ?? "江南大学"
         
         // 计算简介高度
         detailHeight = calculateLabelHeight(text: model.cmDetail ?? "", width: UIScreen.main.bounds.width - 30, font: 14)

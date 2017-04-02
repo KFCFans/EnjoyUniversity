@@ -20,7 +20,7 @@ class EUCommunityInfoViewController: UIViewController {
             detailHeight = viewmodel?.detailHeight ?? 0
             detailLabel.text = viewmodel?.communitymodel?.cmDetail
             typeLabel.text = viewmodel?.communityAttr
-            schoolLabel.text = "江南大学"
+            schoolLabel.text = viewmodel?.communitySchool
             
         }
         

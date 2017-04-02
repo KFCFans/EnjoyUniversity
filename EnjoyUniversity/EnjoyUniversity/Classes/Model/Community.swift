@@ -40,6 +40,9 @@ class Community:NSObject{
     // 社团热度，后期用于排序
     var  cmHeat:Int = 0
     
+    // 社团所属学校
+    var cmSchool:String?
+    
     override var description: String{
         return yy_modelDescription()
     }
