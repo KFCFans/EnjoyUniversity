@@ -24,7 +24,7 @@ class CommunityViewModel{
     var communityType:String?
     
     /// 社团属性 0学生组织 1院级社团 2校级社团
-    var communityAttr:String?
+    var communityAttr:String = "社团性质:"
     
     init(model:Community) {
      
@@ -39,16 +39,16 @@ class CommunityViewModel{
         // 社团属性
         switch model.cmAttr {
         case 0:
-            communityAttr = "学生组织"
+            communityAttr += "学生组织"
             break
         case 1:
-            communityAttr = "院级社团"
+            communityAttr += "院级社团"
             break
         case 2:
-            communityAttr = "校级社团"
+            communityAttr += "校级社团"
             break
         default:
-            communityAttr = ""
+            communityAttr += ""
         }
         
         // 社团类型

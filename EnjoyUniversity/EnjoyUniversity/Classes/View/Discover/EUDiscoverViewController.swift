@@ -134,6 +134,14 @@ extension EUDiscoverViewController{
         return UIScreen.main.bounds.width * 0.618
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let vc = EUCommunityInfoViewController()
+        vc.viewmodel = communityListVM.modelList[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
     // 封装上拉刷新逻辑
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         

@@ -10,6 +10,21 @@ import UIKit
 
 class EUCommunityInfoViewController: UIViewController {
     
+
+    var viewmodel:CommunityViewModel?{
+        
+        didSet{
+            titleLabel.text = viewmodel?.communitymodel?.cmName
+            announcementHeight = viewmodel?.announcementHeight ?? 0
+            announcementLabel.text = viewmodel?.communitymodel?.cmAnnouncement
+            detailHeight = viewmodel?.detailHeight ?? 0
+            detailLabel.text = viewmodel?.communitymodel?.cmDetail
+            typeLabel.text = viewmodel?.communityAttr
+            schoolLabel.text = "江南大学"
+            
+        }
+        
+    }
     
     // 隐藏状态栏
     override var prefersStatusBarHidden: Bool{
@@ -53,10 +68,10 @@ class EUCommunityInfoViewController: UIViewController {
     let detailLabel = UILabel()
     
     // 社团简介文本高度
-    var detailHeight:CGFloat = 55
+    var detailHeight:CGFloat = 0
     
     // 社团公告文本高度
-    var announcementHeight:CGFloat = 55
+    var announcementHeight:CGFloat = 0
     
     // 滑动视图
     var scrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 60))
@@ -171,7 +186,6 @@ extension EUCommunityInfoViewController{
         announcementLabel.numberOfLines = 0
         announcementLabel.textColor = UIColor.lightGray
         announcementLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        announcementLabel.text = "这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！"
         announcementView.addSubview(announcementLabel)
         
     }
@@ -240,11 +254,7 @@ extension EUCommunityInfoViewController{
         numview.isUserInteractionEnabled = true
         numview.addGestureRecognizer(tapgesture)
         
-        
-        //FIXME: 引入 ViewModel 后全部删除
-        schoolLabel.text = "所属学校:江南大学"
-        typeLabel.text = "社团性质:校级社团"
-        bossLabel.text = "社团负责人:假诗人"
+
         
     }
     
@@ -268,7 +278,6 @@ extension EUCommunityInfoViewController{
         detailLabel.backgroundColor = UIColor.white
         detailLabel.textColor = UIColor.darkGray
         detailLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        detailLabel.text = "这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告！这里是公告"
         detailview.addSubview(detailLabel)
         
     }
