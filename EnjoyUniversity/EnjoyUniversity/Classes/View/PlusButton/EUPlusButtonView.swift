@@ -41,6 +41,7 @@ class EUPlusButtonView: UIView {
         
         // 点击识别
         let taprecognizer = UITapGestureRecognizer(target: self, action: #selector(removeCurrentView))
+        taprecognizer.delegate = self
         self.addGestureRecognizer(taprecognizer)
         
         // 初始化组件
@@ -70,6 +71,8 @@ class EUPlusButtonView: UIView {
                                      imgwidth: 30,
                                      shadowimgwidth: 50)
         
+
+        
         guard let plusBtn = plusBtn,let qrcodeBtn = qrcodeBtn,let activityBtn = activityBtn,let notifyBtn = notifyBtn else {
             return
         }
@@ -96,8 +99,7 @@ class EUPlusButtonView: UIView {
         self.addSubview(qrcodeBtn)
         self.addSubview(activityBtn)
         self.addSubview(notifyBtn)
-        
-        
+    
         UIView.animate(withDuration: 0.25) { 
             plusBtn.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 4))
             
@@ -147,6 +149,20 @@ extension EUPlusButtonView{
     /// 发送通知
     @objc fileprivate func startNotification(){
         print("startNotification")
+        
+    }
+    
+}
+// MARK: - 代理相关方法
+extension EUPlusButtonView:UIGestureRecognizerDelegate{
+    
+    // 解决手势和自定义 UIButton 的冲突
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if touch.view?.isKind(of: EUActivityButton.self) ?? false {
+            return false
+        }
+        return true
         
     }
     
