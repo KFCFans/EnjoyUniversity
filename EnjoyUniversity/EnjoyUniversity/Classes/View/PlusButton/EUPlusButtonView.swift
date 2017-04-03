@@ -43,8 +43,9 @@ class EUPlusButtonView: UIView {
         let taprecognizer = UITapGestureRecognizer(target: self, action: #selector(removeCurrentView))
         self.addGestureRecognizer(taprecognizer)
         
+        // 初始化组件
         plusBtn = UIButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: height))
-        qrcodeBtn = EUActivityButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: height),
+        qrcodeBtn = EUActivityButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: 75),
                                      image: UIImage(named: "plus_qrcode")!,
                                      text: "扫描二维码",
                                      shadowimage: UIImage(named: "av_shadow_blue")!,
@@ -52,7 +53,7 @@ class EUPlusButtonView: UIView {
                                      textcolor: UIColor.white,
                                      imgwidth: 30,
                                      shadowimgwidth: 50)
-        activityBtn = EUActivityButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: height),
+        activityBtn = EUActivityButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: 75),
                                      image: UIImage(named: "plus_activity")!,
                                      text: "发布活动",
                                      shadowimage: UIImage(named: "av_shadow_red")!,
@@ -60,7 +61,7 @@ class EUPlusButtonView: UIView {
                                      textcolor: UIColor.white,
                                      imgwidth: 30,
                                      shadowimgwidth: 50)
-        notifyBtn = EUActivityButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: height),
+        notifyBtn = EUActivityButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: 75),
                                      image: UIImage(named: "plus_qrcode")!,
                                      text: "扫描二维码",
                                      shadowimage: UIImage(named: "av_shadow_blue")!,
@@ -86,10 +87,16 @@ class EUPlusButtonView: UIView {
         efv.frame = frame
         addSubview(efv)
         
+        
+        qrcodeBtn.addTarget(nil, action: #selector(startQRCodeScanner), for: .touchUpInside)
+        activityBtn.addTarget(nil, action: #selector(startActivity), for: .touchUpInside)
+        notifyBtn.addTarget(nil, action: #selector(startNotification), for: .touchUpInside)
+        
         self.addSubview(plusBtn)
         self.addSubview(qrcodeBtn)
         self.addSubview(activityBtn)
         self.addSubview(notifyBtn)
+        
         
         UIView.animate(withDuration: 0.25) { 
             plusBtn.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 4))
@@ -125,6 +132,22 @@ extension EUPlusButtonView{
         }) { (_) in
             self.removeFromSuperview()
         }
+    }
+    
+    /// 发起活动
+    @objc fileprivate func startActivity(){
+        print("startActivity")
+    }
+    
+    /// 扫描二维码
+    @objc fileprivate func startQRCodeScanner(){
+        print("startQRCodeScanner")
+    }
+    
+    /// 发送通知
+    @objc fileprivate func startNotification(){
+        print("startNotification")
+        
     }
     
 }

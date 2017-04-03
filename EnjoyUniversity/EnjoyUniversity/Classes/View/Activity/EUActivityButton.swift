@@ -127,10 +127,10 @@ extension EUActivityButton{
         self.addConstraint(NSLayoutConstraint(item: label,
                                               attribute: .top,
                                               relatedBy: .equal,
-                                              toItem: img,
+                                              toItem: shadowimg,
                                               attribute: .bottom,
                                               multiplier: 1.0,
-                                              constant: 10))
+                                              constant: 5))
         
      
         
