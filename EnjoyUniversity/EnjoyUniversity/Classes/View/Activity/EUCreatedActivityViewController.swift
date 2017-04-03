@@ -55,7 +55,8 @@ extension EUCreatedActivityViewController{
         moreactionBtn.addTarget(nil, action: #selector(moreActionBtnIsClicked), for: .touchUpInside)
         rightshadow.addSubview(moreactionBtn)
         
-        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 610 + detailHeight)
+        /// 滑动区域大小下
+        scrollView.contentSize = CGSize(width: UIScreen.main.bounds.width, height: 600 + detailHeight)
         
     }
     

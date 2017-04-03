@@ -21,6 +21,8 @@ class EUCommunityInfoViewController: UIViewController {
             detailLabel.text = viewmodel?.communitymodel?.cmDetail
             typeLabel.text = viewmodel?.communityAttr
             schoolLabel.text = viewmodel?.communitySchool
+            //FIXME: 用此 uid 加载社长信息 & 缺少已加入的小伙伴
+            bossLabel.text = "现任社长:\(viewmodel?.communitymodel?.cmBoss ?? 15061883391)"
             
         }
         
@@ -168,7 +170,7 @@ extension EUCommunityInfoViewController{
     
     fileprivate func setupAnnouncementUI(){
         
-        let announcementView = UIView(frame: CGRect(x: 5, y: 190, width: scrollView.bounds.width, height: 64 + announcementHeight))
+        let announcementView = UIView(frame: CGRect(x: 5, y: 190, width: scrollView.bounds.width - 10, height: 64 + announcementHeight))
         announcementView.backgroundColor = UIColor.white
         scrollView.addSubview(announcementView)
         
@@ -239,7 +241,7 @@ extension EUCommunityInfoViewController{
         avenrollimg.image = UIImage(named: "cm_participate")
         numview.addSubview(avenrollimg)
         
-        numLabel.text = "已报名30人/限100人"
+        numLabel.text = "小伙伴们:有10个小伙伴哦"
         numLabel.textColor = UIColor.darkGray
         numLabel.frame = CGRect(x: 40, y: 15, width: 200, height: 14)
         numLabel.font = UIFont.boldSystemFont(ofSize: 14)

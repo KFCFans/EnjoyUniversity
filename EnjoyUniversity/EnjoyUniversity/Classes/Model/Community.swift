@@ -43,6 +43,9 @@ class Community:NSObject{
     // 社团所属学校
     var cmSchool:String?
     
+    // 社团社长
+    var cmBoss:Int64 = 0
+    
     override var description: String{
         return yy_modelDescription()
     }
