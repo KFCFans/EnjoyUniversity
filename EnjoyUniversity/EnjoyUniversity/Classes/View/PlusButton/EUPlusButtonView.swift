@@ -63,9 +63,9 @@ class EUPlusButtonView: UIView {
                                      imgwidth: 30,
                                      shadowimgwidth: 50)
         notifyBtn = EUActivityButton(frame: CGRect(x: 2 * width, y: rootvc.tabBar.frame.minY, width: width, height: 75),
-                                     image: UIImage(named: "plus_qrcode")!,
-                                     text: "扫描二维码",
-                                     shadowimage: UIImage(named: "av_shadow_blue")!,
+                                     image: UIImage(named: "plus_notify")!,
+                                     text: "发送通知",
+                                     shadowimage: UIImage(named: "av_shadow_orange")!,
                                      font: 12,
                                      textcolor: UIColor.white,
                                      imgwidth: 30,
@@ -100,7 +100,8 @@ class EUPlusButtonView: UIView {
         self.addSubview(activityBtn)
         self.addSubview(notifyBtn)
     
-        UIView.animate(withDuration: 0.25) { 
+        UIView.animate(withDuration: 0.25) {
+            
             plusBtn.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 4))
             
             activityBtn.frame.origin = CGPoint(x: 50, y: UIScreen.main.bounds.height - 150)
@@ -130,7 +131,13 @@ extension EUPlusButtonView{
 
         UIView.animate(withDuration: 0.25, animations: { 
             self.plusBtn?.transform = CGAffineTransform(rotationAngle: CGFloat(M_PI / 2) )
+            self.notifyBtn?.frame = self.plusBtn?.frame ?? CGRect()
+            self.qrcodeBtn?.frame = self.plusBtn?.frame ?? CGRect()
+            self.activityBtn?.frame =  self.plusBtn?.frame ?? CGRect()
             self.alpha = 0
+            
+            
+            
         }) { (_) in
             self.removeFromSuperview()
         }
