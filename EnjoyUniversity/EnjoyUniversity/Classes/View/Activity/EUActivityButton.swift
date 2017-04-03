@@ -15,17 +15,26 @@ class EUActivityButton: UIControl {
     var shadowimg = UIImageView()
     
     var label = UILabel()
+    
+    var imgWidth:CGFloat = 0
+    
+    var shadowimgWidth:CGFloat = 0
 
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(frame: CGRect,image:UIImage,text:String,shadowimage:UIImage) {
+    init(frame: CGRect,image:UIImage,text:String,shadowimage:UIImage,font:CGFloat = 14,textcolor:UIColor = UIColor.black,imgwidth:CGFloat = 20,shadowimgwidth:CGFloat = 35) {
         super.init(frame: frame)
         label.text = text
         img.image = image
         shadowimg.image = shadowimage
+        label.font = UIFont.boldSystemFont(ofSize: font)
+        label.textColor = textcolor
+        label.sizeToFit()
+        imgWidth = imgwidth
+        shadowimgWidth = shadowimgwidth
         setupUI()
         
     }
@@ -41,9 +50,7 @@ extension EUActivityButton{
         label.translatesAutoresizingMaskIntoConstraints = false
         shadowimg.translatesAutoresizingMaskIntoConstraints = false
         
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        label.textColor = UIColor.black
-        label.sizeToFit()
+
         
         addSubview(shadowimg)
         addSubview(label)
@@ -56,14 +63,14 @@ extension EUActivityButton{
                                              toItem: nil,
                                              attribute: .notAnAttribute,
                                              multiplier: 1.0,
-                                             constant: 35))
+                                             constant: shadowimgWidth))
         shadowimg.addConstraint(NSLayoutConstraint(item: shadowimg,
                                              attribute: .height,
                                              relatedBy: .equal,
                                              toItem: nil,
                                              attribute: .notAnAttribute,
                                              multiplier: 1.0,
-                                             constant: 35))
+                                             constant: shadowimgWidth))
         self.addConstraint(NSLayoutConstraint(item: shadowimg,
                                              attribute: .centerX,
                                              relatedBy: .equal,
@@ -86,14 +93,14 @@ extension EUActivityButton{
                                                    toItem: nil,
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1.0,
-                                                   constant: 20))
+                                                   constant: imgWidth))
         img.addConstraint(NSLayoutConstraint(item: img,
                                                    attribute: .height,
                                                    relatedBy: .equal,
                                                    toItem: nil,
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1.0,
-                                                   constant: 20))
+                                                   constant: imgWidth))
         shadowimg.addConstraint(NSLayoutConstraint(item: img,
                                               attribute: .centerX,
                                               relatedBy: .equal,

@@ -67,7 +67,7 @@ extension EUCreatedActivityViewController{
         scrollView.addSubview(functionview)
      
         let buttonWidth:CGFloat = 50
-        let margin = (UIScreen.main.bounds.width - 4 * buttonWidth) / 5
+        let margin = (functionview.bounds.width - 4 * buttonWidth) / 5
         
         let checkBtn = EUActivityButton(frame: CGRect(x: margin, y: 8, width: buttonWidth, height: buttonWidth), image: UIImage(named: "av_check")!, text: "审核", shadowimage: UIImage(named: "av_shadow_orange")!)
         functionview.addSubview(checkBtn)
