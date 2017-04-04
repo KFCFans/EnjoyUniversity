@@ -39,9 +39,7 @@ class Activity:NSObject{
     
     // 活动状态
     var avState:Int = 0
-    
-    // 活动背景图片地址
-    var avBackground:String?
+
     
     // 签到信息，4位数字，-1代表无需签到
     var avRegister:Int = 0
