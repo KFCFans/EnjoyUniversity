@@ -79,7 +79,6 @@ extension EUBaseAvtivityViewController{
         view.backgroundColor = UIColor.init(colorLiteralRed: 242.0/255.0, green: 242.0/255.0, blue: 242/255.0, alpha: 1)
         
         // 背景图(后面用 Kingfisher 加载)
-        backgroudImage.image = UIImage(named: "tempbackground")
         backgroudImage.clipsToBounds = true
         
         // 返回按钮
@@ -111,7 +110,6 @@ extension EUBaseAvtivityViewController{
         warn.frame = CGRect(x: 3, y: 1.5, width: 15, height: 15)
         noticeview.addSubview(warn)
         
-        warnLabel.text = "需要签到"
         warnLabel.textColor = UIColor.white
         warnLabel.font = UIFont.boldSystemFont(ofSize: 12)
         warnLabel.frame = CGRect(x: 22, y: 1.5, width: 60, height: 15)

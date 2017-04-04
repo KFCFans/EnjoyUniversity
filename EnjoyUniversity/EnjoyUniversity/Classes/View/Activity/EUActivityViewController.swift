@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import Kingfisher
 
 class EUActivityViewController: EUBaseAvtivityViewController {
     
@@ -27,6 +28,13 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             priceLabel.text = viewmodel?.price
             detailLabel.text = viewmodel?.activitymodel.avDetail ?? "详情加载失败"
             detailHeight = viewmodel?.detailHeight ?? 0.0
+            warnLabel.text = viewmodel?.needRegister
+            let url = URL(string: viewmodel?.activitymodel.avLogo ?? "")
+            backgroudImage.kf.setImage(with: url,
+                                       placeholder: UIImage(named: "tempbackground"),
+                                       options: [.transition(.fade(1))],
+                                       progressBlock: nil,
+                                       completionHandler: nil)
             
         }
         

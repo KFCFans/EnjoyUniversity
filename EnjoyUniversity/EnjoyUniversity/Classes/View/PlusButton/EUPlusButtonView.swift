@@ -167,7 +167,11 @@ extension EUPlusButtonView{
     
     /// 发送通知
     @objc fileprivate func startNotification(){
-        print("startNotification")
+        
+        guard let completion = completion else {
+            return
+        }
+        completion("EUMyActivityViewController")
         
     }
     

@@ -18,6 +18,14 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
             timeLabel.text = viewmodel?.allTime
             detailLabel.text = viewmodel?.activitymodel.avDetail
             detailHeight = viewmodel?.detailHeight ?? 0
+            warnLabel.text = viewmodel?.needRegister
+            let url = URL(string: viewmodel?.activitymodel.avLogo ?? "")
+            backgroudImage.kf.setImage(with: url,
+                                       placeholder: UIImage(named: "tempbackground"),
+                                       options: [.transition(.fade(1))],
+                                       progressBlock: nil,
+                                       completionHandler: nil)
+
         }
     }
 

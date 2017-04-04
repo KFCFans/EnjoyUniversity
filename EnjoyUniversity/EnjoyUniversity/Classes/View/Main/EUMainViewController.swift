@@ -112,7 +112,13 @@ extension EUMainViewController{
             
             let vc = cls.init()
             
-            self.present(vc, animated: true, completion: {
+            if let vc = vc as? EUMyActivityViewController{
+                vc.isFirstPageSelected = false
+            }
+            
+            let nav = EUNavigationController(rootViewController: vc)
+            
+            self.present(nav, animated: true, completion: {
                 v?.removeFromSuperview()
             })
             

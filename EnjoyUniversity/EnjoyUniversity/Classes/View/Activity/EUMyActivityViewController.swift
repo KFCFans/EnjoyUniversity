@@ -79,7 +79,19 @@ class EUMyActivityViewController: UIViewController {
         
         if !isFirstPageSelected {
             indicatorView?.setContentOffset(CGPoint(x: -swidth/2, y: 0), animated: false)
+            scrollView?.setContentOffset(CGPoint(x: swidth, y: scrollView?.contentOffset.y ?? 44), animated: false)
+
         }
+    }
+    
+    /// 从其他控制器跳转过来选择页面
+    func shouldSelectFirstPage(bool:Bool){
+       
+        if !bool {
+            
+            isFirstPageSelected = false
+        }
+        
     }
     
     // 加载我参加的活动数据
@@ -135,6 +147,11 @@ extension EUMyActivityViewController{
         navbar.items = [navitem]
         
         navitem.title = "我的活动"
+        
+        if navitem.leftBarButtonItem == nil {
+            let btn =  UIBarButtonItem(image: UIImage(named: "nav_back"), style: .plain, target: nil, action: #selector(dismissController))
+            navitem.leftBarButtonItem = btn
+        }
         
     }
 
@@ -310,6 +327,10 @@ extension EUMyActivityViewController{
         
         isFirstPageSelected = false
         
+    }
+    
+    @objc fileprivate func dismissController(){
+        dismiss(animated: true, completion: nil)
     }
     
 
