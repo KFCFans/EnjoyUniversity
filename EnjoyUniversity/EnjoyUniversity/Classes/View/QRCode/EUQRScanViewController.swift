@@ -27,6 +27,11 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
         navitem.rightBarButtonItem = barButtonItem
         navitem.title = "扫一扫"
         
+        if navitem.leftBarButtonItem == nil {
+            let leftBtn = UIBarButtonItem(image: UIImage(named: "nav_back"), style: .plain, target: nil, action: #selector(dismissController))
+            navitem.leftBarButtonItem = leftBtn
+        }
+        
         view.insertSubview(cameraView, belowSubview: navbar)
         
         //初始化捕捉设备（AVCaptureDevice），类型AVMdeiaTypeVideo
@@ -146,4 +151,13 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
         print(result.messageString ?? String())
         
     }
+}
+
+// MARK: - 监听方法
+extension EUQRScanViewController{
+    
+    @objc fileprivate func dismissController(){
+        dismiss(animated: true, completion: nil)
+    }
+    
 }

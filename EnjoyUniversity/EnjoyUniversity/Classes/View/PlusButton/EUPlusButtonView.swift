@@ -159,7 +159,10 @@ extension EUPlusButtonView{
     
     /// 扫描二维码
     @objc fileprivate func startQRCodeScanner(){
-        print("startQRCodeScanner")
+        guard let completion = completion else {
+            return
+        }
+        completion("EUQRScanViewController")
     }
     
     /// 发送通知
