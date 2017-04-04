@@ -64,7 +64,7 @@ class EUHomeViewController: EUBaseViewController {
         
         activitylist.loadActivityList(isPullingUp: isPullUp) { (isSuccess,needReload) in
          
-            self.refreshControl.endRefreshing()
+            self.refreshControl?.endRefreshing()
             if needReload {
 
                 self.tableview.reloadData()

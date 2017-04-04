@@ -14,7 +14,7 @@ class EUBaseViewController: UIViewController {
     lazy var tableview = UITableView(frame: UIScreen.main.bounds, style: .plain)
     
     // 下拉刷新控件
-    let refreshControl = EURefreshControl()
+    var refreshControl:EURefreshControl?
     
     // 导航栏
     lazy var navbar = UINavigationBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 64))
@@ -24,8 +24,10 @@ class EUBaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        setupUI()
+        refreshControl = EURefreshControl()
         loadData()
+        setupUI()
+        
      
 
     }
@@ -36,7 +38,7 @@ class EUBaseViewController: UIViewController {
     }
     
     func loadData(){
-        refreshControl.endRefreshing()
+        refreshControl = nil
     }
     
 
@@ -49,7 +51,6 @@ extension EUBaseViewController{
         
         
         view.backgroundColor = UIColor.white
-
         
         // tableview 的代理和数据源方法
         tableview.dataSource = self
@@ -69,8 +70,10 @@ extension EUBaseViewController{
         view.addSubview(tableview)
         
         // 添加下拉刷新控件
-        tableview.addSubview(refreshControl)
-        refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        if let refreshControl = refreshControl {
+            tableview.addSubview(refreshControl)
+            refreshControl.addTarget(self, action: #selector(loadData), for: .valueChanged)
+        }
         
         setupNavBar()
         
