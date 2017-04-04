@@ -80,7 +80,6 @@ extension EUMainViewController{
     fileprivate func setupPlusButton(){
         
         let btn = UIButton()
-//        btn.setBackgroundImage(UIImage(named: "tabbar_compose_button"), for: .normal)
         btn.setImage(UIImage(named: "tabbar_plus"), for: .normal)
         
         let width = UIScreen.main.bounds.width / 5
@@ -104,7 +103,20 @@ extension EUMainViewController{
         let v = EUPlusButtonView()
         
         
-        v.showPlusButtonView()
+        v.showPlusButtonView { [weak v] (clsName) in
+            
+            guard let cls = NSClassFromString(Bundle.main.namespace + "." + clsName) as? UIViewController.Type else{
+                v?.removeFromSuperview()
+                return
+            }
+            
+            let vc = cls.init()
+            
+            self.present(vc, animated: true, completion: {
+                v?.removeFromSuperview()
+            })
+            
+        }
     }
     
 }

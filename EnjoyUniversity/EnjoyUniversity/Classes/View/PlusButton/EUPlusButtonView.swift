@@ -18,6 +18,9 @@ class EUPlusButtonView: UIView {
     var activityBtn:EUActivityButton?
     // 发布通知按钮
     var notifyBtn:EUActivityButton?
+    
+    // 记录闭包
+    var completion:((String)->())?
 
     override init(frame: CGRect) {
         super.init(frame: UIScreen.main.bounds)
@@ -29,7 +32,9 @@ class EUPlusButtonView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func showPlusButtonView(){
+    func showPlusButtonView(completion:@escaping (String)->()){
+        
+        self.completion = completion
         
         // 取得根视图控制器（否则无法遮住 tabbar）
         guard let rootvc = UIApplication.shared.keyWindow?.rootViewController as? EUMainViewController else{
@@ -145,7 +150,11 @@ extension EUPlusButtonView{
     
     /// 发起活动
     @objc fileprivate func startActivity(){
-        print("startActivity")
+        
+        guard let completion = completion else {
+            return
+        }
+        completion("EUStartActivityViewController")
     }
     
     /// 扫描二维码

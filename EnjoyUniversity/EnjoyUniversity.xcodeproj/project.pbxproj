@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		262F97B75474F25664E9074A /* Pods_EnjoyUniversityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D885B98299ED2C5A1AA6E7F /* Pods_EnjoyUniversityUITests.framework */; };
+		36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */; };
 		3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3609A01D1E909E9D007FD55C /* EUActivityButton.swift */; };
 		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
 		3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */; };
@@ -16,6 +17,7 @@
 		362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665721E8FE162005ED501 /* EUActivityCell.swift */; };
 		362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362665731E8FE162005ED501 /* EUActivityCell.xib */; };
 		362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665741E8FE162005ED501 /* EUMyActivityViewController.swift */; };
+		363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AC75B1E936167008350CC /* SwiftyTimePicker.swift */; };
 		3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
 		365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */; };
@@ -76,6 +78,7 @@
 /* Begin PBXFileReference section */
 		24C99E6F09D2570C831C0D9D /* Pods-EnjoyUniversityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversityUITests/Pods-EnjoyUniversityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		33300CEBB8EF0944BE216447 /* Pods-EnjoyUniversity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversity.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversity/Pods-EnjoyUniversity.release.xcconfig"; sourceTree = "<group>"; };
+		36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartActivityViewController.swift; sourceTree = "<group>"; };
 		3609A01D1E909E9D007FD55C /* EUActivityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityButton.swift; sourceTree = "<group>"; };
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
@@ -84,6 +87,7 @@
 		362665721E8FE162005ED501 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
 		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		362665741E8FE162005ED501 /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
+		363AC75B1E936167008350CC /* SwiftyTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimePicker.swift; sourceTree = "<group>"; };
 		3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
 		365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCreatedActivityViewController.swift; sourceTree = "<group>"; };
@@ -201,6 +205,7 @@
 		3626656F1E8FE02F005ED501 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
+				363AC75B1E936167008350CC /* SwiftyTimePicker.swift */,
 				3609A01D1E909E9D007FD55C /* EUActivityButton.swift */,
 				362665721E8FE162005ED501 /* EUActivityCell.swift */,
 				362665731E8FE162005ED501 /* EUActivityCell.xib */,
@@ -208,6 +213,7 @@
 				362665701E8FE118005ED501 /* EUActivityViewController.swift */,
 				365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */,
 				365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */,
+				36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -727,6 +733,7 @@
 				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
 				3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */,
 				362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */,
+				36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
 				36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */,
 				3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */,
@@ -742,6 +749,7 @@
 				36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */,
 				36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */,
 				36839BFC1E8D457800612729 /* Activity.swift in Sources */,
+				363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */,
 				36BDBB3F1E6416FF0075A3ED /* EUHomeViewController.swift in Sources */,
 				36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */,
 				36BDBB391E64135A0075A3ED /* EUMainViewController.swift in Sources */,
