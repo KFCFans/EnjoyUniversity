@@ -25,6 +25,11 @@ class EUStartActivityViewController: EUBaseViewController {
         
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: INPUTCELL)
         
+        //添加一个UITableViewController
+        let tableVC = UITableViewController.init(style: .plain)
+        tableVC.tableView = self.tableview
+        self.addChildViewController(tableVC)
+        
         
         // 点击添加图片
         let addPicBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
