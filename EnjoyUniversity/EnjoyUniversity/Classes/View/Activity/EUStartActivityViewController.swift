@@ -19,7 +19,25 @@ class EUStartActivityViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navitem.title = "发布活动"
+        setupUI()
+        
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+
+
+}
+
+// MARK: - UI 相关方法
+extension EUStartActivityViewController{
+    
+    // 父类方法设置为了 fileprivate ，子类无法继承
+    fileprivate func setupUI(){
         
         tableview.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         
@@ -37,20 +55,23 @@ class EUStartActivityViewController: EUBaseViewController {
         addPicBtn.setImage(UIImage(named: "sav_start"), for: .normal)
         
         tableview.tableHeaderView = addPicBtn
-        
-        
-    }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
-    func back(){
-        dismiss(animated: true, completion: nil)
+    // 重写父类方法
+    override func setupNavBar() {
+        
+        super.setupNavBar()
+        
+        navitem.title = "发布活动"
+        
+        let leftBtn = UIBarButtonItem(title: "取消", style: .plain, target: nil, action: #selector(dissmissController))
+        navitem.leftBarButtonItem = leftBtn
+        
+        let rightBtn = UIBarButtonItem(title: "发布", style: .plain, target: nil, action: #selector(commitActivityToServer))
+        navitem.rightBarButtonItem = rightBtn
     }
-
-
+    
 }
 
 // MARK: - 代理相关方法
@@ -192,6 +213,20 @@ extension EUStartActivityViewController{
         }
     }
 
+}
+
+// MARK: - 监听方法
+extension EUStartActivityViewController{
+    
+    /// 取消按钮
+    @objc fileprivate func dissmissController(){
+        dismiss(animated: true, completion: nil)
+    }
+    
+    /// 发布按钮
+    @objc fileprivate func commitActivityToServer(){
+        
+    }
 }
 
 
