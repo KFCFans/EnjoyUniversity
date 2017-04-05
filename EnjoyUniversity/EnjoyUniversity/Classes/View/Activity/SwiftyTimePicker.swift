@@ -31,7 +31,7 @@ class SwiftyTimePicker: UIView {
     let timepicker = UIDatePicker()
     
     // 记录闭包
-    var pickerCompletion:((String)->())?
+    var pickerCompletion:((Bool,String)->())?
     
     /// 初始化时间选择弃
     ///
@@ -84,7 +84,7 @@ extension SwiftyTimePicker{
     
     
     // 闭包传值
-    func getDate(completion:@escaping (String)->()){
+    func getDate(completion:@escaping (Bool,String)->()){
         
         pickerCompletion = completion
     }
@@ -97,6 +97,9 @@ extension SwiftyTimePicker{
     
     @objc fileprivate func cancelDatePicker(){
         
+        if let pickerCompletion = pickerCompletion {
+            pickerCompletion(false,"")
+        }
         UIView.animate(withDuration: 0.25, animations: {
             self.frame.origin = CGPoint(x: 5, y: self.HEIGHT)
         }) { (_) in
@@ -113,7 +116,7 @@ extension SwiftyTimePicker{
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         let result = formatter.string(from: date)
         if let pickerCompletion = pickerCompletion{
-            pickerCompletion(result)
+            pickerCompletion(true,result)
         }
         self.delegate?.didConfirmTimePicker(date: result)
         UIView.animate(withDuration: 0.25, animations: {

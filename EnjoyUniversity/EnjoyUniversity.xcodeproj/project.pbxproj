@@ -93,7 +93,7 @@
 		362665721E8FE162005ED501 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
 		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		362665741E8FE162005ED501 /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
-		363AC75B1E936167008350CC /* SwiftyTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTimePicker.swift; sourceTree = "<group>"; };
+		363AC75B1E936167008350CC /* SwiftyTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyTimePicker.swift; path = ../../View/Activity/SwiftyTimePicker.swift; sourceTree = "<group>"; };
 		3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
 		365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCreatedActivityViewController.swift; sourceTree = "<group>"; };
@@ -205,6 +205,7 @@
 			children = (
 				360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */,
 				360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */,
+				363AC75B1E936167008350CC /* SwiftyTimePicker.swift */,
 			);
 			path = SwiftyControl;
 			sourceTree = "<group>";
@@ -228,7 +229,6 @@
 		3626656F1E8FE02F005ED501 /* Activity */ = {
 			isa = PBXGroup;
 			children = (
-				363AC75B1E936167008350CC /* SwiftyTimePicker.swift */,
 				3609A01D1E909E9D007FD55C /* EUActivityButton.swift */,
 				362665721E8FE162005ED501 /* EUActivityCell.swift */,
 				362665731E8FE162005ED501 /* EUActivityCell.xib */,

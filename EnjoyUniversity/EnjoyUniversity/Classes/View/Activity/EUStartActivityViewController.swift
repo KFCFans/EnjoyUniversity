@@ -39,6 +39,9 @@ class EUStartActivityViewController: EUBaseViewController {
     /// 是否开始招新
     let needResisterSwitch = UISwitch()
     
+    /// 当前时间
+    let currenttime = Int(Date().timeIntervalSince1970 * 1000).description
+    
     let INPUTCELL = "EUINPUTCELL"
 
     override func viewDidLoad() {
@@ -185,21 +188,22 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             endtimelabel.font = UIFont.boldSystemFont(ofSize: 14)
             stoptimelabel.font = UIFont.boldSystemFont(ofSize: 14)
             
-            //FIXME: - 初始化时使用当前时间
+            // 初始化时使用当前时间
+            let labeltime = timeStampToString(timeStamp: currenttime, formate: "YYYY-MM-dd HH:mm")
             if indexPath.row == 0 {
                 imgview.image = UIImage(named: "sav_startime")
                 titlelabel.text = "开始时间"
-                startimelabel.text = "2017-04-03 10:00"
+                startimelabel.text = labeltime
                 cell.addSubview(startimelabel)
             }else if indexPath.row == 1{
                 imgview.image = UIImage(named: "sav_endtime")
                 titlelabel.text = "结束时间"
-                endtimelabel.text = "2017-04-04 10:00"
+                endtimelabel.text = labeltime
                 cell.addSubview(endtimelabel)
             }else{
                 imgview.image = UIImage(named: "sav_stopenroll")
                 titlelabel.text = "报名截止时间"
-                stoptimelabel.text = "2017-04-04 10:00"
+                stoptimelabel.text = labeltime
                 cell.addSubview(stoptimelabel)
             }
             
@@ -249,20 +253,23 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             view.addSubview(timepicker)
             switch indexPath.row {
             case 0:
-                timepicker.getDate(completion: { (date) in
-                    self.startimelabel.text = date
+                timepicker.getDate(completion: { (ok,date) in
                     self.isSelectiongTime = false
+                    ok ? self.startimelabel.text = date : ()
+                    
                 })
             case 1:
-                timepicker.getDate(completion: { (date) in
-                    self.endtimelabel.text = date
+                timepicker.getDate(completion: { (ok,date) in
+
                     self.isSelectiongTime = false
+                    ok ? self.endtimelabel.text = date : ()
 
                 })
             case 2:
-                timepicker.getDate(completion: { (date) in
-                    self.stoptimelabel.text = date
+                timepicker.getDate(completion: { (ok,date) in
+                    
                     self.isSelectiongTime = false
+                    ok ? self.stoptimelabel.text = date : ()
 
                 })
             default:
@@ -355,21 +362,58 @@ extension EUStartActivityViewController{
     /// 发布按钮
     @objc fileprivate func commitActivityToServer(){
         
+        // 判断
+        if !activityName.hasText {
+            let alertController = UIAlertController(title: nil,message: "请填写活动标题", preferredStyle: .alert)
+            present(alertController, animated: true, completion: nil)
+            // 1秒钟后自动消失
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                
+                alertController.dismiss(animated: true, completion: nil)
+            }
+            return
+            
+
+        }
+        if !activityPlace.hasText {
+            let alertController = UIAlertController(title: nil,message: "请填写活动地点", preferredStyle: .alert)
+            present(alertController, animated: true, completion: nil)
+            // 1秒钟后自动消失
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                
+                alertController.dismiss(animated: false, completion: nil)
+            }
+            return
+        }
+        
         //FIXME:上传图片
         
         // 非必填信息
         let avNum = Int(activityName.text ?? "") ?? 0
         let avPrice = Float(activityPrice.text ?? "") ?? Float(0)
         let register = needResisterSwitch.isOn ? 0 : -1
+        let avDetail = activityDetail.text
         
-        guard let avName = activityName.text,
-              let avStartime = startimelabel.text,
-              let avEndtime = endtimelabel.text,
-              let avDetail = activityDetail.text,
-              let avPlace = activityPlace.text,
-              let avstoptime = stoptimelabel.text else {
+        // 一定有值但是要判断逻辑
+        let avStartime = stringToTimeStamp(stringTime: startimelabel.text ?? "")
+        let avEndtime = stringToTimeStamp(stringTime: endtimelabel.text ?? "")
+        let avstoptime = stringToTimeStamp(stringTime: stoptimelabel.text ?? "")
+        
+        // 必填信息
+        let avPlace = activityPlace.text
+        let avName = activityName.text
+        
+        // 时间判断
+        if avEndtime <= avStartime || avstoptime > avEndtime || avstoptime <= avStartime || avStartime < currenttime{
             
-                return
+            let alertController = UIAlertController(title: nil,message: "请选择正确的时间", preferredStyle: .alert)
+            present(alertController, animated: true, completion: nil)
+            // 1秒钟后自动消失
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                
+                alertController.dismiss(animated: false, completion: nil)
+            }
+            return
         }
         
         let activity = Activity()
@@ -378,14 +422,16 @@ extension EUStartActivityViewController{
         activity.avPrice = avPrice
         activity.avPlace = avPlace
         activity.avExpectnum = avNum
-        activity.avStarttime = stringToTimeStamp(stringTime: avStartime)
-        activity.avEndtime = stringToTimeStamp(stringTime: avEndtime)
-        activity.avEnrolldeadline = stringToTimeStamp(stringTime: avstoptime)
+        activity.avStarttime = avStartime
+        activity.avEndtime = avEndtime
+        activity.avEnrolldeadline = avstoptime
         activity.avRegister = register
         
         EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
             
-            print(isSuccess)
+            if isSuccess{
+                self.dismiss(animated: true, completion: nil)
+            }
             
         }
         

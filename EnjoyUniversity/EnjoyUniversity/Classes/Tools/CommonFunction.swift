@@ -44,7 +44,7 @@ func createImage(size:CGSize,color:UIColor)->UIImage{
 ///
 /// - Parameter timeStamp: 时间戳
 /// - Returns: 人看得懂的时间
-func timeStampToString(timeStamp:String?)->String? {
+func timeStampToString(timeStamp:String?,formate:String = "MM-dd HH:mm")->String? {
     
     guard let timeStamp = timeStamp else{
         return nil
@@ -54,7 +54,7 @@ func timeStampToString(timeStamp:String?)->String? {
     
     let timeSta:TimeInterval = string.doubleValue
     let dfmatter = DateFormatter()
-    dfmatter.dateFormat="MM-dd HH:mm"
+    dfmatter.dateFormat = formate
     
     let date = NSDate(timeIntervalSince1970: timeSta/1000)
     
