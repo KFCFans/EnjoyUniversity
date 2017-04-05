@@ -32,6 +32,9 @@ class EUStartActivityViewController: EUBaseViewController {
 
     /// 活动人数
     let activityNum = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
+    
+    /// 活动价格
+    let activityPrice = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
 
     /// 是否开始招新
     let needResisterSwitch = UISwitch()
@@ -105,21 +108,15 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
         switch section {
         case 0:
             return 2
-        case 3:
-            return 3
-        case 1:
-            return 1
-        case 2:
-            return 1
         case 4:
-            return 1
+            return 3
         default:
             return 1
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 5
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -145,14 +142,22 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
                 activityDetail.font = UIFont.boldSystemFont(ofSize: 15)
                 cell.addSubview(activityDetail)
             }
-        }else if indexPath.section == 1 {
+        }else if indexPath.section == 1{
+            let imgview = UIImageView(frame: CGRect(x: 12, y: 18, width: 20, height: 20))
+            imgview.image = UIImage(named: "sav_price")
+            cell.addSubview(imgview)
+            
+            activityPrice.placeholder = "活动价格"
+            activityPrice.keyboardType = .decimalPad
+            cell.addSubview(activityPrice)
+        }else if indexPath.section == 2{
             let imgview = UIImageView(frame: CGRect(x: 12, y: 18, width: 20, height: 20))
             imgview.image = UIImage(named: "sav_place")
             cell.addSubview(imgview)
             
             activityPlace.placeholder = "活动地点"
             cell.addSubview(activityPlace)
-        }else if indexPath.section == 2{
+        }else if indexPath.section == 3{
             
             let imgview = UIImageView(frame: CGRect(x: 12, y: 18, width: 20, height: 20))
             imgview.image = UIImage(named: "sav_num")
@@ -162,7 +167,7 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             activityNum.keyboardType = .numberPad
             cell.addSubview(activityNum)
             
-        }else if indexPath.section == 3{
+        }else if indexPath.section == 4{
             
             let moreimgview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 26, y: 21, width: 14, height: 14))
             
@@ -199,7 +204,7 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             }
             
             
-        }else if indexPath.section == 4{
+        }else if indexPath.section == 5{
             
             let imgview = UIImageView(frame: CGRect(x: 12, y: 18, width: 20, height: 20))
             imgview.image = UIImage(named: "sav_register")
@@ -234,7 +239,7 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
         
-        if indexPath.section == 3  {
+        if indexPath.section == 4  {
             // 如果已经处于选择状态，直接返回即可
             if isSelectiongTime {
                 return
@@ -295,11 +300,8 @@ extension EUStartActivityViewController{
         dismiss(animated: true, completion: nil)
     }
     
-    /// 发布按钮
-    @objc fileprivate func commitActivityToServer(){
-        
-    }
     
+    /// 选择照片
     @objc fileprivate func selectActivityPicture(){
         
         let alterview = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
@@ -348,6 +350,16 @@ extension EUStartActivityViewController{
         alterview.addAction(cancelaction)
         
         self.present(alterview, animated: true, completion: nil)
+    }
+    
+    /// 发布按钮
+    @objc fileprivate func commitActivityToServer(){
+        
+//        let avName = activityName.text
+//        let avDetail = activityDetail.text
+        
+        
+        
     }
 }
 
