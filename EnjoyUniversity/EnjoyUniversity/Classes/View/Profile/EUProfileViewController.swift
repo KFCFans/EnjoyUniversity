@@ -168,8 +168,8 @@ extension EUProfileViewController{
     }
     
     // 监听响应
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath)
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableview, didSelectRowAt: indexPath)
     }
     
     

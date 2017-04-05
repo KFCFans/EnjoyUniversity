@@ -134,8 +134,8 @@ extension EUDiscoverViewController{
         return UIScreen.main.bounds.width * 0.618
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
         let vc = EUCommunityInfoViewController()
         vc.viewmodel = communityListVM.modelList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)

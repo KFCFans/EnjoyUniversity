@@ -116,4 +116,10 @@ extension EUBaseViewController:UITableViewDelegate,UITableViewDataSource{
         return UITableViewCell()
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let cell = tableview.cellForRow(at: indexPath)
+        cell?.selectionStyle = .none
+    }
+    
 }

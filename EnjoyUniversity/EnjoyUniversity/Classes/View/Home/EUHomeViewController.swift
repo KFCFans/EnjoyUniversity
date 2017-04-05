@@ -202,8 +202,8 @@ extension EUHomeViewController{
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
         let av = EUActivityViewController()
         av.viewmodel = activitylist.vmlist[indexPath.row]
         navigationController?.pushViewController(av, animated: true)

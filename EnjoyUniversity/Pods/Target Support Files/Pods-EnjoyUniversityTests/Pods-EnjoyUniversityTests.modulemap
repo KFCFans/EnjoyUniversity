@@ -1,0 +1,6 @@
+framework module Pods_EnjoyUniversityTests {
+  umbrella header "Pods-EnjoyUniversityTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
