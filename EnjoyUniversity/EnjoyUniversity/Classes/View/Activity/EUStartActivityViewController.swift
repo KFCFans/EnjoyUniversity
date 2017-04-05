@@ -14,6 +14,8 @@ class EUStartActivityViewController: EUBaseViewController {
     let endtimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     let stoptimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     
+    let addPicBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
+    
     let INPUTCELL = "EUINPUTCELL"
 
     override func viewDidLoad() {
@@ -43,6 +45,8 @@ extension EUStartActivityViewController{
         
         tableview.register(UITableViewCell.self, forCellReuseIdentifier: INPUTCELL)
         
+        tableview.keyboardDismissMode = .onDrag
+        
         //添加一个UITableViewController
         let tableVC = UITableViewController.init(style: .plain)
         tableVC.tableView = self.tableview
@@ -50,10 +54,9 @@ extension EUStartActivityViewController{
         
         
         // 点击添加图片
-        let addPicBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
         addPicBtn.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
         addPicBtn.setImage(UIImage(named: "sav_start"), for: .normal)
-        
+        addPicBtn.addTarget(nil, action: #selector(selectActivityPicture), for: .touchUpInside)
         tableview.tableHeaderView = addPicBtn
 
     }
@@ -75,7 +78,7 @@ extension EUStartActivityViewController{
 }
 
 // MARK: - 代理相关方法
-extension EUStartActivityViewController{
+extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINavigationControllerDelegate,SwiftyPhotoClipperDelegate{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -88,13 +91,15 @@ extension EUStartActivityViewController{
             return 1
         case 2:
             return 1
+        case 4:
+            return 1
         default:
             return 1
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 5
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -175,7 +180,25 @@ extension EUStartActivityViewController{
             }
             
             
+        }else if indexPath.section == 4{
+            
+            let imgview = UIImageView(frame: CGRect(x: 12, y: 18, width: 20, height: 20))
+            imgview.image = UIImage(named: "sav_register")
+            cell.addSubview(imgview)
+            
+            let titlelabel = UILabel(frame: CGRect(x: 42, y: 21, width: 100, height: 14))
+            titlelabel.font = UIFont.boldSystemFont(ofSize: 14)
+            titlelabel.text = "是否开启签到"
+            titlelabel.font = UIFont.boldSystemFont(ofSize: 14)
+            cell.addSubview(titlelabel)
+            
+            let switchBtn = UISwitch()
+            switchBtn.frame.origin = CGPoint(x: UIScreen.main.bounds.width - switchBtn.frame.size.width - 22, y: (56.0 - switchBtn.frame.size.height)/2)
+            switchBtn.isOn = false
+            cell.addSubview(switchBtn)
+            
         }
+
         return cell
     }
     
@@ -212,6 +235,25 @@ extension EUStartActivityViewController{
             }
         }
     }
+    
+    //／ 相机 和 图片
+    //选择图片成功后代理
+    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let resultimg = info[UIImagePickerControllerOriginalImage] as? UIImage else{
+            return
+        }
+        picker.dismiss(animated: false) {
+            let clipper = SwiftyPhotoClipper()
+            clipper.img = resultimg
+            clipper.delegate = self
+            self.present(clipper, animated: true, completion: nil)
+        }
+    }
+    
+    func didFinishClippingPhoto(image: UIImage) {
+        addPicBtn.setImage(image, for: .normal)
+    }
+
 
 }
 
@@ -226,6 +268,56 @@ extension EUStartActivityViewController{
     /// 发布按钮
     @objc fileprivate func commitActivityToServer(){
         
+    }
+    
+    @objc fileprivate func selectActivityPicture(){
+        
+        let alterview = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        
+        let carmeraction = UIAlertAction(title: "拍照", style: .default) { (_) in
+            
+            //判断设置是否支持图片库
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                //初始化图片控制器
+                let picker = UIImagePickerController()
+                //设置代理
+                picker.delegate = self
+                //指定图片控制器类型
+                picker.sourceType = UIImagePickerControllerSourceType.camera
+                //设置是否允许编辑
+                picker.allowsEditing = false
+                //弹出控制器，显示界面
+                self.present(picker, animated: true, completion: nil)
+            }
+            
+        }
+        
+        let photoaction = UIAlertAction(title: "从相册中选择", style: .default) { (_) in
+            //判断设置是否支持图片库
+            if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
+                //初始化图片控制器
+                let picker = UIImagePickerController()
+                //设置代理
+                picker.delegate = self
+                //指定图片控制器类型
+                picker.sourceType = UIImagePickerControllerSourceType.photoLibrary
+                //设置是否允许编辑
+                picker.allowsEditing = false
+                //弹出控制器，显示界面
+                self.present(picker, animated: true, completion: nil)
+            }
+        }
+        
+        let cancelaction = UIAlertAction(title: "取消", style: .cancel) { (_) in
+            
+        }
+        
+        alterview.addAction(carmeraction)
+        alterview.addAction(photoaction)
+        alterview.addAction(cancelaction)
+        
+        self.present(alterview, animated: true, completion: nil)
     }
 }
 

@@ -11,6 +11,7 @@
 		36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */; };
 		3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3609A01D1E909E9D007FD55C /* EUActivityButton.swift */; };
 		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
+		360FA3E91E94DB75002A5FF0 /* SwiftyPhotoClipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */; };
 		3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */; };
 		3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */; };
 		362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665701E8FE118005ED501 /* EUActivityViewController.swift */; };
@@ -81,6 +82,7 @@
 		36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartActivityViewController.swift; sourceTree = "<group>"; };
 		3609A01D1E909E9D007FD55C /* EUActivityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityButton.swift; sourceTree = "<group>"; };
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
+		360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPhotoClipper.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityInfoViewController.swift; sourceTree = "<group>"; };
 		362665701E8FE118005ED501 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				36BDBB461E641DFF0075A3ED /* Extension */,
 				3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */,
 				36638A7B1E8A785700E6DF17 /* EUCommon.swift */,
+				360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -506,7 +509,7 @@
 				TargetAttributes = {
 					36BDBAF81E640A390075A3ED = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = HR6CZ7SBBE;
+						DevelopmentTeam = 7PZ7W7SYEE;
 						ProvisioningStyle = Automatic;
 					};
 					36BDBB0C1E640A390075A3ED = {
@@ -749,6 +752,7 @@
 				36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */,
 				36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */,
 				36839BFC1E8D457800612729 /* Activity.swift in Sources */,
+				360FA3E91E94DB75002A5FF0 /* SwiftyPhotoClipper.swift in Sources */,
 				363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */,
 				36BDBB3F1E6416FF0075A3ED /* EUHomeViewController.swift in Sources */,
 				36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */,
@@ -886,11 +890,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = HR6CZ7SBBE;
+				DEVELOPMENT_TEAM = 7PZ7W7SYEE;
 				INFOPLIST_FILE = EnjoyUniversity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lip.EnjoyUniversity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.euswag.eu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -902,11 +906,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				DEVELOPMENT_TEAM = HR6CZ7SBBE;
+				DEVELOPMENT_TEAM = 7PZ7W7SYEE;
 				INFOPLIST_FILE = EnjoyUniversity/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.lip.EnjoyUniversity;
+				PRODUCT_BUNDLE_IDENTIFIER = com.euswag.eu;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
