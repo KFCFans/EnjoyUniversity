@@ -121,7 +121,9 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             }
             if indexPath.row == 1 {
                 
-                let textview = UITextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145))
+                let textview = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "填写活动描述，让更多的人参与活动...")
+                textview.textColor = UIColor.darkText
+                textview.font = UIFont.boldSystemFont(ofSize: 15)
                 cell.addSubview(textview)
             }
         }else if indexPath.section == 1 {
@@ -213,7 +215,8 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
         return 10
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
         if indexPath.section == 3  {
             let timepicker = SwiftyTimePicker(height: 260)
             view.addSubview(timepicker)

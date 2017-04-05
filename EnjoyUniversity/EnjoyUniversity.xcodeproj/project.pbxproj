@@ -12,6 +12,7 @@
 		3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3609A01D1E909E9D007FD55C /* EUActivityButton.swift */; };
 		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
 		360FA3E91E94DB75002A5FF0 /* SwiftyPhotoClipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */; };
+		360FA3ED1E94E653002A5FF0 /* SwiftyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */; };
 		3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */; };
 		3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */; };
 		362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665701E8FE118005ED501 /* EUActivityViewController.swift */; };
@@ -82,7 +83,8 @@
 		36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartActivityViewController.swift; sourceTree = "<group>"; };
 		3609A01D1E909E9D007FD55C /* EUActivityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityButton.swift; sourceTree = "<group>"; };
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
-		360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPhotoClipper.swift; sourceTree = "<group>"; };
+		360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyPhotoClipper.swift; path = ../SwiftyPhotoClipper.swift; sourceTree = "<group>"; };
+		360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTextView.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityInfoViewController.swift; sourceTree = "<group>"; };
 		362665701E8FE118005ED501 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +198,15 @@
 			path = PlusButton;
 			sourceTree = "<group>";
 		};
+		360FA3EB1E94E639002A5FF0 /* SwiftyControl */ = {
+			isa = PBXGroup;
+			children = (
+				360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */,
+				360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */,
+			);
+			path = SwiftyControl;
+			sourceTree = "<group>";
+		};
 		3619C4AF1E90E3C6005FEA5E /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -306,9 +317,9 @@
 				36E0D5F01E8D40BB0072E8C2 /* EURefreshControl */,
 				36638A761E8A4E5D00E6DF17 /* NetWork */,
 				36BDBB461E641DFF0075A3ED /* Extension */,
+				360FA3EB1E94E639002A5FF0 /* SwiftyControl */,
 				3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */,
 				36638A7B1E8A785700E6DF17 /* EUCommon.swift */,
-				360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -719,6 +730,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */,
+				360FA3ED1E94E653002A5FF0 /* SwiftyTextView.swift in Sources */,
 				365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */,
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
