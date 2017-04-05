@@ -13,6 +13,7 @@ class EUStartActivityViewController: EUBaseViewController {
     /// 解决快速点击时间选择框弹出多个时间选择器
     var isSelectiongTime:Bool = false
     
+    
     /// 三个时间
     let startimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     let endtimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
@@ -41,6 +42,14 @@ class EUStartActivityViewController: EUBaseViewController {
     
     /// 当前时间
     let currenttime = Int(Date().timeIntervalSince1970 * 1000).description
+    
+    /// 缓存时间，解决滚动后失去时间
+    var startime = timeStampToString(timeStamp: Int(Date().timeIntervalSince1970 * 1000).description, formate: "YYYY-MM-dd HH:mm")
+    var endtime = timeStampToString(timeStamp: Int(Date().timeIntervalSince1970 * 1000).description, formate: "YYYY-MM-dd HH:mm")
+    var stoptime = timeStampToString(timeStamp: Int(Date().timeIntervalSince1970 * 1000).description, formate: "YYYY-MM-dd HH:mm")
+
+    /// 是否自动设置报名截止时间
+    var autoSetStopTime:Bool = true
     
     let INPUTCELL = "EUINPUTCELL"
 
@@ -124,7 +133,6 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        // 得到 Cell
         let cell = tableview.dequeueReusableCell(withIdentifier: INPUTCELL) ?? UITableViewCell()
         
         if indexPath.section == 0 {
@@ -189,22 +197,22 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             stoptimelabel.font = UIFont.boldSystemFont(ofSize: 14)
             
             // 初始化时使用当前时间
-            let labeltime = timeStampToString(timeStamp: currenttime, formate: "YYYY-MM-dd HH:mm")
             if indexPath.row == 0 {
                 imgview.image = UIImage(named: "sav_startime")
                 titlelabel.text = "开始时间"
-                startimelabel.text = labeltime
+                startimelabel.text = startime
                 cell.addSubview(startimelabel)
             }else if indexPath.row == 1{
                 imgview.image = UIImage(named: "sav_endtime")
                 titlelabel.text = "结束时间"
-                endtimelabel.text = labeltime
+                endtimelabel.text = endtime
                 cell.addSubview(endtimelabel)
             }else{
                 imgview.image = UIImage(named: "sav_stopenroll")
                 titlelabel.text = "报名截止时间"
-                stoptimelabel.text = labeltime
+                stoptimelabel.text = stoptime
                 cell.addSubview(stoptimelabel)
+                
             }
             
             
@@ -255,21 +263,33 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             case 0:
                 timepicker.getDate(completion: { (ok,date) in
                     self.isSelectiongTime = false
-                    ok ? self.startimelabel.text = date : ()
+                    if ok {
+                        self.startime = date
+                        self.startimelabel.text = date
+                        
+                        self.autoSetStopTime ? self.stoptimelabel.text = date : ()
+                    }
                     
                 })
             case 1:
                 timepicker.getDate(completion: { (ok,date) in
 
                     self.isSelectiongTime = false
-                    ok ? self.endtimelabel.text = date : ()
+                    if ok {
+                        self.endtime = date
+                        self.endtimelabel.text = date
+                    }
 
                 })
             case 2:
                 timepicker.getDate(completion: { (ok,date) in
                     
                     self.isSelectiongTime = false
-                    ok ? self.stoptimelabel.text = date : ()
+                    if ok {
+                        self.autoSetStopTime = false
+                        self.stoptime = date
+                        self.stoptimelabel.text = date
+                    }
 
                 })
             default:
@@ -404,7 +424,7 @@ extension EUStartActivityViewController{
         let avName = activityName.text
         
         // 时间判断
-        if avEndtime <= avStartime || avstoptime > avEndtime || avstoptime <= avStartime || avStartime < currenttime{
+        if avEndtime <= avStartime || avStartime < currenttime || avstoptime <= avStartime{
             
             let alertController = UIAlertController(title: nil,message: "请选择正确的时间", preferredStyle: .alert)
             present(alertController, animated: true, completion: nil)
