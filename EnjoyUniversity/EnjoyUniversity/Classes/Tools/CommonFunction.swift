@@ -62,6 +62,23 @@ func timeStampToString(timeStamp:String?)->String? {
 }
 
 
+/// 时间转时间戳
+///
+/// - Parameter stringTime: 人看的懂的时间
+/// - Returns: 时间戳
+func stringToTimeStamp(stringTime:String)->String {
+    
+    let dfmatter = DateFormatter()
+    dfmatter.dateFormat="yyyy-MM-dd HH:mm"
+    let date = dfmatter.date(from: stringTime)
+    let dateStamp:TimeInterval = date!.timeIntervalSince1970
+    let dateSt:Int = Int(dateStamp) * 1000
+    print(dateSt)
+    return String(dateSt)
+    
+}
+
+
 /// 计算文本高度
 ///
 /// - Parameters:

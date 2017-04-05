@@ -13,6 +13,7 @@
 		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
 		360FA3E91E94DB75002A5FF0 /* SwiftyPhotoClipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */; };
 		360FA3ED1E94E653002A5FF0 /* SwiftyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */; };
+		360FA3F01E95032F002A5FF0 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3EF1E95032F002A5FF0 /* RequestResult.swift */; };
 		3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */; };
 		3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */; };
 		362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665701E8FE118005ED501 /* EUActivityViewController.swift */; };
@@ -85,6 +86,7 @@
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
 		360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyPhotoClipper.swift; path = ../SwiftyPhotoClipper.swift; sourceTree = "<group>"; };
 		360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTextView.swift; sourceTree = "<group>"; };
+		360FA3EF1E95032F002A5FF0 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityInfoViewController.swift; sourceTree = "<group>"; };
 		362665701E8FE118005ED501 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,14 @@
 			path = SwiftyControl;
 			sourceTree = "<group>";
 		};
+		360FA3EE1E95031C002A5FF0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				360FA3EF1E95032F002A5FF0 /* RequestResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		3619C4AF1E90E3C6005FEA5E /* Community */ = {
 			isa = PBXGroup;
 			children = (
@@ -234,6 +244,7 @@
 		36638A761E8A4E5D00E6DF17 /* NetWork */ = {
 			isa = PBXGroup;
 			children = (
+				360FA3EE1E95031C002A5FF0 /* Model */,
 				36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */,
 				36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */,
 			);
@@ -759,6 +770,7 @@
 				36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
 				3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */,
+				360FA3F01E95032F002A5FF0 /* RequestResult.swift in Sources */,
 				36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */,
 				36BDBB4A1E6452090075A3ED /* Community.swift in Sources */,
 				36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */,

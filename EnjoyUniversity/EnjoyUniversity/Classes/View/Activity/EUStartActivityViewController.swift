@@ -355,8 +355,41 @@ extension EUStartActivityViewController{
     /// 发布按钮
     @objc fileprivate func commitActivityToServer(){
         
-//        let avName = activityName.text
-//        let avDetail = activityDetail.text
+        //FIXME:上传图片
+        
+        // 非必填信息
+        let avNum = Int(activityName.text ?? "") ?? 0
+        let avPrice = Float(activityPrice.text ?? "") ?? Float(0)
+        let register = needResisterSwitch.isOn ? 0 : -1
+        
+        guard let avName = activityName.text,
+              let avStartime = startimelabel.text,
+              let avEndtime = endtimelabel.text,
+              let avDetail = activityDetail.text,
+              let avPlace = activityPlace.text,
+              let avstoptime = stoptimelabel.text else {
+            
+                return
+        }
+        
+        let activity = Activity()
+        activity.avTitle = avName
+        activity.avDetail = avDetail
+        activity.avPrice = avPrice
+        activity.avPlace = avPlace
+        activity.avExpectnum = avNum
+        activity.avStarttime = stringToTimeStamp(stringTime: avStartime)
+        activity.avEndtime = stringToTimeStamp(stringTime: avEndtime)
+        activity.avEnrolldeadline = stringToTimeStamp(stringTime: avstoptime)
+        activity.avRegister = register
+        
+        EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
+            
+            print(isSuccess)
+            
+        }
+        
+        
         
         
         

@@ -9,6 +9,7 @@
 // MARK: - 封装具体的网络接口
 import Alamofire
 
+
 extension EUNetworkManager{
     
     
@@ -110,6 +111,53 @@ extension EUNetworkManager{
             
         }
         
+        
+    }
+    
+    /// 创建活动
+    func releaseActivity(activity:Activity,completion:@escaping (Bool)->()){
+     
+        let url = SERVERADDRESS + "/eu/activity/createav"
+        
+        var parameters = Parameters()
+        
+        // FIXME: 用户登陆后，获取用户 uid
+        parameters["uid"] = "15061883391"
+        
+        parameters["avTitle"] = activity.avTitle
+        parameters["avDetail"] = activity.avDetail
+        parameters["avPlace"] = activity.avPlace
+        parameters["avPrice"] = activity.avPrice
+        parameters["avExpectnum"] = activity.avExpectnum
+        parameters["avstarttime"] = activity.avStarttime
+        parameters["avendtime"] = activity.avEndtime
+        parameters["avenrolldeadline"] = activity.avEnrolldeadline
+        parameters["avRegister"] = activity.avRegister
+        
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
+         
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            guard let array = json as? [String:Any] else{
+                completion(false)
+                return
+            }
+            
+            if let status = array["status"] as? Int {
+                
+                if status == 200{
+                 
+                    completion(true)
+                }else{
+                    completion(false)
+                }
+                return
+                
+            }
+            
+        }
         
     }
     
