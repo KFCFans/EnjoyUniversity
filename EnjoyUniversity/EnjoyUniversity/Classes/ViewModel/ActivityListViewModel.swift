@@ -30,12 +30,12 @@ class ActivityListViewModel{
         
         var maxtime:String?
         
-        var mintime:String?
+//        var mintime:String?
         
         // 判断下拉刷新
-        if !isPullingUp && vmlist.count > 0 {
-            mintime = vmlist.first?.activitymodel.avStarttime
-        }
+//        if !isPullingUp && vmlist.count > 0 {
+//            mintime = vmlist.first?.activitymodel.avStarttime
+//        }
         
         // 判断上拉加载
         if isPullingUp && vmlist.count > 0 {
@@ -44,7 +44,7 @@ class ActivityListViewModel{
         
         
         
-        EUNetworkManager.shared.getActivityList(mintime: mintime, maxtime: maxtime) { (array, isSuccess) in
+        EUNetworkManager.shared.getActivityList(mintime: nil, maxtime: maxtime) { (array, isSuccess) in
             
             if !isSuccess{
                 completion(false,false)
@@ -73,7 +73,7 @@ class ActivityListViewModel{
             if isPullingUp{
                 self.vmlist = self.vmlist + tempvmlist
             }else{
-                self.vmlist = tempvmlist + self.vmlist
+                self.vmlist = tempvmlist
             }
             print("加载到的数据条数:\(tempvmlist.count)")
             completion(true, true)
