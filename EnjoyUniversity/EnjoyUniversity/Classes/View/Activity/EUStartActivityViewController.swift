@@ -13,11 +13,28 @@ class EUStartActivityViewController: EUBaseViewController {
     /// 解决快速点击时间选择框弹出多个时间选择器
     var isSelectiongTime:Bool = false
     
+    /// 三个时间
     let startimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     let endtimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     let stoptimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     
+    /// 添加图片按钮
     let addPicBtn = UIButton(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200))
+    
+    /// 活动名称
+    let activityName = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
+    
+    /// 活动详情
+    let activityDetail = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "填写活动描述，让更多的人参与活动...")
+    
+    /// 活动地点
+    let activityPlace = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
+
+    /// 活动人数
+    let activityNum = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
+
+    /// 是否开始招新
+    let needResisterSwitch = UISwitch()
     
     let INPUTCELL = "EUINPUTCELL"
 
@@ -117,36 +134,33 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
                 imgview.image = UIImage(named: "sav_activity")
                 cell.addSubview(imgview)
                 
-                let textfield = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
-                textfield.placeholder = "输入活动名称"
-                cell.addSubview(textfield)
+                activityName.placeholder = "输入活动名称"
+                cell.addSubview(activityName)
                 
             }
             if indexPath.row == 1 {
                 
-                let textview = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "填写活动描述，让更多的人参与活动...")
-                textview.textColor = UIColor.black
-                textview.font = UIFont.boldSystemFont(ofSize: 15)
-                cell.addSubview(textview)
+                
+                activityDetail.textColor = UIColor.black
+                activityDetail.font = UIFont.boldSystemFont(ofSize: 15)
+                cell.addSubview(activityDetail)
             }
         }else if indexPath.section == 1 {
             let imgview = UIImageView(frame: CGRect(x: 12, y: 18, width: 20, height: 20))
             imgview.image = UIImage(named: "sav_place")
             cell.addSubview(imgview)
             
-            let textfield = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
-            textfield.placeholder = "活动地点"
-            cell.addSubview(textfield)
+            activityPlace.placeholder = "活动地点"
+            cell.addSubview(activityPlace)
         }else if indexPath.section == 2{
             
             let imgview = UIImageView(frame: CGRect(x: 12, y: 18, width: 20, height: 20))
             imgview.image = UIImage(named: "sav_num")
             cell.addSubview(imgview)
             
-            let textfield = UITextField(frame: CGRect(x: 42, y: 18, width: UIScreen.main.bounds.width - 52, height: 20))
-            textfield.placeholder = "活动人数(人数不限填0哦)"
-            textfield.keyboardType = .numberPad
-            cell.addSubview(textfield)
+            activityNum.placeholder = "活动人数(人数不限填0哦)"
+            activityNum.keyboardType = .numberPad
+            cell.addSubview(activityNum)
             
         }else if indexPath.section == 3{
             
@@ -197,10 +211,9 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             titlelabel.font = UIFont.boldSystemFont(ofSize: 14)
             cell.addSubview(titlelabel)
             
-            let switchBtn = UISwitch()
-            switchBtn.frame.origin = CGPoint(x: UIScreen.main.bounds.width - switchBtn.frame.size.width - 22, y: (56.0 - switchBtn.frame.size.height)/2)
-            switchBtn.isOn = false
-            cell.addSubview(switchBtn)
+            needResisterSwitch.frame.origin = CGPoint(x: UIScreen.main.bounds.width - needResisterSwitch.frame.size.width - 22, y: (56.0 - needResisterSwitch.frame.size.height)/2)
+            needResisterSwitch.isOn = false
+            cell.addSubview(needResisterSwitch)
             
         }
 
