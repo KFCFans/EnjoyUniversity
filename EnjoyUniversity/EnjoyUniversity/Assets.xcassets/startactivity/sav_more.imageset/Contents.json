@@ -6,12 +6,12 @@
     },
     {
       "idiom" : "universal",
-      "filename" : "av_more.png",
+      "filename" : "sav_more.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "av_more64.png",
+      "filename" : "sav_more64.png",
       "scale" : "3x"
     }
   ],

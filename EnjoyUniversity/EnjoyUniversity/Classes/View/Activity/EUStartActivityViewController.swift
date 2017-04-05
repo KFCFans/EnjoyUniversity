@@ -10,6 +10,9 @@ import UIKit
 
 class EUStartActivityViewController: EUBaseViewController {
     
+    /// 解决快速点击时间选择框弹出多个时间选择器
+    var isSelectiongTime:Bool = false
+    
     let startimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     let endtimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     let stoptimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
@@ -122,7 +125,7 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             if indexPath.row == 1 {
                 
                 let textview = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "填写活动描述，让更多的人参与活动...")
-                textview.textColor = UIColor.darkText
+                textview.textColor = UIColor.black
                 textview.font = UIFont.boldSystemFont(ofSize: 15)
                 cell.addSubview(textview)
             }
@@ -147,7 +150,7 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             
         }else if indexPath.section == 3{
             
-            let moreimgview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 22, y: 23, width: 10, height: 10))
+            let moreimgview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 26, y: 21, width: 14, height: 14))
             
             moreimgview.image = UIImage(named: "sav_more")
             cell.addSubview(moreimgview)
@@ -217,21 +220,32 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
+        
         if indexPath.section == 3  {
+            // 如果已经处于选择状态，直接返回即可
+            if isSelectiongTime {
+                return
+            }
+            isSelectiongTime = true
             let timepicker = SwiftyTimePicker(height: 260)
             view.addSubview(timepicker)
             switch indexPath.row {
             case 0:
                 timepicker.getDate(completion: { (date) in
                     self.startimelabel.text = date
+                    self.isSelectiongTime = false
                 })
             case 1:
                 timepicker.getDate(completion: { (date) in
                     self.endtimelabel.text = date
+                    self.isSelectiongTime = false
+
                 })
             case 2:
                 timepicker.getDate(completion: { (date) in
                     self.stoptimelabel.text = date
+                    self.isSelectiongTime = false
+
                 })
             default:
                 return
