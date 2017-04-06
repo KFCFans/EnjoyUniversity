@@ -141,6 +141,8 @@ extension EUNetworkManager{
         parameters["avendtime"] = activity.avEndtime
         parameters["avenrolldeadline"] = activity.avEnrolldeadline
         parameters["avRegister"] = activity.avRegister
+        parameters["avLogo"] = activity.avLogo
+        
         
         tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
             
@@ -174,7 +176,12 @@ extension EUNetworkManager{
 // MARK: - 上传接口
 extension EUNetworkManager{
     
-    func uploadActivityLogo(uploadimg:UIImage){
+    /// 上传图片到服务器
+    ///
+    /// - Parameters:
+    ///   - uploadimg: 需要上传的图片
+    ///   - completion: 完成回调（是否成功，图片地址）
+    func uploadActivityLogo(uploadimg:UIImage,completion:@escaping (Bool,String?)->()){
         
         let url = SERVERADDRESS + "/eu/upload/activity"
         
@@ -184,34 +191,31 @@ extension EUNetworkManager{
         let filePath = "\(rootPath)/pickedimage.jpg"
         let imageData = UIImageJPEGRepresentation(uploadimg, 1.0)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
-        print(filePath)
         //上传图片
         if (fileManager.fileExists(atPath: filePath)){
-            //取得NSURL
-            //let imageNSURL:NSURL = NSURL.init(fileURLWithPath: filePath)
+
             Alamofire.upload(multipartFormData: { (multipartdata) in
                 
                 multipartdata.append(URL(fileURLWithPath: filePath), withName: "file")
                 
             }, to: url, encodingCompletion: { (encodingResult) in
                 
-           
                 // 接受从服务器返回的参数
                 switch encodingResult {
                 case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
                     upload.responseJSON(completionHandler: { (json) in
-                        print(json)
+                        
+                        let dict = json.result.value as? [String:Any] ?? [:]
+                        let address = dict["data"] as? String
+                        completion(true, address)
                     })
                     break
-                case .failure(let error):
-                    print(error)
+                case .failure( _):
+                    completion(false,nil)
                     break
                     
                 }
-                
             })
-
-            
             
         }
         

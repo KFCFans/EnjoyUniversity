@@ -411,12 +411,7 @@ extension EUStartActivityViewController{
             return
         }
         
-        //FIXME:上传图片
-        if let uploadImg = uploadImg{
-            EUNetworkManager.shared.uploadActivityLogo(uploadimg: uploadImg)
-        }
-        
-        
+        // 准备上传
         // 非必填信息
         let avNum = Int(activityName.text ?? "") ?? 0
         let avPrice = Float(activityPrice.text ?? "") ?? Float(0)
@@ -456,13 +451,45 @@ extension EUStartActivityViewController{
         activity.avEnrolldeadline = avstoptime
         activity.avRegister = register
         
-        EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
-            
-            if isSuccess{
-                self.dismiss(animated: true, completion: nil)
-            }
-            
+        //FIXME:上传图片
+        if let uploadImg = uploadImg{
+            EUNetworkManager.shared.uploadActivityLogo(uploadimg: uploadImg, completion: { (isSuccess, address) in
+              
+                if !isSuccess{
+                    let alertController = UIAlertController(title: nil,message: "提交失败，请重新提交", preferredStyle: .alert)
+                    self.present(alertController, animated: true, completion: nil)
+                    // 1秒钟后自动消失
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        
+                        alertController.dismiss(animated: false, completion: nil)
+                    }
+                    return
+                }
+                activity.avLogo = address
+                
+                EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
+                    
+                    if isSuccess{
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                    let alertController = UIAlertController(title: nil,message: "提交失败，请重新提交", preferredStyle: .alert)
+                    self.present(alertController, animated: true, completion: nil)
+                    // 1秒钟后自动消失
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                        
+                        alertController.dismiss(animated: false, completion: nil)
+                    }
+                    return
+                    
+                }
+                
+            })
         }
+        
+        
+        
+        
+        
         
         
         
