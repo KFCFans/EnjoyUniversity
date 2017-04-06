@@ -193,9 +193,24 @@ extension EUNetworkManager{
                 
                 multipartdata.append(URL(fileURLWithPath: filePath), withName: "file")
                 
-            }, to: url, encodingCompletion: { (result) in
-                print("result:\(result)")
+            }, to: url, encodingCompletion: { (encodingResult) in
+                
+           
+                // 接受从服务器返回的参数
+                switch encodingResult {
+                case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
+                    upload.responseJSON(completionHandler: { (json) in
+                        print(json)
+                    })
+                    break
+                case .failure(let error):
+                    print(error)
+                    break
+                    
+                }
+                
             })
+
             
             
         }
