@@ -19,7 +19,7 @@ class EUActivityCell: UITableViewCell {
             activityTime.text = activityVM?.startTime
             activityLocation.text = activityVM?.activitymodel.avPlace
             activityPrice.text = activityVM?.price
-            let iconurl = URL(string: activityVM?.activitymodel.avLogo ?? "")
+            let iconurl = URL(string: activityVM?.imageURL ?? "")
             activityIcon.kf.setImage(with: iconurl,
                                      placeholder: nil,
                                      options: nil,

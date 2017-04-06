@@ -34,6 +34,9 @@ class ActivityViewModel{
     /// 计算文本杭高
     var detailHeight:CGFloat = 0
     
+    /// 拼接 URL 地址
+    var imageURL:String?
+    
     init(model:Activity) {
         
         activitymodel = model
@@ -46,6 +49,8 @@ class ActivityViewModel{
         enrollDeadline = timeStampToString(timeStamp: activitymodel.avEnrolldeadline)
         needRegister = activitymodel.avRegister == -1 ? "无需签到" : "需要签到"
         detailHeight = calculateLabelHeight(text: activitymodel.avDetail ?? "",width: UIScreen.main.bounds.width - 40,font: 14)
+        
+        imageURL = PICTURESERVERADDRESS + "/activity/" + (model.avLogo ?? "") + ".jpg"
         
     }
     

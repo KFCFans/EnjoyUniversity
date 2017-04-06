@@ -19,7 +19,7 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
             detailLabel.text = viewmodel?.activitymodel.avDetail
             detailHeight = viewmodel?.detailHeight ?? 0
             warnLabel.text = viewmodel?.needRegister
-            let url = URL(string: viewmodel?.activitymodel.avLogo ?? "")
+            let url = URL(string: viewmodel?.imageURL ?? "")
             backgroudImage.kf.setImage(with: url,
                                        placeholder: UIImage(named: "tempbackground"),
                                        options: [.transition(.fade(1))],

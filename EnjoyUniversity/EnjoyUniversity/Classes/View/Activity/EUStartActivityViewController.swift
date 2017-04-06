@@ -465,7 +465,10 @@ extension EUStartActivityViewController{
                     }
                     return
                 }
-                activity.avLogo = address
+                
+                // 取图片名，不需要后缀
+                let picname = address?.components(separatedBy: ".").first ?? ""
+                activity.avLogo = picname
                 
                 EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
                     
