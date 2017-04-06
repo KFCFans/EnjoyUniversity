@@ -10,6 +10,7 @@
 import Alamofire
 
 
+// MARK: - 读取接口
 extension EUNetworkManager{
     
     
@@ -114,9 +115,16 @@ extension EUNetworkManager{
         
     }
     
+
+}
+
+// MARK: - 写入接口
+extension EUNetworkManager{
+    
+    
     /// 创建活动
     func releaseActivity(activity:Activity,completion:@escaping (Bool)->()){
-     
+        
         let url = SERVERADDRESS + "/eu/activity/createav"
         
         var parameters = Parameters()
@@ -135,7 +143,7 @@ extension EUNetworkManager{
         parameters["avRegister"] = activity.avRegister
         
         tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
-         
+            
             if !isSuccess{
                 completion(false)
                 return
@@ -148,7 +156,7 @@ extension EUNetworkManager{
             if let status = array["status"] as? Int {
                 
                 if status == 200{
-                 
+                    
                     completion(true)
                 }else{
                     completion(false)
@@ -156,6 +164,39 @@ extension EUNetworkManager{
                 return
                 
             }
+            
+        }
+        
+    }
+
+}
+
+// MARK: - 上传接口
+extension EUNetworkManager{
+    
+    func uploadActivityLogo(uploadimg:UIImage){
+        
+        let url = SERVERADDRESS + "/eu/upload/activity"
+        
+        //将选择的图片保存到Document目录下
+        let fileManager = FileManager.default
+        let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
+        let filePath = "\(rootPath)/pickedimage.jpg"
+        let imageData = UIImageJPEGRepresentation(uploadimg, 1.0)
+        fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
+        print(filePath)
+        //上传图片
+        if (fileManager.fileExists(atPath: filePath)){
+            //取得NSURL
+            //let imageNSURL:NSURL = NSURL.init(fileURLWithPath: filePath)
+            Alamofire.upload(multipartFormData: { (multipartdata) in
+                
+                multipartdata.append(URL(fileURLWithPath: filePath), withName: "file")
+                
+            }, to: url, encodingCompletion: { (result) in
+                print("result:\(result)")
+            })
+            
             
         }
         

@@ -40,6 +40,9 @@ class EUStartActivityViewController: EUBaseViewController {
     /// 是否开始招新
     let needResisterSwitch = UISwitch()
     
+    /// 需要上传的图片
+    var uploadImg:UIImage?
+    
     /// 当前时间
     let currenttime = Int(Date().timeIntervalSince1970 * 1000).description
     
@@ -52,6 +55,7 @@ class EUStartActivityViewController: EUBaseViewController {
     var autoSetStopTime:Bool = true
     
     let INPUTCELL = "EUINPUTCELL"
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -314,6 +318,7 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
     
     func didFinishClippingPhoto(image: UIImage) {
         addPicBtn.setImage(image, for: .normal)
+        uploadImg = image
     }
 
 
@@ -407,6 +412,10 @@ extension EUStartActivityViewController{
         }
         
         //FIXME:上传图片
+        if let uploadImg = uploadImg{
+            EUNetworkManager.shared.uploadActivityLogo(uploadimg: uploadImg)
+        }
+        
         
         // 非必填信息
         let avNum = Int(activityName.text ?? "") ?? 0
@@ -424,7 +433,7 @@ extension EUStartActivityViewController{
         let avName = activityName.text
         
         // 时间判断
-        if avEndtime <= avStartime || avStartime < currenttime || avstoptime <= avStartime{
+        if avEndtime <= avStartime || avStartime < currenttime || avstoptime > avStartime{
             
             let alertController = UIAlertController(title: nil,message: "请选择正确的时间", preferredStyle: .alert)
             present(alertController, animated: true, completion: nil)
