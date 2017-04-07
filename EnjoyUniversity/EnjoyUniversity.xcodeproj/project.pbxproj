@@ -25,9 +25,12 @@
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
 		365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */; };
 		365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */; };
+		366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366112361E9661E8005D0A96 /* EULoginViewController.swift */; };
 		36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */; };
 		36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */; };
 		36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A7B1E8A785700E6DF17 /* EUCommon.swift */; };
+		3664E1EB1E9759F60041259B /* SwiftyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664E1E91E9759F60041259B /* SwiftyTextField.swift */; };
+		3664E1EC1E9759F60041259B /* SwiftyVerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664E1EA1E9759F60041259B /* SwiftyVerificationCodeView.swift */; };
 		3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */; };
 		3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */; };
 		36839BFC1E8D457800612729 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFB1E8D457800612729 /* Activity.swift */; };
@@ -98,9 +101,12 @@
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
 		365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCreatedActivityViewController.swift; sourceTree = "<group>"; };
 		365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUBaseAvtivityViewController.swift; sourceTree = "<group>"; };
+		366112361E9661E8005D0A96 /* EULoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULoginViewController.swift; sourceTree = "<group>"; };
 		36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNetworkManager.swift; sourceTree = "<group>"; };
 		36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EUNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		36638A7B1E8A785700E6DF17 /* EUCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommon.swift; sourceTree = "<group>"; };
+		3664E1E91E9759F60041259B /* SwiftyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTextField.swift; sourceTree = "<group>"; };
+		3664E1EA1E9759F60041259B /* SwiftyVerificationCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyVerificationCodeView.swift; sourceTree = "<group>"; };
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
 		3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUMessageCell.xib; sourceTree = "<group>"; };
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -203,6 +209,8 @@
 		360FA3EB1E94E639002A5FF0 /* SwiftyControl */ = {
 			isa = PBXGroup;
 			children = (
+				3664E1E91E9759F60041259B /* SwiftyTextField.swift */,
+				3664E1EA1E9759F60041259B /* SwiftyVerificationCodeView.swift */,
 				360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */,
 				360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */,
 				363AC75B1E936167008350CC /* SwiftyTimePicker.swift */,
@@ -239,6 +247,14 @@
 				36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */,
 			);
 			path = Activity;
+			sourceTree = "<group>";
+		};
+		366112351E966192005D0A96 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				366112361E9661E8005D0A96 /* EULoginViewController.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		36638A761E8A4E5D00E6DF17 /* NetWork */ = {
@@ -347,6 +363,7 @@
 				3619C4AF1E90E3C6005FEA5E /* Community */,
 				360EC8A31E7177C60009B08E /* PlusButton */,
 				360219881E65933100371230 /* Search */,
+				366112351E966192005D0A96 /* Login */,
 				36ECC2381E6E60CF0003C4D8 /* QRCode */,
 			);
 			path = View;
@@ -749,6 +766,7 @@
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
 				362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */,
 				36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */,
+				366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */,
 				36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */,
 				3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */,
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
@@ -760,6 +778,7 @@
 				3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */,
 				362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */,
 				36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */,
+				3664E1EC1E9759F60041259B /* SwiftyVerificationCodeView.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
 				36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */,
 				3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */,
@@ -770,6 +789,7 @@
 				36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
 				3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */,
+				3664E1EB1E9759F60041259B /* SwiftyTextField.swift in Sources */,
 				360FA3F01E95032F002A5FF0 /* RequestResult.swift in Sources */,
 				36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */,
 				36BDBB4A1E6452090075A3ED /* Community.swift in Sources */,
