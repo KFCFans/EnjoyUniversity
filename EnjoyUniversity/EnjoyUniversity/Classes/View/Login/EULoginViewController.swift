@@ -32,6 +32,9 @@ class EULoginViewController: UIViewController {
     
     let scal = UIScreen.main.scale
     
+    /// 记录手机号
+    var phonenumber:String?
+    
     /// 隐藏状态栏
     override var prefersStatusBarHidden: Bool{
         return true
@@ -923,6 +926,7 @@ extension EULoginViewController{
         if phone.characters.count != 11 {
             return
         }
+        phonenumber = phone
         EUNetworkManager.shared.getVerificationCode(phone: phone, isLogin: true) { (isSuccess, code) in
          
             if !isSuccess{
@@ -950,9 +954,13 @@ extension EULoginViewController{
     /// 登陆
     @objc fileprivate func didClickLoginBtn(){
         
-        guard let pwd = passwordtextfield.text else{
+        guard let pwd = passwordtextfield.text,let phonenumber = phonenumber else{
             return
         }
+        EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: pwd) { (isSuccess, _) in
+            
+        }
+        
         
     }
     

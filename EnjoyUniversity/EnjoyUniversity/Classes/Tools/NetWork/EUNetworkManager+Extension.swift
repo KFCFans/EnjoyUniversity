@@ -56,17 +56,17 @@ extension EUNetworkManager{
     /// - Parameters:
     ///   - password: 用户密码
     ///   - completion: 是否登陆成功,完整用户信息
-    func loginByPassword(password:String,completion:(Bool,[[String:Any?]])->()){
+    func loginByPassword(phone:String,password:String,completion:(Bool,[[String:Any?]])->()){
         
-        let url = SERVERADDRESS + "euswag.com/eu/user/login"
+        let url = SERVERADDRESS + "/eu/user/login"
         
-        let parm = Parameters()
-        parm["uid"] = ""
-        parm["password"] = ""
+        var parm = Parameters()
+        parm["uid"] = phone
+        parm["password"] = password
         
-        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess) in
+        request(urlString: url, method: .post, parameters: parm) { (json, isSuccess) in
             
-            
+
         }
         
     }

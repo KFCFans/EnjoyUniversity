@@ -11,7 +11,6 @@ import UIKit
 
 
 
-
 /// 创建指定大小和颜色的图片
 ///
 /// - Parameters:
@@ -98,3 +97,5 @@ func calculateLabelHeight(text:String,width:CGFloat,font:CGFloat)->CGFloat{
                                                  context: nil).height
     return height
 }
+
+
