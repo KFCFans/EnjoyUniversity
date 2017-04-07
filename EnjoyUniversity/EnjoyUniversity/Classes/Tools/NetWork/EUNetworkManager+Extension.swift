@@ -140,7 +140,7 @@ extension EUNetworkManager{
         let url = SERVERADDRESS + "/eu/activity/joinedav"
         
         var parameters = Parameters()
-        // FIXME: 用户登录后，获取用户 uid
+        
         parameters["uid"] = userAccount.uid
         
         tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
@@ -162,7 +162,6 @@ extension EUNetworkManager{
         let url = SERVERADDRESS + "/eu/activity/createdav"
         
         var parameters = Parameters()
-        // FIXME: 用户登录后，获取用户 uid
         parameters["uid"] = userAccount.uid
         
         tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
@@ -192,9 +191,7 @@ extension EUNetworkManager{
         
         var parameters = Parameters()
         
-        // FIXME: 用户登陆后，获取用户 uid
         parameters["uid"] = userAccount.uid
-        
         parameters["avTitle"] = activity.avTitle
         parameters["avDetail"] = activity.avDetail
         parameters["avPlace"] = activity.avPlace

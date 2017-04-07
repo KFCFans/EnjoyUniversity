@@ -41,7 +41,7 @@ class EUNetworkManager{
                 completion(json, true)
             }else{
                 
-                //FIXME: 处理错误信息 服务器端针对 Token 错误应该返回 403 ，通过 403 通知用户重新登录
+                //FIXME: 处理错误信息 服务器端针对 Token 错误应该返回 403 ，通过 403 通知用户重新登录（用通知）
                 completion(nil, false)
                 
             }
