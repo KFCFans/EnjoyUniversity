@@ -47,6 +47,8 @@ class EUserAccount: NSObject {
         self.accesstoken = accesstoken
         self.uid = Int64(UserDefaults.standard.integer(forKey: "uid"))
         
+        print(accesstoken)
+        
     }
     
 }

@@ -13,7 +13,7 @@ import UIKit
  */
 
 protocol SwiftyVerificationCodeViewDelegate {
-    func verificationCodeDidFinishedInput(code:String)
+    func verificationCodeDidFinishedInput(verificationCodeView:SwiftyVerificationCodeView,code:String)
 }
 class SwiftyVerificationCodeView: UIView {
     
@@ -22,7 +22,7 @@ class SwiftyVerificationCodeView: UIView {
     
     /// 一堆框框的数组
     var textfieldarray = [UITextField]()
-
+    
     /// 框框之间的间隔
     let margin:CGFloat = 10
     
@@ -31,7 +31,7 @@ class SwiftyVerificationCodeView: UIView {
     
     /// 框框个数
     var numOfRect = 4
-
+    
     /// 构造函数
     ///
     /// - Parameters:
@@ -43,9 +43,19 @@ class SwiftyVerificationCodeView: UIView {
         setupUI()
     }
     
-   
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func cleanVerificationCodeView(){
+        
+        for tv in textfieldarray {
+            tv.text = ""
+        }
+        textfieldarray.first?.becomeFirstResponder()
+        
+        
     }
     
 }
@@ -57,7 +67,7 @@ extension SwiftyVerificationCodeView{
         
         // 不允许用户直接操作验证码框
         self.isUserInteractionEnabled = false
-     
+        
         // 计算左间距
         let leftmargin = (UIScreen.main.bounds.width - width * CGFloat(numOfRect) - CGFloat(numOfRect - 1) * margin) / 2
         
@@ -116,7 +126,7 @@ extension SwiftyVerificationCodeView:UITextFieldDelegate,SwiftyTextFieldDeleteDe
                 for tv in textfieldarray{
                     code += tv.text ?? ""
                 }
-                delegate?.verificationCodeDidFinishedInput(code: code)
+                delegate?.verificationCodeDidFinishedInput(verificationCodeView: self, code: code)
                 return false
             }
             
@@ -124,7 +134,7 @@ extension SwiftyVerificationCodeView:UITextFieldDelegate,SwiftyTextFieldDeleteDe
             textfieldarray[index + 1].becomeFirstResponder()
             
         }
-            return false
+        return false
         
     }
     

@@ -183,6 +183,33 @@ extension EUNetworkManager{
 // MARK: - 写入接口
 extension EUNetworkManager{
     
+    /// 短信验证码修改用户密码
+    func changgePasswordByVerifyCode(phone:String,newpwd:String,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/user/changepwdbyphone"
+        
+        var parm = Parameters()
+        parm["uid"] = phone
+        parm["newpwd"] = newpwd
+        
+        request(urlString: url, method: .post, parameters: parm) { (json, isSuccess) in
+            if !isSuccess {
+                completion(false)
+                return
+            }
+            
+            guard let dict = json as? [String:Any],let accesstoken = dict["accesstoken"] as? String else {
+                completion(false)
+                return
+            }
+            let userdict = ["uid":phone,"accesstoken":accesstoken]
+            
+            self.userAccount.saveToUserDefaults(dict: userdict)
+            completion(true)
+        }
+        
+    }
+    
     
     /// 创建活动
     func releaseActivity(activity:Activity,completion:@escaping (Bool)->()){

@@ -22,6 +22,8 @@ class EULoginViewController: UIViewController {
     /// 设置密码视图
     var setpasswordview:UIView?
     
+    
+    
 
     
     /// 登陆界面，输入手机号
@@ -30,10 +32,22 @@ class EULoginViewController: UIViewController {
     /// 登陆密码，用于登陆
     let passwordtextfield = UITextField()
     
+    /// 提示用户验证码不正确
+    let correctcodelabel = UILabel()
+    
+    /// 设置的新密码
+    let newpasswordtextfield = UITextField()
+    
     let scal = UIScreen.main.scale
     
     /// 记录手机号
     var phonenumber:String?
+    
+    /// 记录手机验证码
+    var verifycode:String?
+    
+    /// 记录新用户还是老用户
+    var isOldUser:Bool = true
     
     /// 隐藏状态栏
     override var prefersStatusBarHidden: Bool{
@@ -554,14 +568,15 @@ extension EULoginViewController{
         secondlabel.sizeToFit()
         codeview.addSubview(secondlabel)
         
-        let correctlabel = UILabel()
-        correctlabel.text = "请输入正确的验证码"
-        correctlabel.textColor = UIColor.init(red: 1, green: 82/255, blue: 93/255, alpha: 1)
-        correctlabel.font = UIFont.boldSystemFont(ofSize: 10)
-        correctlabel.sizeToFit()
-        codeview.addSubview(correctlabel)
+        correctcodelabel.text = "请输入正确的验证码"
+        correctcodelabel.textColor = UIColor.init(red: 1, green: 82/255, blue: 93/255, alpha: 1)
+        correctcodelabel.font = UIFont.boldSystemFont(ofSize: 10)
+        correctcodelabel.sizeToFit()
+        correctcodelabel.isHidden = true
+        codeview.addSubview(correctcodelabel)
         
         let verifycode = SwiftyVerificationCodeView(frame: CGRect(x: 0, y: 200, width: UIScreen.main.bounds.width, height: 50))
+        verifycode.delegate = self
         codeview.addSubview(verifycode)
         
         let warnlabel1 = UILabel()
@@ -587,7 +602,7 @@ extension EULoginViewController{
         phoneimg.translatesAutoresizingMaskIntoConstraints = false
         firstlabel.translatesAutoresizingMaskIntoConstraints = false
         secondlabel.translatesAutoresizingMaskIntoConstraints = false
-        correctlabel.translatesAutoresizingMaskIntoConstraints = false
+        correctcodelabel.translatesAutoresizingMaskIntoConstraints = false
         verifycode.translatesAutoresizingMaskIntoConstraints = false
         warnlabel1.translatesAutoresizingMaskIntoConstraints = false
         warnlabel2.translatesAutoresizingMaskIntoConstraints = false
@@ -637,14 +652,14 @@ extension EULoginViewController{
                                                       multiplier: 1.0,
                                                       constant: 0))
         // 验证码错误
-        codeview.addConstraint(NSLayoutConstraint(item: correctlabel,
+        codeview.addConstraint(NSLayoutConstraint(item: correctcodelabel,
                                                   attribute: .top,
                                                   relatedBy: .equal,
                                                   toItem: secondlabel,
                                                   attribute: .bottom,
                                                   multiplier: 1.0,
                                                   constant: 6 * scal))
-        codeview.addConstraint(NSLayoutConstraint(item: correctlabel,
+        codeview.addConstraint(NSLayoutConstraint(item: correctcodelabel,
                                                   attribute: .centerX,
                                                   relatedBy: .equal,
                                                   toItem: codeview,
@@ -655,7 +670,7 @@ extension EULoginViewController{
         codeview.addConstraints([NSLayoutConstraint(item: verifycode,
                                                   attribute: .top,
                                                   relatedBy: .equal,
-                                                  toItem: correctlabel,
+                                                  toItem: correctcodelabel,
                                                   attribute: .bottom,
                                                   multiplier: 1.0,
                                                   constant: 15 * scal),
@@ -684,7 +699,7 @@ extension EULoginViewController{
         codeview.addConstraint(NSLayoutConstraint(item: warnlabel1,
                                                   attribute: .top,
                                                   relatedBy: .equal,
-                                                  toItem: correctlabel,
+                                                  toItem: correctcodelabel,
                                                   attribute: .bottom,
                                                   multiplier: 1.0,
                                                   constant: 63 * scal))
@@ -699,7 +714,7 @@ extension EULoginViewController{
         codeview.addConstraint(NSLayoutConstraint(item: warnlabel2,
                                                   attribute: .top,
                                                   relatedBy: .equal,
-                                                  toItem: correctlabel,
+                                                  toItem: correctcodelabel,
                                                   attribute: .bottom,
                                                   multiplier: 1.0,
                                                   constant: 63 * scal))
@@ -742,17 +757,15 @@ extension EULoginViewController{
         lineview.backgroundColor = UIColor.init(red: 200/255, green: 199/255, blue: 204/255, alpha: 1)
         setpasswordview.addSubview(lineview)
         
-        
-        
-        let passwordtextfield = UITextField()
-        passwordtextfield.keyboardType = .default
-        passwordtextfield.isSecureTextEntry = true
-        passwordtextfield.textColor = UIColor.init(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
-        passwordtextfield.font = UIFont.boldSystemFont(ofSize: 20)
-        passwordtextfield.borderStyle = .none
-        passwordtextfield.contentHorizontalAlignment = .center
-        passwordtextfield.textAlignment = .center
-        setpasswordview.addSubview(passwordtextfield)
+        newpasswordtextfield.keyboardType = .default
+        newpasswordtextfield.isSecureTextEntry = true
+        newpasswordtextfield.textColor = UIColor.init(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        newpasswordtextfield.font = UIFont.boldSystemFont(ofSize: 20)
+        newpasswordtextfield.borderStyle = .none
+        newpasswordtextfield.contentHorizontalAlignment = .center
+        newpasswordtextfield.textAlignment = .center
+        newpasswordtextfield.becomeFirstResponder()
+        setpasswordview.addSubview(newpasswordtextfield)
         
         
         let nextBtn = UIButton()
@@ -769,7 +782,7 @@ extension EULoginViewController{
         firstlabel.translatesAutoresizingMaskIntoConstraints = false
         secondlabel.translatesAutoresizingMaskIntoConstraints = false
         lineview.translatesAutoresizingMaskIntoConstraints = false
-        passwordtextfield.translatesAutoresizingMaskIntoConstraints = false
+        newpasswordtextfield.translatesAutoresizingMaskIntoConstraints = false
         nextBtn.translatesAutoresizingMaskIntoConstraints = false
         
         
@@ -848,28 +861,28 @@ extension EULoginViewController{
                                                     constant: 0.5)])
         
         // 密码输入区
-        setpasswordview.addConstraints([NSLayoutConstraint(item: passwordtextfield,
+        setpasswordview.addConstraints([NSLayoutConstraint(item: newpasswordtextfield,
                                                         attribute: .bottom,
                                                         relatedBy: .equal,
                                                         toItem: lineview,
                                                         attribute: .top,
                                                         multiplier: 1.0,
                                                         constant: -scal * 5),
-                                     NSLayoutConstraint(item: passwordtextfield,
+                                     NSLayoutConstraint(item: newpasswordtextfield,
                                                         attribute: .centerX,
                                                         relatedBy: .equal,
                                                         toItem: setpasswordview,
                                                         attribute: .centerX,
                                                         multiplier: 1.0,
                                                         constant: 0)])
-        passwordtextfield.addConstraints([NSLayoutConstraint(item: passwordtextfield,
+        newpasswordtextfield.addConstraints([NSLayoutConstraint(item: newpasswordtextfield,
                                                              attribute: .width,
                                                              relatedBy: .equal,
                                                              toItem: nil,
                                                              attribute: .notAnAttribute,
                                                              multiplier: 1.0,
                                                              constant: scal * 100),
-                                          NSLayoutConstraint(item: passwordtextfield,
+                                          NSLayoutConstraint(item: newpasswordtextfield,
                                                              attribute: .height,
                                                              relatedBy: .equal,
                                                              toItem: nil,
@@ -899,12 +912,25 @@ extension EULoginViewController{
 // MARK: - 代理方法
 extension EULoginViewController:SwiftyVerificationCodeViewDelegate{
     
-    func verificationCodeDidFinishedInput(code: String) {
+    func verificationCodeDidFinishedInput(verificationCodeView: SwiftyVerificationCodeView, code: String) {
         
-        //FIXME: - 和服务器返回的验证码相比较
-        
+        guard let verifycode = verifycode else {
+            return
+        }
+        if verifycode != code {
+            correctcodelabel.isHidden = false
+            verificationCodeView.cleanVerificationCodeView()
+            return
+        }
+        setpasswordview = setupNewPasswordUI(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+        UIView.animate(withDuration: 0.5, animations: {
+            self.setpasswordview?.frame.origin = CGPoint.zero
+            self.codeview?.frame.origin = CGPoint(x: -UIScreen.main.bounds.width, y: 0)
+        }, completion: { (_) in
+            self.codeview?.removeFromSuperview()
+        })
+
     }
-    
     
 }
 
@@ -936,14 +962,17 @@ extension EULoginViewController{
             }
             // 用户没有注册过的情况，跳转到验证码界面
             if let code = code {
+                self.isOldUser = false
                 print(code)
             }else{
                 // 跳转到输入密码界面
-                self.phoneview?.removeFromSuperview()
                 self.enterpasswordview = self.setupPasswordView(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
                 self.view.addSubview(self.enterpasswordview!)
-                UIView.animate(withDuration: 0.5, animations: {
+                UIView.animate(withDuration: 0.5, animations: { 
                     self.enterpasswordview?.frame.origin = CGPoint.zero
+                    self.phoneview?.frame.origin = CGPoint(x: -UIScreen.main.bounds.width, y: 0)
+                }, completion: { (_) in
+                    self.phoneview?.removeFromSuperview()
                 })
                 
             }
@@ -967,10 +996,52 @@ extension EULoginViewController{
     /// 忘记密码
     @objc fileprivate func didClickForgetBtn(){
         
+        guard let phonenumber = phonenumber else {
+            return
+        }
+        
+        EUNetworkManager.shared.getVerificationCode(phone: phonenumber, isLogin: false) { (isSuccess, code) in
+            if !isSuccess{
+                // 提示网络不好
+                return
+            }
+            self.verifycode = code
+            
+            self.codeview = self.setupCodeUI(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+            UIView.animate(withDuration: 0.5, animations: {
+                self.codeview?.frame.origin = CGPoint.zero
+                self.enterpasswordview?.frame.origin = CGPoint(x: -UIScreen.main.bounds.width, y: 0)
+            }) { (_) in
+                self.enterpasswordview?.removeFromSuperview()
+            }
+        }
+        
+        
+        
     }
     
-    /// 设置登陆密码，接下来两种情况 忘记密码->登陆成功 OR 首次登陆->填写用户信息
+    /// 忘记密码
     @objc fileprivate func didClickChangePasswordBtn(){
+        
+        guard let newpwd = newpasswordtextfield.text,let phonenumber = phonenumber else {
+            return
+        }
+
+        if isOldUser {
+            EUNetworkManager.shared.changgePasswordByVerifyCode(phone: phonenumber, newpwd: newpwd, completion: { (isSuccess) in
+              
+                if !isSuccess{
+                    
+                }
+                // 修改成功，登陆
+                print("修改成功")
+                EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: newpwd, completion: { (isSuccess, _) in
+                    
+                    print("登陆成功")
+                })
+                
+            })
+        }
         
     }
     
