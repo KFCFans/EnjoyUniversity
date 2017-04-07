@@ -988,6 +988,9 @@ extension EULoginViewController{
         }
         EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: pwd) { (isSuccess, _) in
             
+            if isSuccess{
+                self.present(EUMainViewController(), animated: true, completion: nil)
+            }
         }
         
         
@@ -1034,10 +1037,9 @@ extension EULoginViewController{
                     
                 }
                 // 修改成功，登陆
-                print("修改成功")
                 EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: newpwd, completion: { (isSuccess, _) in
                     
-                    print("登陆成功")
+                    self.present(EUMainViewController(), animated: true, completion: nil)
                 })
                 
             })
