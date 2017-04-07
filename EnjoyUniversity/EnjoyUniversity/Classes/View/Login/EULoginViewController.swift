@@ -974,7 +974,16 @@ extension EULoginViewController{
             // 用户没有注册过的情况，跳转到验证码界面
             if let code = code {
                 self.isOldUser = false
-                print(code)
+                self.verifycode = code
+                self.codeview = self.setupCodeUI(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+                self.view.addSubview(self.codeview!)
+                UIView.animate(withDuration: 0.5, animations: { 
+                    self.codeview?.frame.origin = CGPoint.zero
+                    self.phoneview?.frame.origin = CGPoint(x: -UIScreen.main.bounds.width, y: 0)
+                }, completion: { (_) in
+                    self.phoneview?.removeFromSuperview()
+                })
+                
             }else{
                 // 跳转到输入密码界面
                 self.enterpasswordview = self.setupPasswordView(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
@@ -1041,6 +1050,7 @@ extension EULoginViewController{
             return
         }
 
+        /// 如果是老用户，改完密码直接自动登录
         if isOldUser {
             EUNetworkManager.shared.changgePasswordByVerifyCode(phone: phonenumber, newpwd: newpwd, completion: { (isSuccess) in
               
@@ -1055,6 +1065,8 @@ extension EULoginViewController{
                 
             })
         }
+        /// 新用户还要填写一堆个人资料
+        
         
     }
     
