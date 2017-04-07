@@ -56,7 +56,7 @@ extension EUNetworkManager{
     /// - Parameters:
     ///   - password: 用户密码
     ///   - completion: 是否登陆成功,完整用户信息
-    func loginByPassword(phone:String,password:String,completion:(Bool,[[String:Any?]])->()){
+    func loginByPassword(phone:String,password:String,completion:@escaping (Bool,[[String:Any?]]?)->()){
         
         let url = SERVERADDRESS + "/eu/user/login"
         
@@ -66,7 +66,11 @@ extension EUNetworkManager{
         
         request(urlString: url, method: .post, parameters: parm) { (json, isSuccess) in
             
-
+            guard let array = json as? [[String:Any?]] else{
+                completion(false, nil)
+                return
+            }
+            completion(true,array)
         }
         
     }
