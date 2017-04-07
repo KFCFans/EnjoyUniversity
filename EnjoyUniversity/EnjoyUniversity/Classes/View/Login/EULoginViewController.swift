@@ -734,7 +734,6 @@ extension EULoginViewController{
         let setpasswordview = UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         setpasswordview.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.white
-        view.addSubview(setpasswordview)
         
         let phoneimg = UIImageView(image: UIImage(named: "login_phone"))
         setpasswordview.addSubview(phoneimg)
@@ -923,6 +922,7 @@ extension EULoginViewController:SwiftyVerificationCodeViewDelegate{
             return
         }
         setpasswordview = setupNewPasswordUI(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+        view.addSubview(setpasswordview!)
         UIView.animate(withDuration: 0.5, animations: {
             self.setpasswordview?.frame.origin = CGPoint.zero
             self.codeview?.frame.origin = CGPoint(x: -UIScreen.main.bounds.width, y: 0)
@@ -939,6 +939,17 @@ extension EULoginViewController{
     
     /// 返回按钮监听 返回到输入手机号层
     @objc fileprivate func didClickBackBtn(){
+        
+        phoneview = setupPhoneView(orgin: CGPoint(x: -UIScreen.main.bounds.width, y: 0))
+        view.addSubview(phoneview!)
+        UIView.animate(withDuration: 0.5, animations: { 
+            self.phoneview?.frame.origin = CGPoint.zero
+            self.codeview?.frame.origin = CGPoint(x: UIScreen.main.bounds.width, y: 0)
+            self.enterpasswordview?.frame.origin = CGPoint(x: UIScreen.main.bounds.width, y: 0)
+        }) { (_) in
+            self.codeview?.removeFromSuperview()
+            self.enterpasswordview?.removeFromSuperview()
+        }
         
     }
 
