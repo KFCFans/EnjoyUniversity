@@ -10,17 +10,38 @@ import UIKit
 
 class EULoginViewController: UIViewController {
     
+    /// 输入手机号视图
+    var phoneview:UIView?
+    
+    /// 输入验证码视图
+    var codeview:UIView?
+    
+    /// 输入密码视图
+    var enterpasswordview:UIView?
+    
+    /// 设置密码视图
+    var setpasswordview:UIView?
+    
+
+    
+    /// 登陆界面，输入手机号
+    let phonetextfield = UITextField()
+    
+    /// 登陆密码，用于登陆
+    let passwordtextfield = UITextField()
+    
+    let scal = UIScreen.main.scale
+    
     /// 隐藏状态栏
     override var prefersStatusBarHidden: Bool{
         return true
     }
-    
-    let scal = UIScreen.main.scale
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupNewPasswordUI()
+        phoneview = setupPhoneView(orgin: CGPoint(x: 0, y: 0))
+        view.addSubview(phoneview!)
 
         
     }
@@ -38,12 +59,11 @@ class EULoginViewController: UIViewController {
 // MARK: - UI 相关方法
 extension EULoginViewController{
     
-    fileprivate func setupPhoneView(){
+    fileprivate func setupPhoneView(orgin:CGPoint)->UIView{
         
-        let phoneview = UIView(frame: view.frame)
+        let phoneview = UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         phoneview.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.white
-        view.addSubview(phoneview)
         
         let phoneimg = UIImageView(image: UIImage(named: "login_phone"))
         phoneview.addSubview(phoneimg)
@@ -79,11 +99,11 @@ extension EULoginViewController{
         placelabel.sizeToFit()
         phoneview.addSubview(placelabel)
         
-        let phonetextfield = UITextField()
         phonetextfield.keyboardType = .phonePad
         phonetextfield.textColor = UIColor.init(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
         phonetextfield.font = UIFont.boldSystemFont(ofSize: 18)
         phonetextfield.borderStyle = .none
+        phonetextfield.becomeFirstResponder()
         phoneview.addSubview(phonetextfield)
         
         let nextBtn = UIButton()
@@ -298,16 +318,15 @@ extension EULoginViewController{
                                                      multiplier: 1.0,
                                                      constant: 0)])
 
-        
+        return phoneview
         
     }
     
-    fileprivate func setupPasswordView(){
+    fileprivate func setupPasswordView(orgin:CGPoint)->UIView{
         
-        let passwordview = UIView(frame: view.frame)
+        let passwordview =  UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         passwordview.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.white
-        view.addSubview(passwordview)
         
         let phoneimg = UIImageView(image: UIImage(named: "login_phone"))
         passwordview.addSubview(phoneimg)
@@ -330,9 +349,6 @@ extension EULoginViewController{
         lineview.backgroundColor = UIColor.init(red: 200/255, green: 199/255, blue: 204/255, alpha: 1)
         passwordview.addSubview(lineview)
         
-        
-        
-        let passwordtextfield = UITextField()
         passwordtextfield.keyboardType = .default
         passwordtextfield.isSecureTextEntry = true
         passwordtextfield.textColor = UIColor.init(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
@@ -340,6 +356,7 @@ extension EULoginViewController{
         passwordtextfield.borderStyle = .none
         passwordtextfield.contentHorizontalAlignment = .center
         passwordtextfield.textAlignment = .center
+        passwordtextfield.becomeFirstResponder()
         passwordview.addSubview(passwordtextfield)
         
         let forgetpwdBtn = UIButton()
@@ -507,11 +524,12 @@ extension EULoginViewController{
                                                      multiplier: 1.0,
                                                      constant: 0)])
 
+        return passwordview
     }
     
-    fileprivate func setupCodeUI(){
+    fileprivate func setupCodeUI(orgin:CGPoint)->UIView{
         
-        let codeview = UIView(frame: view.frame)
+        let codeview = UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         codeview.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.white
         view.addSubview(codeview)
@@ -691,11 +709,11 @@ extension EULoginViewController{
                                                   constant: 2 * scal))
 
        
-        
+        return codeview
     }
     
-    fileprivate func setupNewPasswordUI(){
-        let setpasswordview = UIView(frame: view.frame)
+    fileprivate func setupNewPasswordUI(orgin:CGPoint)->UIView{
+        let setpasswordview = UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         setpasswordview.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.white
         view.addSubview(setpasswordview)
@@ -870,6 +888,7 @@ extension EULoginViewController{
                                                         attribute: .centerX,
                                                         multiplier: 1.0,
                                                         constant: 0)])
+        return setpasswordview
     }
     
 }
@@ -879,7 +898,7 @@ extension EULoginViewController:SwiftyVerificationCodeViewDelegate{
     
     func verificationCodeDidFinishedInput(code: String) {
         
-        //FIXME: - 网络请求二维码
+        //FIXME: - 和服务器返回的验证码相比较
         
     }
     
@@ -897,10 +916,43 @@ extension EULoginViewController{
     /// 下一步 输入手机号->下一个页面
     @objc fileprivate func didClickNexTBtn(){
         
+        //FIXME: - 后期不到 11 位 Button 不允许被点击
+        guard let phone = phonetextfield.text else{
+            return
+        }
+        if phone.characters.count != 11 {
+            return
+        }
+        EUNetworkManager.shared.getVerificationCode(phone: phone, isLogin: true) { (isSuccess, code) in
+         
+            if !isSuccess{
+            
+                // HUD提示用户网络请求失败
+                return
+            }
+            // 用户没有注册过的情况，跳转到验证码界面
+            if let code = code {
+                print(code)
+            }else{
+                // 跳转到输入密码界面
+                self.phoneview?.removeFromSuperview()
+                self.enterpasswordview = self.setupPasswordView(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+                self.view.addSubview(self.enterpasswordview!)
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.enterpasswordview?.frame.origin = CGPoint.zero
+                })
+                
+            }
+        }
+        
     }
     
     /// 登陆
     @objc fileprivate func didClickLoginBtn(){
+        
+        guard let pwd = passwordtextfield.text else{
+            return
+        }
         
     }
     

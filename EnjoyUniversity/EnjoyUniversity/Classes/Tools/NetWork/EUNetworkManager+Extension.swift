@@ -14,6 +14,63 @@ import Alamofire
 extension EUNetworkManager{
     
     
+    /// 改进手机号获取验证码
+    ///
+    /// - Parameters:
+    ///   - phone: 手机号
+    ///   - isLogin: 是否用于登陆（还可能用于忘记密码）
+    ///   - completion: 请求是否成功，验证码
+    func getVerificationCode(phone:String,isLogin:Bool,completion:@escaping (Bool,String?)->()){
+        
+        let url = SERVERADDRESS + "/eu/user/verifyphone"
+        var para = Parameters()
+        para["phone"] = phone
+        para["choice"] = isLogin ? 0 : 1
+        
+        request(urlString: url, method: .post, parameters: para) { (json, isSuccess) in
+            
+            if !isSuccess{
+                completion(false, nil)
+                return
+            }
+            
+            guard let dict = json as? [String:Any] else {
+                completion(true,nil)
+                return
+            }
+            let status = dict["status"] as? Int ?? 0
+            let data = dict["data"] as? String ?? ""
+            
+            if status == 200 {
+                completion(true, data)
+                return
+            }
+            completion(true,nil)
+            return
+        }
+        
+    }
+    
+    /// 通过帐号密码登陆
+    ///
+    /// - Parameters:
+    ///   - password: 用户密码
+    ///   - completion: 是否登陆成功,完整用户信息
+    func loginByPassword(password:String,completion:(Bool,[[String:Any?]])->()){
+        
+        let url = SERVERADDRESS + "euswag.com/eu/user/login"
+        
+        let parm = Parameters()
+        parm["uid"] = ""
+        parm["password"] = ""
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess) in
+            
+            
+        }
+        
+    }
+    
     /// 获取 ViewPager
     func getViewPagers(completion:@escaping (Any?,Bool)->()){
         
