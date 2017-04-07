@@ -12,7 +12,8 @@ import Alamofire
 
 class EUNetworkManager{
     
-    var accessToken:String? = "06e2a69c-eea0-4e82-a633-5e66eefc5bb6"
+    /// 用户账户信息
+    lazy var userAccount = EUserAccount()
     
     // 创建单例
     static let shared = EUNetworkManager()
@@ -59,7 +60,7 @@ class EUNetworkManager{
     func tokenRequest(urlString:String,method:HTTPMethod = .get,parameters:Parameters?,completion:@escaping (Any?,Bool)->()){
         
         // 判断 Token 是否存在，不存在则不做请求
-        guard let token = accessToken else {
+        guard let token = userAccount.accesstoken else {
             completion(nil, false)
             return
         }
