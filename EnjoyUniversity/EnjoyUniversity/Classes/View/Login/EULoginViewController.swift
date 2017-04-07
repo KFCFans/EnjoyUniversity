@@ -19,8 +19,10 @@ class EULoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupNewPasswordUI()
 
-        setupPasswordView()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -692,6 +694,184 @@ extension EULoginViewController{
         
     }
     
+    fileprivate func setupNewPasswordUI(){
+        let setpasswordview = UIView(frame: view.frame)
+        setpasswordview.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.white
+        view.addSubview(setpasswordview)
+        
+        let phoneimg = UIImageView(image: UIImage(named: "login_phone"))
+        setpasswordview.addSubview(phoneimg)
+        
+        let firstlabel = UILabel()
+        firstlabel.text = " 设置登陆密码"
+        firstlabel.textColor = UIColor.init(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        firstlabel.font = UIFont.boldSystemFont(ofSize: 24)
+        firstlabel.sizeToFit()
+        setpasswordview.addSubview(firstlabel)
+        
+        let secondlabel = UILabel()
+        secondlabel.text = "请设置一个安全的密码"
+        secondlabel.textColor = UIColor.init(red: 132/255, green: 132/255, blue: 132/255, alpha: 1)
+        secondlabel.font = UIFont.boldSystemFont(ofSize: 14)
+        secondlabel.sizeToFit()
+        setpasswordview.addSubview(secondlabel)
+        
+        let lineview = UIView()
+        lineview.backgroundColor = UIColor.init(red: 200/255, green: 199/255, blue: 204/255, alpha: 1)
+        setpasswordview.addSubview(lineview)
+        
+        
+        
+        let passwordtextfield = UITextField()
+        passwordtextfield.keyboardType = .default
+        passwordtextfield.isSecureTextEntry = true
+        passwordtextfield.textColor = UIColor.init(red: 51/255, green: 51/255, blue: 51/255, alpha: 1)
+        passwordtextfield.font = UIFont.boldSystemFont(ofSize: 20)
+        passwordtextfield.borderStyle = .none
+        passwordtextfield.contentHorizontalAlignment = .center
+        passwordtextfield.textAlignment = .center
+        setpasswordview.addSubview(passwordtextfield)
+        
+        
+        let nextBtn = UIButton()
+        nextBtn.setTitle("下一步", for: .normal)
+        nextBtn.setTitleColor(UIColor.init(red: 132/255, green: 132/255, blue: 132/255, alpha: 1), for: .normal)
+        nextBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 17)
+        nextBtn.addTarget(nil, action: #selector(didClickChangePasswordBtn), for: .touchUpInside)
+        nextBtn.sizeToFit()
+        setpasswordview.addSubview(nextBtn)
+        
+
+        // 自动布局
+        phoneimg.translatesAutoresizingMaskIntoConstraints = false
+        firstlabel.translatesAutoresizingMaskIntoConstraints = false
+        secondlabel.translatesAutoresizingMaskIntoConstraints = false
+        lineview.translatesAutoresizingMaskIntoConstraints = false
+        passwordtextfield.translatesAutoresizingMaskIntoConstraints = false
+        nextBtn.translatesAutoresizingMaskIntoConstraints = false
+        
+        
+        setpasswordview.addConstraint(NSLayoutConstraint(item: phoneimg,
+                                                      attribute: .top,
+                                                      relatedBy: .equal,
+                                                      toItem: setpasswordview,
+                                                      attribute: .top,
+                                                      multiplier: 1.0,
+                                                      constant: 53))
+        setpasswordview.addConstraint(NSLayoutConstraint(item: phoneimg,
+                                                      attribute: .centerX,
+                                                      relatedBy: .equal,
+                                                      toItem: setpasswordview,
+                                                      attribute: .centerX,
+                                                      multiplier: 1.0,
+                                                      constant: 0))
+        // 输入密码
+        setpasswordview.addConstraint(NSLayoutConstraint(item: firstlabel,
+                                                      attribute: .top,
+                                                      relatedBy: .equal,
+                                                      toItem: phoneimg,
+                                                      attribute: .bottom,
+                                                      multiplier: 1.0,
+                                                      constant: 12 * scal))
+        setpasswordview.addConstraint(NSLayoutConstraint(item: firstlabel,
+                                                      attribute: .centerX,
+                                                      relatedBy: .equal,
+                                                      toItem: setpasswordview,
+                                                      attribute: .centerX,
+                                                      multiplier: 1.0,
+                                                      constant: 0))
+        // 输入强度优秀的密码
+        setpasswordview.addConstraint(NSLayoutConstraint(item: secondlabel,
+                                                      attribute: .top,
+                                                      relatedBy: .equal,
+                                                      toItem: firstlabel,
+                                                      attribute: .bottom,
+                                                      multiplier: 1.0,
+                                                      constant: 6 * scal))
+        setpasswordview.addConstraint(NSLayoutConstraint(item: secondlabel,
+                                                      attribute: .centerX,
+                                                      relatedBy: .equal,
+                                                      toItem: setpasswordview,
+                                                      attribute: .centerX,
+                                                      multiplier: 1.0,
+                                                      constant: 0))
+        // 线
+        setpasswordview.addConstraints([NSLayoutConstraint(item: lineview,
+                                                        attribute: .top,
+                                                        relatedBy: .equal,
+                                                        toItem: secondlabel,
+                                                        attribute: .bottom,
+                                                        multiplier: 1.0,
+                                                        constant: scal * 38),
+                                     NSLayoutConstraint(item: lineview,
+                                                        attribute: .centerX,
+                                                        relatedBy: .equal,
+                                                        toItem: setpasswordview,
+                                                        attribute: .centerX,
+                                                        multiplier: 1.0,
+                                                        constant: 0)])
+        lineview.addConstraints([NSLayoutConstraint(item: lineview,
+                                                    attribute: .width,
+                                                    relatedBy: .equal,
+                                                    toItem: nil,
+                                                    attribute: .notAnAttribute,
+                                                    multiplier: 1.0,
+                                                    constant: scal * 130.0),
+                                 NSLayoutConstraint(item: lineview,
+                                                    attribute: .height,
+                                                    relatedBy: .equal,
+                                                    toItem: nil,
+                                                    attribute: .notAnAttribute,
+                                                    multiplier: 1.0,
+                                                    constant: 0.5)])
+        
+        // 密码输入区
+        setpasswordview.addConstraints([NSLayoutConstraint(item: passwordtextfield,
+                                                        attribute: .bottom,
+                                                        relatedBy: .equal,
+                                                        toItem: lineview,
+                                                        attribute: .top,
+                                                        multiplier: 1.0,
+                                                        constant: -scal * 5),
+                                     NSLayoutConstraint(item: passwordtextfield,
+                                                        attribute: .centerX,
+                                                        relatedBy: .equal,
+                                                        toItem: setpasswordview,
+                                                        attribute: .centerX,
+                                                        multiplier: 1.0,
+                                                        constant: 0)])
+        passwordtextfield.addConstraints([NSLayoutConstraint(item: passwordtextfield,
+                                                             attribute: .width,
+                                                             relatedBy: .equal,
+                                                             toItem: nil,
+                                                             attribute: .notAnAttribute,
+                                                             multiplier: 1.0,
+                                                             constant: scal * 100),
+                                          NSLayoutConstraint(item: passwordtextfield,
+                                                             attribute: .height,
+                                                             relatedBy: .equal,
+                                                             toItem: nil,
+                                                             attribute: .notAnAttribute,
+                                                             multiplier: 1.0,
+                                                             constant: scal * 15)])
+        // 下一步按钮
+        setpasswordview.addConstraints([NSLayoutConstraint(item: nextBtn,
+                                                        attribute: .top,
+                                                        relatedBy: .equal,
+                                                        toItem: lineview,
+                                                        attribute: .bottom,
+                                                        multiplier: 1.0,
+                                                        constant: scal * 32),
+                                     NSLayoutConstraint(item: nextBtn,
+                                                        attribute: .centerX,
+                                                        relatedBy: .equal,
+                                                        toItem: setpasswordview,
+                                                        attribute: .centerX,
+                                                        multiplier: 1.0,
+                                                        constant: 0)])
+    }
+    
 }
 
 // MARK: - 代理方法
@@ -726,6 +906,11 @@ extension EULoginViewController{
     
     /// 忘记密码
     @objc fileprivate func didClickForgetBtn(){
+        
+    }
+    
+    /// 设置登陆密码，接下来两种情况 忘记密码->登陆成功 OR 首次登陆->填写用户信息
+    @objc fileprivate func didClickChangePasswordBtn(){
         
     }
     
