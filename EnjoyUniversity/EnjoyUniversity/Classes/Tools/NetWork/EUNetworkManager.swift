@@ -25,8 +25,8 @@ class EUNetworkManager{
     ///   - urlString: 请求地址
     ///   - method: 请求方式，默认 GET 方式
     ///   - parameters: 请求参数
-    ///   - completion: 完成回调
-    func request(urlString:String,method:HTTPMethod = .get,parameters:Parameters?,completion:@escaping (Any?,Bool)->())  {
+    ///   - completion: 完成回调 返回数据的 data 部分／网络请求是否成功／状态码
+    func request(urlString:String,method:HTTPMethod = .get,parameters:Parameters?,completion:@escaping (Any?,Bool,Int)->())  {
 
         
         
@@ -37,26 +37,22 @@ class EUNetworkManager{
         request.responseJSON { (response) in
             
             if response.result.isSuccess {
-                guard let dict = response.result.value as? [String:Any],let status = dict["status"] as? Int else{
-                    completion(nil,false)
+                guard let dict = response.result.value as? [String:Any],let statuscode = dict["status"] as? Int,let json = dict["data"]  else{
+                    completion(nil,false,400)
                     return
                 }
-                if status == 400{
-                    print("服务器拒绝失败")
-                }
-                if status == 200{
-                    
-                    let json = dict["data"]
-                    
-                    completion(json, true)
-                }
                 
+                if statuscode == 403{
+                    
+                    //FIXME: - 通知推送用户登陆信息过期，需要重写登陆
+                    return
+                }
+
+                completion(json,true,statuscode)
                 
             }else{
-                
-                
-                //FIXME: 处理错误信息 服务器端针对 Token 错误应该返回 403 ，通过 403 通知用户重新登录（用通知）
-                completion(nil, false)
+
+                completion(nil, false,0)
                 
             }
 
@@ -71,11 +67,11 @@ class EUNetworkManager{
     ///   - method: 请求方式
     ///   - parameters: 请求参数 ［Sting:Any］类型
     ///   - completion: 完成回调
-    func tokenRequest(urlString:String,method:HTTPMethod = .get,parameters:Parameters?,completion:@escaping (Any?,Bool)->()){
+    func tokenRequest(urlString:String,method:HTTPMethod = .get,parameters:Parameters?,completion:@escaping (Any?,Bool,Int)->()){
         
         // 判断 Token 是否存在，不存在则不做请求
         guard let token = userAccount.accesstoken else {
-            completion(nil, false)
+            completion(nil, false,0)
             return
         }
         

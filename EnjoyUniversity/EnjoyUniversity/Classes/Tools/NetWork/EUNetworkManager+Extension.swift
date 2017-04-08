@@ -14,7 +14,7 @@ import Alamofire
 extension EUNetworkManager{
     
     
-    /// 改进手机号获取验证码
+    /// 根据手机号获取验证码
     ///
     /// - Parameters:
     ///   - phone: 手机号
@@ -27,22 +27,19 @@ extension EUNetworkManager{
         para["phone"] = phone
         para["choice"] = isLogin ? 0 : 1
         
-        request(urlString: url, method: .post, parameters: para) { (json, isSuccess) in
+        request(urlString: url, method: .post, parameters: para) { (code, isSuccess,statusCode) in
             
             if !isSuccess{
                 completion(false, nil)
                 return
             }
             
-            guard let dict = json as? [String:Any] else {
+            guard let code = code as? String else {
                 completion(true,nil)
                 return
             }
-            let status = dict["status"] as? Int ?? 0
-            let data = dict["data"] as? String ?? ""
-            
-            if status == 200 {
-                completion(true, data)
+            if statusCode == 200 {
+                completion(true, code)
                 return
             }
             completion(true,nil)
@@ -55,8 +52,8 @@ extension EUNetworkManager{
     ///
     /// - Parameters:
     ///   - password: 用户密码
-    ///   - completion: 是否登陆成功,完整用户信息
-    func loginByPassword(phone:String,password:String,completion:@escaping (Bool,[String:Any]?)->()){
+    ///   - completion: 请求是否成功，登陆是否成功
+    func loginByPassword(phone:String,password:String,completion:@escaping (Bool,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/user/login"
         
@@ -64,26 +61,41 @@ extension EUNetworkManager{
         parm["uid"] = phone
         parm["password"] = password
         
-        request(urlString: url, method: .post, parameters: parm) { (json, isSuccess) in
+        request(urlString: url, method: .post, parameters: parm) { (token, isSuccess,statusCode) in
             
-            guard let dict = json as? [String:Any] else{
-                completion(false,nil)
+            if !isSuccess{
+                completion(false,false)
                 return
             }
-            print(dict)
+            
+            /// 400 表示用户名或密码错误
+            if statusCode == 400{
+                completion(true,false)
+                return
+            }
+        
+            guard let token = token as? String else{
+                completion(true,false)
+                return
+            }
+            
+            let uid = Int(phone) ?? 0
+            let dict = ["uid":uid,"accesstoken":token] as [String : Any]
             self.userAccount.yy_modelSet(with: dict)
             self.userAccount.saveToUserDefaults(dict: dict)
-            completion(true,dict)
+            completion(true,true)
         }
         
     }
+    
+
     
     /// 获取 ViewPager
     func getViewPagers(completion:@escaping (Any?,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/viewpager/show"
         
-        request(urlString: url, parameters: nil) { (json, isSuccess) in
+        request(urlString: url, parameters: nil) { (json, isSuccess,_) in
             completion(json, isSuccess)
 
         }
@@ -100,7 +112,7 @@ extension EUNetworkManager{
         paramters["page"] = page
         paramters["rows"] = rows
         
-        request(urlString: url, parameters: paramters) { (json, isSuccess) in
+        request(urlString: url, parameters: paramters) { (json, isSuccess,_) in
             
             let array = json as? [[String:Any]]
             completion(array, isSuccess)
@@ -125,7 +137,7 @@ extension EUNetworkManager{
             parameters["maxtime"] = maxtime
         }
         
-        request(urlString: url, parameters: parameters) { (json, isSuccess) in
+        request(urlString: url, parameters: parameters) { (json, isSuccess,_) in
             guard let array = json as? [[String:Any]] else{
                 completion(nil, false)
                 return
@@ -144,7 +156,7 @@ extension EUNetworkManager{
         
         parameters["uid"] = userAccount.uid
         
-        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess,_) in
             
             guard let array = json as? [[String:Any]] else{
                 completion(nil,false)
@@ -165,7 +177,7 @@ extension EUNetworkManager{
         var parameters = Parameters()
         parameters["uid"] = userAccount.uid
         
-        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess,_) in
             
             guard let array = json as? [[String:Any]] else{
                 completion(nil,false)
@@ -193,7 +205,7 @@ extension EUNetworkManager{
         parm["uid"] = phone
         parm["newpwd"] = newpwd
         
-        request(urlString: url, method: .post, parameters: parm) { (json, isSuccess) in
+        request(urlString: url, method: .post, parameters: parm) { (json, isSuccess,_) in
             if !isSuccess {
                 completion(false)
                 return
@@ -232,7 +244,7 @@ extension EUNetworkManager{
         parameters["avLogo"] = activity.avLogo
         
         
-        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess) in
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess,_) in
             
             if !isSuccess{
                 completion(false)

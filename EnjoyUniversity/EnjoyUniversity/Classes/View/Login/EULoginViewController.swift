@@ -1009,14 +1009,18 @@ extension EULoginViewController{
             return
         }
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: pwd) { (isSuccess, _) in
+        EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: pwd) { (isSuccess, shouldLogin) in
             
             SwiftyProgressHUD.hide()
-            if isSuccess{
-                self.present(EUMainViewController(), animated: true, completion: nil)
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
                 return
             }
-            SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+            if !shouldLogin{
+                SwiftyProgressHUD.showFaildHUD(text: "密码错误", duration: 1)
+                return
+            }
+            self.present(EUMainViewController(), animated: true, completion: nil)
         }
         
         

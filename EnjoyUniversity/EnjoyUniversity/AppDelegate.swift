@@ -19,14 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         
         /// 判断加载哪一个
-//        if let _ = UserDefaults.standard.string(forKey: "accesstoken"){
-//            window?.rootViewController = EUMainViewController()
-//        }else{
-//            window?.rootViewController = EULoginViewController()
-//        }
+        if let _ = UserDefaults.standard.string(forKey: "accesstoken"){
+            window?.rootViewController = EUMainViewController()
+        }else{
+            window?.rootViewController = EULoginViewController()
+        }
 //        
 //        window?.rootViewController = EULoginViewController()
-        window?.rootViewController = EUMainViewController()
+//        window?.rootViewController = EUMainViewController()
         window?.makeKeyAndVisible()
         
         return true
