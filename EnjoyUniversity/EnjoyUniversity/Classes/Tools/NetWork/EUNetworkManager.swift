@@ -37,9 +37,23 @@ class EUNetworkManager{
         request.responseJSON { (response) in
             
             if response.result.isSuccess {
-                let json = response.result.value
-                completion(json, true)
+                guard let dict = response.result.value as? [String:Any],let status = dict["status"] as? Int else{
+                    completion(nil,false)
+                    return
+                }
+                if status == 400{
+                    print("服务器拒绝失败")
+                }
+                if status == 200{
+                    
+                    let json = dict["data"]
+                    
+                    completion(json, true)
+                }
+                
+                
             }else{
+                
                 
                 //FIXME: 处理错误信息 服务器端针对 Token 错误应该返回 403 ，通过 403 通知用户重新登录（用通知）
                 completion(nil, false)

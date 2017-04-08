@@ -964,11 +964,13 @@ extension EULoginViewController{
             return
         }
         phonenumber = phone
+        SwiftyProgressHUD.showLoadingHUD()
         EUNetworkManager.shared.getVerificationCode(phone: phone, isLogin: true) { (isSuccess, code) in
          
+            SwiftyProgressHUD.hide()
             if !isSuccess{
             
-                // HUD提示用户网络请求失败
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 0.5)
                 return
             }
             // 用户没有注册过的情况，跳转到验证码界面
@@ -1006,11 +1008,15 @@ extension EULoginViewController{
         guard let pwd = passwordtextfield.text,let phonenumber = phonenumber else{
             return
         }
+        SwiftyProgressHUD.showLoadingHUD()
         EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: pwd) { (isSuccess, _) in
             
+            SwiftyProgressHUD.hide()
             if isSuccess{
                 self.present(EUMainViewController(), animated: true, completion: nil)
+                return
             }
+            SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
         }
         
         

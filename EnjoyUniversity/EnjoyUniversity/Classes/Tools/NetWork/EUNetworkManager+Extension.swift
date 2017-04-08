@@ -70,6 +70,7 @@ extension EUNetworkManager{
                 completion(false,nil)
                 return
             }
+            print(dict)
             self.userAccount.yy_modelSet(with: dict)
             self.userAccount.saveToUserDefaults(dict: dict)
             completion(true,dict)

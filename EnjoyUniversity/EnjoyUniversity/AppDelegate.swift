@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        }else{
 //            window?.rootViewController = EULoginViewController()
 //        }
-        
-        window?.rootViewController = EULoginViewController()
+//        
+//        window?.rootViewController = EULoginViewController()
+        window?.rootViewController = EUMainViewController()
         window?.makeKeyAndVisible()
         
         return true
