@@ -42,24 +42,6 @@ extension EUserInfoInputViewController{
         
     }
     
-    func createInputCell(title:String,tag:Int)->UITableViewCell{
-        
-        let cell = UITableViewCell()
-        
-        let  titlelabel = UILabel(frame: CGRect(x: 17, y: 17.5, width: 100, height: 15))
-        titlelabel.text = title
-        titlelabel.font = UIFont.boldSystemFont(ofSize: 15)
-        titlelabel.sizeToFit()
-        cell.addSubview(titlelabel)
-        
-        let textfield = UITextField(frame: CGRect(x: 80, y: 0, width: UIScreen.main.bounds.width - 97, height: 50))
-        textfield.tag = tag
-        cell.addSubview(textfield)
-        cell.selectionStyle = .none
-        
-        return cell
-    }
-    
 }
 
 // MARK: - 实现代理方法
@@ -90,9 +72,9 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
             cell.addSubview(titlelabel)
             return cell
         case 1:
-            return createInputCell(title: "姓名", tag: 1)
+            return EUserInfoInputCell(title: "姓名", reuseIdentifier: nil, tag: 1,placeholder: "无法更改，请慎重填写！")
         case 2:
-            return createInputCell(title: "昵称", tag: 2)
+            return EUserInfoInputCell(title: "昵称", reuseIdentifier: nil, tag: 2,placeholder: nil)
         case 3:
             let cell = UITableViewCell()
             let  titlelabel = UILabel(frame: CGRect(x: 17, y: 17.5, width: 100, height: 15))
@@ -110,9 +92,9 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
             return cell
             
         case 4:
-            return createInputCell(title: "专业", tag: 4)
+            return EUserInfoInputCell(title: "专业", reuseIdentifier: nil, tag: 4,placeholder: nil)
         case 5:
-            return createInputCell(title: "学号", tag: 5)
+            return EUserInfoInputCell(title: "学号", reuseIdentifier: nil, tag: 6,placeholder: "务必填写真实信息！")
         case 6:
             let cell = UITableViewCell()
             let personaldetail = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "描述你自己...")
@@ -211,7 +193,7 @@ extension EUserInfoInputViewController{
     
     @objc fileprivate func commitUserInfo(){
         
-        let name = tableview.cellForRow(at: IndexPath(row: 1, section: 0))?.subviews
+        let name = (tableview.cellForRow(at: IndexPath(row: 1, section: 0)) as? EUserInfoInputCell)
         
     }
     
@@ -221,10 +203,31 @@ extension EUserInfoInputViewController{
     
 }
 
+/// 自定义 Cell
+
 class EUserInfoInputCell:UITableViewCell{
     
+    init(title:String,reuseIdentifier:String?,tag:Int,placeholder:String?) {
+        super.init(style: .default, reuseIdentifier: reuseIdentifier)
+        
+        
+            let  titlelabel = UILabel(frame: CGRect(x: 17, y: 17.5, width: 100, height: 15))
+            titlelabel.text = title
+            titlelabel.font = UIFont.boldSystemFont(ofSize: 15)
+            titlelabel.sizeToFit()
+            addSubview(titlelabel)
+            
+            let textfield = UITextField(frame: CGRect(x: 80, y: 0, width: UIScreen.main.bounds.width - 97, height: 50))
+            textfield.tag = tag
+            textfield.placeholder = placeholder
+            addSubview(textfield)
+            selectionStyle = .none
+            
+        }
     
-    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 }
 
 
