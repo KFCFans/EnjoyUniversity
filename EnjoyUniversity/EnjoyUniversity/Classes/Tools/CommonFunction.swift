@@ -99,3 +99,5 @@ func calculateLabelHeight(text:String,width:CGFloat,font:CGFloat)->CGFloat{
 }
 
 
+
+

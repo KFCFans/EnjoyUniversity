@@ -9,6 +9,10 @@
 import UIKit
 
 class EUserInfoInputViewController: EUBaseViewController {
+
+    /// 头像视图
+    let logoimg = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 66, y: 10, width:30, height: 30))
+
     
     fileprivate let LOGININPUTCELL = "LOGININPUTCELL"
     override func viewDidLoad(){
@@ -32,6 +36,9 @@ extension EUserInfoInputViewController{
         navitem.rightBarButtonItem = rightBtn
         navitem.leftBarButtonItem = backBtn
         tableview.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        
+        // 去除底部多余分割线
+        tableview.tableFooterView = UIView()
         
     }
     
@@ -72,13 +79,12 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
             titlelabel.font = UIFont.boldSystemFont(ofSize: 15)
             titlelabel.sizeToFit()
             
-            let logoimg = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 66, y: 10, width:30, height: 30))
             logoimg.image = UIImage(named: "login_logo")
             cell.addSubview(logoimg)
             
             let backimg = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 22, y: 17, width: 16, height: 16))
             backimg.image = UIImage(named: "login_more")
-            cell.selectionStyle = .none
+            backimg.layer.masksToBounds = true
             cell.addSubview(backimg)
             
             cell.addSubview(titlelabel)
@@ -107,12 +113,24 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
             return createInputCell(title: "专业", tag: 4)
         case 5:
             return createInputCell(title: "学号", tag: 5)
+        case 6:
+            let cell = UITableViewCell()
+            let personaldetail = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "描述你自己...")
+            personaldetail.textColor = UIColor.black
+            personaldetail.font = UIFont.boldSystemFont(ofSize: 15)
+            cell.addSubview(personaldetail)
+            cell.addSubview(personaldetail)
+            return cell
         default:
             return UITableViewCell()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if indexPath.row == 6 {
+            return 145
+        }
         return 50
     }
     
@@ -126,15 +144,14 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
                 if UIImagePickerController.isSourceTypeAvailable(.camera){
                     //初始化图片控制器
                     let picker = UIImagePickerController()
+                    picker.allowsEditing = true
                     //设置代理
                     picker.delegate = self
                     //指定图片控制器类型
                     picker.sourceType = UIImagePickerControllerSourceType.camera
                     //弹出控制器，显示界面
                     
-                    self.present(picker, animated: true, completion: {
-                        () -> Void in
-                    })
+                    self.present(picker, animated: true, completion: nil)
                 }else{
                     print("读取相册错误")
                 }
@@ -145,6 +162,7 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
                 if UIImagePickerController.isSourceTypeAvailable(.photoLibrary){
                     //初始化图片控制器
                     let picker = UIImagePickerController()
+                    picker.allowsEditing = true
                     //设置代理
                     picker.delegate = self
                     //指定图片控制器类型
@@ -169,19 +187,43 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
         
     }
     
-    
+    //选择图片成功后代理
+    func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : Any]) {
+        guard let resultimg = info[UIImagePickerControllerOriginalImage] as? UIImage else{
+            return
+        }
+        
+        logoimg.image = resultimg
+        logoimg.layer.cornerRadius = 15.0
+        logoimg.layer.masksToBounds = true
+        picker.dismiss(animated: true, completion: nil)
+        
+        
+    }
 }
+
+
+    
+
 
 // MARK: - 监听方法
 extension EUserInfoInputViewController{
     
     @objc fileprivate func commitUserInfo(){
         
+        let name = tableview.cellForRow(at: IndexPath(row: 1, section: 0))?.subviews
+        
     }
     
     @objc fileprivate func back(){
         
     }
+    
+}
+
+class EUserInfoInputCell:UITableViewCell{
+    
+    
     
 }
 
