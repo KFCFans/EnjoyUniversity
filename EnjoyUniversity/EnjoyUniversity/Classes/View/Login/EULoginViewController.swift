@@ -356,7 +356,7 @@ extension EULoginViewController{
         passwordview.addSubview(firstlabel)
         
         let secondlabel = UILabel()
-        secondlabel.text = "请输入一个安全的密码"
+        secondlabel.text = "请输入6-16位密码"
         secondlabel.textColor = UIColor.init(red: 132/255, green: 132/255, blue: 132/255, alpha: 1)
         secondlabel.font = UIFont.boldSystemFont(ofSize: 14)
         secondlabel.sizeToFit()
@@ -1056,6 +1056,8 @@ extension EULoginViewController{
     /// 忘记密码
     @objc fileprivate func didClickChangePasswordBtn(){
         
+        SwiftyProgressHUD.showLoadingHUD()
+        
         guard let newpwd = newpasswordtextfield.text,let phonenumber = phonenumber else {
             return
         }
@@ -1064,8 +1066,9 @@ extension EULoginViewController{
         if isOldUser {
             EUNetworkManager.shared.changgePasswordByVerifyCode(phone: phonenumber, newpwd: newpwd, completion: { (isSuccess) in
               
+                SwiftyProgressHUD.hide()
                 if !isSuccess{
-                    
+                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
                 }
                 // 修改成功，登陆
                 EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: newpwd, completion: { (isSuccess, _) in
@@ -1074,8 +1077,11 @@ extension EULoginViewController{
                 })
                 
             })
+        }else{
+            /// 新用户还要填写一堆个人资料
+            
         }
-        /// 新用户还要填写一堆个人资料
+        
         
         
     }
