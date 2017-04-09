@@ -12,6 +12,9 @@ class EUserInfoInputViewController: EUBaseViewController {
 
     /// 头像视图
     let logoimg = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 66, y: 10, width:30, height: 30))
+    
+    /// 用户头像
+    var userlogo:UIImage?
 
     
     fileprivate let LOGININPUTCELL = "LOGININPUTCELL"
@@ -176,6 +179,7 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
         }
         
         logoimg.image = resultimg
+        userlogo = resultimg
         logoimg.layer.cornerRadius = 15.0
         logoimg.layer.masksToBounds = true
         picker.dismiss(animated: true, completion: nil)
@@ -193,7 +197,12 @@ extension EUserInfoInputViewController{
     
     @objc fileprivate func commitUserInfo(){
         
-        let name = (tableview.cellForRow(at: IndexPath(row: 1, section: 0)) as? EUserInfoInputCell)
+        guard let name = (tableview.cellForRow(at: IndexPath(row: 1, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
+        let nickname = (tableview.cellForRow(at: IndexPath(row: 2, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
+        let classname = (tableview.cellForRow(at: IndexPath(row: 4, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
+            let schoolid =  (tableview.cellForRow(at: IndexPath(row: 5, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text else{
+                return
+        }
         
     }
     
@@ -207,6 +216,8 @@ extension EUserInfoInputViewController{
 
 class EUserInfoInputCell:UITableViewCell{
     
+    let textfieldZ = UITextField(frame: CGRect(x: 80, y: 0, width: UIScreen.main.bounds.width - 97, height: 50))
+    
     init(title:String,reuseIdentifier:String?,tag:Int,placeholder:String?) {
         super.init(style: .default, reuseIdentifier: reuseIdentifier)
         
@@ -217,10 +228,10 @@ class EUserInfoInputCell:UITableViewCell{
             titlelabel.sizeToFit()
             addSubview(titlelabel)
             
-            let textfield = UITextField(frame: CGRect(x: 80, y: 0, width: UIScreen.main.bounds.width - 97, height: 50))
-            textfield.tag = tag
-            textfield.placeholder = placeholder
-            addSubview(textfield)
+        
+            textfieldZ.tag = tag
+            textfieldZ.placeholder = placeholder
+            addSubview(textfieldZ)
             selectionStyle = .none
             
         }
