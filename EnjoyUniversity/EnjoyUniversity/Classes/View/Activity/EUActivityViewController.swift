@@ -17,7 +17,16 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     
     // 收藏按钮
     var collectBtn = UIButton()
+    
+    // 发起者昵称
+    let nicknamelabel = UILabel(frame: CGRect(x: 72, y: 20, width: 200, height: 15))
 
+    // 发起者节操值
+    let reputationlabel = UILabel(frame: CGRect(x: 72, y: 41, width: 200, height: 10))
+
+    // 发起者头像
+    let headimg = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
+    
     /// ViewModel 数据源
     var viewmodel:ActivityViewModel?{
         
@@ -45,10 +54,40 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
         setupNavUI()
         setupLeaderInfoUI()
 
         setupParticipateButton()
+        
+    }
+    
+    private func loadData(){
+        
+        guard let uid = viewmodel?.activitymodel.uid else {
+            return
+        }
+        EUNetworkManager.shared.getUserInfomation(uid: uid) { (isSuccess, dict) in
+            
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+            }
+            guard let dict = dict else{
+                return
+            }
+            let nickname = dict["nickname"] as? String
+            let reputation = (dict["reputation"] as? Int) ?? 100
+            let avaterurl = dict["avatar"] as? String
+            
+            self.nicknamelabel.text = nickname
+            self.reputationlabel.text = "节操值 \(reputation)"
+            self.headimg.kf.setImage(with: URL(string: PICTURESERVERADDRESS + "/user/" + (avaterurl ?? "") + ".jpg"),
+                                placeholder: UIImage(named: "av_leader"),
+                                options: [.transition(.fade(1))],
+                                progressBlock: nil,
+                                completionHandler: nil)
+        }
+        
         
     }
     
@@ -89,17 +128,17 @@ extension EUActivityViewController{
         leaderView.backgroundColor = UIColor.white
         scrollView.addSubview(leaderView)
         
-        let headimg = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
+
         headimg.image = UIImage(named: "av_leader")
+        headimg.layer.cornerRadius = 25
+        headimg.layer.masksToBounds = true
         leaderView.addSubview(headimg)
         
-        let nicknamelabel = UILabel(frame: CGRect(x: 72, y: 20, width: 200, height: 15))
         nicknamelabel.text = "假诗人"
         nicknamelabel.font = UIFont.boldSystemFont(ofSize: 15)
         nicknamelabel.textColor = UIColor.black
         leaderView.addSubview(nicknamelabel)
         
-        let reputationlabel = UILabel(frame: CGRect(x: 72, y: 41, width: 200, height: 10))
         reputationlabel.text = "节操值 100"
         reputationlabel.textColor = UIColor.lightGray
         reputationlabel.font = UIFont.boldSystemFont(ofSize: 10)
@@ -133,7 +172,11 @@ extension EUActivityViewController{
     
     @objc fileprivate func callButtonIsClicked(){
         
-        UIApplication.shared.open(URL(string: "telprompt://15061884797")!, options: [:], completionHandler: nil)
+        guard let phone = viewmodel?.activitymodel.uid else{
+            return
+        }
+        
+        UIApplication.shared.open(URL(string: "telprompt://\(phone)")!, options: [:], completionHandler: nil)
 
     }
     
@@ -142,7 +185,32 @@ extension EUActivityViewController{
         
     }
     
+    /// 收藏
     @objc fileprivate func collectButtonIsClicked(){
+        
+        guard let avid = viewmodel?.activitymodel.avid else{
+            return
+        }
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.collectActivity(avid: avid) { (requestIsSuccess, collectIsSuccess) in
+            SwiftyProgressHUD.hide()
+            if !requestIsSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                return
+            }
+            
+            if !collectIsSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "收藏过啦", duration: 1)
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            
+        }
+        
+    }
+    
+    /// 查看已报名列表
+    @objc fileprivate func showListOfParticipators(){
         
     }
     

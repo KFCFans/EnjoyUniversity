@@ -22,7 +22,7 @@ class EUActivityCell: UITableViewCell {
             let iconurl = URL(string: activityVM?.imageURL ?? "")
             activityIcon.kf.setImage(with: iconurl,
                                      placeholder: nil,
-                                     options: nil,
+                                     options: [.transition(.fade(1))],
                                      progressBlock: nil,
                                      completionHandler: nil)
             

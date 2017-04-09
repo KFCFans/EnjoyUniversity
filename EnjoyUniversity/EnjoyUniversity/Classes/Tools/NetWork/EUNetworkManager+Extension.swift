@@ -190,6 +190,32 @@ extension EUNetworkManager{
         
     }
     
+    /// 获取其它用户信息
+    ///
+    /// - Parameters:
+    ///   - uid: 用户手机号
+    ///   - completion: 完成回调 是否请求成功，用户信息字典
+    func getUserInfomation(uid:Int64,completion:@escaping(Bool,[String:Any]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/info/introinfo"
+        
+        let parm = ["uid":uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (dict, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let dict = dict as? [String:Any] else{
+                completion(false,nil)
+                return
+            }
+            completion(true,dict)
+        }
+        
+    }
+    
 
 }
 
@@ -293,8 +319,37 @@ extension EUNetworkManager{
             completion(true)
             
         }
+    }
+    
+    /// 收藏活动
+    ///
+    /// - Parameters:
+    ///   - avid: 活动 ID
+    ///   - completion: 完成回调,请求是否成功，收藏是否成功
+    func collectActivity(avid:Int,completion:@escaping (Bool,Bool)->()){
         
+        let url = SERVERADDRESS + "/eu/activity/collectav"
         
+        var parm = Parameters()
+        
+        parm["uid"] = userAccount.uid
+        parm["avid"] = avid
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, code) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            
+            if code == 500{
+                completion(true,false)
+                return
+            }
+            
+            completion(true,true)
+            
+        }
         
     }
 

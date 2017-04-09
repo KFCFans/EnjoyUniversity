@@ -37,6 +37,9 @@ class ActivityViewModel{
     /// 拼接 URL 地址
     var imageURL:String?
     
+    /// 限制人数
+    var peoplelimit:String?
+    
     init(model:Activity) {
         
         activitymodel = model
@@ -51,6 +54,8 @@ class ActivityViewModel{
         detailHeight = calculateLabelHeight(text: activitymodel.avDetail ?? "",width: UIScreen.main.bounds.width - 40,font: 14)
         
         imageURL = PICTURESERVERADDRESS + "/activity/" + (model.avLogo ?? "") + ".jpg"
+        
+        model.avExpectnum == 0 ? "人数不限" : "限\(model.avExpectnum)人"
         
     }
     
