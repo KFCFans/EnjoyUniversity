@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let _ = UserDefaults.standard.string(forKey: "accesstoken"){
             window?.rootViewController = EUMainViewController()
         }else{
-            window?.rootViewController = EULoginViewController()
+            window?.rootViewController = EUNavigationController(rootViewController: EULoginViewController())
         }
 
 

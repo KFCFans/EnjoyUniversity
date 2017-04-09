@@ -46,7 +46,7 @@ extension EUserInfoInputViewController{
         navitem.title = "填写个人资料"
         let rightBtn = UIBarButtonItem(title: "提交", style: .plain, target: nil, action: #selector(commitUserInfo))
         
-        let backBtn = UIBarButtonItem(image: UIImage(named: "nav_back"), style: .plain, target: nil, action: nil)
+        let backBtn = UIBarButtonItem(image: UIImage(named: "nav_back"), style: .plain, target: nil, action: #selector(back))
 
         navitem.rightBarButtonItem = rightBtn
         navitem.leftBarButtonItem = backBtn

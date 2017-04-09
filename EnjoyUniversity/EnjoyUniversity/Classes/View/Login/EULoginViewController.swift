@@ -21,11 +21,7 @@ class EULoginViewController: UIViewController {
     
     /// 设置密码视图
     var setpasswordview:UIView?
-    
-    
-    
 
-    
     /// 登陆界面，输入手机号
     let phonetextfield = UITextField()
     
@@ -1055,15 +1051,14 @@ extension EULoginViewController{
     
     /// 忘记密码
     @objc fileprivate func didClickChangePasswordBtn(){
-        
-        SwiftyProgressHUD.showLoadingHUD()
-        
+    
         guard let newpwd = newpasswordtextfield.text,let phonenumber = phonenumber else {
             return
         }
 
         /// 如果是老用户，改完密码直接自动登录
         if isOldUser {
+            SwiftyProgressHUD.showLoadingHUD()
             EUNetworkManager.shared.changgePasswordByVerifyCode(phone: phonenumber, newpwd: newpwd, completion: { (isSuccess) in
               
                 SwiftyProgressHUD.hide()
@@ -1083,8 +1078,7 @@ extension EULoginViewController{
             let vc = EUserInfoInputViewController()
             vc.password = newpwd
             vc.phone = phonenumber
-            
-            self.navigationController?.present(vc, animated: true, completion: nil)
+            self.navigationController?.pushViewController(vc, animated: true)
             
         }
         
