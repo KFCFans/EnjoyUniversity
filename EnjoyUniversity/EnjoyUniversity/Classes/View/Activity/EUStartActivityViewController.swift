@@ -389,25 +389,13 @@ extension EUStartActivityViewController{
         
         // 判断
         if !activityName.hasText {
-            let alertController = UIAlertController(title: nil,message: "请填写活动标题", preferredStyle: .alert)
-            present(alertController, animated: true, completion: nil)
-            // 1秒钟后自动消失
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                
-                alertController.dismiss(animated: true, completion: nil)
-            }
+            SwiftyProgressHUD.showFaildHUD(text: "活动标题", duration: 1)
             return
             
 
         }
         if !activityPlace.hasText {
-            let alertController = UIAlertController(title: nil,message: "请填写活动地点", preferredStyle: .alert)
-            present(alertController, animated: true, completion: nil)
-            // 1秒钟后自动消失
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                
-                alertController.dismiss(animated: false, completion: nil)
-            }
+            SwiftyProgressHUD.showFaildHUD(text: "活动地点", duration: 1)
             return
         }
         
@@ -430,13 +418,7 @@ extension EUStartActivityViewController{
         // 时间判断
         if avEndtime <= avStartime || avStartime < currenttime || avstoptime > avStartime{
             
-            let alertController = UIAlertController(title: nil,message: "请选择正确的时间", preferredStyle: .alert)
-            present(alertController, animated: true, completion: nil)
-            // 1秒钟后自动消失
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                
-                alertController.dismiss(animated: false, completion: nil)
-            }
+            SwiftyProgressHUD.showFaildHUD(text: "时间错误", duration: 1)
             return
         }
         
@@ -451,18 +433,13 @@ extension EUStartActivityViewController{
         activity.avEnrolldeadline = avstoptime
         activity.avRegister = register
         
-        
+        SwiftyProgressHUD.showLoadingHUD()
         if let uploadImg = uploadImg{
             EUNetworkManager.shared.uploadPicture(choice: .ActivityLogo,uploadimg: uploadImg, completion: { (isSuccess, address) in
               
+                SwiftyProgressHUD.hide()
                 if !isSuccess{
-                    let alertController = UIAlertController(title: nil,message: "提交失败，请重新提交", preferredStyle: .alert)
-                    self.present(alertController, animated: true, completion: nil)
-                    // 1秒钟后自动消失
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                        
-                        alertController.dismiss(animated: false, completion: nil)
-                    }
+                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
                     return
                 }
                 
@@ -473,23 +450,28 @@ extension EUStartActivityViewController{
                 EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
                     
                     if isSuccess{
+                        SwiftyProgressHUD.showSuccessHUD(duration: 1)
                         self.dismiss(animated: true, completion: nil)
                     }
-                    let alertController = UIAlertController(title: nil,message: "提交失败，请重新提交", preferredStyle: .alert)
-                    self.present(alertController, animated: true, completion: nil)
-                    // 1秒钟后自动消失
-                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-                        
-                        alertController.dismiss(animated: false, completion: nil)
-                    }
-                    return
-                    
+                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
                 }
                 
             })
+        }else{
+            
+            SwiftyProgressHUD.hide()
+            EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
+                
+                if isSuccess{
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    self.dismiss(animated: true, completion: nil)
+                    return
+                }
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                
+            }
+            
         }
-
-        
     }
 }
 

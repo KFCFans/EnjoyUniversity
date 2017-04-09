@@ -1098,10 +1098,15 @@ extension EULoginViewController{
         
     }
     
-    /// 忘记密码
+    /// 设置密码
     @objc fileprivate func didClickChangePasswordBtn(){
     
         guard let newpwd = newpasswordtextfield.text,let phonenumber = phonenumber else {
+            return
+        }
+        
+        if newpwd.characters.count < 6 {
+            SwiftyProgressHUD.showFaildHUD(text: "密码太短", duration: 1)
             return
         }
 

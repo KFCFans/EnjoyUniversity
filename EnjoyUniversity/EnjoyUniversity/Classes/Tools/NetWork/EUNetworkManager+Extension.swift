@@ -68,8 +68,8 @@ extension EUNetworkManager{
                 return
             }
             
-            /// 400 表示用户名或密码错误
-            if statusCode == 400{
+            /// 401 表示用户名或密码错误
+            if statusCode == 401{
                 completion(true,false)
                 return
             }
@@ -244,28 +244,14 @@ extension EUNetworkManager{
         parameters["avLogo"] = activity.avLogo
         
         
-        tokenRequest(urlString: url, method: .post, parameters: parameters) { (json, isSuccess,_) in
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (_, _,code) in
             
-            if !isSuccess{
-                completion(false)
+
+            if code == 200{
+                completion(true)
                 return
             }
-            guard let array = json as? [String:Any] else{
-                completion(false)
-                return
-            }
-            
-            if let status = array["status"] as? Int {
-                
-                if status == 200{
-                    
-                    completion(true)
-                }else{
-                    completion(false)
-                }
-                return
-                
-            }
+            completion(false)
         }
     }
     
