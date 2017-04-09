@@ -109,7 +109,9 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
         case 4:
             return EUserInfoInputCell(title: "专业", reuseIdentifier: nil, tag: 4,placeholder: nil)
         case 5:
-            return EUserInfoInputCell(title: "学号", reuseIdentifier: nil, tag: 6,placeholder: "务必填写真实信息！")
+            let cell =  EUserInfoInputCell(title: "学号", reuseIdentifier: nil, tag: 6,placeholder: "务必填写真实信息！")
+            cell.textfieldZ.keyboardType = .numberPad
+            return cell
         case 6:
             let cell = UITableViewCell()
             personaldetail.textColor = UIColor.black
@@ -207,14 +209,11 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
 extension EUserInfoInputViewController{
     
     @objc fileprivate func commitUserInfo(){
-        
-        phone = "15061886666"
-        password = "123"
-        
+
         guard let name = (tableview.cellForRow(at: IndexPath(row: 1, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
         let nickname = (tableview.cellForRow(at: IndexPath(row: 2, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
         let classname = (tableview.cellForRow(at: IndexPath(row: 4, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
-            let password = password,
+        let password = password,
         let schoolid =  (tableview.cellForRow(at: IndexPath(row: 5, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
         let genderindex = sexsegment?.selectedSegmentIndex,
         let phone = phone else{
@@ -270,7 +269,7 @@ extension EUserInfoInputViewController{
     }
     
     @objc fileprivate func back(){
-        
+        _ = self.navigationController?.popViewController(animated: true)
     }
     
 }

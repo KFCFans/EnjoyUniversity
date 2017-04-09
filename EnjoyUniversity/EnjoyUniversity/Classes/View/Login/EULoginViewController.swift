@@ -1078,7 +1078,13 @@ extension EULoginViewController{
                 
             })
         }else{
+            
             /// 新用户还要填写一堆个人资料
+            let vc = EUserInfoInputViewController()
+            vc.password = newpwd
+            vc.phone = phonenumber
+            
+            self.navigationController?.present(vc, animated: true, completion: nil)
             
         }
         
