@@ -15,6 +15,18 @@ class EUserInfoInputViewController: EUBaseViewController {
     
     /// 用户头像
     var userlogo:UIImage?
+    
+    /// 用户手机号
+    var phone:String?
+    
+    /// 用户密码
+    var password:String?
+    
+    /// 用户性别选择
+    var sexsegment:UISegmentedControl?
+    
+    /// 用户详细信息
+    let personaldetail = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "描述你自己...")
 
     
     fileprivate let LOGININPUTCELL = "LOGININPUTCELL"
@@ -87,11 +99,11 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
             cell.selectionStyle = .none
             cell.addSubview(titlelabel)
             let array = ["男","女","保密"]
-            let segment = UISegmentedControl(items: array)
-            segment.selectedSegmentIndex = 0
+            sexsegment = UISegmentedControl(items: array)
+            sexsegment?.selectedSegmentIndex = 0
             
-            segment.frame.origin = CGPoint(x: UIScreen.main.bounds.width - 12 - segment.frame.width, y: (50 - segment.frame.height)/2)
-            cell.addSubview(segment)
+            sexsegment?.frame.origin = CGPoint(x: UIScreen.main.bounds.width - 12 - (sexsegment?.frame.width)!, y: (50 - (sexsegment?.frame.height)!)/2)
+            cell.addSubview(sexsegment!)
             return cell
             
         case 4:
@@ -100,7 +112,6 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
             return EUserInfoInputCell(title: "学号", reuseIdentifier: nil, tag: 6,placeholder: "务必填写真实信息！")
         case 6:
             let cell = UITableViewCell()
-            let personaldetail = SwiftyTextView(frame: CGRect(x: 16, y: 15, width: UIScreen.main.bounds.width - 32, height: 145), textContainer: nil, placeholder: "描述你自己...")
             personaldetail.textColor = UIColor.black
             personaldetail.font = UIFont.boldSystemFont(ofSize: 15)
             cell.addSubview(personaldetail)
@@ -197,11 +208,63 @@ extension EUserInfoInputViewController{
     
     @objc fileprivate func commitUserInfo(){
         
+        phone = "15061886666"
+        password = "123"
+        
         guard let name = (tableview.cellForRow(at: IndexPath(row: 1, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
         let nickname = (tableview.cellForRow(at: IndexPath(row: 2, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
         let classname = (tableview.cellForRow(at: IndexPath(row: 4, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
-            let schoolid =  (tableview.cellForRow(at: IndexPath(row: 5, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text else{
+            let password = password,
+        let schoolid =  (tableview.cellForRow(at: IndexPath(row: 5, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
+        let genderindex = sexsegment?.selectedSegmentIndex,
+        let phone = phone else{
                 return
+        }
+        
+        let user = UserInfo(uid: Int64(phone)!, avatar: nil, nickname: nickname, gender: genderindex, professionclass: classname, studentid: Int64(schoolid) ?? 0, name: name, userdescription: personaldetail.text)
+        SwiftyProgressHUD.showLoadingHUD()
+        if let userlogo = userlogo {
+            EUNetworkManager.shared.uploadPicture(choice: .UserLogo, uploadimg: userlogo, completion: { (isSuccess, address) in
+                
+                if !isSuccess || address == nil {
+                    SwiftyProgressHUD.hide()
+                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                    return
+                }
+                // 取图片名，不需要后缀
+                let picname = address?.components(separatedBy: ".").first ?? ""
+                user.avatar = picname
+                EUNetworkManager.shared.createUser(user: user, password: password, completion: { (isSuccess) in
+                
+                    SwiftyProgressHUD.hide()
+                    if !isSuccess {
+                        SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                        return
+                    }
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    
+                    let vc = EUMainViewController()
+                    self.present(vc, animated: true, completion: nil)
+
+                })
+                
+            })
+        }else{
+            
+            EUNetworkManager.shared.createUser(user: user, password: password, completion: { (isSuccess) in
+                
+                SwiftyProgressHUD.hide()
+                if !isSuccess {
+                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                
+                let vc = EUMainViewController()
+                self.present(vc, animated: true, completion: nil)
+                
+            })
+
         }
         
     }

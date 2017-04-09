@@ -39,5 +39,17 @@ class UserInfo: NSObject {
     
     /// 用户验证信息
     var verified:Int = 0
+    
+    init(uid:Int64,avatar:String?,nickname:String,gender:Int,professionclass:String,studentid:Int64,name:String,userdescription:String?) {
+        
+        self.uid = uid
+        self.nickname = nickname
+        self.avatar = avatar
+        self.gender = gender
+        self.professionclass = professionclass
+        self.name = name
+        self.studentid = studentid
+        self.userdescription = userdescription
+    }
 
 }

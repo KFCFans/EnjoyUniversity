@@ -451,9 +451,9 @@ extension EUStartActivityViewController{
         activity.avEnrolldeadline = avstoptime
         activity.avRegister = register
         
-        //FIXME:上传图片
+        
         if let uploadImg = uploadImg{
-            EUNetworkManager.shared.uploadActivityLogo(uploadimg: uploadImg, completion: { (isSuccess, address) in
+            EUNetworkManager.shared.uploadPicture(choice: .ActivityLogo,uploadimg: uploadImg, completion: { (isSuccess, address) in
               
                 if !isSuccess{
                     let alertController = UIAlertController(title: nil,message: "提交失败，请重新提交", preferredStyle: .alert)
@@ -488,15 +488,7 @@ extension EUStartActivityViewController{
                 
             })
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
+
         
     }
 }

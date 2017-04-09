@@ -266,8 +266,49 @@ extension EUNetworkManager{
                 return
                 
             }
+        }
+    }
+    
+    /// 创建用户(注册成功)
+    func createUser(user:UserInfo,password:String,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/user/newuser"
+        
+        var parm = Parameters()
+        
+        parm["password"] = password
+        parm["uid"] = user.uid
+        parm["avatar"] = user.avatar
+        parm["gender"] = user.gender
+        parm["nickname"] = user.nickname
+        parm["professionclass"] = user.professionclass
+        parm["name"] = user.name
+        parm["studentid"] = user.studentid
+        parm["userdescription"] = user.userdescription
+        
+        parm["reputation"] = 100
+        parm["verified"] = 0
+        
+        request(urlString: url, method: .post, parameters: parm) { (token, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            
+            guard let token = token else{
+                completion(false)
+                return
+            }
+            
+            let userdict = ["uid":user.uid,"accesstoken":token]
+            
+            self.userAccount.saveToUserDefaults(dict: userdict)
+            completion(true)
             
         }
+        
+        
         
     }
 
@@ -276,14 +317,42 @@ extension EUNetworkManager{
 // MARK: - 上传接口
 extension EUNetworkManager{
     
+    
+    enum UpLoadWhosePicture {
+        case ActivityLogo
+        case UserLogo
+        case CommunityLogo
+        case CommunityBackground
+    }
+    
     /// 上传图片到服务器
     ///
     /// - Parameters:
     ///   - uploadimg: 需要上传的图片
     ///   - completion: 完成回调（是否成功，图片地址）
-    func uploadActivityLogo(uploadimg:UIImage,completion:@escaping (Bool,String?)->()){
+    func uploadPicture(choice:UpLoadWhosePicture,uploadimg:UIImage,completion:@escaping (Bool,String?)->()){
         
-        let url = SERVERADDRESS + "/eu/upload/activity"
+        let activityurl = SERVERADDRESS + "/eu/upload/activity"
+        let userlogourl = SERVERADDRESS + "/eu/upload/user"
+        let communitylogourl = SERVERADDRESS + "/eu/upload/community/logo"
+        let communitybackgroundurl = SERVERADDRESS + "/eu/upload/community/background"
+        
+        var url = ""
+        switch choice {
+        case .ActivityLogo:
+            url = activityurl
+            break
+        case .UserLogo:
+            url = userlogourl
+            break
+        case .CommunityLogo:
+            url = communitylogourl
+            break
+        case .CommunityBackground:
+            url = communitybackgroundurl
+            break
+
+        }
         
         //将选择的图片保存到Document目录下
         let fileManager = FileManager.default
