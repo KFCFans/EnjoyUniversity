@@ -31,6 +31,9 @@ class EULoginViewController: UIViewController {
     /// 提示用户验证码不正确
     let correctcodelabel = UILabel()
     
+    /// 重发按钮
+    let resendBtn = UIButton()
+    
     /// 设置的新密码
     let newpasswordtextfield = UITextField()
     
@@ -45,6 +48,24 @@ class EULoginViewController: UIViewController {
     /// 记录新用户还是老用户
     var isOldUser:Bool = true
     
+    /// 重发短信计时器
+    private var resendtimer:Timer?
+    
+    /// 重发默认
+    var resendtime:Int = 60{
+        
+        didSet{
+            if resendtime <= 0 {
+                resendBtn.setTitle("点击重新发送", for: .normal)
+                resendBtn.isEnabled = true
+                return
+            }
+            resendBtn.setTitle("\(resendtime)秒后重发", for: .normal)
+            
+        }
+        
+    }
+    
     /// 隐藏状态栏
     override var prefersStatusBarHidden: Bool{
         return true
@@ -53,10 +74,11 @@ class EULoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        resendtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateResendTime), userInfo: nil, repeats: true)
+        
         phoneview = setupPhoneView(orgin: CGPoint(x: 0, y: 0))
         view.addSubview(phoneview!)
 
-        
     }
 
     override func didReceiveMemoryWarning() {
@@ -64,7 +86,10 @@ class EULoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    /// 销毁时钟
+    deinit {
+        resendtimer?.invalidate()
+    }
 
 
 }
@@ -558,11 +583,19 @@ extension EULoginViewController{
         codeview.addSubview(firstlabel)
         
         let secondlabel = UILabel()
-        secondlabel.text = "15061883391 55秒后重发"
+        secondlabel.text = "1501883391"
         secondlabel.textColor = UIColor.init(red: 132/255, green: 132/255, blue: 132/255, alpha: 1)
         secondlabel.font = UIFont.boldSystemFont(ofSize: 14)
         secondlabel.sizeToFit()
         codeview.addSubview(secondlabel)
+        
+        resendBtn.setTitle("60秒后重发", for: .normal)
+        resendBtn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        resendBtn.setTitleColor(UIColor.init(red: 132/255, green: 132/255, blue: 132/255, alpha: 1), for: .normal)
+        resendBtn.addTarget(nil, action: #selector(sendVerifyCode), for: .touchUpInside)
+        resendBtn.isEnabled = false
+        resendBtn.sizeToFit()
+        codeview.addSubview(resendBtn)
         
         correctcodelabel.text = "请输入正确的验证码"
         correctcodelabel.textColor = UIColor.init(red: 1, green: 82/255, blue: 93/255, alpha: 1)
@@ -599,6 +632,7 @@ extension EULoginViewController{
         firstlabel.translatesAutoresizingMaskIntoConstraints = false
         secondlabel.translatesAutoresizingMaskIntoConstraints = false
         correctcodelabel.translatesAutoresizingMaskIntoConstraints = false
+        resendBtn.translatesAutoresizingMaskIntoConstraints = false
         verifycode.translatesAutoresizingMaskIntoConstraints = false
         warnlabel1.translatesAutoresizingMaskIntoConstraints = false
         warnlabel2.translatesAutoresizingMaskIntoConstraints = false
@@ -632,7 +666,7 @@ extension EULoginViewController{
                                                       attribute: .centerX,
                                                       multiplier: 1.0,
                                                       constant: 0))
-        // 手机号 重发
+        // 手机号
         codeview.addConstraint(NSLayoutConstraint(item: secondlabel,
                                                       attribute: .top,
                                                       relatedBy: .equal,
@@ -641,12 +675,27 @@ extension EULoginViewController{
                                                       multiplier: 1.0,
                                                       constant: 6 * scal))
         codeview.addConstraint(NSLayoutConstraint(item: secondlabel,
-                                                      attribute: .centerX,
+                                                      attribute: .right,
                                                       relatedBy: .equal,
                                                       toItem: codeview,
                                                       attribute: .centerX,
                                                       multiplier: 1.0,
-                                                      constant: 0))
+                                                      constant: -3*scal))
+        // 重发验证码
+        codeview.addConstraint(NSLayoutConstraint(item: resendBtn,
+                                                  attribute: .centerY,
+                                                  relatedBy: .equal,
+                                                  toItem: secondlabel,
+                                                  attribute: .centerY,
+                                                  multiplier: 1.0,
+                                                  constant: 0))
+        codeview.addConstraint(NSLayoutConstraint(item: resendBtn,
+                                                  attribute: .left,
+                                                  relatedBy: .equal,
+                                                  toItem: codeview,
+                                                  attribute: .centerX,
+                                                  multiplier: 1.0,
+                                                  constant: 3*scal))
         // 验证码错误
         codeview.addConstraint(NSLayoutConstraint(item: correctcodelabel,
                                                   attribute: .top,
@@ -961,7 +1010,7 @@ extension EULoginViewController{
         }
         phonenumber = phone
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.getVerificationCode(phone: phone, isLogin: true) { (isSuccess, code) in
+        EUNetworkManager.shared.getVerificationCode(phone: phone, isRegister: true) { (isSuccess, code) in
          
             SwiftyProgressHUD.hide()
             if !isSuccess{
@@ -1029,7 +1078,7 @@ extension EULoginViewController{
             return
         }
         
-        EUNetworkManager.shared.getVerificationCode(phone: phonenumber, isLogin: false) { (isSuccess, code) in
+        EUNetworkManager.shared.getVerificationCode(phone: phonenumber, isRegister: false) { (isSuccess, code) in
             if !isSuccess{
                 // 提示网络不好
                 return
@@ -1081,8 +1130,38 @@ extension EULoginViewController{
             self.navigationController?.pushViewController(vc, animated: true)
             
         }
+    }
+    
+    /// 更新重发时间
+    @objc fileprivate func updateResendTime(){
         
+        resendtime -= 1
+    }
+    
+    /// 重发验证码
+    @objc fileprivate func sendVerifyCode(){
         
+        resendBtn.isEnabled = false
+        resendtime = 60
+        
+        // 重新获取验证码
+        guard let phonenumber = phonenumber else {
+            return
+        }
+        
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.getVerificationCode(phone: phonenumber, isRegister: !isOldUser) { (isSuccess, code) in
+            
+            SwiftyProgressHUD.hide()
+            if !isSuccess{
+                
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 0.5)
+                return
+            }
+            if let code = code {
+                self.verifycode = code
+            }
+        }
         
     }
     

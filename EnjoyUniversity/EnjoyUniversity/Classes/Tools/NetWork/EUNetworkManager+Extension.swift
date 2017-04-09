@@ -18,14 +18,14 @@ extension EUNetworkManager{
     ///
     /// - Parameters:
     ///   - phone: 手机号
-    ///   - isLogin: 是否用于登陆（还可能用于忘记密码）
+    ///   - isRegister: 是否用于登陆（还可能用于忘记密码）
     ///   - completion: 请求是否成功，验证码
-    func getVerificationCode(phone:String,isLogin:Bool,completion:@escaping (Bool,String?)->()){
+    func getVerificationCode(phone:String,isRegister:Bool,completion:@escaping (Bool,String?)->()){
         
         let url = SERVERADDRESS + "/eu/user/verifyphone"
         var para = Parameters()
         para["phone"] = phone
-        para["choice"] = isLogin ? 0 : 1
+        para["choice"] = isRegister ? 0 : 1
         
         request(urlString: url, method: .post, parameters: para) { (code, isSuccess,statusCode) in
             
