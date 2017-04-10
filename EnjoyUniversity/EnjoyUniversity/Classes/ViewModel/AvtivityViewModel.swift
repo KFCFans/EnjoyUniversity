@@ -55,7 +55,7 @@ class ActivityViewModel{
         
         imageURL = PICTURESERVERADDRESS + "/activity/" + (model.avLogo ?? "") + ".jpg"
         
-        model.avExpectnum == 0 ? "人数不限" : "限\(model.avExpectnum)人"
+        expectPeople = model.avExpectnum == 0 ? "人数不限" : "限\(model.avExpectnum)人"
         
     }
     

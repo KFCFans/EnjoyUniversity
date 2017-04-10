@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UserinfoViewModel{
+class UserinfoViewModel:NSObject{
     
     /// UserInfo 模型
     var model:UserInfo?

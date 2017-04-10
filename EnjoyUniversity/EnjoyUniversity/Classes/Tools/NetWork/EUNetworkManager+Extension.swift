@@ -216,6 +216,34 @@ extension EUNetworkManager{
         
     }
     
+    
+    /// 获取参与活动的用户列表
+    ///
+    /// - Parameters:
+    ///   - avid: 活动 ID
+    ///   - completion: 完成回调
+    func getActivityParticipators(avid:Int,completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/memberlist"
+        
+        let parm = ["avid":avid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+            
+            
+        }
+    }
+    
 
 }
 

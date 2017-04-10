@@ -38,7 +38,7 @@ class EUBaseAvtivityViewController: UIViewController {
     var priceLabel = UILabel()
     
     // 人数
-    var numLabel = UILabel()
+    var participatornumLabel = UILabel()
     
     // 活动详情
     let detailLabel = UILabel()
@@ -164,27 +164,27 @@ extension EUBaseAvtivityViewController{
         
         
         // 人数
-        let numview = UIImageView(frame: CGRect(x: 0, y: 132, width: activityinfoview.frame.width, height: 44))
-        activityinfoview.addSubview(numview)
+        let participatornumview = UIImageView(frame: CGRect(x: 0, y: 132, width: activityinfoview.frame.width, height: 44))
+        activityinfoview.addSubview(participatornumview)
         
         let avenrollimg = UIImageView(frame: CGRect(x: 12, y: 14, width: 16, height: 16))
         avenrollimg.image = UIImage(named: "av_enroll")
-        numview.addSubview(avenrollimg)
+        participatornumview.addSubview(avenrollimg)
         
-        numLabel.text = "已报名30人/限100人"
-        numLabel.textColor = UIColor.darkGray
-        numLabel.frame = CGRect(x: 40, y: 15, width: 200, height: 14)
-        numLabel.font = UIFont.boldSystemFont(ofSize: 14)
-        numview.addSubview(numLabel)
+        participatornumLabel.text = "已报名30人/限100人"
+        participatornumLabel.textColor = UIColor.darkGray
+        participatornumLabel.frame = CGRect(x: 40, y: 15, width: 200, height: 14)
+        participatornumLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        participatornumview.addSubview(participatornumLabel)
         
         let moreimg = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 28, y: 14, width: 16, height: 16))
         moreimg.image = UIImage(named: "nav_more")
-        numview.addSubview(moreimg)
+        participatornumview.addSubview(moreimg)
         
         // 添加点击响应事件
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(showParticipators))
-        numview.isUserInteractionEnabled = true
-        numview.addGestureRecognizer(tapgesture)
+        participatornumview.isUserInteractionEnabled = true
+        participatornumview.addGestureRecognizer(tapgesture)
         
     }
     

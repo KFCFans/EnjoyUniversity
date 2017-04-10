@@ -27,6 +27,9 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     // 发起者头像
     let headimg = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
     
+    /// 参与者数据源
+    lazy var participatorslist = UserInfoListViewModel()
+    
     /// ViewModel 数据源
     var viewmodel:ActivityViewModel?{
         
@@ -64,9 +67,10 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     
     private func loadData(){
         
-        guard let uid = viewmodel?.activitymodel.uid else {
+        guard let uid = viewmodel?.activitymodel.uid,let avid = viewmodel?.activitymodel.avid else {
             return
         }
+        
         EUNetworkManager.shared.getUserInfomation(uid: uid) { (isSuccess, dict) in
             
             if !isSuccess{
@@ -86,6 +90,24 @@ class EUActivityViewController: EUBaseAvtivityViewController {
                                 options: [.transition(.fade(1))],
                                 progressBlock: nil,
                                 completionHandler: nil)
+        }
+        
+        participatorslist.loadActivityMemberInfoList(avid: avid) { (isSuccess,hasMember) in
+            
+            if !isSuccess{
+                
+                self.participatornumLabel.text = "列表加载失败,请检查网络设置"
+                return
+            }
+            
+            if !hasMember{
+                self.participatornumLabel.text = "还没有小伙伴报名参加～"
+                return
+            }
+            
+            self.participatornumLabel.text = "已报名\(self.participatorslist.userinfolist.count)人／" + (self.viewmodel?.expectPeople ?? "人数不限")
+            
+            
         }
         
         

@@ -29,6 +29,7 @@
 		365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */; };
 		365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */; };
 		366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366112361E9661E8005D0A96 /* EULoginViewController.swift */; };
+		3662E64C1E9B60C3000955DA /* UserInfoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */; };
 		36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */; };
 		36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */; };
 		36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A7B1E8A785700E6DF17 /* EUCommon.swift */; };
@@ -110,6 +111,7 @@
 		365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCreatedActivityViewController.swift; sourceTree = "<group>"; };
 		365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUBaseAvtivityViewController.swift; sourceTree = "<group>"; };
 		366112361E9661E8005D0A96 /* EULoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULoginViewController.swift; sourceTree = "<group>"; };
+		3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoListViewModel.swift; sourceTree = "<group>"; };
 		36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNetworkManager.swift; sourceTree = "<group>"; };
 		36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EUNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		36638A7B1E8A785700E6DF17 /* EUCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommon.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				36839BFD1E8D476300612729 /* AvtivityViewModel.swift */,
 				36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */,
 				364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */,
+				3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */,
 			);
 			name = ViewModel;
 			path = EnjoyUniversity/Classes/ViewModel;
@@ -786,6 +789,7 @@
 				3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */,
 				3671CFD31E98FF5D00FACF91 /* EUserInfoInputViewController.swift in Sources */,
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
+				3662E64C1E9B60C3000955DA /* UserInfoListViewModel.swift in Sources */,
 				36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */,
 				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,
 				3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */,

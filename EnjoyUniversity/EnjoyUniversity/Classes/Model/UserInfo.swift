@@ -51,5 +51,9 @@ class UserInfo: NSObject {
         self.studentid = studentid
         self.userdescription = userdescription
     }
+    
+    override init() {
+        super.init()
+    }
 
 }
