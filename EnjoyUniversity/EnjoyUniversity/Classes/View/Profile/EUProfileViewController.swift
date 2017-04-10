@@ -24,11 +24,16 @@ class EUProfileViewController: EUBaseViewController {
         didSet{
             nicknameLabel.text = userinfo?.nickname
             reputationLabel.text = "节操值 " + "\(userinfo?.reputation ?? 100)"
-            logoimg.kf.setImage(with: URL(string: userinfo?.avatar ?? ""),
+            let avatarurl = PICTURESERVERADDRESS + "/user/" + (userinfo?.avatar ?? "") + ".jpg"
+            
+            logoimg.kf.setImage(with: URL(string: avatarurl),
                                 placeholder: UIImage(named: "profile_dug"),
-                                options: nil,
-                                progressBlock: nil,
-                                completionHandler: nil)
+                                options: [.transition(.fade(1))],
+                                progressBlock: nil) { (image, _, _, _) in
+                                    self.logoimg.image = avatarImage(image: image, size: CGSize(width: 35, height: 35), opaque: false, backColor: nil)
+
+            }
+            
         }
         
     }
@@ -94,7 +99,7 @@ extension EUProfileViewController{
         headview.addSubview(backgroundview)
         
         
-        logoimg.image = avatarImage(image: UIImage(named: "profile_dug"), size: CGSize(width: 35, height: 35), opaque: false, backColor: nil)
+//        logoimg.image = avatarImage(image: UIImage(named: "profile_dug"), size: CGSize(width: 35, height: 35), opaque: false, backColor: nil)
         backgroundview.addSubview(logoimg)
         
         nicknameLabel.font = UIFont.boldSystemFont(ofSize: 15)
