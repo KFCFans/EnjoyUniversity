@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "profile_temp.jpeg",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "profile_background.jpeg",
       "scale" : "2x"
     },
     {
