@@ -10,6 +10,29 @@ import UIKit
 
 class EUProfileViewController: EUBaseViewController {
     
+    /// 昵称
+    let nicknameLabel = UILabel()
+    
+    /// 节操值
+    let reputationLabel = UILabel()
+
+    /// 用户头像
+    let logoimg = UIImageView()
+    
+    var userinfo:UserInfo?{
+        
+        didSet{
+            nicknameLabel.text = userinfo?.nickname
+            reputationLabel.text = "节操值 " + "\(userinfo?.reputation ?? 100)"
+            logoimg.kf.setImage(with: URL(string: userinfo?.avatar ?? ""),
+                                placeholder: UIImage(named: "profile_dug"),
+                                options: nil,
+                                progressBlock: nil,
+                                completionHandler: nil)
+        }
+        
+    }
+    
     
     let profile = [
         0:["身份认证"],
@@ -33,10 +56,24 @@ class EUProfileViewController: EUBaseViewController {
         setupHeadView()
         
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    override func loadData() {
+        
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.getUserPrivateInfo { (isSuccess, userinfo) in
+            SwiftyProgressHUD.hide()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                return
+            }
+            guard let userinfo = userinfo else{
+                SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
+                return
+            }
+            
+            self.userinfo = userinfo
+        }
+        
     }
     
 }
@@ -56,20 +93,16 @@ extension EUProfileViewController{
         backgroundview.image = UIImage(named: "profile_temp")
         headview.addSubview(backgroundview)
         
-        let logoimg = UIImageView()
+        
         logoimg.image = avatarImage(image: UIImage(named: "profile_dug"), size: CGSize(width: 35, height: 35), opaque: false, backColor: nil)
         backgroundview.addSubview(logoimg)
         
-        let nicknameLabel = UILabel()
-        nicknameLabel.text = "她是光芒"
         nicknameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         nicknameLabel.textColor = UIColor.white
         nicknameLabel.sizeToFit()
         backgroundview.addSubview(nicknameLabel)
         
-        let reputationLabel = UILabel()
         reputationLabel.textColor = UIColor.white
-        reputationLabel.text = "节操值 100"
         reputationLabel.font = UIFont.boldSystemFont(ofSize: 10)
         reputationLabel.sizeToFit()
         backgroundview.addSubview(reputationLabel)

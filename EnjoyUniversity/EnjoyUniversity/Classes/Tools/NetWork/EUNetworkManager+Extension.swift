@@ -244,6 +244,38 @@ extension EUNetworkManager{
         }
     }
     
+    
+    func getUserPrivateInfo(completion:@escaping(Bool,UserInfo?)->()){
+        
+        let url = SERVERADDRESS + "/eu/info/userinfo"
+        
+        let parm = ["uid":userAccount.uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (dict, isSuccess, code) in
+            
+            if !isSuccess{
+             
+                completion(false, nil)
+                return
+            }
+            
+            if code == 401 {
+                completion(true,nil)
+                return
+            }
+            
+            guard let dict = dict as? [String:Any] else {
+                completion(true,nil)
+                return
+            }
+            
+            let userinfo = UserInfo.yy_model(with: dict)
+            completion(true,userinfo)
+            
+        }
+        
+    }
+    
 
 }
 
