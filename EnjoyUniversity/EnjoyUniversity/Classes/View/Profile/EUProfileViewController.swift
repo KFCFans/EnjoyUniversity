@@ -10,16 +10,26 @@ import UIKit
 
 class EUProfileViewController: EUBaseViewController {
     
-    //FIXME: -判断服务器又无数据，若无数据或请求失败则使用本地数据
+    
     let profile = [
-        0:["我的社团","我的活动","我的收藏"],
-        1:["系统设置","系统客服"],
-        2:["关于我们","分享我们"]
+        0:["身份认证"],
+        1:["意见反馈","联系客服"],
+        2:["分享我们"],
+        3:["关于我们"],
+        4:["给我们评分"]
     ]
-    let PROFILECELL = "PROFILECELL"
+    
+    let profileimg = [
+        0:["profile_verify"],
+        1:["profile_response","profile_chatus"],
+        2:["profile_share"],
+        3:["profile_aboutus"],
+        4:["profile_pf"]
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupHeadView()
         
     }
@@ -127,9 +137,9 @@ extension EUProfileViewController{
         buttonview.addSubview(communitycollectBtn)
         
         tableview.tableHeaderView = headview
+        tableview.bounces = false
         tableview.sectionHeaderHeight = 10
-        tableview.register(UITableViewCell.self, forCellReuseIdentifier: PROFILECELL)
-        tableview.separatorStyle = .none
+//        tableview.separatorStyle = .none
         
         
         
@@ -279,12 +289,22 @@ extension EUProfileViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        guard let data = profile[indexPath.section],
-            let cell = tableview.dequeueReusableCell(withIdentifier: PROFILECELL)   else{
-            return UITableViewCell()
+        var picname:String = ""
+        var title = ""
+        if indexPath.section == 1 {
+            
+            picname = profileimg[indexPath.section]?[indexPath.row] ?? ""
+            title = profile[indexPath.section]?[indexPath.row] ?? ""
+            
+        }else{
+            picname = profileimg[indexPath.section]?.first ?? ""
+            title = profile[indexPath.section]?.first ?? ""
         }
-        cell.textLabel?.text = data[indexPath.row]
+        
+        
+        let cell = EUProfileTableViewCell(image: UIImage(named: picname)!, title: title, style: UITableViewCellStyle.default, reuseIdentifier: nil)
         cell.accessoryType = .disclosureIndicator
+        
         return cell
         
     }
@@ -297,6 +317,10 @@ extension EUProfileViewController{
     // 监听响应
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableview, didSelectRowAt: indexPath)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 44
     }
     
     

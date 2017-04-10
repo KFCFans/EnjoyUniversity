@@ -30,6 +30,7 @@
 		365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */; };
 		366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366112361E9661E8005D0A96 /* EULoginViewController.swift */; };
 		3662E64C1E9B60C3000955DA /* UserInfoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */; };
+		3662E6541E9BB961000955DA /* EUProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3662E6531E9BB961000955DA /* EUProfileTableViewCell.swift */; };
 		36638A781E8A4E9900E6DF17 /* EUNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */; };
 		36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */; };
 		36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36638A7B1E8A785700E6DF17 /* EUCommon.swift */; };
@@ -112,6 +113,7 @@
 		365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUBaseAvtivityViewController.swift; sourceTree = "<group>"; };
 		366112361E9661E8005D0A96 /* EULoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULoginViewController.swift; sourceTree = "<group>"; };
 		3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoListViewModel.swift; sourceTree = "<group>"; };
+		3662E6531E9BB961000955DA /* EUProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUProfileTableViewCell.swift; sourceTree = "<group>"; };
 		36638A771E8A4E9900E6DF17 /* EUNetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUNetworkManager.swift; sourceTree = "<group>"; };
 		36638A791E8A77C200E6DF17 /* EUNetworkManager+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "EUNetworkManager+Extension.swift"; sourceTree = "<group>"; };
 		36638A7B1E8A785700E6DF17 /* EUCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommon.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				36BDBB441E6417280075A3ED /* EUProfileViewController.swift */,
+				3662E6531E9BB961000955DA /* EUProfileTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -804,6 +807,7 @@
 				3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */,
 				36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */,
 				365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */,
+				3662E6541E9BB961000955DA /* EUProfileTableViewCell.swift in Sources */,
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				363447961E97B11300F49EBC /* EUserAccount.swift in Sources */,
