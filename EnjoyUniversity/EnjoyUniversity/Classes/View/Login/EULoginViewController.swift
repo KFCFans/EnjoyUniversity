@@ -583,7 +583,7 @@ extension EULoginViewController{
         codeview.addSubview(firstlabel)
         
         let secondlabel = UILabel()
-        secondlabel.text = "1501883391"
+        secondlabel.text = "\(phonenumber ?? "手机号获取失败")"
         secondlabel.textColor = UIColor.init(red: 132/255, green: 132/255, blue: 132/255, alpha: 1)
         secondlabel.font = UIFont.boldSystemFont(ofSize: 14)
         secondlabel.sizeToFit()
