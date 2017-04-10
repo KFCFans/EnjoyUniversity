@@ -99,5 +99,49 @@ func calculateLabelHeight(text:String,width:CGFloat,font:CGFloat)->CGFloat{
 }
 
 
+/// 裁切图像为圆角图片
+///
+/// - Parameters:
+///   - image: 原图
+///   - size: 大小
+///   - opaque: 是否透明 true不透明 false透明
+///   - backColor: 背景颜色（不透明的话设为同色看不出来）,透明不需要传
+/// - Returns: 裁剪后的圆形图像
+func avatarImage(image:UIImage?,size:CGSize,opaque:Bool,backColor:UIColor?)->UIImage?{
+    
+    guard let image = image else {
+        return nil
+    }
+    
+    let rect = CGRect(origin: CGPoint.zero, size: size)
+    
+    UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
+    
+    // 背景填充
+    if opaque {
+        backColor?.setFill()
+        UIRectFill(rect)
+    }
+    
+    // 实例化圆形路径
+    let path = UIBezierPath(ovalIn: rect)
+    path.addClip()
+    
+    image.draw(in: rect)
+    
+    // 绘制边线
+    UIColor.white.setStroke()
+    path.lineWidth = 2
+    path.stroke()
+    
+    // 取得结果
+    let result = UIGraphicsGetImageFromCurrentImageContext()
+    
+    UIGraphicsEndImageContext()
+    
+    return result
+}
+
+
 
 
