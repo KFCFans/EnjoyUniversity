@@ -287,6 +287,7 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
         }else if tableView.tag == 0{
             
             let vc = EUActivityViewController()
+            vc.activityStatus = 1
             vc.viewmodel = activitylistviewmodel.participatedlist[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
             

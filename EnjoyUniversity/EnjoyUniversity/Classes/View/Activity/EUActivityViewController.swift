@@ -44,8 +44,8 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             detailLabel.text = viewmodel?.activitymodel.avDetail ?? "详情加载失败"
             detailHeight = viewmodel?.detailHeight ?? 0.0
             warnLabel.text = viewmodel?.needRegister
-            if EUNetworkManager.shared.userAccount.uid == (viewmodel?.activitymodel.uid ?? 0){
-                isMyCreatedActivity = true
+            if EUNetworkManager.shared.userAccount.uid == (viewmodel?.activitymodel.uid ?? 0) && activityStatus == 0{
+                activityStatus = 2
             }
             
             let url = URL(string: viewmodel?.imageURL ?? "")
@@ -59,15 +59,19 @@ class EUActivityViewController: EUBaseAvtivityViewController {
         
     }
     
-    /// 是否为我创建的活动
-    var isMyCreatedActivity:Bool = false{
+    /// 活动状态 0默认 1我参加的 2我创建的
+    var activityStatus:Int = 0{
         
         didSet{
             
-            if isMyCreatedActivity == true{
+            if activityStatus == 2{
                 participateButton.setTitle("无法参加自己创建的活动", for: .normal)
                 participateButton.backgroundColor = UIColor.lightGray
                 participateButton.isEnabled = false
+                
+            }else if activityStatus == 1{
+                participateButton.setTitle("退出活动", for: .normal)
+                participateButton.backgroundColor = UIColor.red
                 
             }
             
@@ -200,7 +204,7 @@ extension EUActivityViewController{
     fileprivate func setupParticipateButton(){
         
         
-        if !isMyCreatedActivity{
+        if activityStatus == 0{
             participateButton.backgroundColor = UIColor.orange
             participateButton.setTitle("我要参加", for: .normal)
         }
@@ -269,18 +273,44 @@ extension EUActivityViewController{
         guard let avid = viewmodel?.activitymodel.avid else {
             return
         }
-        SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.participateActivity(avid: avid) { (isSuccess, isParticiateSuccess) in
-            SwiftyProgressHUD.hide()
-            if !isSuccess{
-                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
-                return
+        
+        
+        if activityStatus == 0 {
+            
+            // 参加活动
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.participateActivity(avid: avid) { (isSuccess, isParticiateSuccess) in
+                SwiftyProgressHUD.hide()
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                    return
+                }
+                if !isParticiateSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "您已参加", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                
             }
-            if !isParticiateSuccess{
-                SwiftyProgressHUD.showFaildHUD(text: "您已参加", duration: 1)
-                return
-            }
-            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+        }else if activityStatus == 1{
+            
+            // 退出活动
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.leaveActivity(avid: avid, completion: { (isSuccess, isQuitSuccess) in
+                SwiftyProgressHUD.hide()
+                
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                    return
+                }
+                
+                if !isQuitSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "已退出", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                
+            })
             
         }
         
