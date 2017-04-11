@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EUActivityMemberCell: UITableViewCell {
     
@@ -38,7 +39,14 @@ class EUActivityMemberCell: UITableViewCell {
                                      placeholder: UIImage(named: "av_leader"),
                                      options: [.transition(.fade(1))],
                                      progressBlock: nil,
-                                     completionHandler: nil)
+                                     completionHandler: { (image, _, _, _) in
+                                        guard let image = image else {
+                                            return
+                                        }
+                                        self.logoImgView?.image = avatarImage(image: image, size: CGSize(width: 50, height: 50), opaque: false, backColor: nil)
+            })
+            
+        
             
         }
         
