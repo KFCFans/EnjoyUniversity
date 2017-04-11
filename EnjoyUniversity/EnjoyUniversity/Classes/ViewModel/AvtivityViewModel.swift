@@ -40,6 +40,9 @@ class ActivityViewModel{
     /// 限制人数
     var peoplelimit:String?
     
+    /// 二维码跳转
+    var qrcodeString:String?
+    
     init(model:Activity) {
         
         activitymodel = model
@@ -56,6 +59,8 @@ class ActivityViewModel{
         imageURL = PICTURESERVERADDRESS + "/activity/" + (model.avLogo ?? "") + ".jpg"
         
         expectPeople = model.avExpectnum == 0 ? "人数不限" : "限\(model.avExpectnum)人"
+        
+        qrcodeString = QRCODEPREFIX + "avid=" + model.avid.description
         
     }
     

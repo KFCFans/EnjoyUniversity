@@ -39,7 +39,7 @@ extension EUShowQRCodeViewController{
         imgview.image = UIImage(named: "qr_activity")
         backgroundview.addSubview(imgview)
         
-        let avnamelabel = UILabel(frame: CGRect(x: 62, y: 18, width: 100, height: 15))
+        let avnamelabel = UILabel(frame: CGRect(x: 62, y: 18, width: backgroundview.frame.width - 62, height: 15))
         avnamelabel.text = activityName
         avnamelabel.font = UIFont.boldSystemFont(ofSize: 15)
         avnamelabel.textColor = UIColor.init(red: 64/255, green: 64/255, blue: 64/255, alpha: 1)

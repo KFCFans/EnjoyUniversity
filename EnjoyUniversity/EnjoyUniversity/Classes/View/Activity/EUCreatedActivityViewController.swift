@@ -192,7 +192,8 @@ extension EUCreatedActivityViewController{
     @objc fileprivate func showQRCode(){
         
         let vc = EUShowQRCodeViewController()
-        vc.qrString = "TestZZZ"
+        vc.activityName = viewmodel?.activitymodel.avTitle
+        vc.qrString = viewmodel?.qrcodeString
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
