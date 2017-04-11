@@ -33,10 +33,11 @@ class EUProfileTableViewCell: UITableViewCell {
         imgview.image = image
         addSubview(imgview)
         
-        let mytitleLabel = UILabel(frame: CGRect(x: 53, y: 15, width: 80, height: 16))
+        let mytitleLabel = UILabel(frame: CGRect(x: 53, y: 13, width: 80, height: 15))
         mytitleLabel.text = title
         mytitleLabel.font = UIFont.boldSystemFont(ofSize: 15)
         mytitleLabel.textColor = UIColor.init(red: 82/255, green: 82/255, blue: 82/255, alpha: 1)
+        mytitleLabel.center.y = center.y
         mytitleLabel.sizeToFit()
         addSubview(mytitleLabel)
         

@@ -177,7 +177,7 @@ extension EUProfileViewController{
         tableview.tableHeaderView = headview
         tableview.bounces = false
         tableview.sectionHeaderHeight = 10
-//        tableview.separatorStyle = .none
+        tableview.tableFooterView = UIView()
         
         
         
