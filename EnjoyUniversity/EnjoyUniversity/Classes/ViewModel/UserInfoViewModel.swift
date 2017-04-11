@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class UserinfoViewModel:NSObject{
     
@@ -19,7 +20,15 @@ class UserinfoViewModel:NSObject{
     /// 头像
     var headsculptureurl:String?
     
+    /// 节操值拼接
+    var reputationString:String?
+    
+    /// 认证图标
+    var verifyImg:UIImage?
+    
     init(model:UserInfo) {
+        
+        self.model = model
         
         /// 计算性别
         switch model.gender {
@@ -35,6 +44,17 @@ class UserinfoViewModel:NSObject{
         
         /// 拼接头像地址
         headsculptureurl = PICTURESERVERADDRESS + "/user/" + (model.avatar ?? "") + ".jpg"
+        
+        /// 拼接节操值
+        reputationString = "节操值 " + model.reputation.description
+        
+        /// 选择认证图标
+        switch model.reputation {
+        case 1:
+            verifyImg = UIImage(named: "profile_verifysuccess")
+        default:
+            verifyImg = UIImage()
+        }
         
     }
 }

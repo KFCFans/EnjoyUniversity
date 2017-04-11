@@ -10,6 +10,9 @@ import UIKit
 
 class EUCreatedActivityViewController: EUBaseAvtivityViewController {
     
+    /// 参与者数据源
+    lazy var participatorslist = UserInfoListViewModel()
+    
     var viewmodel:ActivityViewModel?{
         didSet{
             titleLabel.text = viewmodel?.activitymodel.avTitle
@@ -32,17 +35,33 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
         setupNavUI()
         setupFunctionUI()
         setupQRCodeUI()
         setupChangeButton()
 
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-
-
+    
+    private func loadData(){
+        
+        guard let avid = viewmodel?.activitymodel.avid else {
+            return
+        }
+        
+        participatorslist.loadActivityMemberInfoList(avid: avid) { (isSuccess, hasMember) in
+            if !isSuccess{
+                self.participatornumLabel.text = "列表加载失败,请检查网络设置"
+                return
+            }
+            if !hasMember{
+                self.participatornumLabel.text = "还没有小伙伴报名参加～"
+                return
+            }
+            
+            self.participatornumLabel.text = "已报名\(self.participatorslist.activityParticipatorList.count)人／" + (self.viewmodel?.expectPeople ?? "人数不限")
+        }
+        
     }
     
 }
@@ -90,6 +109,7 @@ extension EUCreatedActivityViewController{
         functionview.addSubview(registerBtn)
         
         // 添加监听事件
+        checkBtn.addTarget(nil, action: #selector(checkBtnIsClicked), for: .touchUpInside)
         notifBtn.addTarget(nil, action: #selector(notifyParticipators), for: .touchUpInside)
         
     }
@@ -141,7 +161,11 @@ extension EUCreatedActivityViewController{
     }
     
     @objc fileprivate func checkBtnIsClicked(){
-        print("zzzzz")
+        
+        let vc = EUActivityParticipatorsViewController()
+        vc.participatorslist = participatorslist
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     @objc fileprivate func showQRCode(){
@@ -151,5 +175,6 @@ extension EUCreatedActivityViewController{
     @objc fileprivate func notifyParticipators(){
         print("notifyParticipators")
     }
+    
     
 }

@@ -25,21 +25,34 @@ class EUActivityMemberCell: UITableViewCell {
     /// 手机号
     var phoneLabel:UILabel?
     
-    
-    init(logoimg:UIImage?,name:String?,reputation:Int?,verifyState:Int,phonenumber:Int64?){
-        super.init(style: .default, reuseIdentifier: nil)
+    /// 数据源
+    var userinfo:UserinfoViewModel?{
         
-        guard let logoimg = logoimg,let name = name,let reputation = reputation,let phonenumber = phonenumber else {
-            return
+        didSet{
+            nameLabel?.text = userinfo?.model?.name ?? "加载失败"
+            reputationLabel?.text = userinfo?.reputationString
+            phoneLabel?.text = "\(userinfo?.model?.uid ?? 10086)"
+            verifyImgView?.image = userinfo?.verifyImg
+            let url = URL(string: userinfo?.headsculptureurl ?? "")
+            logoImgView?.kf.setImage(with: url,
+                                     placeholder: UIImage(named: "av_leader"),
+                                     options: [.transition(.fade(1))],
+                                     progressBlock: nil,
+                                     completionHandler: nil)
+            
         }
-        logoImgView = UIImageView(image: logoimg)
+        
+    }
+    
+
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: .default, reuseIdentifier: nil)
+        logoImgView = UIImageView()
         nameLabel = UILabel()
         reputationLabel = UILabel()
+        verifyImgView = UIImageView()
         phoneLabel = UILabel()
         
-        nameLabel?.text = name
-        phoneLabel?.text = "\(phonenumber)"
-        reputationLabel?.text = "节操值 " + "\(reputation)"
         
         nameLabel?.font = UIFont.boldSystemFont(ofSize: 15)
         nameLabel?.textColor = UIColor.init(red: 112/255, green: 112/255, blue: 112/255, alpha: 1)
@@ -53,26 +66,20 @@ class EUActivityMemberCell: UITableViewCell {
         phoneLabel?.textColor = UIColor.lightGray
         sizeToFit()
         
-        // 根据认证来设置认证图标
-        if verifyState == 1{
-            verifyImgView = UIImageView(image: UIImage(named: "profile_verifysuccess"))
-        }else {
-            verifyImgView = UIImageView()
-        }
-        
         addSubview(logoImgView!)
         addSubview(nameLabel!)
         addSubview(reputationLabel!)
         addSubview(phoneLabel!)
         addSubview(verifyImgView!)
         
+        accessoryType = .disclosureIndicator
         setupUI()
-        
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
 }
 
 // MARK: - UI 相关方法

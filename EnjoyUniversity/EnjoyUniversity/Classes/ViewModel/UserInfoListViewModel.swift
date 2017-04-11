@@ -12,7 +12,7 @@ import YYModel
 class UserInfoListViewModel{
     
     
-    lazy var userinfolist = [UserinfoViewModel]()
+    lazy var activityParticipatorList = [UserinfoViewModel]()
     
     
     /// 加载活动参与者信息
@@ -34,7 +34,7 @@ class UserInfoListViewModel{
             }
             
             for model in modelarray{
-                self.userinfolist.append(UserinfoViewModel(model: model))
+                self.activityParticipatorList.append(UserinfoViewModel(model: model))
             }
             completion(true,true)
             

@@ -39,6 +39,7 @@
 		3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */; };
 		3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */; };
 		36690ACB1E9C93420027B314 /* EUActivityMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36690ACA1E9C93420027B314 /* EUActivityMemberCell.swift */; };
+		36690AD11E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */; };
 		3671CFD31E98FF5D00FACF91 /* EUserInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671CFD21E98FF5D00FACF91 /* EUserInfoInputViewController.swift */; };
 		36839BFC1E8D457800612729 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFB1E8D457800612729 /* Activity.swift */; };
 		36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFD1E8D476300612729 /* AvtivityViewModel.swift */; };
@@ -123,6 +124,7 @@
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
 		3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUMessageCell.xib; sourceTree = "<group>"; };
 		36690ACA1E9C93420027B314 /* EUActivityMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityMemberCell.swift; sourceTree = "<group>"; };
+		36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityParticipatorsViewController.swift; sourceTree = "<group>"; };
 		3671CFD21E98FF5D00FACF91 /* EUserInfoInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUserInfoInputViewController.swift; sourceTree = "<group>"; };
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		36839BFD1E8D476300612729 /* AvtivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvtivityViewModel.swift; sourceTree = "<group>"; };
@@ -258,12 +260,13 @@
 				3609A01D1E909E9D007FD55C /* EUActivityButton.swift */,
 				362665721E8FE162005ED501 /* EUActivityCell.swift */,
 				362665731E8FE162005ED501 /* EUActivityCell.xib */,
+				36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */,
 				362665741E8FE162005ED501 /* EUMyActivityViewController.swift */,
+				365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */,
 				362665701E8FE118005ED501 /* EUActivityViewController.swift */,
 				365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */,
-				365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */,
-				36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */,
 				36690ACA1E9C93420027B314 /* EUActivityMemberCell.swift */,
+				36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -808,6 +811,7 @@
 				3664E1EC1E9759F60041259B /* SwiftyVerificationCodeView.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
 				36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */,
+				36690AD11E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift in Sources */,
 				3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */,
 				36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */,
 				365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */,

@@ -171,7 +171,7 @@ extension EUBaseAvtivityViewController{
         avenrollimg.image = UIImage(named: "av_enroll")
         participatornumview.addSubview(avenrollimg)
         
-        participatornumLabel.text = "已报名30人/限100人"
+
         participatornumLabel.textColor = UIColor.darkGray
         participatornumLabel.frame = CGRect(x: 40, y: 15, width: 200, height: 14)
         participatornumLabel.font = UIFont.boldSystemFont(ofSize: 14)

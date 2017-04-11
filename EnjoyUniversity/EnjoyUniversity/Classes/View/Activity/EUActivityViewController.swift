@@ -121,19 +121,16 @@ class EUActivityViewController: EUBaseAvtivityViewController {
         participatorslist.loadActivityMemberInfoList(avid: avid) { (isSuccess,hasMember) in
             
             if !isSuccess{
-                
                 self.participatornumLabel.text = "列表加载失败,请检查网络设置"
                 return
             }
-            
             if !hasMember{
                 self.participatornumLabel.text = "还没有小伙伴报名参加～"
                 return
             }
-            
-            self.participatornumLabel.text = "已报名\(self.participatorslist.userinfolist.count)人／" + (self.viewmodel?.expectPeople ?? "人数不限")
-            
-            
+        
+            self.participatornumLabel.text = "已报名\(self.participatorslist.activityParticipatorList.count)人／" + (self.viewmodel?.expectPeople ?? "人数不限")
+      
         }
         
         
