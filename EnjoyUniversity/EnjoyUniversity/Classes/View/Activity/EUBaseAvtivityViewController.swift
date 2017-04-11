@@ -218,17 +218,17 @@ extension EUBaseAvtivityViewController{
 // MARK: - 监听方法集合
 extension EUBaseAvtivityViewController{
     
+    /// 返回按钮
     @objc fileprivate func backButtonIsClicked(){
         
         _ = navigationController?.popViewController(animated: true)
         
     }
     
-    // 获取参与者列表
+    //／ 获取参与者列表
     @objc fileprivate func showParticipators(){
         print("showDetail")
         
     }
-    
     
 }

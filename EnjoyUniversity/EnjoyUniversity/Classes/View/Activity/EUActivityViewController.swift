@@ -27,6 +27,9 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     // 发起者头像
     let headimg = UIImageView(frame: CGRect(x: 10, y: 10, width: 50, height: 50))
     
+    // 参加活动按钮
+    let participateButton = UIButton(frame: CGRect(x: 12, y: UIScreen.main.bounds.height - 50, width: UIScreen.main.bounds.width - 24, height: 44))
+    
     /// 参与者数据源
     lazy var participatorslist = UserInfoListViewModel()
     
@@ -41,12 +44,32 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             detailLabel.text = viewmodel?.activitymodel.avDetail ?? "详情加载失败"
             detailHeight = viewmodel?.detailHeight ?? 0.0
             warnLabel.text = viewmodel?.needRegister
+            if EUNetworkManager.shared.userAccount.uid == (viewmodel?.activitymodel.uid ?? 0){
+                isMyCreatedActivity = true
+            }
+            
             let url = URL(string: viewmodel?.imageURL ?? "")
             backgroudImage.kf.setImage(with: url,
                                        placeholder: UIImage(named: "tempbackground"),
                                        options: [.transition(.fade(1))],
                                        progressBlock: nil,
                                        completionHandler: nil)
+            
+        }
+        
+    }
+    
+    /// 是否为我创建的活动
+    var isMyCreatedActivity:Bool = false{
+        
+        didSet{
+            
+            if isMyCreatedActivity == true{
+                participateButton.setTitle("无法参加自己创建的活动", for: .normal)
+                participateButton.backgroundColor = UIColor.lightGray
+                participateButton.isEnabled = false
+                
+            }
             
         }
         
@@ -60,7 +83,6 @@ class EUActivityViewController: EUBaseAvtivityViewController {
         loadData()
         setupNavUI()
         setupLeaderInfoUI()
-
         setupParticipateButton()
         
     }
@@ -177,9 +199,12 @@ extension EUActivityViewController{
     
     fileprivate func setupParticipateButton(){
         
-        let participateButton = UIButton(frame: CGRect(x: 12, y: UIScreen.main.bounds.height - 50, width: UIScreen.main.bounds.width - 24, height: 44))
-        participateButton.backgroundColor = UIColor.orange
-        participateButton.setTitle("我要参加", for: .normal)
+        
+        if !isMyCreatedActivity{
+            participateButton.backgroundColor = UIColor.orange
+            participateButton.setTitle("我要参加", for: .normal)
+        }
+        participateButton.addTarget(nil, action: #selector(participateActivity), for: .touchUpInside)
         view.addSubview(participateButton)
         
     }
@@ -192,6 +217,7 @@ extension EUActivityViewController{
     
 
     
+    /// 打电话按钮
     @objc fileprivate func callButtonIsClicked(){
         
         guard let phone = viewmodel?.activitymodel.uid else{
@@ -203,6 +229,7 @@ extension EUActivityViewController{
     }
     
     
+    /// 分享活动
     @objc fileprivate func shareButtonIsClicked(){
         
     }
@@ -236,4 +263,28 @@ extension EUActivityViewController{
         
     }
     
+    /// 参加活动
+    @objc fileprivate func participateActivity(){
+        
+        guard let avid = viewmodel?.activitymodel.avid else {
+            return
+        }
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.participateActivity(avid: avid) { (isSuccess, isParticiateSuccess) in
+            SwiftyProgressHUD.hide()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                return
+            }
+            if !isParticiateSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "您已参加", duration: 1)
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            
+        }
+        
+    }
+    
 }
+        
