@@ -291,23 +291,36 @@ extension EUActivityViewController{
             }
         }else if activityStatus == 1{
             
-            // 退出活动
-            SwiftyProgressHUD.showLoadingHUD()
-            EUNetworkManager.shared.leaveActivity(avid: avid, completion: { (isSuccess, isQuitSuccess) in
-                SwiftyProgressHUD.hide()
+            let altervc = UIAlertController(title: "退出活动", message: "您确定要退出当前活动吗？", preferredStyle: .alert)
+            
+            let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+            let confirm = UIAlertAction(title: "确定", style: .destructive, handler: { (_) in
                 
-                if !isSuccess{
-                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
-                    return
-                }
-                
-                if !isQuitSuccess{
-                    SwiftyProgressHUD.showFaildHUD(text: "已退出", duration: 1)
-                    return
-                }
-                SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                
+                // 退出活动
+                SwiftyProgressHUD.showLoadingHUD()
+                EUNetworkManager.shared.leaveActivity(avid: avid, completion: { (isSuccess, isQuitSuccess) in
+                    SwiftyProgressHUD.hide()
+                    
+                    if !isSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                        return
+                    }
+                    
+                    if !isQuitSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "已退出", duration: 1)
+                        return
+                    }
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    _ = self.navigationController?.popViewController(animated: true)
+                    
+                    
+                })
             })
+            
+            altervc.addAction(cancel)
+            altervc.addAction(confirm)
+            
+            present(altervc, animated: true, completion: nil)
             
         }
         
