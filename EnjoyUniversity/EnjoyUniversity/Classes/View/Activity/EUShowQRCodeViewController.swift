@@ -62,8 +62,54 @@ extension EUShowQRCodeViewController{
         let saveBtn = UIButton(frame: CGRect(x: 30, y: 390, width: 275, height: 40))
         saveBtn.setTitle("保存", for: .normal)
         saveBtn.backgroundColor = UIColor.init(red: 241/255, green: 122/255, blue: 93/255, alpha: 1)
+        saveBtn.addTarget(nil, action: #selector(saveQRCodeToPhotoLibrary), for: .touchUpInside)
         backgroundview.addSubview(saveBtn)
         
     }
+    
+}
+
+// MARK: - 监听
+extension EUShowQRCodeViewController{
+    
+    @objc fileprivate func saveQRCodeToPhotoLibrary(){
+        
+        let rect  = UIScreen.main.bounds
+        
+        // 记录屏幕缩放比
+        let scal = UIScreen.main.scale
+        
+        // 上下文
+        UIGraphicsBeginImageContextWithOptions(rect.size, true, 0)
+        
+        let context = UIGraphicsGetCurrentContext()
+        
+        UIApplication.shared.keyWindow?.layer.render(in: context!)
+        
+        // 截全屏
+        guard let img = UIGraphicsGetImageFromCurrentImageContext()?.cgImage,
+            let result = img.cropping(to: CGRect(x: scal * 20, y: 100*scal, width: (UIScreen.main.bounds.width - 40) * scal, height: 380 * scal))   else{
+                return
+        }
+        // 关闭上下文
+        UIGraphicsEndImageContext()
+        
+        let resultimg = UIImage(cgImage: result, scale: scal, orientation: .up)
+        
+        UIImageWriteToSavedPhotosAlbum(resultimg, self, #selector(savedOK(image:didFinishSavingWithError:contextInfo:)), nil)
+        
+    }
+    
+    func savedOK(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo: AnyObject) {
+        
+        // if didFinishSavingWithError != nil {
+        if error != nil {
+            SwiftyProgressHUD.showFaildHUD(text: "保存失败", duration: 1)
+            return
+        }
+        SwiftyProgressHUD.showSuccessHUD(duration: 1)
+        
+    }
+    
     
 }
