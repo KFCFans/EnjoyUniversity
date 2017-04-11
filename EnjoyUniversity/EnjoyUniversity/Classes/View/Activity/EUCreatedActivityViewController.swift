@@ -13,6 +13,9 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
     /// 参与者数据源
     lazy var participatorslist = UserInfoListViewModel()
     
+    /// 参与者数据加载完成标记
+    var isFinished:Bool = false
+    
     var viewmodel:ActivityViewModel?{
         didSet{
             titleLabel.text = viewmodel?.activitymodel.avTitle
@@ -48,12 +51,13 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
         guard let avid = viewmodel?.activitymodel.avid else {
             return
         }
-        
+        self.participatornumLabel.text = "正在加载..."
         participatorslist.loadActivityMemberInfoList(avid: avid) { (isSuccess, hasMember) in
             if !isSuccess{
                 self.participatornumLabel.text = "列表加载失败,请检查网络设置"
                 return
             }
+            self.isFinished = true
             if !hasMember{
                 self.participatornumLabel.text = "还没有小伙伴报名参加～"
                 return
@@ -162,6 +166,13 @@ extension EUCreatedActivityViewController{
     
     @objc fileprivate func checkBtnIsClicked(){
         
+        if !isFinished{
+            
+            SwiftyProgressHUD.showFaildHUD(text: "列表加载中", duration: 1)
+            return
+            
+        }
+        
         let vc = EUActivityParticipatorsViewController()
         vc.participatorslist = participatorslist
         self.navigationController?.pushViewController(vc, animated: true)
@@ -173,7 +184,9 @@ extension EUCreatedActivityViewController{
     }
     
     @objc fileprivate func notifyParticipators(){
-        print("notifyParticipators")
+    
+        let vc = EUActivityNotificationController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     
