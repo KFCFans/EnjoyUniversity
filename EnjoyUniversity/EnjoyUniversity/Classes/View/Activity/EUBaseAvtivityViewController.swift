@@ -45,6 +45,9 @@ class EUBaseAvtivityViewController: UIViewController {
     
     // 活动详情文本高度
     var detailHeight:CGFloat = 0
+    
+    // 活动参与人数视图
+    let participatornumview = UIImageView(frame: CGRect(x: 0, y: 132, width: UIScreen.main.bounds.width - 10, height: 44))
 
     
     // 滑动视图
@@ -164,7 +167,6 @@ extension EUBaseAvtivityViewController{
         
         
         // 人数
-        let participatornumview = UIImageView(frame: CGRect(x: 0, y: 132, width: activityinfoview.frame.width, height: 44))
         activityinfoview.addSubview(participatornumview)
         
         let avenrollimg = UIImageView(frame: CGRect(x: 12, y: 14, width: 16, height: 16))
@@ -181,10 +183,6 @@ extension EUBaseAvtivityViewController{
         moreimg.image = UIImage(named: "nav_more")
         participatornumview.addSubview(moreimg)
         
-        // 添加点击响应事件
-        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(showParticipators))
-        participatornumview.isUserInteractionEnabled = true
-        participatornumview.addGestureRecognizer(tapgesture)
         
     }
     
@@ -222,12 +220,6 @@ extension EUBaseAvtivityViewController{
     @objc fileprivate func backButtonIsClicked(){
         
         _ = navigationController?.popViewController(animated: true)
-        
-    }
-    
-    //／ 获取参与者列表
-    @objc fileprivate func showParticipators(){
-        print("showDetail")
         
     }
     

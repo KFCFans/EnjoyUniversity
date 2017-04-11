@@ -16,3 +16,6 @@ public let PICTURESERVERADDRESS = "https://euswag.com/picture"
 
 /// 每次请求希望返回的数据条数
 public let EUREQUESTCOUNT = 10
+
+/// 二维码前缀
+public let QRCODEPREFIX = "www.euswag.com?"

@@ -120,6 +120,11 @@ extension EUCreatedActivityViewController{
         checkBtn.addTarget(nil, action: #selector(checkBtnIsClicked), for: .touchUpInside)
         notifBtn.addTarget(nil, action: #selector(notifyParticipators), for: .touchUpInside)
         
+        // 添加点击响应事件
+        let tapgesture = UITapGestureRecognizer(target: self, action: #selector(checkBtnIsClicked))
+        participatornumview.isUserInteractionEnabled = true
+        participatornumview.addGestureRecognizer(tapgesture)
+        
     }
     
     
@@ -185,6 +190,10 @@ extension EUCreatedActivityViewController{
     }
     
     @objc fileprivate func showQRCode(){
+        
+        let vc = EUShowQRCodeViewController()
+        vc.qrString = "TestZZZ"
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
