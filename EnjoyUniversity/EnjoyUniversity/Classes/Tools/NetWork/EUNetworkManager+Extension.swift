@@ -452,7 +452,7 @@ extension EUNetworkManager{
         
         let parm = ["uid":userAccount.uid,"avid":avid] as [String : Any]
         
-        tokenRequest(urlString: url, parameters: parm) { (_, isSuccess, status) in
+        tokenRequest(urlString: url, method: .post,  parameters: parm) { (_, isSuccess, status) in
             
             if !isSuccess{
                 completion(false,false)
@@ -467,6 +467,41 @@ extension EUNetworkManager{
             completion(true,true)
 
         }
+    }
+    
+    /// 拒绝某人参加活动
+    ///
+    /// - Parameters:
+    ///   - uid: 被拒绝者 ID
+    ///   - avid: 活动 ID
+    ///   - reason: 被拒绝原因
+    ///   - completion: 完成回调（网络请求是否成功，拒绝是否成功）
+    func removeSomeOneFromMyActovoty(uid:Int64,avid:Int,reason:String?,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/manage"
+        
+        var parm = Parameters()
+        
+        parm["uid"] = uid
+        parm["avid"] = avid
+        parm["verifystate"] = -1
+        parm["reason"] = reason
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            
+            if status == 500{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+            
+        }
+        
     }
     
 

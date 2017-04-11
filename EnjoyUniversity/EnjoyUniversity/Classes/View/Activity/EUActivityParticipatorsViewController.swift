@@ -14,6 +14,9 @@ class EUActivityParticipatorsViewController: EUBaseViewController {
     
     /// 参与者数据源
     var participatorslist:UserInfoListViewModel?
+    
+    /// 社团 ID
+    var avid:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,5 +81,61 @@ extension EUActivityParticipatorsViewController{
         // 点击直接弹出拨打电话界面
         UIApplication.shared.open(URL(string: "telprompt://\(phone)")!, options: [:], completionHandler: nil)
     }
+    
+    /// 左滑删除
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    /// 定义文字
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "拒绝参加"
+    }
+    
+    /// T 人
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        guard let uid = participatorslist?.activityParticipatorList[indexPath.row].model?.uid else{
+            return
+        }
+        
+        let alert = UIAlertController(title: nil, message: "请填写拒绝理由", preferredStyle: .alert)
+        alert.addTextField { (textfield) in
+            textfield.placeholder = "拒绝理由"
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let confirm = UIAlertAction(title: "确定", style: .destructive) { (alertaction) in
+            
+            let reason = alert.textFields![0].text
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.removeSomeOneFromMyActovoty(uid: uid, avid: self.avid, reason: reason, completion: { (isSuccess, isRemoved) in
+                SwiftyProgressHUD.hide()
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                if !isRemoved{
+                    SwiftyProgressHUD.showFaildHUD(text: "异常操作", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                self.participatorslist?.activityParticipatorList.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+            })
+            
+        }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        
+        present(alert, animated: true) { 
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+        
+    }
+    
     
 }

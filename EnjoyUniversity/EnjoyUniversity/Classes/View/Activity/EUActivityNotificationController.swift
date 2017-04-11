@@ -19,7 +19,7 @@ class EUActivityNotificationController: EUBaseViewController {
         
         let notificationtextview = SwiftyTextView(frame: CGRect(x: 5, y: 74, width: UIScreen.main.bounds.width - 10, height: 180), textContainer: nil, placeholder: "填写活动通知")
         notificationtextview.font = UIFont.boldSystemFont(ofSize: 15)
-        
+        notificationtextview.becomeFirstResponder()
         view.addSubview(notificationtextview)
         
         navitem.title = "活动通知"

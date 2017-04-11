@@ -33,6 +33,12 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     /// 参与者数据源
     lazy var participatorslist = UserInfoListViewModel()
     
+    /// 活动视图模型列表
+    var activitylistviewmodel:ActivityListViewModel?
+    
+    /// 这是第几个，用于删除
+    var row:Int = 0
+    
     /// ViewModel 数据源
     var viewmodel:ActivityViewModel?{
         
@@ -311,6 +317,7 @@ extension EUActivityViewController{
                         return
                     }
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    self.activitylistviewmodel?.participatedlist.remove(at: self.row)
                     _ = self.navigationController?.popViewController(animated: true)
                     
                     

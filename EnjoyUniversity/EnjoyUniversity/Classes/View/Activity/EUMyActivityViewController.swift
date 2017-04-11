@@ -62,6 +62,7 @@ class EUMyActivityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadParticipatedActivityData()
         loadCreatedActivityData()
         setupNavBar()
         setupUI()
@@ -76,8 +77,7 @@ class EUMyActivityViewController: UIViewController {
     // 勉强解决
     override func viewWillAppear(_ animated: Bool) {
         
-        // FIXME: - 退出活动后返回，需要改变表格数据，感觉非常浪费服务器性能，但是想不出更好的方法
-        loadParticipatedActivityData()
+        joinedtableView?.reloadData()
         if !isFirstPageSelected {
             indicatorView?.setContentOffset(CGPoint(x: -swidth/2, y: 0), animated: false)
             scrollView?.setContentOffset(CGPoint(x: swidth, y: scrollView?.contentOffset.y ?? 44), animated: false)
@@ -289,6 +289,8 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
             
             let vc = EUActivityViewController()
             vc.activityStatus = 1
+            vc.row = indexPath.row
+            vc.activitylistviewmodel = activitylistviewmodel
             vc.viewmodel = activitylistviewmodel.participatedlist[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
             

@@ -13,6 +13,9 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
     /// 参与者数据源
     lazy var participatorslist = UserInfoListViewModel()
     
+    /// 记录活动 ID
+    var avid:Int = 0
+    
     /// 参与者数据加载完成标记
     var isFinished:Bool = false
     
@@ -24,6 +27,7 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
             timeLabel.text = viewmodel?.allTime
             detailLabel.text = viewmodel?.activitymodel.avDetail
             detailHeight = viewmodel?.detailHeight ?? 0
+            avid = viewmodel?.activitymodel.avid ?? 0 
             warnLabel.text = viewmodel?.needRegister
             let url = URL(string: viewmodel?.imageURL ?? "")
             backgroudImage.kf.setImage(with: url,
@@ -175,6 +179,7 @@ extension EUCreatedActivityViewController{
         
         let vc = EUActivityParticipatorsViewController()
         vc.participatorslist = participatorslist
+        vc.avid = avid
         self.navigationController?.pushViewController(vc, animated: true)
         
     }
