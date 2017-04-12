@@ -361,6 +361,20 @@ extension EUProfileViewController{
         return 44
     }
     
+}
+
+// MARK: - 监听方法
+extension EUProfileViewController{
     
+    @objc fileprivate func showMyActivities(){
+        
+        
+        
+    
+    }
+    
+    @objc fileprivate func showMyCommunities(){
+    
+    }
     
 }

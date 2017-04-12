@@ -452,6 +452,7 @@ extension EUStartActivityViewController{
                     if isSuccess{
                         SwiftyProgressHUD.showSuccessHUD(duration: 1)
                         self.dismiss(animated: true, completion: nil)
+                        return
                     }
                     SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
                 }
@@ -459,8 +460,9 @@ extension EUStartActivityViewController{
             })
         }else{
             
-            SwiftyProgressHUD.hide()
+            
             EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
+                SwiftyProgressHUD.hide()
                 
                 if isSuccess{
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)

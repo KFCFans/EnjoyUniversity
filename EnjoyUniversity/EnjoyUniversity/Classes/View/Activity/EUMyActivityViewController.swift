@@ -229,6 +229,10 @@ extension EUMyActivityViewController{
         
         self.automaticallyAdjustsScrollViewInsets = false
         
+        // 修正tableview
+        createdtableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 104, right: 0)
+        joinedtableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 104, right: 0)
+        
         
     }
     

@@ -59,7 +59,7 @@ extension EUShowQRCodeViewController{
         qrlabel.textAlignment = .center
         backgroundview.addSubview(qrlabel)
         
-        let saveBtn = UIButton(frame: CGRect(x: 30, y: 390, width: 275, height: 40))
+        let saveBtn = UIButton(frame: CGRect(x: 30, y: 390, width: backgroundview.frame.width - 60, height: 40))
         saveBtn.setTitle("保存", for: .normal)
         saveBtn.backgroundColor = UIColor.init(red: 241/255, green: 122/255, blue: 93/255, alpha: 1)
         saveBtn.addTarget(nil, action: #selector(saveQRCodeToPhotoLibrary), for: .touchUpInside)
