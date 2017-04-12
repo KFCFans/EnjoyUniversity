@@ -49,7 +49,7 @@ class UserinfoViewModel:NSObject{
         reputationString = "节操值 " + model.reputation.description
         
         /// 选择认证图标
-        switch model.reputation {
+        switch Int(model.verified) {
         case 1:
             verifyImg = UIImage(named: "profile_verifysuccess")
         default:

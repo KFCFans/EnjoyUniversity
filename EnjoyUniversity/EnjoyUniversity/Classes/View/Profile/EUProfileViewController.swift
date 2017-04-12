@@ -19,13 +19,16 @@ class EUProfileViewController: EUBaseViewController {
     /// 用户头像
     let logoimg = UIImageView()
     
-    var userinfo:UserInfo?{
+    /// 认证
+    let verifyimgview = UIImageView()
+    
+    var userinfoviewmodel:UserinfoViewModel?{
         
         didSet{
-            nicknameLabel.text = userinfo?.nickname
-            reputationLabel.text = "节操值 " + "\(userinfo?.reputation ?? 100)"
-            let avatarurl = PICTURESERVERADDRESS + "/user/" + (userinfo?.avatar ?? "") + ".jpg"
-            
+            nicknameLabel.text = userinfoviewmodel?.model?.name
+            reputationLabel.text = userinfoviewmodel?.reputationString
+            verifyimgview.image = userinfoviewmodel?.verifyImg
+            let avatarurl = userinfoviewmodel?.headsculptureurl ?? ""
             logoimg.kf.setImage(with: URL(string: avatarurl),
                                 placeholder: UIImage(named: "profile_dug"),
                                 options: [.transition(.fade(1))],
@@ -62,18 +65,18 @@ class EUProfileViewController: EUBaseViewController {
     override func loadData() {
         
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.getUserPrivateInfo { (isSuccess, userinfo) in
+        EUNetworkManager.shared.getUserPrivateInfo { (isSuccess, userinfovm) in
             SwiftyProgressHUD.hide()
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
                 return
             }
-            guard let userinfo = userinfo else{
+            guard let userinfovm = userinfovm else{
                 SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
                 return
             }
             
-            self.userinfo = userinfo
+            self.userinfoviewmodel = userinfovm
         }
         
     }
@@ -96,18 +99,19 @@ extension EUProfileViewController{
         headview.addSubview(backgroundview)
         
         
-//        logoimg.image = avatarImage(image: UIImage(named: "profile_dug"), size: CGSize(width: 35, height: 35), opaque: false, backColor: nil)
         logoimg.layer.masksToBounds = true
         logoimg.layer.cornerRadius = 35
         backgroundview.addSubview(logoimg)
         
-        nicknameLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        backgroundview.addSubview(verifyimgview)
+        
+        nicknameLabel.font = UIFont.boldSystemFont(ofSize: 17)
         nicknameLabel.textColor = UIColor.white
         nicknameLabel.sizeToFit()
         backgroundview.addSubview(nicknameLabel)
         
         reputationLabel.textColor = UIColor.white
-        reputationLabel.font = UIFont.boldSystemFont(ofSize: 10)
+        reputationLabel.font = UIFont.boldSystemFont(ofSize: 13)
         reputationLabel.sizeToFit()
         backgroundview.addSubview(reputationLabel)
         
@@ -185,8 +189,9 @@ extension EUProfileViewController{
         reputationLabel.translatesAutoresizingMaskIntoConstraints = false
         settingbtn.translatesAutoresizingMaskIntoConstraints = false
         moreimg.translatesAutoresizingMaskIntoConstraints = false
+        verifyimgview.translatesAutoresizingMaskIntoConstraints = false
         
-        //头像
+        // 头像
         backgroundview.addConstraints([NSLayoutConstraint(item: logoimg,
                                                           attribute: .top,
                                                           relatedBy: .equal,
@@ -222,7 +227,7 @@ extension EUProfileViewController{
                                                           toItem: logoimg,
                                                           attribute: .centerY,
                                                           multiplier: 1.0,
-                                                          constant: -10),
+                                                          constant: -15),
                                        NSLayoutConstraint(item: nicknameLabel,
                                                           attribute: .left,
                                                           relatedBy: .equal,
@@ -230,6 +235,35 @@ extension EUProfileViewController{
                                                           attribute: .right,
                                                           multiplier: 1.0,
                                                           constant: 15)])
+        // 认证图标
+        backgroundview.addConstraints([NSLayoutConstraint(item: verifyimgview,
+                                                          attribute: .centerY,
+                                                          relatedBy: .equal,
+                                                          toItem: nicknameLabel,
+                                                          attribute: .centerY,
+                                                          multiplier: 1.0,
+                                                          constant: 0),
+                                       NSLayoutConstraint(item: verifyimgview,
+                                                          attribute: .left,
+                                                          relatedBy: .equal,
+                                                          toItem: nicknameLabel,
+                                                          attribute: .right,
+                                                          multiplier: 1.0,
+                                                          constant: 10)])
+        verifyimgview.addConstraints([NSLayoutConstraint(item: verifyimgview,
+                                                             attribute: .width,
+                                                             relatedBy: .equal,
+                                                             toItem: nil,
+                                                             attribute: .notAnAttribute,
+                                                             multiplier: 1.0,
+                                                             constant: 16),
+                                          NSLayoutConstraint(item: verifyimgview,
+                                                             attribute: .height,
+                                                             relatedBy: .equal,
+                                                             toItem: nil,
+                                                             attribute: .notAnAttribute,
+                                                             multiplier: 1.0,
+                                                             constant: 16)])
         // 节操值
         backgroundview.addConstraints([NSLayoutConstraint(item: reputationLabel,
                                                           attribute: .centerY,
@@ -237,7 +271,7 @@ extension EUProfileViewController{
                                                           toItem: logoimg,
                                                           attribute: .centerY,
                                                           multiplier: 1.0,
-                                                          constant: 10),
+                                                          constant: 15),
                                        NSLayoutConstraint(item: reputationLabel,
                                                           attribute: .left,
                                                           relatedBy: .equal,

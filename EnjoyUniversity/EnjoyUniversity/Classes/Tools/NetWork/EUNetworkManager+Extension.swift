@@ -245,7 +245,10 @@ extension EUNetworkManager{
     }
     
     
-    func getUserPrivateInfo(completion:@escaping(Bool,UserInfo?)->()){
+    /// 获取用户个人信息
+    ///
+    /// - Parameter completion: 完成回调
+    func getUserPrivateInfo(completion:@escaping(Bool,UserinfoViewModel?)->()){
         
         let url = SERVERADDRESS + "/eu/info/userinfo"
         
@@ -264,13 +267,12 @@ extension EUNetworkManager{
                 return
             }
             
-            guard let dict = dict as? [String:Any] else {
+            guard let dict = dict as? [String:Any], let userinfo = UserInfo.yy_model(with: dict) else {
                 completion(true,nil)
                 return
             }
             
-            let userinfo = UserInfo.yy_model(with: dict)
-            completion(true,userinfo)
+            completion(true,UserinfoViewModel(model: userinfo))
             
         }
         
