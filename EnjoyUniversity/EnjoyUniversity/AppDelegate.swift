@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 
-//        window?.rootViewController = EULoginViewController()
+//        window?.rootViewController = EUserInfoInputViewController()
         window?.makeKeyAndVisible()
         
         return true

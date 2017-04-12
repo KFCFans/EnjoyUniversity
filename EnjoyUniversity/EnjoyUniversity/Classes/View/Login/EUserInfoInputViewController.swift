@@ -217,7 +217,13 @@ extension EUserInfoInputViewController{
         let schoolid =  (tableview.cellForRow(at: IndexPath(row: 5, section: 0)) as? EUserInfoInputCell)?.textfieldZ.text,
         let genderindex = sexsegment?.selectedSegmentIndex,
         let phone = phone else{
+            SwiftyProgressHUD.showFaildHUD(text: "信息不全", duration: 1)
                 return
+        }
+        
+        if name.characters.count == 0 || Int(schoolid) == 0{
+            SwiftyProgressHUD.showFaildHUD(text: "信息不全", duration: 1)
+            return
         }
         
         let user = UserInfo(uid: Int64(phone)!, avatar: nil, nickname: nickname, gender: genderindex, professionclass: classname, studentid: Int64(schoolid) ?? 0, name: name, userdescription: personaldetail.text)

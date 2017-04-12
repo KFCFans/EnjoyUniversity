@@ -375,6 +375,8 @@ extension EUNetworkManager{
             
             let userdict = ["uid":user.uid,"accesstoken":token]
             
+            self.userAccount.uid = user.uid
+            self.userAccount.accesstoken = token as? String
             self.userAccount.saveToUserDefaults(dict: userdict)
             completion(true)
             
