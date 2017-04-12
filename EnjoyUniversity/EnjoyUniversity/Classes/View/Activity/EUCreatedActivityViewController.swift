@@ -217,6 +217,43 @@ extension EUCreatedActivityViewController{
             return
         }
         
+        /// 最大时间差（超过这个值显示天数）
+        let MAXTIMEDIFFERENCE:TimeInterval = 172800
+        
+        /// 最小时间差（超过这个时间显示警告）
+        let MINTIMEDIFFERENCE:TimeInterval = 21600
+        
+        let date = Date()
+        guard let startime = Double(viewmodel?.activitymodel.avStarttime ?? "") else{
+            return
+        }
+        let timedifference = -date.timeIntervalSince(Date(timeIntervalSince1970: startime/1000))
+        
+        var alertmessage:String = ""
+        
+        if timedifference < MINTIMEDIFFERENCE{
+            alertmessage = "您确定要发起签到吗？"
+        }else if timedifference < MAXTIMEDIFFERENCE{
+            // 显示小时
+            let days = lround(timedifference/3600)
+            alertmessage = "距离活动开始还有\(days)小时，您确定要发起签到吗？"
+        }else{
+            // 显示天数
+            let days = lround(timedifference/(3600*24))
+            alertmessage = "距离活动开始还有\(days)天，您确定要发起签到吗？"
+        }
+        
+        let alert = UIAlertController(title: nil, message: alertmessage, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let confirm = UIAlertAction(title: "确定", style: .default) { (_) in
+            
+            // 网络请求
+        }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
+        
+        
     }
     
     
