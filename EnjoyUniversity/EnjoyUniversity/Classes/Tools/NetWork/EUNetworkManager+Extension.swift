@@ -278,7 +278,12 @@ extension EUNetworkManager{
         
     }
     
-    // 根据社团 ID 获取社团信息
+    
+    /// 根据活动 ID 获取活动信息
+    ///
+    /// - Parameters:
+    ///   - avid: 活动 ID
+    ///   - completion: 是否成功，视图模型
     func getActivityInfoByID(avid:Int,completion:@escaping (Bool,ActivityViewModel?)->()){
         
         let url = SERVERADDRESS + "/eu/activity/getactivity"
@@ -296,6 +301,32 @@ extension EUNetworkManager{
                 return
             }
             completion(true,ActivityViewModel(model: activity))
+        }
+        
+    }
+    
+    /// 根据社团 ID 获取社团信息
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 是否成功，视图模型
+    func getCommunityInfoByID(cmid:Int,completion:@escaping (Bool,CommunityViewModel?)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/getcommunity"
+        
+        let parm = ["cmid":cmid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (dict, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false, nil)
+                return
+            }
+            guard let dict = dict as? [String:Any],let community = Community.yy_model(with: dict) else{
+                completion(true,nil)
+                return
+            }
+            completion(true,CommunityViewModel(model: community))
         }
         
     }

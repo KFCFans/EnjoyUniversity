@@ -142,8 +142,30 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                     
                         
                     }else if resultinfo.hasPrefix("cmid="){
-                        captureSession.stopRunning()
-                        let cmid = resultinfo.substring(from: "cmid=".endIndex)
+                    
+                    captureSession.stopRunning()
+                    guard let cmid = Int(resultinfo.substring(from: "cmid=".endIndex)) else{
+                        SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
+                        return
+                    }
+                    let vc = EUCommunityInfoViewController()
+                    SwiftyProgressHUD.showLoadingHUD()
+                    EUNetworkManager.shared.getCommunityInfoByID(cmid: cmid, completion: { (isSuccess, viewmodel) in
+                        SwiftyProgressHUD.hide()
+                        if !isSuccess{
+                            SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                            return
+                        }
+                        guard let viewmodel = viewmodel else{
+                            SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
+                            return
+                        }
+                        vc.viewmodel = viewmodel
+                        self.navigationController?.pushViewController(vc, animated: true)
+                        
+                    })
+
+                    
                 }
             }else if info.count == 2{
                 
