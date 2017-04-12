@@ -119,6 +119,7 @@ extension EUCreatedActivityViewController{
         // 添加监听事件
         checkBtn.addTarget(nil, action: #selector(checkBtnIsClicked), for: .touchUpInside)
         notifBtn.addTarget(nil, action: #selector(notifyParticipators), for: .touchUpInside)
+        registerBtn.addTarget(nil, action: #selector(startRegister), for: .touchUpInside)
         
         // 添加点击响应事件
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(checkBtnIsClicked))
@@ -169,10 +170,12 @@ extension EUCreatedActivityViewController{
 // MARK: - 监听方法集合
 extension EUCreatedActivityViewController{
     
+    /// 更多按钮
     @objc fileprivate func moreActionBtnIsClicked(){
         
     }
     
+    /// 审核
     @objc fileprivate func checkBtnIsClicked(){
         
         if !isFinished{
@@ -189,6 +192,7 @@ extension EUCreatedActivityViewController{
         
     }
     
+    /// 显示二维码
     @objc fileprivate func showQRCode(){
         
         let vc = EUShowQRCodeViewController()
@@ -198,10 +202,21 @@ extension EUCreatedActivityViewController{
         
     }
     
+    /// 通知按钮
     @objc fileprivate func notifyParticipators(){
     
         let vc = EUActivityNotificationController()
         navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    /// 开始签到
+    @objc fileprivate func startRegister(){
+        
+        if !(viewmodel?.needRegisterBool ?? false){
+            SwiftyProgressHUD.showFaildHUD(text: "无需签到", duration: 1)
+            return
+        }
+        
     }
     
     

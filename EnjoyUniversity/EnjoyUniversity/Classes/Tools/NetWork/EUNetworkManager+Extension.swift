@@ -558,6 +558,36 @@ extension EUNetworkManager{
             completion(true,true)
             
         }
+    }
+    
+    /// 发起活动签到
+    ///
+    /// - Parameters:
+    ///   - avid: 活动 ID
+    ///   - uid: 活动创建人 ID
+    ///   - completion: 网络请求是否成功，发起签到是否哦成功（权限问题），签到码
+    func startActivityRegist(avid:Int,uid:Int64,completion:@escaping (Bool,Bool,String?)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/startregister"
+        
+        let parm = ["uid":uid,"avid":avid] as [String : Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (data, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false,nil)
+                return
+            }
+            if status == 401{
+                completion(true,false,nil)
+                return
+            }
+            guard let data = data as? String else{
+                completion(true,false,nil)
+                return
+            }
+            completion(true,true,data)
+        }
         
     }
     
