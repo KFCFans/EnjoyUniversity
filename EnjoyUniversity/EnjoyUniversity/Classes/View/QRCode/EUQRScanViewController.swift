@@ -102,12 +102,9 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
     
     //扫描代理方法
     func captureOutput(_ captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [Any]!, from connection: AVCaptureConnection!) {
-        print("_______")
         
         if metadataObjects != nil && metadataObjects.count > 0 {
             let metaData : AVMetadataMachineReadableCodeObject = metadataObjects.first as! AVMetadataMachineReadableCodeObject
-            
-            print(metaData.stringValue)
             
 //            DispatchQueue.main.async(execute: {
 //                // 结果处理
