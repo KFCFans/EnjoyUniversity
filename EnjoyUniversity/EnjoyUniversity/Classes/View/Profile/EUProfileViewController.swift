@@ -29,11 +29,8 @@ class EUProfileViewController: EUBaseViewController {
             logoimg.kf.setImage(with: URL(string: avatarurl),
                                 placeholder: UIImage(named: "profile_dug"),
                                 options: [.transition(.fade(1))],
-                                progressBlock: nil) { (image, _, _, _) in
-                                    self.logoimg.image = avatarImage(image: image, size: CGSize(width: 35, height: 35), opaque: false, backColor: nil)
-
-            }
-            
+                                progressBlock: nil,
+                                completionHandler: nil)
         }
         
     }
@@ -100,6 +97,8 @@ extension EUProfileViewController{
         
         
 //        logoimg.image = avatarImage(image: UIImage(named: "profile_dug"), size: CGSize(width: 35, height: 35), opaque: false, backColor: nil)
+        logoimg.layer.masksToBounds = true
+        logoimg.layer.cornerRadius = 35
         backgroundview.addSubview(logoimg)
         
         nicknameLabel.font = UIFont.boldSystemFont(ofSize: 15)
@@ -355,6 +354,10 @@ extension EUProfileViewController{
     // 监听响应
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableview, didSelectRowAt: indexPath)
+        
+        if indexPath.section == 1 && indexPath.row == 0 {
+            self.navigationController?.pushViewController(EUFeedBackViewController(), animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
