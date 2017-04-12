@@ -278,6 +278,28 @@ extension EUNetworkManager{
         
     }
     
+    // 根据社团 ID 获取社团信息
+    func getActivityInfoByID(avid:Int,completion:@escaping (Bool,ActivityViewModel?)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/getactivity"
+        
+        let parm = ["avid":avid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (dict, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let dict = dict as? [String:Any], let activity = Activity.yy_model(with: dict) else{
+                completion(true,nil)
+                return
+            }
+            completion(true,ActivityViewModel(model: activity))
+        }
+        
+    }
+    
 
 }
 

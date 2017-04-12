@@ -22,6 +22,7 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
         super.viewDidLoad()
 
         self.view.backgroundColor = UIColor.black
+        self.tableview.removeFromSuperview()
         //设置导航栏
         let barButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonSystemItem.add, target: self, action: #selector(EUQRScanViewController.selectPhotoFormPhotoLibrary(_:)))
         navitem.rightBarButtonItem = barButtonItem
@@ -108,13 +109,65 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
             
             print(metaData.stringValue)
             
-            DispatchQueue.main.async(execute: {
+//            DispatchQueue.main.async(execute: {
+//                // 结果处理
+//            })
+            
+            let result = metaData.stringValue
+            let infosegment = result?.components(separatedBy: "?").last
+            let info = infosegment?.components(separatedBy: "&") ?? []
+            
+            if info.count == 1{
+                let resultinfo = info.first ?? ""
+                    
+                if resultinfo.hasPrefix("avid="){
+                     captureSession.stopRunning()
+                    guard let avid = Int(resultinfo.substring(from: "avid=".endIndex)) else{
+                        SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
+                        return
+                    }
+                    let vc = EUActivityViewController()
+                    SwiftyProgressHUD.showLoadingHUD()
+                    EUNetworkManager.shared.getActivityInfoByID(avid: avid, completion: { (isSuccess, viewmodel) in
+                        SwiftyProgressHUD.hide()
+                        if !isSuccess{
+                            SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                            return
+                        }
+                        guard let viewmodel = viewmodel else{
+                            SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
+                            return
+                        }
+                        vc.viewmodel = viewmodel
+                        self.navigationController?.pushViewController(vc, animated: true)
+                    })
+                    
+                        
+                    }else if resultinfo.hasPrefix("cmid="){
+                        captureSession.stopRunning()
+                        let cmid = resultinfo.substring(from: "cmid=".endIndex)
+                }
+            }else if info.count == 2{
                 
-                // 结果处理
-                
-               
-            })
-            captureSession.stopRunning()
+                    let resultinfo1 = info.first ?? ""
+                    let resultinfo2 = info.last ?? ""
+                    
+                    if resultinfo1.hasPrefix("avid="){
+                        captureSession.stopRunning()
+                        let avid = resultinfo1.substring(from: "avid=".endIndex)
+                        let code = resultinfo2.substring(from: "code=".endIndex)
+                        print("avid\(avid)code\(code)")
+                    }else if resultinfo2.hasPrefix("avid="){
+                        captureSession.stopRunning()
+                        let code = resultinfo1.substring(from: "avid=".endIndex)
+                        let avid = resultinfo2.substring(from: "code=".endIndex)
+                        print("avid\(avid)code\(code)")
+                    }
+                    
+                }
+            
+            
+//            captureSession.stopRunning()
         }
         
     }

@@ -13,7 +13,7 @@ class EUFeedBackViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.init(red: 252/255, green: 252/255, blue: 252/255, alpha: 1)
+        view.backgroundColor = UIColor.init(red: 238/255, green: 238/255, blue: 238/255, alpha: 1)
         tableview.removeFromSuperview()
         navitem.title = "意见反馈"
         

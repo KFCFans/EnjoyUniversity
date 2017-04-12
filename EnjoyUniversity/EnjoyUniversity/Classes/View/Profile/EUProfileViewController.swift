@@ -389,7 +389,10 @@ extension EUProfileViewController{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableview, didSelectRowAt: indexPath)
         
-        if indexPath.section == 1 && indexPath.row == 0 {
+        if indexPath.section == 0{
+            self.navigationController?.pushViewController(EUVerifyViewController(), animated: true)
+        }
+        else if indexPath.section == 1 && indexPath.row == 0 {
             self.navigationController?.pushViewController(EUFeedBackViewController(), animated: true)
         }
     }

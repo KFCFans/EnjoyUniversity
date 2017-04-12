@@ -72,6 +72,7 @@
 		36EC19981E9893D400A08AC4 /* SwiftyProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC19971E9893D400A08AC4 /* SwiftyProgressHUD.swift */; };
 		36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ECC2391E6E61160003C4D8 /* EUQRScanViewController.swift */; };
 		36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ECC23B1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift */; };
+		36F1A71E1E9E28C600BEF9A5 /* EUVerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F1A71D1E9E28C600BEF9A5 /* EUVerifyViewController.swift */; };
 		4A09239C9EBBFB7FAA027601 /* Pods_EnjoyUniversity.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8BCCA5B4356283FD015B60FB /* Pods_EnjoyUniversity.framework */; };
 		BB10279C0BD83EA59F359D64 /* Pods_EnjoyUniversityTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F27AC698DB569A544136CFAC /* Pods_EnjoyUniversityTests.framework */; };
 /* End PBXBuildFile section */
@@ -166,6 +167,7 @@
 		36EC19971E9893D400A08AC4 /* SwiftyProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyProgressHUD.swift; sourceTree = "<group>"; };
 		36ECC2391E6E61160003C4D8 /* EUQRScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUQRScanViewController.swift; sourceTree = "<group>"; };
 		36ECC23B1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUScannerBackgroundView.swift; sourceTree = "<group>"; };
+		36F1A71D1E9E28C600BEF9A5 /* EUVerifyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUVerifyViewController.swift; sourceTree = "<group>"; };
 		3D885B98299ED2C5A1AA6E7F /* Pods_EnjoyUniversityUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EnjoyUniversityUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		40EBC4342C0592D8109EAA59 /* Pods-EnjoyUniversityTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversityTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversityTests/Pods-EnjoyUniversityTests.debug.xcconfig"; sourceTree = "<group>"; };
 		85368470F01BEF28D5CCE29C /* Pods-EnjoyUniversity.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversity.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversity/Pods-EnjoyUniversity.debug.xcconfig"; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 				36BDBB441E6417280075A3ED /* EUProfileViewController.swift */,
 				3662E6531E9BB961000955DA /* EUProfileTableViewCell.swift */,
 				3680A5861E9DF36300E6013F /* EUFeedBackViewController.swift */,
+				36F1A71D1E9E28C600BEF9A5 /* EUVerifyViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -826,6 +829,7 @@
 				36690AD11E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift in Sources */,
 				3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */,
 				36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */,
+				36F1A71E1E9E28C600BEF9A5 /* EUVerifyViewController.swift in Sources */,
 				365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */,
 				3662E6541E9BB961000955DA /* EUProfileTableViewCell.swift in Sources */,
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
