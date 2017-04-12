@@ -106,9 +106,10 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
         if metadataObjects != nil && metadataObjects.count > 0 {
             let metaData : AVMetadataMachineReadableCodeObject = metadataObjects.first as! AVMetadataMachineReadableCodeObject
             
-//            DispatchQueue.main.async(execute: {
-//                // 结果处理
-//            })
+            DispatchQueue.main.async(execute: {
+                // 结果处理
+                SwiftyProgressHUD.showLoadingHUD()
+            })
             
             let result = metaData.stringValue
             let infosegment = result?.components(separatedBy: "?").last
@@ -160,7 +161,7 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                         let avid = resultinfo2.substring(from: "code=".endIndex)
                         print("avid\(avid)code\(code)")
                     }
-                    
+                
                 }
             
             
