@@ -37,7 +37,8 @@ class EULoginViewController: UIViewController {
     /// 设置的新密码
     let newpasswordtextfield = UITextField()
     
-    let scal = UIScreen.main.scale
+//    let scal = UIScreen.main.scale
+    let scal:CGFloat = 2
     
     /// 记录手机号
     var phonenumber:String?
@@ -1015,7 +1016,7 @@ extension EULoginViewController{
             SwiftyProgressHUD.hide()
             if !isSuccess{
             
-                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 0.5)
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 0.5)
                 return
             }
             // 用户没有注册过的情况，跳转到验证码界面
@@ -1058,14 +1059,17 @@ extension EULoginViewController{
             
             SwiftyProgressHUD.hide()
             if !isSuccess{
-                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
             if !shouldLogin{
                 SwiftyProgressHUD.showFaildHUD(text: "密码错误", duration: 1)
                 return
             }
-            self.present(EUMainViewController(), animated: true, completion: nil)
+            
+            let vc = EUMainViewController()
+            self.present(vc, animated: true, completion: nil)
+            UIApplication.shared.keyWindow?.rootViewController = vc
         }
         
         
@@ -1080,7 +1084,7 @@ extension EULoginViewController{
         
         EUNetworkManager.shared.getVerificationCode(phone: phonenumber, isRegister: false) { (isSuccess, code) in
             if !isSuccess{
-                // 提示网络不好
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
             self.verifycode = code
@@ -1117,12 +1121,15 @@ extension EULoginViewController{
               
                 SwiftyProgressHUD.hide()
                 if !isSuccess{
-                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
                 }
                 // 修改成功，登陆
                 EUNetworkManager.shared.loginByPassword(phone: phonenumber, password: newpwd, completion: { (isSuccess, _) in
-                    
-                    self.present(EUMainViewController(), animated: true, completion: nil)
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    let vc = EUMainViewController()
+                    self.present(vc, animated: true, completion: nil)
+                    UIApplication.shared.keyWindow?.rootViewController = vc
                 })
                 
             })
@@ -1160,7 +1167,7 @@ extension EULoginViewController{
             SwiftyProgressHUD.hide()
             if !isSuccess{
                 
-                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 0.5)
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 0.5)
                 return
             }
             if let code = code {

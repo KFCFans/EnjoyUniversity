@@ -244,6 +244,7 @@ extension EUserInfoInputViewController{
                     
                     let vc = EUMainViewController()
                     self.present(vc, animated: true, completion: nil)
+                    UIApplication.shared.keyWindow?.rootViewController = vc
 
                 })
                 
@@ -261,6 +262,7 @@ extension EUserInfoInputViewController{
                 
                 let vc = EUMainViewController()
                 self.present(vc, animated: true, completion: nil)
+                UIApplication.shared.keyWindow?.rootViewController = vc
                 
             })
 
