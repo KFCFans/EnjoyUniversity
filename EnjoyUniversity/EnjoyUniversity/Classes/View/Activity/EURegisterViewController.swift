@@ -76,7 +76,7 @@ extension EURegisterViewController{
         
         let scanBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 28, y: 18, width: 18, height: 18))
         scanBtn.setImage(UIImage(named: "av_useregisterscan"), for: .normal)
-        backBtn.addTarget(nil, action: #selector(startQRCodeScanner), for: .touchUpInside)
+        scanBtn.addTarget(nil, action: #selector(startQRCodeScanner), for: .touchUpInside)
         codeview.addSubview(scanBtn)
         
         // 自动布局
