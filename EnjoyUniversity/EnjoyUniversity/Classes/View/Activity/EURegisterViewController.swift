@@ -23,6 +23,9 @@ class EURegisterViewController: UIViewController {
     
     /// 签到码
     var registerCode = 0
+    
+    /// 活动ID
+    var avid:Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,12 +72,12 @@ extension EURegisterViewController{
         verifycode.delegate = self
         codeview.addSubview(verifycode)
         
-        let backBtn = UIButton(frame: CGRect(x: 10, y: 18, width: 18, height: 18))
+        let backBtn = UIButton(frame: CGRect(x: 10, y: 18, width: 28, height: 28))
         backBtn.setImage(UIImage(named: "login_back"), for: .normal)
         backBtn.addTarget(nil, action: #selector(didClickBackBtn), for: .touchUpInside)
         codeview.addSubview(backBtn)
         
-        let scanBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 28, y: 18, width: 18, height: 18))
+        let scanBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 38, y: 18, width: 28, height: 28))
         scanBtn.setImage(UIImage(named: "av_useregisterscan"), for: .normal)
         scanBtn.addTarget(nil, action: #selector(startQRCodeScanner), for: .touchUpInside)
         codeview.addSubview(scanBtn)
@@ -99,7 +102,7 @@ extension EURegisterViewController{
                                                   attribute: .centerX,
                                                   multiplier: 1.0,
                                                   constant: 0))
-        // 输入验证码
+        // 输入签到码
         codeview.addConstraint(NSLayoutConstraint(item: firstlabel,
                                                   attribute: .top,
                                                   relatedBy: .equal,
@@ -114,7 +117,7 @@ extension EURegisterViewController{
                                                   attribute: .centerX,
                                                   multiplier: 1.0,
                                                   constant: 0))
-        // 验证码错误
+        // 签到码错误
         codeview.addConstraint(NSLayoutConstraint(item: correctcodelabel,
                                                   attribute: .top,
                                                   relatedBy: .equal,
@@ -129,7 +132,7 @@ extension EURegisterViewController{
                                                   attribute: .centerX,
                                                   multiplier: 1.0,
                                                   constant: 0))
-        // 验证码输入框
+        // 签到码输入框
         codeview.addConstraints([NSLayoutConstraint(item: verifycode,
                                                     attribute: .top,
                                                     relatedBy: .equal,
@@ -177,6 +180,33 @@ extension EURegisterViewController{
 extension EURegisterViewController:SwiftyVerificationCodeViewDelegate{
         
     func verificationCodeDidFinishedInput(verificationCodeView: SwiftyVerificationCodeView, code: String) {
+        
+        let result = Int(code) ?? 0
+        
+        if result != registerCode{
+            correctcodelabel.isHidden = false
+            verificationCodeView.cleanVerificationCodeView()
+            return
+        }
+        
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.participateActivityRegist(avid: avid) { (netIsSuccess, registIsSuccess) in
+            SwiftyProgressHUD.hide()
+            if !netIsSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                verificationCodeView.cleanVerificationCodeView()
+                return
+            }
+            if !registIsSuccess{
+                SwiftyProgressHUD.showWarnHUD(text: "您已签到", duration: 1)
+                verificationCodeView.cleanVerificationCodeView()
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            _ =  self.navigationController?.popViewController(animated: true)
+        }
+        
+        
         
     }
 }

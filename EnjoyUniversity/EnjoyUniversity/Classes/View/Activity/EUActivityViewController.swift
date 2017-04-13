@@ -344,7 +344,22 @@ extension EUActivityViewController{
             present(altervc, animated: true, completion: nil)
             
         }else if activityStatus == 1 && registerCode > 999{
-            navigationController?.pushViewController(EURegisterViewController(), animated: true)
+            let vc = EURegisterViewController()
+            vc.registerCode = registerCode
+            vc.avid = avid
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        
+    }
+    
+    /// 返回按钮
+    override func backButtonIsClicked() {
+        
+        if activityStatus == 0{
+        
+            _ = navigationController?.popToRootViewController(animated: true)
+        }else{
+            _ = navigationController?.popViewController(animated: true)
         }
         
     }

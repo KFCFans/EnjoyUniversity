@@ -169,20 +169,37 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                 }
             }else if info.count == 2{
                 
-                    let resultinfo1 = info.first ?? ""
-                    let resultinfo2 = info.last ?? ""
-                    
-                    if resultinfo1.hasPrefix("avid="){
-                        captureSession.stopRunning()
-                        let avid = resultinfo1.substring(from: "avid=".endIndex)
-                        let code = resultinfo2.substring(from: "code=".endIndex)
-                        print("avid\(avid)code\(code)")
-                    }else if resultinfo2.hasPrefix("avid="){
-                        captureSession.stopRunning()
-                        let code = resultinfo1.substring(from: "avid=".endIndex)
-                        let avid = resultinfo2.substring(from: "code=".endIndex)
-                        print("avid\(avid)code\(code)")
+                let resultinfo1 = info.first ?? ""
+                let resultinfo2 = info.last ?? ""
+                
+                var avid = ""
+                var code = ""
+                if resultinfo1.hasPrefix("avid="){
+                    captureSession.stopRunning()
+                    avid = resultinfo1.substring(from: "avid=".endIndex)
+                    code = resultinfo2.substring(from: "code=".endIndex)
+                    print("avid\(avid)code\(code)")
+                }else if resultinfo2.hasPrefix("avid="){
+                    captureSession.stopRunning()
+                    code = resultinfo1.substring(from: "avid=".endIndex)
+                    avid = resultinfo2.substring(from: "code=".endIndex)
+                    print("avid\(avid)code\(code)")
                     }
+                
+                EUNetworkManager.shared.participateActivityRegist(avid: Int(avid) ?? 0, completion: { (netIsSuccess, registIsSuccess) in
+                    SwiftyProgressHUD.hide()
+                    if !netIsSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                        return
+                    }
+                    if !registIsSuccess{
+                        SwiftyProgressHUD.showWarnHUD(text: "您已签到", duration: 1)
+                        return
+                    }
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    _ =  self.navigationController?.popViewController(animated: true)
+                    
+                })
                 
                 }
             

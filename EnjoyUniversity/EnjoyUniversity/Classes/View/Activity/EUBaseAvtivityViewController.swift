@@ -217,7 +217,7 @@ extension EUBaseAvtivityViewController{
 extension EUBaseAvtivityViewController{
     
     /// 返回按钮
-    @objc fileprivate func backButtonIsClicked(){
+    @objc func backButtonIsClicked(){
         
         _ = navigationController?.popViewController(animated: true)
         

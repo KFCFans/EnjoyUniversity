@@ -591,6 +591,32 @@ extension EUNetworkManager{
         
     }
     
+    /// 用户参加签到
+    ///
+    /// - Parameters:
+    ///   - avid: 活动 ID
+    ///   - completion: 完成回调（网络请求是否成功，签到是否成功）
+    func participateActivityRegist(avid:Int,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/participateregister"
+        
+        let parm = ["uid":userAccount.uid,"avid":avid] as [String : Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            
+        }
+        
+    }
+    
 
 }
 
