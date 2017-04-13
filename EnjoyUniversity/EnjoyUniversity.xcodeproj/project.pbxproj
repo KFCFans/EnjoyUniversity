@@ -21,6 +21,7 @@
 		362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362665731E8FE162005ED501 /* EUActivityCell.xib */; };
 		362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665741E8FE162005ED501 /* EUMyActivityViewController.swift */; };
 		363447961E97B11300F49EBC /* EUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363447951E97B11300F49EBC /* EUserAccount.swift */; };
+		363908AC1E9F6AC800E67958 /* EURegisterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363908AB1E9F6AC800E67958 /* EURegisterInfoViewController.swift */; };
 		363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AC75B1E936167008350CC /* SwiftyTimePicker.swift */; };
 		364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */; };
 		364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */; };
@@ -111,6 +112,7 @@
 		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		362665741E8FE162005ED501 /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
 		363447951E97B11300F49EBC /* EUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUserAccount.swift; sourceTree = "<group>"; };
+		363908AB1E9F6AC800E67958 /* EURegisterInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterInfoViewController.swift; sourceTree = "<group>"; };
 		363AC75B1E936167008350CC /* SwiftyTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyTimePicker.swift; path = ../../View/Activity/SwiftyTimePicker.swift; sourceTree = "<group>"; };
 		364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityNotificationController.swift; sourceTree = "<group>"; };
 		364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUShowQRCodeViewController.swift; sourceTree = "<group>"; };
@@ -280,6 +282,7 @@
 				364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */,
 				364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */,
 				36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */,
+				363908AB1E9F6AC800E67958 /* EURegisterInfoViewController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -858,6 +861,7 @@
 				36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */,
 				36BDBB391E64135A0075A3ED /* EUMainViewController.swift in Sources */,
 				362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */,
+				363908AC1E9F6AC800E67958 /* EURegisterInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

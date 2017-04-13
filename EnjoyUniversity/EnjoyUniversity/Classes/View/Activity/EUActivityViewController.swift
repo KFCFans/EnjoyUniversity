@@ -201,6 +201,7 @@ extension EUActivityViewController{
         
         nicknamelabel.text = "假诗人"
         nicknamelabel.font = UIFont.boldSystemFont(ofSize: 15)
+        nicknamelabel.sizeToFit()
         nicknamelabel.textColor = UIColor.black
         leaderView.addSubview(nicknamelabel)
         
@@ -208,6 +209,19 @@ extension EUActivityViewController{
         reputationlabel.textColor = UIColor.lightGray
         reputationlabel.font = UIFont.boldSystemFont(ofSize: 10)
         leaderView.addSubview(reputationlabel)
+        
+        let shaodwview = UIView(frame: CGRect(x: 72 + nicknamelabel.frame.width + 10, y: 20, width: 37, height: 15))
+        shaodwview.center.y = nicknamelabel.center.y
+        shaodwview.backgroundColor = UIColor.init(red: 214/255, green: 241/255, blue: 1, alpha: 1)
+        leaderView.addSubview(shaodwview)
+        
+        let leaderlabel = UILabel(frame: CGRect(x: 0, y: 0, width: 37, height: 15))
+        leaderlabel.text = "主办方"
+        leaderlabel.textColor = UIColor.init(red: 14/255, green: 36/255, blue: 48/255, alpha: 1)
+        leaderlabel.font = UIFont.boldSystemFont(ofSize: 10)
+        leaderlabel.textAlignment = .center
+        shaodwview.addSubview(leaderlabel)
+        
         
         let phonebtn = UIButton(frame: CGRect(x: leaderView.frame.width - 60, y: 10, width: 50, height: 50))
         phonebtn.setImage(UIImage(named: "av_call"), for: .normal)
