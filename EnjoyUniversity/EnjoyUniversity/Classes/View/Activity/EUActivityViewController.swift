@@ -344,7 +344,7 @@ extension EUActivityViewController{
             present(altervc, animated: true, completion: nil)
             
         }else if activityStatus == 1 && registerCode > 999{
-            print("我要签到")
+            navigationController?.pushViewController(EURegisterViewController(), animated: true)
         }
         
     }

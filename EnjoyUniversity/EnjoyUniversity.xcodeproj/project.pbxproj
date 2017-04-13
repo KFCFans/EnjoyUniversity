@@ -24,6 +24,7 @@
 		363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AC75B1E936167008350CC /* SwiftyTimePicker.swift */; };
 		364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */; };
 		364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */; };
+		36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */; };
 		364D6FB01E9A4CC200297EA8 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */; };
 		3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
@@ -113,6 +114,7 @@
 		363AC75B1E936167008350CC /* SwiftyTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyTimePicker.swift; path = ../../View/Activity/SwiftyTimePicker.swift; sourceTree = "<group>"; };
 		364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityNotificationController.swift; sourceTree = "<group>"; };
 		364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUShowQRCodeViewController.swift; sourceTree = "<group>"; };
+		36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterViewController.swift; sourceTree = "<group>"; };
 		364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */,
 				364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */,
 				364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */,
+				36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */,
 			);
 			path = Activity;
 			sourceTree = "<group>";
@@ -835,6 +838,7 @@
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				363447961E97B11300F49EBC /* EUserAccount.swift in Sources */,
+				36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
 				36EC19981E9893D400A08AC4 /* SwiftyProgressHUD.swift in Sources */,
 				36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */,
