@@ -39,6 +39,7 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     /// 这是第几个，用于删除
     var row:Int = 0
     
+    
     /// ViewModel 数据源
     var viewmodel:ActivityViewModel?{
         
@@ -50,6 +51,7 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             detailLabel.text = viewmodel?.activitymodel.avDetail ?? "详情加载失败"
             detailHeight = viewmodel?.detailHeight ?? 0.0
             warnLabel.text = viewmodel?.needRegister
+            registerCode = viewmodel?.activitymodel.avRegister ?? 0
             if EUNetworkManager.shared.userAccount.uid == (viewmodel?.activitymodel.uid ?? 0) && activityStatus == 0{
                 activityStatus = 2
             }
@@ -75,14 +77,26 @@ class EUActivityViewController: EUBaseAvtivityViewController {
                 participateButton.backgroundColor = UIColor.lightGray
                 participateButton.isEnabled = false
                 
-            }else if activityStatus == 1{
+            }else if activityStatus == 1 {
                 participateButton.setTitle("退出活动", for: .normal)
                 participateButton.backgroundColor = UIColor.red
+        
                 
             }
             
         }
         
+    }
+    
+    /// 签到码
+    var registerCode = 0{
+        
+        didSet{
+            if activityStatus == 1 && registerCode > 999{
+                    participateButton.setTitle("我要签到", for: .normal)
+                    participateButton.backgroundColor = UIColor.init(red: 46/255, green: 183/255, blue: 144/255, alpha: 1)
+            }
+        }
     }
 
     
@@ -295,7 +309,7 @@ extension EUActivityViewController{
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
                 
             }
-        }else if activityStatus == 1{
+        }else if activityStatus == 1 && registerCode < 1000{
             
             let altervc = UIAlertController(title: "退出活动", message: "您确定要退出当前活动吗？", preferredStyle: .alert)
             
@@ -329,6 +343,8 @@ extension EUActivityViewController{
             
             present(altervc, animated: true, completion: nil)
             
+        }else if activityStatus == 1 && registerCode > 999{
+            print("我要签到")
         }
         
     }

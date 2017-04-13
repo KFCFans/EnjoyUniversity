@@ -51,6 +51,7 @@ class ActivityViewModel{
     
     /// 是否需要签到
     var needRegisterBool:Bool = false
+
     
     init(model:Activity) {
         
@@ -68,6 +69,7 @@ class ActivityViewModel{
         }else {
             needRegisterBool = true
             needRegister = "需要签到"
+
         }
         detailHeight = calculateLabelHeight(text: activitymodel.avDetail ?? "",width: UIScreen.main.bounds.width - 40,font: 14)
         

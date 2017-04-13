@@ -217,6 +217,16 @@ extension EUCreatedActivityViewController{
             return
         }
         
+        guard let startime = Double(viewmodel?.activitymodel.avStarttime ?? ""),let avid = viewmodel?.activitymodel.avid,let uid = viewmodel?.activitymodel.uid else{
+            return
+        }
+        
+        /// 4位数字，说明已经发起签到
+        if (viewmodel?.activitymodel.avRegister ?? 0) > 999{
+            
+            return
+        }
+        
         /// 最大时间差（超过这个值显示天数）
         let MAXTIMEDIFFERENCE:TimeInterval = 172800
         
@@ -224,9 +234,7 @@ extension EUCreatedActivityViewController{
         let MINTIMEDIFFERENCE:TimeInterval = 21600
         
         let date = Date()
-        guard let startime = Double(viewmodel?.activitymodel.avStarttime ?? "") else{
-            return
-        }
+        
         let timedifference = -date.timeIntervalSince(Date(timeIntervalSince1970: startime/1000))
         
         var alertmessage:String = ""
@@ -248,6 +256,18 @@ extension EUCreatedActivityViewController{
         let confirm = UIAlertAction(title: "确定", style: .default) { (_) in
             
             // 网络请求
+            EUNetworkManager.shared.startActivityRegist(avid: avid, uid: uid, completion: { (isSuccess, canStartRegister, code) in
+                
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                if !canStartRegister{
+                    SwiftyProgressHUD.showFaildHUD(text: "没有权限", duration: 1)
+                    return
+                }
+                
+            })
         }
         alert.addAction(cancel)
         alert.addAction(confirm)
