@@ -16,6 +16,9 @@ class EUStartActivityViewController: EUBaseViewController {
     /// 是否为修改活动内容
     var isUpdateActivityInfo = false
     
+    /// 活动 ID
+    var avid:Int?
+    
     /// 三个时间
     let startimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
     let endtimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
@@ -407,7 +410,7 @@ extension EUStartActivityViewController{
         
         // 准备上传
         // 非必填信息
-        let avNum = Int(activityName.text ?? "") ?? 0
+        let avNum = Int(activityNum.text ?? "") ?? 0
         let avPrice = Float(activityPrice.text ?? "") ?? Float(0)
         let register = needResisterSwitch.isOn ? 0 : -1
         let avDetail = activityDetail.text
@@ -481,7 +484,7 @@ extension EUStartActivityViewController{
                 
             })
         }else{
-            
+            activity.avid = avid ?? 0
             if !isUpdateActivityInfo{
                 EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
                     SwiftyProgressHUD.hide()

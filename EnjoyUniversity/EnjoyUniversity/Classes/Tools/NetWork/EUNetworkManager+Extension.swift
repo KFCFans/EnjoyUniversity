@@ -405,6 +405,7 @@ extension EUNetworkManager{
         let url = SERVERADDRESS + "/eu/activity/changeav"
         
         var parameters = Parameters()
+        parameters["avid"] = activity.avid
         parameters["uid"] = userAccount.uid
         parameters["avTitle"] = activity.avTitle
         parameters["avDetail"] = activity.avDetail
@@ -417,7 +418,7 @@ extension EUNetworkManager{
         parameters["avRegister"] = activity.avRegister
         parameters["avLogo"] = activity.avLogo
         
-        tokenRequest(urlString: url, method: .post, parameters: parameters) { (_, isSuccess, status) in
+        tokenRequest(urlString: url, method: .get, parameters: parameters) { (_, isSuccess, status) in
             
             if !isSuccess{
                 completion(false,false)

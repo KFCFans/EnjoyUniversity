@@ -342,6 +342,7 @@ extension EUCreatedActivityViewController{
         vc.isUpdateActivityInfo = true
         vc.needResisterSwitch.isOn = (avregister == -1) ? false : true
         vc.addPicBtn.setImage(backgroudImage.image, for: .normal)
+        vc.avid = avid
         navigationController?.pushViewController(vc, animated: true)
         
     }
