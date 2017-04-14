@@ -9,10 +9,16 @@
 import UIKit
 
 class EUCreatedActivityViewController: EUBaseAvtivityViewController {
+
+    /// 上层传入，用于删除
+    var activitylistviewmodel:ActivityListViewModel?
+    
+    var row:Int = 0
+    
     
     /// 参与者数据源
     lazy var participatorslist = UserInfoListViewModel()
-    
+
     /// 记录活动 ID
     var avid:Int = 0
     
@@ -97,6 +103,8 @@ extension EUCreatedActivityViewController{
         
         let moreactionBtn = UIButton(frame: CGRect(x: 3, y: 3, width: 24, height: 24))
         moreactionBtn.setImage(UIImage(named: "nav_point"), for: .normal)
+        moreactionBtn.isUserInteractionEnabled = true
+        rightshadow.isUserInteractionEnabled = true
         moreactionBtn.addTarget(nil, action: #selector(moreActionBtnIsClicked), for: .touchUpInside)
         rightshadow.addSubview(moreactionBtn)
         
@@ -183,6 +191,32 @@ extension EUCreatedActivityViewController{
     
     /// 更多按钮
     @objc fileprivate func moreActionBtnIsClicked(){
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let confirm = UIAlertAction(title: "删除活动", style: .destructive) { (_) in
+            
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.deleteActivity(avid: self.avid, completion: { (isSuccess, hasPermission) in
+                SwiftyProgressHUD.hide()
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                if !hasPermission{
+                    SwiftyProgressHUD.showFaildHUD(text: "没有权限", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                self.activitylistviewmodel?.createdlist.remove(at: self.row)
+                _ = self.navigationController?.popViewController(animated: true)
+                
+            })
+            
+        }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
         
     }
     

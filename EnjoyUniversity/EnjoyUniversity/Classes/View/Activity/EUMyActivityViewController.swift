@@ -78,6 +78,7 @@ class EUMyActivityViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         
         joinedtableView?.reloadData()
+        createdtableView?.reloadData()
         if !isFirstPageSelected {
             indicatorView?.setContentOffset(CGPoint(x: -swidth/2, y: 0), animated: false)
             scrollView?.setContentOffset(CGPoint(x: swidth, y: scrollView?.contentOffset.y ?? 44), animated: false)
@@ -287,6 +288,8 @@ extension EUMyActivityViewController:UITableViewDataSource,UITableViewDelegate{
         if tableView.tag == 1 {
             let vc = EUCreatedActivityViewController()
             vc.viewmodel = activitylistviewmodel.createdlist[indexPath.row]
+            vc.row = indexPath.row
+            vc.activitylistviewmodel = activitylistviewmodel
             navigationController?.pushViewController(vc, animated: true)
             
         }else if tableView.tag == 0{

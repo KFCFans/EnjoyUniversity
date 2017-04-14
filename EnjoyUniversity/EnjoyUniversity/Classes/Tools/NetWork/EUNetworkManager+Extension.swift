@@ -683,6 +683,32 @@ extension EUNetworkManager{
         }
     }
     
+    /// 删除活动
+    ///
+    /// - Parameters:
+    ///   - avid: 活动 ID
+    ///   - completion: 完成回调
+    func deleteActivity(avid:Int,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/deleteav"
+        
+        let parm = ["uid":userAccount.uid,"avid":avid] as [String : Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            completion(true,false)
+        }
+        
+    }
+    
 
 }
 
