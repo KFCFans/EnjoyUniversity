@@ -224,7 +224,11 @@ extension EUCreatedActivityViewController{
         /// 4位数字，说明已经发起签到
         if (viewmodel?.activitymodel.avRegister ?? 0) > 999{
             let vc = EURegisterInfoViewController()
-            navigationController?.pushViewController(vc, animated: true)
+            vc.participatorlist = self.participatorslist
+            vc.code = viewmodel?.activitymodel.avRegister ?? 0
+            vc.avid = avid
+            vc.activityName = self.viewmodel?.activitymodel.avTitle ?? ""
+            self.navigationController?.pushViewController(vc, animated: true)
             return
         }
         
@@ -256,8 +260,12 @@ extension EUCreatedActivityViewController{
         let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let confirm = UIAlertAction(title: "确定", style: .default) { (_) in
             
-            // 网络请求
+            // 发起签到网络请求
             EUNetworkManager.shared.startActivityRegist(avid: avid, uid: uid, completion: { (isSuccess, canStartRegister, code) in
+                
+                guard let code = code,let intcode = Int(code) else{
+                    return
+                }
                 
                 if !isSuccess{
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
@@ -267,6 +275,24 @@ extension EUCreatedActivityViewController{
                     SwiftyProgressHUD.showFaildHUD(text: "没有权限", duration: 1)
                     return
                 }
+                
+                // 弹窗提醒签到码
+                let codealert = UIAlertController(title: nil, message: "本次活动的签到码为 code", preferredStyle: .alert)
+                let codealertAction = UIAlertAction(title: "确定", style: .default, handler: { (_) in
+                    
+                    // 发起签到成功跳到签到详情页
+                    self.viewmodel?.activitymodel.avRegister = intcode
+                    let vc = EURegisterInfoViewController()
+                    vc.participatorlist = self.participatorslist
+                    vc.code = intcode
+                    vc.avid = avid
+                    vc.activityName = self.viewmodel?.activitymodel.avTitle ?? ""
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                })
+                codealert.addAction(codealertAction)
+                self.present(codealert, animated: true, completion: nil)
+                
                 
             })
         }

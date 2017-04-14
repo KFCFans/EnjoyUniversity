@@ -122,6 +122,7 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                      captureSession.stopRunning()
                     guard let avid = Int(resultinfo.substring(from: "avid=".endIndex)) else{
                         SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
+                        self.captureSession.startRunning()
                         return
                     }
                     let vc = EUActivityViewController()
@@ -130,10 +131,12 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                         SwiftyProgressHUD.hide()
                         if !isSuccess{
                             SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                            self.captureSession.startRunning()
                             return
                         }
                         guard let viewmodel = viewmodel else{
                             SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
+                            self.captureSession.startRunning()
                             return
                         }
                         vc.viewmodel = viewmodel
@@ -146,6 +149,7 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                     captureSession.stopRunning()
                     guard let cmid = Int(resultinfo.substring(from: "cmid=".endIndex)) else{
                         SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
+                        self.captureSession.startRunning()
                         return
                     }
                     let vc = EUCommunityInfoViewController()
@@ -154,10 +158,12 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                         SwiftyProgressHUD.hide()
                         if !isSuccess{
                             SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                            self.captureSession.startRunning()
                             return
                         }
                         guard let viewmodel = viewmodel else{
                             SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
+                            self.captureSession.startRunning()
                             return
                         }
                         vc.viewmodel = viewmodel
@@ -178,22 +184,27 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                     captureSession.stopRunning()
                     avid = resultinfo1.substring(from: "avid=".endIndex)
                     code = resultinfo2.substring(from: "code=".endIndex)
-                    print("avid\(avid)code\(code)")
                 }else if resultinfo2.hasPrefix("avid="){
                     captureSession.stopRunning()
                     code = resultinfo1.substring(from: "avid=".endIndex)
                     avid = resultinfo2.substring(from: "code=".endIndex)
-                    print("avid\(avid)code\(code)")
                     }
+                
+                if !((Int(code) ?? 0) > 999){
+                    self.captureSession.startRunning()
+                    return
+                }
                 
                 EUNetworkManager.shared.participateActivityRegist(avid: Int(avid) ?? 0, completion: { (netIsSuccess, registIsSuccess) in
                     SwiftyProgressHUD.hide()
                     if !netIsSuccess{
+                        self.captureSession.startRunning()
                         SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                         return
                     }
                     if !registIsSuccess{
-                        SwiftyProgressHUD.showWarnHUD(text: "您已签到", duration: 1)
+                        SwiftyProgressHUD.showFaildHUD(text: "二维码无效", duration: 1)
+                        self.captureSession.startRunning()
                         return
                     }
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)

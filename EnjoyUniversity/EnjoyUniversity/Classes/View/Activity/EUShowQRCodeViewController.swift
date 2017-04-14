@@ -16,6 +16,9 @@ class EUShowQRCodeViewController: EUBaseViewController {
     
     var activityName:String? = "活动标题"
     
+    /// 不指定就用默认的文本
+    var qrLabelText:String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.removeFromSuperview()
@@ -54,7 +57,7 @@ extension EUShowQRCodeViewController{
         backgroundview.addSubview(qrimgview)
         
         let qrlabel = UILabel(frame: CGRect(x: 0, y: 350, width: backgroundview.frame.width, height: 15))
-        qrlabel.text = "扫一扫二维码，快速加入活动"
+        qrlabel.text = qrLabelText == nil ? "扫一扫二维码，快速加入活动" : qrLabelText
         qrlabel.textColor = UIColor.init(red: 64/255, green: 64/255, blue: 64/255, alpha: 1)
         qrlabel.textAlignment = .center
         backgroundview.addSubview(qrlabel)

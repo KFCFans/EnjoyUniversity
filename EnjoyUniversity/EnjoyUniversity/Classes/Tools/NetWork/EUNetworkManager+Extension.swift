@@ -610,6 +610,9 @@ extension EUNetworkManager{
             if status == 200{
                 completion(true,true)
                 return
+            }else if status == 400{
+                completion(true,false)
+                return
             }
         }
     }

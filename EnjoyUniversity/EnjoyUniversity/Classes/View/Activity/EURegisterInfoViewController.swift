@@ -10,11 +10,16 @@ import UIKit
 
 class EURegisterInfoViewController: EUBaseViewController {
     
-    lazy var participatorlist = UserInfoListViewModel()
+    var participatorlist:UserInfoListViewModel?
     
-    /// 参与活动总人数
-    var participatornum = 0
+    /// 活动 ID
+    var avid = 0
     
+    /// 签到码
+    var code = 0
+    
+    /// 活动名称
+    var activityName = ""
     /// 未签到人数
     let notfinishednum = UILabel(frame: CGRect(x: 131, y: 51, width: 80, height: 12))
     
@@ -44,16 +49,21 @@ class EURegisterInfoViewController: EUBaseViewController {
     
     override func loadData() {
         
+        guard let participatorlist = participatorlist else {
+            return
+        }
+        
         participatorlist.loadWaitingRegisterMemberInfoList(avid: 1) { (isSuccess, hasMember) in
             
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
-            
+            var num = participatorlist.activityParticipatorList.count - participatorlist.waitingRegisterParticipatorList.count
+            num = num < 0 ? 0 : num
             self.tableview.reloadData()
-            self.notfinishednum.text = "未签到:\(self.participatorlist.waitingRegisterParticipatorList.count)"
-            self.finishednum.text = "已签到:\(self.participatornum - self.participatorlist.waitingRegisterParticipatorList.count)"
+            self.notfinishednum.text = "未签到:\(participatorlist.waitingRegisterParticipatorList.count)"
+            self.finishednum.text = "已签到:\(num)"
             self.refreshControl?.endRefreshing()
         }
         
@@ -97,10 +107,11 @@ extension EURegisterInfoViewController{
         
         let qrcodeBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 60, y: 10, width: 50, height: 50))
         qrcodeBtn.setImage(UIImage(named: "register_qrcode"), for: .normal)
+        qrcodeBtn.addTarget(nil, action: #selector(didClickShowQRCodeBtn), for: .touchUpInside)
         headview.addSubview(qrcodeBtn)
         
         let codeLabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 60, y: 62, width: 50, height: 12))
-        codeLabel.text = "4396"
+        codeLabel.text = "\(code)"
         codeLabel.textColor = UIColor.init(red: 50/255, green: 50/255, blue: 50/255, alpha: 1)
         codeLabel.textAlignment = .center
         headview.addSubview(codeLabel)
@@ -115,13 +126,13 @@ extension EURegisterInfoViewController{
 extension EURegisterInfoViewController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return participatorlist.waitingRegisterParticipatorList.count
+        return participatorlist?.waitingRegisterParticipatorList.count ?? 0
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: REGISTERCELL) as? EUActivityMemberCell ?? EUActivityMemberCell()
-        cell.userinfo = participatorlist.waitingRegisterParticipatorList[indexPath.row]
+        cell.userinfo = participatorlist?.waitingRegisterParticipatorList[indexPath.row]
         return cell
     }
     
@@ -145,7 +156,7 @@ extension EURegisterInfoViewController{
     /// 结束活动
     @objc fileprivate func didClickFinishActivityBtn(){
         
-        EUNetworkManager.shared.closeActivity(avid: 1) { (isSuccess, hasPermission) in
+        EUNetworkManager.shared.closeActivity(avid: avid) { (isSuccess, hasPermission) in
             
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
@@ -158,6 +169,17 @@ extension EURegisterInfoViewController{
             SwiftyProgressHUD.showSuccessHUD(duration: 1)
             _ = self.navigationController?.popViewController(animated: true)
         }
+        
+    }
+    
+    /// 显示二维码
+    @objc fileprivate func didClickShowQRCodeBtn(){
+        
+        let vc = EUShowQRCodeViewController()
+        vc.activityName = activityName + "の签到"
+        vc.qrLabelText = "扫一扫二维码，快速完成签到"
+        vc.qrString = "www.euswag.com?avid=\(avid)&code=\(code)"
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
