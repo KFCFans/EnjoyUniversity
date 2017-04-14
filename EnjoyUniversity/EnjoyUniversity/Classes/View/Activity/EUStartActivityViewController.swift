@@ -94,8 +94,11 @@ extension EUStartActivityViewController{
         
         // 点击添加图片
         addPicBtn.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
-        addPicBtn.setImage(UIImage(named: "sav_start"), for: .normal)
         addPicBtn.addTarget(nil, action: #selector(selectActivityPicture), for: .touchUpInside)
+        if addPicBtn.imageView?.image == nil{
+            addPicBtn.setImage(UIImage(named: "sav_start"), for: .normal)
+        }
+        
         tableview.tableHeaderView = addPicBtn
 
     }
@@ -233,7 +236,7 @@ extension EUStartActivityViewController:UIImagePickerControllerDelegate,UINaviga
             cell.addSubview(titlelabel)
             
             needResisterSwitch.frame.origin = CGPoint(x: UIScreen.main.bounds.width - needResisterSwitch.frame.size.width - 22, y: (56.0 - needResisterSwitch.frame.size.height)/2)
-            needResisterSwitch.isOn = false
+            
             cell.addSubview(needResisterSwitch)
             
         }
@@ -329,6 +332,7 @@ extension EUStartActivityViewController{
     
     /// 取消按钮
     @objc fileprivate func dissmissController(){
+        _ = navigationController?.popViewController(animated: true)
         dismiss(animated: true, completion: nil)
     }
     

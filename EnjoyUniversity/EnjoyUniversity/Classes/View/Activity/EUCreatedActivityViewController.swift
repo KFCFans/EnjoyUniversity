@@ -334,12 +334,13 @@ extension EUCreatedActivityViewController{
         vc.activityNum.text = "\(avnum)"
         vc.activityPlace.text = avplace
         vc.activityPrice.text = "\(avprice)"
-        vc.activityDetail.text = viewmodel?.activitymodel.avDetail ?? "" + " "
+        vc.activityDetail.text = (viewmodel?.activitymodel.avDetail ?? "" ) + " "
         vc.activityDetail.deleteBackward()
         vc.startime = avstartime
         vc.endtime = avendtime
         vc.stoptime = avstoptime
         vc.needResisterSwitch.isOn = (avregister == -1) ? false : true
+        vc.addPicBtn.setImage(backgroudImage.image, for: .normal)
         navigationController?.pushViewController(vc, animated: true)
         
     }
