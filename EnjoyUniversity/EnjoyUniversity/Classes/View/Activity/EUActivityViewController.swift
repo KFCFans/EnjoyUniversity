@@ -125,11 +125,12 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             guard let dict = dict else{
                 return
             }
-            let nickname = dict["nickname"] as? String
+            let name = dict["name"] as? String
             let reputation = (dict["reputation"] as? Int) ?? 100
             let avaterurl = dict["avatar"] as? String
             
-            self.nicknamelabel.text = nickname
+            self.nicknamelabel.text = name
+            self.nicknamelabel.sizeToFit()
             self.reputationlabel.text = "节操值 \(reputation)"
             self.headimg.kf.setImage(with: URL(string: PICTURESERVERADDRESS + "/user/" + (avaterurl ?? "") + ".jpg"),
                                 placeholder: UIImage(named: "av_leader"),

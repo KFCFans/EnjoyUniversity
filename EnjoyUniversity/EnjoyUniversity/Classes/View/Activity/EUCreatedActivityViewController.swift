@@ -159,6 +159,7 @@ extension EUCreatedActivityViewController{
         let changeButton = UIButton(frame: CGRect(x: 12, y: UIScreen.main.bounds.height - 50, width: UIScreen.main.bounds.width - 24, height: 44))
         changeButton.backgroundColor = UIColor.orange
         changeButton.setTitle("修改活动", for: .normal)
+        changeButton.addTarget(nil, action: #selector(changeActiity), for: .touchUpInside)
         view.addSubview(changeButton)
         
     }
@@ -315,6 +316,31 @@ extension EUCreatedActivityViewController{
         alert.addAction(confirm)
         present(alert, animated: true, completion: nil)
         
+    }
+    
+    /// 修改活动
+    @objc fileprivate func changeActiity(){
+        
+        guard let avtitle = viewmodel?.activitymodel.avTitle,let avplace = viewmodel?.activitymodel.avPlace,let avprice = viewmodel?.activitymodel.avPrice,
+            let avnum = viewmodel?.activitymodel.avExpectnum,let avregister = viewmodel?.activitymodel.avRegister,
+            let avstartime = timeStampToString(timeStamp: viewmodel?.activitymodel.avStarttime, formate: "YYYY-MM-dd HH:mm"),
+            let avendtime = timeStampToString(timeStamp: viewmodel?.activitymodel.avEndtime, formate: "YYYY-MM-dd HH:mm"),
+            let avstoptime = timeStampToString(timeStamp: viewmodel?.activitymodel.avEnrolldeadline, formate: "YYYY-MM-dd HH:mm") else {
+            return
+        }
+        
+        let vc = EUStartActivityViewController()
+        vc.activityName.text = avtitle
+        vc.activityNum.text = "\(avnum)"
+        vc.activityPlace.text = avplace
+        vc.activityPrice.text = "\(avprice)"
+        vc.activityDetail.text = viewmodel?.activitymodel.avDetail ?? "" + " "
+        vc.activityDetail.deleteBackward()
+        vc.startime = avstartime
+        vc.endtime = avendtime
+        vc.stoptime = avstoptime
+        vc.needResisterSwitch.isOn = (avregister == -1) ? false : true
+        navigationController?.pushViewController(vc, animated: true)
         
     }
     
