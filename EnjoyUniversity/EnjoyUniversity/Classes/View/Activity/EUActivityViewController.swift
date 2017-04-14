@@ -310,7 +310,7 @@ extension EUActivityViewController{
             
             // 参加活动
             SwiftyProgressHUD.showLoadingHUD()
-            EUNetworkManager.shared.participateActivity(avid: avid) { (isSuccess, isParticiateSuccess) in
+            EUNetworkManager.shared.participateActivity(avid: avid,needregist:viewmodel?.needRegisterBool ?? false) { (isSuccess, isParticiateSuccess) in
                 SwiftyProgressHUD.hide()
                 if !isSuccess{
                     SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
