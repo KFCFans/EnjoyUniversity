@@ -467,6 +467,7 @@ extension EUStartActivityViewController{
                         SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                     }
                 }else{
+                    activity.avid = self.avid ?? 0
                     EUNetworkManager.shared.changeActivity(activity: activity, completion: { (isSuccess, hasPermission) in
                         SwiftyProgressHUD.hide()
                         if !isSuccess{
@@ -484,7 +485,7 @@ extension EUStartActivityViewController{
                 
             })
         }else{
-            activity.avid = avid ?? 0
+            
             if !isUpdateActivityInfo{
                 EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
                     SwiftyProgressHUD.hide()
@@ -498,6 +499,7 @@ extension EUStartActivityViewController{
                     
                 }
             }else{
+                activity.avid = avid ?? 0
                 EUNetworkManager.shared.changeActivity(activity: activity, completion: { (isSuccess, hasPermission) in
                     SwiftyProgressHUD.hide()
                     if !isSuccess{
