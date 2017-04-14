@@ -216,17 +216,17 @@ extension EUNetworkManager{
         
     }
     
-    
     /// 获取参与活动的用户列表
     ///
     /// - Parameters:
     ///   - avid: 活动 ID
+    ///   - choice: 选择加载的用户列表 0所有参加活动的用户 1完成签到的用户 －1未完成签到的用户
     ///   - completion: 完成回调
-    func getActivityParticipators(avid:Int,completion:@escaping (Bool,[[String:Any]]?)->()){
+    func getActivityParticipators(avid:Int,choice:Int = 0,completion:@escaping (Bool,[[String:Any]]?)->()){
         
-        let url = SERVERADDRESS + "/eu/activity/memberlist"
+        let url = SERVERADDRESS + "/eu/activity/memberinfolist"
         
-        let parm = ["avid":avid]
+        let parm = ["avid":avid,"choice":choice]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
             
@@ -239,7 +239,6 @@ extension EUNetworkManager{
                 return
             }
             completion(true,json)
-            
             
         }
     }
@@ -331,7 +330,7 @@ extension EUNetworkManager{
         
     }
     
-
+    
 }
 
 // MARK: - 写入接口
@@ -612,9 +611,7 @@ extension EUNetworkManager{
                 completion(true,true)
                 return
             }
-            
         }
-        
     }
     
 

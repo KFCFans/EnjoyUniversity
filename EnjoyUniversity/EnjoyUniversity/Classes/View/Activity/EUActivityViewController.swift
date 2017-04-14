@@ -210,13 +210,13 @@ extension EUActivityViewController{
         reputationlabel.font = UIFont.boldSystemFont(ofSize: 10)
         leaderView.addSubview(reputationlabel)
         
-        let shaodwview = UIView(frame: CGRect(x: 72 + nicknamelabel.frame.width + 10, y: 20, width: 37, height: 15))
+        let shaodwview = UIView(frame: CGRect(x: 72 + nicknamelabel.frame.width + 5, y: 20, width: 37, height: 15))
         shaodwview.center.y = nicknamelabel.center.y
         shaodwview.backgroundColor = UIColor.init(red: 214/255, green: 241/255, blue: 1, alpha: 1)
         leaderView.addSubview(shaodwview)
         
         let leaderlabel = UILabel(frame: CGRect(x: 0, y: 0, width: 37, height: 15))
-        leaderlabel.text = "主办方"
+        leaderlabel.text = "主办者"
         leaderlabel.textColor = UIColor.init(red: 14/255, green: 36/255, blue: 48/255, alpha: 1)
         leaderlabel.font = UIFont.boldSystemFont(ofSize: 10)
         leaderlabel.textAlignment = .center

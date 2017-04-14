@@ -223,7 +223,8 @@ extension EUCreatedActivityViewController{
         
         /// 4位数字，说明已经发起签到
         if (viewmodel?.activitymodel.avRegister ?? 0) > 999{
-            
+            let vc = EURegisterInfoViewController()
+            navigationController?.pushViewController(vc, animated: true)
             return
         }
         
