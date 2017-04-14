@@ -339,6 +339,7 @@ extension EUCreatedActivityViewController{
         vc.startime = avstartime
         vc.endtime = avendtime
         vc.stoptime = avstoptime
+        vc.isUpdateActivityInfo = true
         vc.needResisterSwitch.isOn = (avregister == -1) ? false : true
         vc.addPicBtn.setImage(backgroudImage.image, for: .normal)
         navigationController?.pushViewController(vc, animated: true)

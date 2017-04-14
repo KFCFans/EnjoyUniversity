@@ -13,6 +13,8 @@ class EUStartActivityViewController: EUBaseViewController {
     /// 解决快速点击时间选择框弹出多个时间选择器
     var isSelectiongTime:Bool = false
     
+    /// 是否为修改活动内容
+    var isUpdateActivityInfo = false
     
     /// 三个时间
     let startimelabel = UILabel(frame: CGRect(x: UIScreen.main.bounds.width - 154, y: 21, width: 240, height: 14))
@@ -411,9 +413,9 @@ extension EUStartActivityViewController{
         let avDetail = activityDetail.text
         
         // 一定有值但是要判断逻辑
-        let avStartime = stringToTimeStamp(stringTime: startimelabel.text ?? "")
-        let avEndtime = stringToTimeStamp(stringTime: endtimelabel.text ?? "")
-        let avstoptime = stringToTimeStamp(stringTime: stoptimelabel.text ?? "")
+        let avStartime = stringToTimeStamp(stringTime: startimelabel.text ?? (startime ?? ""))
+        let avEndtime = stringToTimeStamp(stringTime: endtimelabel.text ?? (endtime ?? ""))
+        let avstoptime = stringToTimeStamp(stringTime: stoptimelabel.text ?? (stoptime ?? ""))
         
         // 必填信息
         let avPlace = activityPlace.text
@@ -441,17 +443,48 @@ extension EUStartActivityViewController{
         if let uploadImg = uploadImg{
             EUNetworkManager.shared.uploadPicture(choice: .ActivityLogo,uploadimg: uploadImg, completion: { (isSuccess, address) in
               
-                SwiftyProgressHUD.hide()
                 if !isSuccess{
-                    SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                    SwiftyProgressHUD.hide()
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                     return
                 }
-                
                 // 取图片名，不需要后缀
                 let picname = address?.components(separatedBy: ".").first ?? ""
                 activity.avLogo = picname
                 
+                // 不是修改则直接发布活动
+                if !self.isUpdateActivityInfo {
+                    EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
+                        SwiftyProgressHUD.hide()
+                        if isSuccess{
+                            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                            self.dismiss(animated: true, completion: nil)
+                            return
+                        }
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    }
+                }else{
+                    EUNetworkManager.shared.changeActivity(activity: activity, completion: { (isSuccess, hasPermission) in
+                        SwiftyProgressHUD.hide()
+                        if !isSuccess{
+                            SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                            return
+                        }
+                        if !hasPermission {
+                            SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
+                            return
+                        }
+                        SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                        _ = self.navigationController?.popViewController(animated: true)
+                    })
+                }
+                
+            })
+        }else{
+            
+            if !isUpdateActivityInfo{
                 EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
+                    SwiftyProgressHUD.hide()
                     
                     if isSuccess{
                         SwiftyProgressHUD.showSuccessHUD(duration: 1)
@@ -459,22 +492,22 @@ extension EUStartActivityViewController{
                         return
                     }
                     SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
+                    
                 }
-                
-            })
-        }else{
-            
-            
-            EUNetworkManager.shared.releaseActivity(activity: activity) { (isSuccess) in
-                SwiftyProgressHUD.hide()
-                
-                if isSuccess{
+            }else{
+                EUNetworkManager.shared.changeActivity(activity: activity, completion: { (isSuccess, hasPermission) in
+                    SwiftyProgressHUD.hide()
+                    if !isSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                        return
+                    }
+                    if !hasPermission {
+                        SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
+                        return
+                    }
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                    self.dismiss(animated: true, completion: nil)
-                    return
-                }
-                SwiftyProgressHUD.showFaildHUD(text: "网络错误", duration: 1)
-                
+                    _ = self.navigationController?.popViewController(animated: true)
+                })
             }
             
         }

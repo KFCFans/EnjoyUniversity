@@ -395,6 +395,43 @@ extension EUNetworkManager{
         }
     }
     
+    /// 修改活动
+    ///
+    /// - Parameters:
+    ///   - activity: 活动
+    ///   - completion: 完成回调(网络请求是成功,是否有权限修改)
+    func changeActivity(activity:Activity,completion:@escaping (Bool,Bool)->()){
+
+        let url = SERVERADDRESS + "/eu/activity/changeav"
+        
+        var parameters = Parameters()
+        parameters["uid"] = userAccount.uid
+        parameters["avTitle"] = activity.avTitle
+        parameters["avDetail"] = activity.avDetail
+        parameters["avPlace"] = activity.avPlace
+        parameters["avPrice"] = activity.avPrice
+        parameters["avExpectnum"] = activity.avExpectnum
+        parameters["avstarttime"] = activity.avStarttime
+        parameters["avendtime"] = activity.avEndtime
+        parameters["avenrolldeadline"] = activity.avEnrolldeadline
+        parameters["avRegister"] = activity.avRegister
+        parameters["avLogo"] = activity.avLogo
+        
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 401{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+        }
+        
+    }
+    
     /// 创建用户(注册成功)
     func createUser(user:UserInfo,password:String,completion:@escaping (Bool)->()){
         
@@ -643,8 +680,8 @@ extension EUNetworkManager{
             }
             completion(true,true)
         }
-        
     }
+    
 
 }
 
