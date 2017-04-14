@@ -156,19 +156,26 @@ extension EURegisterInfoViewController{
     /// 结束活动
     @objc fileprivate func didClickFinishActivityBtn(){
         
-        EUNetworkManager.shared.closeActivity(avid: avid) { (isSuccess, hasPermission) in
-            
-            if !isSuccess{
-                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                return
+        let alert = UIAlertController(title: nil, message: "确定结束本次活动吗？", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let confirm = UIAlertAction(title: "确定", style: .destructive) { (_) in
+            EUNetworkManager.shared.closeActivity(avid: self.avid) { (isSuccess, hasPermission) in
+                
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                if !hasPermission{
+                    SwiftyProgressHUD.showFaildHUD(text: "没有权限", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ = self.navigationController?.popViewController(animated: true)
             }
-            if !hasPermission{
-                SwiftyProgressHUD.showFaildHUD(text: "没有权限", duration: 1)
-                return
-            }
-            SwiftyProgressHUD.showSuccessHUD(duration: 1)
-            _ = self.navigationController?.popViewController(animated: true)
         }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
         
     }
     

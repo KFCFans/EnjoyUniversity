@@ -277,7 +277,7 @@ extension EUCreatedActivityViewController{
                 }
                 
                 // 弹窗提醒签到码
-                let codealert = UIAlertController(title: nil, message: "本次活动的签到码为 code", preferredStyle: .alert)
+                let codealert = UIAlertController(title: nil, message: "本次活动的签到码为 \(intcode)", preferredStyle: .alert)
                 let codealertAction = UIAlertAction(title: "确定", style: .default, handler: { (_) in
                     
                     // 发起签到成功跳到签到详情页
