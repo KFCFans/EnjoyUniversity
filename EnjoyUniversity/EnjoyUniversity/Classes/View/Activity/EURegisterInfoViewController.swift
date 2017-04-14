@@ -12,6 +12,17 @@ class EURegisterInfoViewController: EUBaseViewController {
     
     lazy var participatorlist = UserInfoListViewModel()
     
+    /// 参与活动总人数
+    var participatornum = 0
+    
+    /// 未签到人数
+    let notfinishednum = UILabel(frame: CGRect(x: 131, y: 51, width: 80, height: 12))
+    
+    /// 已签到人数
+    let finishednum = UILabel(frame: CGRect(x: 25, y: 51, width: 80, height: 12))
+
+
+    
     let REGISTERCELL = "REGISTERCELL"
 
     override func viewDidLoad() {
@@ -41,6 +52,8 @@ class EURegisterInfoViewController: EUBaseViewController {
             }
             
             self.tableview.reloadData()
+            self.notfinishednum.text = "未签到:\(self.participatorlist.waitingRegisterParticipatorList.count)"
+            self.finishednum.text = "已签到:\(self.participatornum - self.participatorlist.waitingRegisterParticipatorList.count)"
             self.refreshControl?.endRefreshing()
         }
         
@@ -66,22 +79,20 @@ extension EURegisterInfoViewController{
         greenpoint.image = UIImage(named: "register_pointgreen")
         headview.addSubview(greenpoint)
         
-        let finishednum = UILabel(frame: CGRect(x: 25, y: 51, width: 60, height: 12))
-        finishednum.text = "已签到：1"
+        finishednum.text = "加载中"
         finishednum.font = UIFont.boldSystemFont(ofSize: 14)
         finishednum.textColor = UIColor.init(red: 70/255, green: 70/255, blue: 70/255, alpha: 1)
-        finishednum.sizeToFit()
+        finishednum.center.y = greenpoint.center.y
         headview.addSubview(finishednum)
         
-        let graypoint = UIImageView(frame: CGRect(x: 106, y: 54, width: 11, height: 11))
+        let graypoint = UIImageView(frame: CGRect(x: 116, y: 54, width: 11, height: 11))
         graypoint.image = UIImage(named: "register_pointgray")
         headview.addSubview(graypoint)
         
-        let notfinishednum = UILabel(frame: CGRect(x: 121, y: 51, width: 60, height: 12))
         notfinishednum.textColor = UIColor.init(red: 70/255, green: 70/255, blue: 70/255, alpha: 1)
-        notfinishednum.text = "未签到：2"
         notfinishednum.font = UIFont.boldSystemFont(ofSize: 14)
-        notfinishednum.sizeToFit()
+        notfinishednum.text = "加载中"
+        notfinishednum.center.y = greenpoint.center.y
         headview.addSubview(notfinishednum)
         
         let qrcodeBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 60, y: 10, width: 50, height: 50))
@@ -133,6 +144,20 @@ extension EURegisterInfoViewController{
     
     /// 结束活动
     @objc fileprivate func didClickFinishActivityBtn(){
+        
+        EUNetworkManager.shared.closeActivity(avid: 1) { (isSuccess, hasPermission) in
+            
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !hasPermission{
+                SwiftyProgressHUD.showFaildHUD(text: "没有权限", duration: 1)
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
         
     }
     

@@ -614,6 +614,28 @@ extension EUNetworkManager{
         }
     }
     
+    /// 关闭活动
+    ///
+    /// - Parameter completion: 完成回调（请求是否成功，关闭是否成功）
+    func closeActivity(avid:Int, completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/closeav"
+        
+        let parm = ["avid":avid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 400{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+        }
+        
+    }
 
 }
 
