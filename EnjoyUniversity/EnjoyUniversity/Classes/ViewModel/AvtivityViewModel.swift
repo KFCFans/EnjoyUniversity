@@ -51,13 +51,21 @@ class ActivityViewModel{
     
     /// 是否需要签到
     var needRegisterBool:Bool = false
+    
+    /// 活动图片（修改图片得来）
+    var activityImg:UIImage?
 
     
     init(model:Activity) {
-        
         activitymodel = model
         
-        price = activitymodel.avPrice == 0 ? "免费": "¥\(Int(model.avPrice))"
+        reloadData()
+    }
+    
+    func reloadData(){
+        
+        
+        price = activitymodel.avPrice == 0 ? "免费": "¥\(Int(activitymodel.avPrice))"
         
         startTime = timeStampToString(timeStamp: activitymodel.avStarttime)
         endTime = timeStampToString(timeStamp: activitymodel.avEndtime)
@@ -69,16 +77,15 @@ class ActivityViewModel{
         }else {
             needRegisterBool = true
             needRegister = "需要签到"
-
+            
         }
         detailHeight = calculateLabelHeight(text: activitymodel.avDetail ?? "",width: UIScreen.main.bounds.width - 40,font: 14)
         
-        imageURL = PICTURESERVERADDRESS + "/activity/" + (model.avLogo ?? "") + ".jpg"
+        imageURL = PICTURESERVERADDRESS + "/activity/" + (activitymodel.avLogo ?? "") + ".jpg"
         
-        expectPeople = model.avExpectnum == 0 ? "人数不限" : "限\(model.avExpectnum)人"
+        expectPeople = activitymodel.avExpectnum == 0 ? "人数不限" : "限\(activitymodel.avExpectnum)人"
         
-        qrcodeString = QRCODEPREFIX + "avid=" + model.avid.description
-        
+        qrcodeString = QRCODEPREFIX + "avid=" + activitymodel.avid.description
     }
     
 

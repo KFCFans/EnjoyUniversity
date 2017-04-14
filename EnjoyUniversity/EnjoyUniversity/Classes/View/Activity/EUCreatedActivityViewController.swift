@@ -21,21 +21,14 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
     
     var viewmodel:ActivityViewModel?{
         didSet{
-            titleLabel.text = viewmodel?.activitymodel.avTitle
-            placeLabel.text = viewmodel?.activitymodel.avPlace
-            priceLabel.text = viewmodel?.price
-            timeLabel.text = viewmodel?.allTime
-            detailLabel.text = viewmodel?.activitymodel.avDetail
-            detailHeight = viewmodel?.detailHeight ?? 0
-            avid = viewmodel?.activitymodel.avid ?? 0 
-            warnLabel.text = viewmodel?.needRegister
+            // 将其它操作移到 viewWillAppear 中，支持修改
             let url = URL(string: viewmodel?.imageURL ?? "")
+            detailHeight = viewmodel?.detailHeight ?? 0
             backgroudImage.kf.setImage(with: url,
                                        placeholder: UIImage(named: "tempbackground"),
                                        options: [.transition(.fade(1))],
                                        progressBlock: nil,
                                        completionHandler: nil)
-
         }
     }
 
@@ -47,6 +40,23 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
         setupFunctionUI()
         setupQRCodeUI()
         setupChangeButton()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        titleLabel.text = viewmodel?.activitymodel.avTitle
+        placeLabel.text = viewmodel?.activitymodel.avPlace
+        priceLabel.text = viewmodel?.price
+        timeLabel.text = viewmodel?.allTime
+        detailLabel.text = viewmodel?.activitymodel.avDetail
+        avid = viewmodel?.activitymodel.avid ?? 0
+        warnLabel.text = viewmodel?.needRegister
+        self.participatornumLabel.text = "已报名\(self.participatorslist.activityParticipatorList.count)人／" + (self.viewmodel?.expectPeople ?? "人数不限")
+        if let img = viewmodel?.activityImg{
+            backgroudImage.image = img
+        }
+        // FIXME: - 活动详情独立的一页，类似于活动行
+        detailHeight = viewmodel?.detailHeight ?? 0
 
     }
     
@@ -321,28 +331,9 @@ extension EUCreatedActivityViewController{
     /// 修改活动
     @objc fileprivate func changeActiity(){
         
-        guard let avtitle = viewmodel?.activitymodel.avTitle,let avplace = viewmodel?.activitymodel.avPlace,let avprice = viewmodel?.activitymodel.avPrice,
-            let avnum = viewmodel?.activitymodel.avExpectnum,let avregister = viewmodel?.activitymodel.avRegister,
-            let avstartime = timeStampToString(timeStamp: viewmodel?.activitymodel.avStarttime, formate: "YYYY-MM-dd HH:mm"),
-            let avendtime = timeStampToString(timeStamp: viewmodel?.activitymodel.avEndtime, formate: "YYYY-MM-dd HH:mm"),
-            let avstoptime = timeStampToString(timeStamp: viewmodel?.activitymodel.avEnrolldeadline, formate: "YYYY-MM-dd HH:mm") else {
-            return
-        }
-        
         let vc = EUStartActivityViewController()
-        vc.activityName.text = avtitle
-        vc.activityNum.text = "\(avnum)"
-        vc.activityPlace.text = avplace
-        vc.activityPrice.text = "\(avprice)"
-        vc.activityDetail.text = (viewmodel?.activitymodel.avDetail ?? "" ) + " "
-        vc.activityDetail.deleteBackward()
-        vc.startime = avstartime
-        vc.endtime = avendtime
-        vc.stoptime = avstoptime
-        vc.isUpdateActivityInfo = true
-        vc.needResisterSwitch.isOn = (avregister == -1) ? false : true
+        vc.viewmodel = viewmodel
         vc.addPicBtn.setImage(backgroudImage.image, for: .normal)
-        vc.avid = avid
         navigationController?.pushViewController(vc, animated: true)
         
     }

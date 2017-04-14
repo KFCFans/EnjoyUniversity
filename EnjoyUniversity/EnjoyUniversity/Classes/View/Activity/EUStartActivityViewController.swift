@@ -60,6 +60,27 @@ class EUStartActivityViewController: EUBaseViewController {
     var autoSetStopTime:Bool = true
     
     let INPUTCELL = "EUINPUTCELL"
+    
+    /// 视图模型
+    var viewmodel:ActivityViewModel?{
+        
+        didSet{
+            activityName.text = viewmodel?.activitymodel.avTitle
+            activityNum.text = "\(viewmodel?.activitymodel.avExpectnum ?? 0)"
+            activityPlace.text = viewmodel?.activitymodel.avPlace
+            activityPrice.text = "\(viewmodel?.activitymodel.avPrice ?? 0)"
+            activityDetail.text = (viewmodel?.activitymodel.avDetail ?? "" ) + " "
+            activityDetail.deleteBackward()
+            startime = timeStampToString(timeStamp: viewmodel?.activitymodel.avStarttime, formate: "YYYY-MM-dd HH:mm")
+            endtime = timeStampToString(timeStamp: viewmodel?.activitymodel.avEndtime, formate: "YYYY-MM-dd HH:mm")
+            stoptime = timeStampToString(timeStamp: viewmodel?.activitymodel.avEnrolldeadline, formate: "YYYY-MM-dd HH:mm")
+            isUpdateActivityInfo = true
+            needResisterSwitch.isOn = viewmodel?.needRegisterBool ?? false
+            avid = viewmodel?.activitymodel.avid ?? 0
+
+        }
+        
+    }
 
 
     override func viewDidLoad() {
@@ -479,6 +500,9 @@ extension EUStartActivityViewController{
                             return
                         }
                         SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                        self.viewmodel?.activitymodel = activity
+                        self.viewmodel?.activityImg = uploadImg
+                        self.viewmodel?.reloadData()
                         _ = self.navigationController?.popViewController(animated: true)
                     })
                 }
@@ -511,7 +535,11 @@ extension EUStartActivityViewController{
                         return
                     }
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    
+                    self.viewmodel?.activitymodel = activity
+                    self.viewmodel?.reloadData()
                     _ = self.navigationController?.popViewController(animated: true)
+                    
                 })
             }
             
