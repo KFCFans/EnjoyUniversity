@@ -10,7 +10,12 @@ import UIKit
 
 class EURegisterInfoViewController: EUBaseViewController {
     
+    /// 活动参与者数据源
     var participatorlist:UserInfoListViewModel?
+    
+    /// 用于更改上层数据
+    var activityviewmodel:ActivityViewModel?
+    
     
     /// 活动 ID
     var avid = 0
@@ -170,6 +175,7 @@ extension EURegisterInfoViewController{
                     return
                 }
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                self.activityviewmodel?.activitymodel.avState = -1
                 _ = self.navigationController?.popViewController(animated: true)
             }
         }

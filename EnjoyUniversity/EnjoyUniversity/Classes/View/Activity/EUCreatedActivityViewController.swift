@@ -179,10 +179,13 @@ extension EUCreatedActivityViewController{
     @objc fileprivate func checkBtnIsClicked(){
         
         if !isFinished{
-            
             SwiftyProgressHUD.showFaildHUD(text: "列表加载中", duration: 1)
             return
-            
+        }
+        
+        if (viewmodel?.activitymodel.avState ?? 0) == -1{
+            SwiftyProgressHUD.showFaildHUD(text: "活动已结束", duration: 1)
+            return
         }
         
         let vc = EUActivityParticipatorsViewController()
@@ -204,6 +207,11 @@ extension EUCreatedActivityViewController{
     
     /// 通知按钮
     @objc fileprivate func notifyParticipators(){
+        
+        if (viewmodel?.activitymodel.avState ?? 0) == -1{
+            SwiftyProgressHUD.showFaildHUD(text: "活动已结束", duration: 1)
+            return
+        }
     
         let vc = EUActivityNotificationController()
         navigationController?.pushViewController(vc, animated: true)
@@ -214,6 +222,11 @@ extension EUCreatedActivityViewController{
         
         if !(viewmodel?.needRegisterBool ?? false){
             SwiftyProgressHUD.showFaildHUD(text: "无需签到", duration: 1)
+            return
+        }
+        
+        if (viewmodel?.activitymodel.avState ?? 0) == -1{
+            SwiftyProgressHUD.showFaildHUD(text: "活动已结束", duration: 1)
             return
         }
         
@@ -228,6 +241,7 @@ extension EUCreatedActivityViewController{
             vc.code = viewmodel?.activitymodel.avRegister ?? 0
             vc.avid = avid
             vc.activityName = self.viewmodel?.activitymodel.avTitle ?? ""
+            vc.activityviewmodel = viewmodel
             self.navigationController?.pushViewController(vc, animated: true)
             return
         }
@@ -285,6 +299,7 @@ extension EUCreatedActivityViewController{
                     let vc = EURegisterInfoViewController()
                     vc.participatorlist = self.participatorslist
                     vc.code = intcode
+                    vc.activityviewmodel = self.viewmodel
                     vc.avid = avid
                     vc.activityName = self.viewmodel?.activitymodel.avTitle ?? ""
                     self.navigationController?.pushViewController(vc, animated: true)
