@@ -34,15 +34,7 @@ class EUMyCommunityViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        titleButtonView.setTitleColor(UIColor.white, for: .normal)
-        titleButtonView.frame.size = CGSize(width: UIScreen.main.bounds.width - 100, height: 20)
-        titleButtonView.addTarget(nil, action: #selector(didClickTitleBtn), for: .touchUpInside)
-        titleButtonView.setTitle("加载中", for: .normal)
-        titleButtonView.setImage(UIImage(named: "community_down"), for: .normal)
-        titleButtonView.setImage(UIImage(named: "community_up"), for: .selected)
-        titleButtonView.isEnabled = false
-        navitem.titleView = titleButtonView
-        spinnerview.delegate = self
+        initSpinner()
     }
 
     
@@ -72,6 +64,23 @@ class EUMyCommunityViewController: EUBaseViewController {
 
 }
 
+// MARK: - UI 相关方法
+extension EUMyCommunityViewController{
+    
+    fileprivate func initSpinner(){
+        titleButtonView.setTitleColor(UIColor.white, for: .normal)
+        titleButtonView.frame.size = CGSize(width: UIScreen.main.bounds.width - 100, height: 20)
+        titleButtonView.addTarget(nil, action: #selector(didClickTitleBtn), for: .touchUpInside)
+        titleButtonView.setTitle("加载中", for: .normal)
+        titleButtonView.setImage(UIImage(named: "community_down"), for: .normal)
+        titleButtonView.setImage(UIImage(named: "community_up"), for: .selected)
+        titleButtonView.isEnabled = false
+        navitem.titleView = titleButtonView
+        spinnerview.delegate = self
+    }
+    
+}
+
 
 
 // MARK: - 监听方法
@@ -97,7 +106,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
     }
     
     func swiftySpinnerDidSelectRowAt(cell: SpinnerCell, row: Int) {
-        print(row)
+        titleButtonView.setTitle(communityauthorutylist.communityauthoritylist[row].cmname ?? "", for: .normal)
     }
     
 }
