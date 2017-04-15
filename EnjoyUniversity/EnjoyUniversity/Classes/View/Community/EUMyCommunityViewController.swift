@@ -14,7 +14,11 @@ class EUMyCommunityViewController: EUBaseViewController {
     lazy var spinnertableview = UITableView()
     lazy var shadowview = UIView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 64))
     let titleButtonView = UIButton()
-    var shouldShowSpinner:Bool = true
+    var shouldShowSpinner:Bool = true{
+        didSet{
+            titleButtonView.isSelected = !shouldShowSpinner
+        }
+    }
     
     lazy var communityauthorutylist = CommunityAuthorityListViewModel()
     
@@ -41,6 +45,8 @@ class EUMyCommunityViewController: EUBaseViewController {
         titleButtonView.frame.size = CGSize(width: UIScreen.main.bounds.width - 100, height: 20)
         titleButtonView.addTarget(nil, action: #selector(didClickTitleBtn), for: .touchUpInside)
         titleButtonView.setTitle("加载中", for: .normal)
+        titleButtonView.setImage(UIImage(named: "community_down"), for: .normal)
+        titleButtonView.setImage(UIImage(named: "community_up"), for: .selected)
         titleButtonView.isEnabled = false
         navitem.titleView = titleButtonView
         initSpinner()
@@ -75,13 +81,7 @@ extension EUMyCommunityViewController{
     /// 点击标题按钮
     @objc fileprivate func didClickTitleBtn(){
         
-        if shouldShowSpinner {
-            showSpinner()
-            shouldShowSpinner = false
-        }else{
-            removeSpinner()
-            shouldShowSpinner = true
-        }
+        shouldShowSpinner ? showSpinner() : removeSpinner()
     }
     
 }
@@ -111,7 +111,7 @@ extension EUMyCommunityViewController{
     }
     
     fileprivate func showSpinner(){
-        
+        shouldShowSpinner = false
         shadowview.alpha = 1
         view.insertSubview(shadowview, belowSubview: navbar)
         shadowview.addSubview(spinnertableview)
@@ -122,7 +122,7 @@ extension EUMyCommunityViewController{
     }
     
     @objc fileprivate func removeSpinner(){
-        
+        shouldShowSpinner = true
         UIView.animate(withDuration: 0.5, animations: {
             
             self.shadowview.alpha = 0
