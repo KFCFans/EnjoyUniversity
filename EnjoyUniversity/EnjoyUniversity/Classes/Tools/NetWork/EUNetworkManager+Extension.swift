@@ -330,6 +330,29 @@ extension EUNetworkManager{
         
     }
     
+    /// 获取用户参加的社团列表
+    ///
+    /// - Parameter completion: 完成回调
+    func getCommunityNameList(completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/mycommunitylist"
+        
+        let parm = ["uid":userAccount.uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,nil)
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+        
+    }
+    
     
 }
 
