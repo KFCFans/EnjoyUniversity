@@ -15,7 +15,6 @@ class EUCreatedActivityViewController: EUBaseAvtivityViewController {
     
     var row:Int = 0
     
-    
     /// 参与者数据源
     lazy var participatorslist = UserInfoListViewModel()
 
@@ -321,7 +320,7 @@ extension EUCreatedActivityViewController{
             
             // 发起签到网络请求
             SwiftyProgressHUD.showLoadingHUD()
-            EUNetworkManager.shared.startActivityRegist(avid: avid, uid: uid, completion: { (isSuccess, canStartRegister, code) in
+            EUNetworkManager.shared.startActivityRegist(avid: avid, completion: { (isSuccess, canStartRegister, code) in
                 SwiftyProgressHUD.hide()
                 guard let code = code,let intcode = Int(code) else{
                     return

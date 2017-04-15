@@ -632,11 +632,11 @@ extension EUNetworkManager{
     ///   - avid: 活动 ID
     ///   - uid: 活动创建人 ID
     ///   - completion: 网络请求是否成功，发起签到是否哦成功（权限问题），签到码
-    func startActivityRegist(avid:Int,uid:Int64,completion:@escaping (Bool,Bool,String?)->()){
+    func startActivityRegist(avid:Int,completion:@escaping (Bool,Bool,String?)->()){
         
         let url = SERVERADDRESS + "/eu/activity/startregister"
         
-        let parm = ["uid":uid,"avid":avid] as [String : Any]
+        let parm = ["uid":userAccount.uid,"avid":avid] as [String : Any]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (data, isSuccess, status) in
             
