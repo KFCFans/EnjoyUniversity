@@ -320,8 +320,9 @@ extension EUCreatedActivityViewController{
         let confirm = UIAlertAction(title: "确定", style: .default) { (_) in
             
             // 发起签到网络请求
+            SwiftyProgressHUD.showLoadingHUD()
             EUNetworkManager.shared.startActivityRegist(avid: avid, uid: uid, completion: { (isSuccess, canStartRegister, code) in
-                
+                SwiftyProgressHUD.hide()
                 guard let code = code,let intcode = Int(code) else{
                     return
                 }
@@ -352,7 +353,6 @@ extension EUCreatedActivityViewController{
                 })
                 codealert.addAction(codealertAction)
                 self.present(codealert, animated: true, completion: nil)
-                
                 
             })
         }
