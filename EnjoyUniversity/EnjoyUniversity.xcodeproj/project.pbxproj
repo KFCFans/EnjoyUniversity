@@ -47,6 +47,7 @@
 		3671B5AA1EA1E6F0002F66AC /* EUMyCommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671B5A91EA1E6F0002F66AC /* EUMyCommunityViewController.swift */; };
 		3671B5AC1EA201B2002F66AC /* CommunityAuthority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671B5AB1EA201B2002F66AC /* CommunityAuthority.swift */; };
 		3671B5AE1EA20299002F66AC /* CommunityAuthorityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671B5AD1EA20299002F66AC /* CommunityAuthorityListViewModel.swift */; };
+		3671B5B01EA213E1002F66AC /* SwiftySpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671B5AF1EA213E1002F66AC /* SwiftySpinner.swift */; };
 		3671CFD31E98FF5D00FACF91 /* EUserInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671CFD21E98FF5D00FACF91 /* EUserInfoInputViewController.swift */; };
 		3680A5871E9DF36300E6013F /* EUFeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680A5861E9DF36300E6013F /* EUFeedBackViewController.swift */; };
 		36839BFC1E8D457800612729 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFB1E8D457800612729 /* Activity.swift */; };
@@ -141,6 +142,7 @@
 		3671B5A91EA1E6F0002F66AC /* EUMyCommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyCommunityViewController.swift; sourceTree = "<group>"; };
 		3671B5AB1EA201B2002F66AC /* CommunityAuthority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityAuthority.swift; sourceTree = "<group>"; };
 		3671B5AD1EA20299002F66AC /* CommunityAuthorityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityAuthorityListViewModel.swift; sourceTree = "<group>"; };
+		3671B5AF1EA213E1002F66AC /* SwiftySpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftySpinner.swift; sourceTree = "<group>"; };
 		3671CFD21E98FF5D00FACF91 /* EUserInfoInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUserInfoInputViewController.swift; sourceTree = "<group>"; };
 		3680A5861E9DF36300E6013F /* EUFeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUFeedBackViewController.swift; sourceTree = "<group>"; };
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */,
 				360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */,
 				363AC75B1E936167008350CC /* SwiftyTimePicker.swift */,
+				3671B5AF1EA213E1002F66AC /* SwiftySpinner.swift */,
 			);
 			path = SwiftyControl;
 			sourceTree = "<group>";
@@ -830,6 +833,7 @@
 				3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */,
 				3671CFD31E98FF5D00FACF91 /* EUserInfoInputViewController.swift in Sources */,
 				3671B5AA1EA1E6F0002F66AC /* EUMyCommunityViewController.swift in Sources */,
+				3671B5B01EA213E1002F66AC /* SwiftySpinner.swift in Sources */,
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
 				3671B5AC1EA201B2002F66AC /* CommunityAuthority.swift in Sources */,
 				3662E64C1E9B60C3000955DA /* UserInfoListViewModel.swift in Sources */,
