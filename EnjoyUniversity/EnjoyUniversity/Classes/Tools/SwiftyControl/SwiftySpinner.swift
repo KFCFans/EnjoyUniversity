@@ -11,7 +11,7 @@ import UIKit
 
 protocol SwiftySpinnerDelegate {
     /// 选中
-    func swiftySpinnerDidSelectRowAt(cell:SpinnerCell,row:Int)
+    func swiftySpinnerDidSelectRowAt(cell:SwiftySpinnerCell,row:Int)
     /// 显示状态变化
     func swiftySpinnerDidChangeStatus(isOnView:Bool)
 }
@@ -44,7 +44,7 @@ class SwiftySpinner: UIView {
         vs.alpha = 0.5
         vs.frame = spinnertableview.bounds
         spinnertableview.backgroundView = vs
-        spinnertableview.separatorStyle = .singleLine
+        spinnertableview.separatorStyle = .none
         spinnertableview.delegate = self
         spinnertableview.dataSource = self
         addSubview(spinnertableview)
@@ -104,7 +104,7 @@ extension SwiftySpinner:UIGestureRecognizerDelegate,UITableViewDelegate,UITableV
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = SpinnerCell(title: datalist[indexPath.row], font: 15, textcolor: UIColor.darkText)
+        let cell = SwiftySpinnerCell(title: datalist[indexPath.row], font: 15, textcolor: UIColor.darkText)
         if indexPath.row == 0{
             cell.textlabel.textColor = UIColor.init(red: 18/255, green: 150/255, blue: 219/255, alpha: 1)
             cell.indicatorview.isHidden = false
@@ -115,12 +115,12 @@ extension SwiftySpinner:UIGestureRecognizerDelegate,UITableViewDelegate,UITableV
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         for cell in tableView.visibleCells{
-            let cell = cell as? SpinnerCell
+            let cell = cell as? SwiftySpinnerCell
             cell?.textlabel.textColor = UIColor.darkText
             cell?.indicatorview.isHidden = true
         }
         
-        guard let cell = tableView.cellForRow(at: indexPath) as? SpinnerCell else{
+        guard let cell = tableView.cellForRow(at: indexPath) as? SwiftySpinnerCell else{
             return
         }
         cell.textlabel.textColor = UIColor.init(red: 18/255, green: 150/255, blue: 219/255, alpha: 1)
@@ -143,7 +143,7 @@ extension SwiftySpinner:UIGestureRecognizerDelegate,UITableViewDelegate,UITableV
 }
 
 /// 自定义 Cell
-class SpinnerCell:UITableViewCell{
+class SwiftySpinnerCell:UITableViewCell{
     
     let textlabel = UILabel()
     let indicatorview = UIImageView(image: UIImage(named: "community_select"))

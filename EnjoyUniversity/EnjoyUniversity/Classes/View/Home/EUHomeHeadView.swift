@@ -160,6 +160,7 @@ extension EUHomeHeadView{
     
     @objc fileprivate func didClickMyCommunity(){
         
+        navigationController?.pushViewController(EUMyCommunityViewController(), animated: true)
         
     }
     

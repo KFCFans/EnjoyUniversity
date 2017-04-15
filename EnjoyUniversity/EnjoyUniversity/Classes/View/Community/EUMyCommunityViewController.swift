@@ -105,7 +105,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
         titleButtonView.isSelected = isOnView
     }
     
-    func swiftySpinnerDidSelectRowAt(cell: SpinnerCell, row: Int) {
+    func swiftySpinnerDidSelectRowAt(cell: SwiftySpinnerCell, row: Int) {
         titleButtonView.setTitle(communityauthorutylist.communityauthoritylist[row].cmname ?? "", for: .normal)
     }
     

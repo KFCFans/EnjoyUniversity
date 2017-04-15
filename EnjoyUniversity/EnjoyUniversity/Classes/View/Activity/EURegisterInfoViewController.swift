@@ -58,7 +58,7 @@ class EURegisterInfoViewController: EUBaseViewController {
             return
         }
         
-        participatorlist.loadWaitingRegisterMemberInfoList(avid: 1) { (isSuccess, hasMember) in
+        participatorlist.loadWaitingRegisterMemberInfoList(avid: avid) { (isSuccess, hasMember) in
             
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
