@@ -25,6 +25,10 @@ class EUMyCommunityViewController: EUBaseViewController {
                 titleButtonView.setTitle(communityauthorutylist.communityauthoritylist.first?.cmname, for: .normal)
                 titleButtonView.isEnabled = true
                 spinnerview.reloadData()
+            }else if loadDataFinished && communityauthorutylist.communityauthoritylist.count == 0{
+                titleButtonView.setTitle("抓紧时间加入社团哦～", for: .normal)
+                // FIXME: -  显示空空如也
+                tableview.removeFromSuperview()
             }
             
         }

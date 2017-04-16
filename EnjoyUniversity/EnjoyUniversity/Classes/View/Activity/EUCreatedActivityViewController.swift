@@ -274,7 +274,7 @@ extension EUCreatedActivityViewController{
             return
         }
         
-        guard let startime = Double(viewmodel?.activitymodel.avStarttime ?? ""),let avid = viewmodel?.activitymodel.avid,let uid = viewmodel?.activitymodel.uid else{
+        guard let startime = Double(viewmodel?.activitymodel.avStarttime ?? ""),let avid = viewmodel?.activitymodel.avid else{
             return
         }
         

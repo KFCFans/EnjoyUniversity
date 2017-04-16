@@ -209,11 +209,13 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                     }
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)
                     _ =  self.navigationController?.popViewController(animated: true)
+                    self.dismiss(animated: true, completion: nil)
                     
                 })
                 
                 }
-            
+            // FIXME: - 直接跳转显示二维码信息 like wechat
+            SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
             
 //            captureSession.stopRunning()
         }
