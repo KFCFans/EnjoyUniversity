@@ -41,7 +41,7 @@ class SwiftySpinner: UIView {
         spinnertableview.layer.cornerRadius = 10
         let uef = UIBlurEffect(style: .extraLight)
         let vs = UIVisualEffectView(effect: uef)
-        vs.alpha = 0.8
+        vs.alpha = 1.0
         vs.frame = spinnertableview.bounds
         spinnertableview.backgroundView = vs
         spinnertableview.separatorStyle = .none

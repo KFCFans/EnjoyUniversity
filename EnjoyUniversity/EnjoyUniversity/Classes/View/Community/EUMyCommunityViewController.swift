@@ -25,10 +25,6 @@ class EUMyCommunityViewController: EUBaseViewController {
                 titleButtonView.setTitle(communityauthorutylist.communityauthoritylist.first?.cmname, for: .normal)
                 titleButtonView.isEnabled = true
                 spinnerview.reloadData()
-            }else if loadDataFinished && communityauthorutylist.communityauthoritylist.count == 0{
-                titleButtonView.setTitle("抓紧时间加入社团哦～", for: .normal)
-                // FIXME: -  显示空空如也
-                tableview.removeFromSuperview()
             }
             
         }
@@ -51,13 +47,16 @@ class EUMyCommunityViewController: EUBaseViewController {
                 return
             }
             if !hasData{
-                // 提示用户赶快加入社团
+                self.titleButtonView.setTitle("抓紧时间加入社团哦～", for: .normal)
+                // FIXME: -  显示空空如也
+                self.tableview.removeFromSuperview()
                 return
             }
             
             var datalist = [String]()
             for model in self.communityauthorutylist.communityauthoritylist {
                 datalist.append(model.cmname ?? "")
+                print(model.lastselect)
             }
             self.spinnerview.datalist = datalist
             self.loadDataFinished = true
