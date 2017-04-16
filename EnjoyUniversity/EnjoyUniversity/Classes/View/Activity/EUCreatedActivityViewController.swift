@@ -227,7 +227,7 @@ extension EUCreatedActivityViewController{
             return
         }
         
-        if (viewmodel?.activitymodel.avState ?? 0) == -1{
+        if viewmodel?.isFinished ?? true{
             SwiftyProgressHUD.showFaildHUD(text: "活动已结束", duration: 1)
             return
         }
@@ -252,7 +252,7 @@ extension EUCreatedActivityViewController{
     /// 通知按钮
     @objc fileprivate func notifyParticipators(){
         
-        if (viewmodel?.activitymodel.avState ?? 0) == -1{
+        if viewmodel?.isFinished ?? true{
             SwiftyProgressHUD.showFaildHUD(text: "活动已结束", duration: 1)
             return
         }
@@ -269,7 +269,7 @@ extension EUCreatedActivityViewController{
             return
         }
         
-        if (viewmodel?.activitymodel.avState ?? 0) == -1{
+        if viewmodel?.isFinished ?? true{
             SwiftyProgressHUD.showFaildHUD(text: "活动已结束", duration: 1)
             return
         }
@@ -363,6 +363,11 @@ extension EUCreatedActivityViewController{
     
     /// 修改活动
     @objc fileprivate func changeActiity(){
+        
+        if viewmodel?.isFinished ?? true{
+            SwiftyProgressHUD.showFaildHUD(text: "活动已结束", duration: 1)
+            return
+        }
         
         let vc = EUStartActivityViewController()
         vc.viewmodel = viewmodel
