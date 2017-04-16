@@ -19,12 +19,17 @@ class EUActivityCell: UITableViewCell {
             activityTime.text = activityVM?.startTime
             activityLocation.text = activityVM?.activitymodel.avPlace
             activityPrice.text = activityVM?.price
-            let iconurl = URL(string: activityVM?.imageURL ?? "")
-            activityIcon.kf.setImage(with: iconurl,
-                                     placeholder: nil,
-                                     options: [.transition(.fade(1))],
-                                     progressBlock: nil,
-                                     completionHandler: nil)
+            if activityVM?.isFinished ?? true{
+                activityIcon.image = UIImage(named: "av_finished")
+                activityIcon.contentMode = .scaleAspectFit
+            }else{
+                let iconurl = URL(string: activityVM?.imageURL ?? "")
+                activityIcon.kf.setImage(with: iconurl,
+                                         placeholder: nil,
+                                         options: [.transition(.fade(1))],
+                                         progressBlock: nil,
+                                         completionHandler: nil)
+            }
             
         }
         

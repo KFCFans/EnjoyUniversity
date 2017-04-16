@@ -108,15 +108,24 @@ class ActivityListViewModel{
             
             // 接受数据
             var tempvmlist = [ActivityViewModel]()
-            
             for model in modelarray{
                 tempvmlist.append(ActivityViewModel(model: model))
             }
             
-            self.participatedlist = tempvmlist.sorted(by: { (x:ActivityViewModel, y:ActivityViewModel) -> Bool in
+            tempvmlist = tempvmlist.sorted(by: { (x:ActivityViewModel, y:ActivityViewModel) -> Bool in
                 
                 return Int(x.activitymodel.avStarttime ?? "0") ?? 0 < Int(y.activitymodel.avStarttime ?? "0") ?? 0
             })
+            
+            // 将已结束的活动放倒最末端
+            self.participatedlist = tempvmlist
+            for (index,viewmodel) in tempvmlist.enumerated(){
+                if viewmodel.isFinished{
+                    self.participatedlist.remove(at: index)
+                    self.participatedlist.append(viewmodel)
+                }
+            }
+            
             completion(true)
 
         }
@@ -154,10 +163,19 @@ class ActivityListViewModel{
                 tempvmlist.append(ActivityViewModel(model: model))
             }
             
-            self.createdlist = tempvmlist.sorted(by: { (x:ActivityViewModel, y:ActivityViewModel) -> Bool in
+            tempvmlist = tempvmlist.sorted(by: { (x:ActivityViewModel, y:ActivityViewModel) -> Bool in
                 
                 return Int(x.activitymodel.avStarttime ?? "0") ?? 0 < Int(y.activitymodel.avStarttime ?? "0") ?? 0
             })
+            // 将已结束的活动放倒最末端
+            self.createdlist = tempvmlist
+            for (index,viewmodel) in tempvmlist.enumerated(){
+                if viewmodel.isFinished{
+                    self.createdlist.remove(at: index)
+                    self.createdlist.append(viewmodel)
+                }
+            }
+           
 
             completion(true)
             
