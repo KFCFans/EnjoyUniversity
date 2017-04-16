@@ -12,6 +12,10 @@ class EUActivityParticipatorsViewController: EUBaseViewController {
     
     let ACTIVITYPARTICIPATORCELL = "ACTIVITYPARTICIPATORCELL"
     
+    let nomemberimageview = UIImageView(image: UIImage(named: "av_nomember"))
+
+    let nomemberlabel = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.width, height: 15)))
+    
     /// 参与者数据源
     var participatorslist:UserInfoListViewModel?
     
@@ -20,35 +24,47 @@ class EUActivityParticipatorsViewController: EUBaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if participatorslist?.activityParticipatorList.count == 0{
-            tableview.removeFromSuperview()
-            let imageview = UIImageView(image: UIImage(named: "av_nomember"))
-            imageview.frame.size = CGSize(width: 50, height: 50)
-            imageview.center.x = view.center.x
-            imageview.center.y = view.center.y - 30
-            view.addSubview(imageview)
-            let label = UILabel(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: UIScreen.main.bounds.width, height: 15)))
-            label.textAlignment = .center
-            label.text = "暂无小伙伴参加"
-            label.font = UIFont.boldSystemFont(ofSize: 13)
-            label.center.y = view.center.y + 10
-            view.addSubview(label)
-            return
-        }
-        
-        
-        tableview.register(EUActivityMemberCell.self, forCellReuseIdentifier: ACTIVITYPARTICIPATORCELL)
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        tableview.register(EUActivityMemberCell.self, forCellReuseIdentifier: ACTIVITYPARTICIPATORCELL)
         navitem.title = "审核"
         tableview.tableFooterView = UIView()
+
+        if participatorslist?.activityParticipatorList.count == 0{
+
+            tableview.separatorStyle = .none
+            nomemberimageview.frame.size = CGSize(width: 50, height: 50)
+            nomemberimageview.center.x = view.center.x
+            nomemberimageview.center.y = view.center.y - 90
+            tableview.addSubview(nomemberimageview)
+            
+            nomemberlabel.textAlignment = .center
+            nomemberlabel.text = "暂无小伙伴参加"
+            nomemberlabel.font = UIFont.boldSystemFont(ofSize: 13)
+            nomemberlabel.center.y = nomemberimageview.frame.maxY + 10
+            tableview.addSubview(nomemberlabel)
+        }
+        
         
 
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
 
+    override func loadData() {
+        
+        participatorslist?.loadActivityMemberInfoList(avid: avid) { (isSuccess, hasMember) in
+            self.refreshControl?.endRefreshing()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !hasMember{
+                return
+            }
+            self.tableview.reloadData()
+            self.nomemberlabel.removeFromSuperview()
+            self.nomemberimageview.removeFromSuperview()
+        }
+        
     }
 
 }
