@@ -113,7 +113,10 @@ class ActivityListViewModel{
                 tempvmlist.append(ActivityViewModel(model: model))
             }
             
-            self.participatedlist = tempvmlist
+            self.participatedlist = tempvmlist.sorted(by: { (x:ActivityViewModel, y:ActivityViewModel) -> Bool in
+                
+                return Int(x.activitymodel.avStarttime ?? "0") ?? 0 < Int(y.activitymodel.avStarttime ?? "0") ?? 0
+            })
             completion(true)
 
         }
@@ -151,7 +154,11 @@ class ActivityListViewModel{
                 tempvmlist.append(ActivityViewModel(model: model))
             }
             
-            self.createdlist = tempvmlist
+            self.createdlist = tempvmlist.sorted(by: { (x:ActivityViewModel, y:ActivityViewModel) -> Bool in
+                
+                return Int(x.activitymodel.avStarttime ?? "0") ?? 0 < Int(y.activitymodel.avStarttime ?? "0") ?? 0
+            })
+
             completion(true)
             
         }

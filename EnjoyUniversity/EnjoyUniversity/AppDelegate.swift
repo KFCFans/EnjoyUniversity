@@ -18,15 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         
-//        /// 判断加载哪一个
-//        if let _ = UserDefaults.standard.string(forKey: "accesstoken"){
-//            window?.rootViewController = EUMainViewController()
-//        }else{
-//            window?.rootViewController = EUNavigationController(rootViewController: EULoginViewController())
-//        }
+        /// 判断加载哪一个
+        if let _ = UserDefaults.standard.string(forKey: "accesstoken"){
+            window?.rootViewController = EUMainViewController()
+        }else{
+            window?.rootViewController = EUNavigationController(rootViewController: EULoginViewController())
+        }
 
 
-        window?.rootViewController = EUMyCommunityViewController()
+//        window?.rootViewController = EUMyCommunityViewController()
         window?.makeKeyAndVisible()
         
         return true

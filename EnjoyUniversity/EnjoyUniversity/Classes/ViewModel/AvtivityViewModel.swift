@@ -54,12 +54,25 @@ class ActivityViewModel{
     
     /// 活动图片（修改图片得来）
     var activityImg:UIImage?
+    
+    /// 活动是否已结束
+    var isFinished:Bool = false{
+        didSet{
+            isFinished ? startTime = "已结束" : ()
+        }
+    }
 
     
     init(model:Activity) {
         activitymodel = model
         
         reloadData()
+        
+        let today = Date().timeIntervalSince1970 * 1000
+        let finishedtime = Double(model.avEndtime ?? "0") ?? 0
+
+        (today - finishedtime) > 86400000 ? isFinished = true : ()
+        
     }
     
     func reloadData(){
@@ -86,6 +99,8 @@ class ActivityViewModel{
         expectPeople = activitymodel.avExpectnum == 0 ? "人数不限" : "限\(activitymodel.avExpectnum)人"
         
         qrcodeString = QRCODEPREFIX + "avid=" + activitymodel.avid.description
+        
+        isFinished = activitymodel.avState == 0 ? false : true
     }
     
 

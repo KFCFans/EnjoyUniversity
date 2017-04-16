@@ -181,6 +181,7 @@ extension EURegisterInfoViewController{
         }
         alert.addAction(cancel)
         alert.addAction(confirm)
+        self.activityviewmodel?.isFinished = true
         present(alert, animated: true, completion: nil)
         
     }

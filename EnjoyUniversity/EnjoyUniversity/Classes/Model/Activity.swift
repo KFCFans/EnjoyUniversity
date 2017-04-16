@@ -37,7 +37,7 @@ class Activity:NSObject{
     // 活动 logo
     var avLogo:String?
     
-    // 活动状态
+    // 活动状态 0默认 -1活动结束
     var avState:Int = 0
 
     

@@ -56,7 +56,6 @@ class EUMyCommunityViewController: EUBaseViewController {
             var datalist = [String]()
             for model in self.communityauthorutylist.communityauthoritylist {
                 datalist.append(model.cmname ?? "")
-                print(model.lastselect)
             }
             self.spinnerview.datalist = datalist
             self.loadDataFinished = true
