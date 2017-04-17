@@ -102,8 +102,14 @@ extension EUProfileViewController{
         logoimg.layer.masksToBounds = true
         logoimg.layer.cornerRadius = 35
         backgroundview.addSubview(logoimg)
-        
         backgroundview.addSubview(verifyimgview)
+        
+        // 区域按钮
+        let userinfoButton  = UIButton(type: .custom)
+        userinfoButton.backgroundColor = UIColor.white
+        userinfoButton.addTarget(self, action: #selector(changeUserInfo), for: .touchUpInside)
+        userinfoButton.isEnabled = true
+        backgroundview.addSubview(userinfoButton)
         
         nicknameLabel.font = UIFont.boldSystemFont(ofSize: 17)
         nicknameLabel.textColor = UIColor.white
@@ -190,6 +196,7 @@ extension EUProfileViewController{
         settingbtn.translatesAutoresizingMaskIntoConstraints = false
         moreimg.translatesAutoresizingMaskIntoConstraints = false
         verifyimgview.translatesAutoresizingMaskIntoConstraints = false
+        userinfoButton.translatesAutoresizingMaskIntoConstraints = false
         
         // 头像
         backgroundview.addConstraints([NSLayoutConstraint(item: logoimg,
@@ -220,6 +227,35 @@ extension EUProfileViewController{
                                                    attribute: .notAnAttribute,
                                                    multiplier: 1.0,
                                                    constant: 70)])
+        // 个人信息按钮
+        backgroundview.addConstraints([NSLayoutConstraint(item: userinfoButton,
+                                                          attribute: .top,
+                                                          relatedBy: .equal,
+                                                          toItem: logoimg,
+                                                          attribute: .top,
+                                                          multiplier: 1.0,
+                                                          constant: 0),
+                                       NSLayoutConstraint(item: userinfoButton,
+                                                          attribute: .left,
+                                                          relatedBy: .equal,
+                                                          toItem: backgroundview,
+                                                          attribute: .left,
+                                                          multiplier: 1.0,
+                                                          constant: 0)])
+        backgroundview.addConstraints([NSLayoutConstraint(item: userinfoButton,
+                                                         attribute: .width,
+                                                         relatedBy: .equal,
+                                                         toItem: nil,
+                                                         attribute: .notAnAttribute,
+                                                         multiplier: 1.0,
+                                                         constant: UIScreen.main.bounds.width),
+                                      NSLayoutConstraint(item: userinfoButton,
+                                                         attribute: .height,
+                                                         relatedBy: .equal,
+                                                         toItem: logoimg,
+                                                         attribute: .height,
+                                                         multiplier: 1.0,
+                                                         constant: 0)])
         // 昵称
         backgroundview.addConstraints([NSLayoutConstraint(item: nicknameLabel,
                                                           attribute: .centerY,
@@ -415,6 +451,13 @@ extension EUProfileViewController{
     
     @objc fileprivate func showMyCommunities(){
     
+    }
+    
+    @objc fileprivate func changeUserInfo(){
+        print("zzzzzzzz")
+        let vc = EUChangeUserInfoController()
+        vc.viewmodel = userinfoviewmodel
+        navigationController?.present(vc, animated: true, completion: nil)
     }
     
 }

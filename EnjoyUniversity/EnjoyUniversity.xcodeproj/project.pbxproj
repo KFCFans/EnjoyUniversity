@@ -23,6 +23,7 @@
 		363447961E97B11300F49EBC /* EUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363447951E97B11300F49EBC /* EUserAccount.swift */; };
 		363908AC1E9F6AC800E67958 /* EURegisterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363908AB1E9F6AC800E67958 /* EURegisterInfoViewController.swift */; };
 		363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AC75B1E936167008350CC /* SwiftyTimePicker.swift */; };
+		363B16E41EA4E7D0003779BA /* EUChangeUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363B16E31EA4E7D0003779BA /* EUChangeUserInfoController.swift */; };
 		364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */; };
 		364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */; };
 		36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */; };
@@ -118,6 +119,7 @@
 		363447951E97B11300F49EBC /* EUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUserAccount.swift; sourceTree = "<group>"; };
 		363908AB1E9F6AC800E67958 /* EURegisterInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterInfoViewController.swift; sourceTree = "<group>"; };
 		363AC75B1E936167008350CC /* SwiftyTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyTimePicker.swift; path = ../../View/Activity/SwiftyTimePicker.swift; sourceTree = "<group>"; };
+		363B16E31EA4E7D0003779BA /* EUChangeUserInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangeUserInfoController.swift; sourceTree = "<group>"; };
 		364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityNotificationController.swift; sourceTree = "<group>"; };
 		364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUShowQRCodeViewController.swift; sourceTree = "<group>"; };
 		36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterViewController.swift; sourceTree = "<group>"; };
@@ -149,7 +151,7 @@
 		36839BFD1E8D476300612729 /* AvtivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvtivityViewModel.swift; sourceTree = "<group>"; };
 		36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
 		3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
-		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyViewPager.swift; sourceTree = "<group>"; };
+		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyViewPager.swift; path = ../../View/Home/SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -247,6 +249,7 @@
 		360FA3EB1E94E639002A5FF0 /* SwiftyControl */ = {
 			isa = PBXGroup;
 			children = (
+				3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */,
 				3664E1E91E9759F60041259B /* SwiftyTextField.swift */,
 				3664E1EA1E9759F60041259B /* SwiftyVerificationCodeView.swift */,
 				36EC19971E9893D400A08AC4 /* SwiftyProgressHUD.swift */,
@@ -302,6 +305,7 @@
 			children = (
 				366112361E9661E8005D0A96 /* EULoginViewController.swift */,
 				3671CFD21E98FF5D00FACF91 /* EUserInfoInputViewController.swift */,
+				363B16E31EA4E7D0003779BA /* EUChangeUserInfoController.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -435,7 +439,6 @@
 			children = (
 				36BDBB3E1E6416FF0075A3ED /* EUHomeViewController.swift */,
 				3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */,
-				3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -844,6 +847,7 @@
 				36BDBB3D1E6416A50075A3ED /* EUNavigationController.swift in Sources */,
 				3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */,
 				362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */,
+				363B16E41EA4E7D0003779BA /* EUChangeUserInfoController.swift in Sources */,
 				36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */,
 				3664E1EC1E9759F60041259B /* SwiftyVerificationCodeView.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,

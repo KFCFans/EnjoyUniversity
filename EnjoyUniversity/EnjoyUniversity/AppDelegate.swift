@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
 
 
-//        window?.rootViewController = EUMyCommunityViewController()
+//        window?.rootViewController = EUChangeUserInfoController()
         window?.makeKeyAndVisible()
         
         return true
