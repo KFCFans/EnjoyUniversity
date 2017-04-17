@@ -9,6 +9,10 @@
 import UIKit
 
 class EUFeedBackViewController: EUBaseViewController {
+    
+    let problemtextview = UITextView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 131), textContainer: nil)
+    
+    let addresstextfield = UITextField(frame: CGRect(x: 0, y: 280, width: UIScreen.main.bounds.width, height: 44))
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +26,7 @@ class EUFeedBackViewController: EUBaseViewController {
         navitem.rightBarButtonItem = rightBtn
         
         
-        let problemtextview = UITextView(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 131), textContainer: nil)
+        
         problemtextview.backgroundColor = UIColor.white
         problemtextview.font = UIFont.boldSystemFont(ofSize: 15)
         problemtextview.textColor = UIColor.init(red: 182/255, green: 182/255, blue: 182/255, alpha: 1)
@@ -34,7 +38,7 @@ class EUFeedBackViewController: EUBaseViewController {
         addresslabel.textColor = UIColor.init(red: 109/255, green: 109/255, blue: 114/255, alpha: 1)
         view.addSubview(addresslabel)
         
-        let addresstextfield = UITextField(frame: CGRect(x: 0, y: 280, width: UIScreen.main.bounds.width, height: 44))
+        
         addresstextfield.backgroundColor = UIColor.white
         addresstextfield.placeholder = "手机号/QQ/邮箱..."
         addresstextfield.textColor = UIColor.init(red: 182/255, green: 182/255, blue: 182/255, alpha: 1)
@@ -49,5 +53,22 @@ class EUFeedBackViewController: EUBaseViewController {
     
     @objc fileprivate func feedbackProblem(){
         
+        let buginfo = problemtextview.text
+        if buginfo == nil || buginfo?.characters.count == 0{
+            SwiftyProgressHUD.showFaildHUD(text: "请填写意见", duration: 1)
+            return
+        }
+        let address = addresstextfield.text
+        
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.problemFeedBack(bug: buginfo!, contactinfo: address) { (isSuccess) in
+            SwiftyProgressHUD.hide()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
     }
 }

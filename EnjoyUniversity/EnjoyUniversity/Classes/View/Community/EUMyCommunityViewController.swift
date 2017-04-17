@@ -74,8 +74,13 @@ class EUMyCommunityViewController: EUBaseViewController {
     
     override func loadData() {
         
+        if loadDataFinished{
+            loadCommunityData(cmid: cmid)
+            return
+        }
+        
         communityauthorutylist.loadCommunityNameList { (isSuccess, hasData) in
-            
+            self.refreshControl?.endRefreshing()
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
@@ -100,6 +105,7 @@ class EUMyCommunityViewController: EUBaseViewController {
     fileprivate func loadCommunityData(cmid:Int){
         
         EUNetworkManager.shared.getCommunityInfoByID(cmid: cmid) { (isSuccess, viewmodel) in
+            self.refreshControl?.endRefreshing()
             
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
@@ -210,6 +216,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
         if self.communityauthorutylist.communityauthoritylist[row].cmid == cmid{
             return
         }
+        refreshControl?.beginRefreshing()
         titleButtonView.setTitle(communityauthorutylist.communityauthoritylist[row].cmname ?? "", for: .normal)
         self.cmid = self.communityauthorutylist.communityauthoritylist[row].cmid
 
@@ -220,8 +227,17 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = CommunityFuctionCell(text: "通讯录", leftimg: UIImage(named: "cm_contacts"))
-        return cell
+        switch indexPath.row {
+        case 0:
+            return CommunityFuctionCell(text: "通讯录", leftimg: UIImage(named: "cm_contacts"))
+        case 1:
+            return CommunityFuctionCell(text: "社团管理", leftimg: UIImage(named: "cm_manage"))
+        case 2:
+            return CommunityFuctionCell(text: "社团招新", leftimg: UIImage(named: "cm_newmember"))
+        default:
+            return CommunityFuctionCell(text: "通讯录", leftimg: UIImage(named: "cm_contacts"))
+        }
+        
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

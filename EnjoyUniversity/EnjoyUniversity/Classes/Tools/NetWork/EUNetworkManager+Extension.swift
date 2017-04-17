@@ -729,7 +729,33 @@ extension EUNetworkManager{
             }
             completion(true,false)
         }
+    }
+    
+    
+    /// 意见反馈
+    ///
+    /// - Parameters:
+    ///   - bug: 问题或者建议
+    ///   - contaciinfo: 联系信息
+    ///   - completion: 完成回调
+    func problemFeedBack(bug:String,contactinfo:String?,completion:@escaping (Bool)->()){
         
+        let url = SERVERADDRESS + "/eu/common/bugreport"
+        
+        var parm = Parameters()
+        parm["uid"] = userAccount.uid
+        parm["bug"] = bug
+        if contactinfo != nil && (contactinfo?.characters.count)! > 0{
+            parm["contactinfo"] = contactinfo!
+        }
+        
+        request(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            completion(true)
+        }
     }
     
 
