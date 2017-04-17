@@ -17,10 +17,13 @@ class EUMyCommunityViewController: EUBaseViewController {
     let titleButtonView = UIButton()
     
     /// 公告
-    let announcedetail = UILabel(frame: CGRect(x: 20, y: 100, width: UIScreen.main.bounds.width - 72, height: 30))
+    let announcedetail = UILabel()
     
     /// 社团 LOGO
     let communitylogo = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 97, y: 0, width: 50, height: 50))
+    
+    /// 公告栏高度
+    var announceHeight:CGFloat = 0
     
     lazy var communityauthorutylist = CommunityAuthorityListViewModel()
     
@@ -48,6 +51,8 @@ class EUMyCommunityViewController: EUBaseViewController {
     var viewmodel:CommunityViewModel?{
         didSet{
             announcedetail.text = viewmodel?.communitymodel?.cmAnnouncement
+            announceHeight = viewmodel?.myannouncementHeight ?? 0
+            setupTableHeadView()
         }
     }
 
@@ -119,10 +124,10 @@ extension EUMyCommunityViewController{
     
     fileprivate func setupTableHeadView(){
         
-        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: 200))
+        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: 100 + announceHeight + 40))
         headview.backgroundColor = UIColor.init(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
         
-        let announceview = UIView(frame: CGRect(x: 16, y: 15, width: headview.frame.width - 32, height: headview.frame.width - 30))
+        let announceview = UIView(frame: CGRect(x: 16, y: 15, width: headview.frame.width - 32, height: headview.frame.height - 30))
         announceview.backgroundColor = UIColor.white
         headview.addSubview(announceview)
         
@@ -132,12 +137,12 @@ extension EUMyCommunityViewController{
         announcelabel.font = UIFont.boldSystemFont(ofSize: 17)
         announceview.addSubview(announcelabel)
         
-        
         communitylogo.center.y = announcelabel.center.y
         announceview.layer.masksToBounds = true
         announceview.layer.cornerRadius = 5
         announceview.addSubview(communitylogo)
         
+        announcedetail.frame = CGRect(x: 20, y: 100, width: announceview.frame.width - 40, height: announceHeight)
         announcedetail.numberOfLines = 0
         announcedetail.font = UIFont.boldSystemFont(ofSize: 15)
         announcedetail.textColor = UIColor.black

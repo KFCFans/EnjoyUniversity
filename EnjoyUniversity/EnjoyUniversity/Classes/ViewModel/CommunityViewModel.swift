@@ -20,6 +20,9 @@ class CommunityViewModel{
     /// 社团公告文本的高度
     var announcementHeight:CGFloat = 0
     
+    /// 我的社团公告文本的高度
+    var myannouncementHeight:CGFloat = 0
+    
     /// 社团类型 0兴趣社团 1学术社团 2运动社团
     var communityType:String?
     
@@ -35,6 +38,9 @@ class CommunityViewModel{
         
         // 计算公告高度
         announcementHeight = calculateLabelHeight(text: model.cmAnnouncement ?? "", width: UIScreen.main.bounds.width - 30, font: 13)
+        
+        // 计算我的社团公告高度
+        myannouncementHeight = calculateLabelHeight(text: model.cmAnnouncement ?? "", width: UIScreen.main.bounds.width - 72, font: 15)
         
         // 所属学校
         communitySchool += model.cmSchool ?? "江南大学"
