@@ -95,6 +95,7 @@ extension EUProfileViewController{
         let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 255))
     
         let backgroundview = UIImageView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 180))
+        backgroundview.isUserInteractionEnabled = true
         backgroundview.image = UIImage(named: "profile_temp")
         headview.addSubview(backgroundview)
         
@@ -106,9 +107,7 @@ extension EUProfileViewController{
         
         // 区域按钮
         let userinfoButton  = UIButton(type: .custom)
-        userinfoButton.backgroundColor = UIColor.white
-        userinfoButton.addTarget(self, action: #selector(changeUserInfo), for: .touchUpInside)
-        userinfoButton.isEnabled = true
+        userinfoButton.addTarget(nil, action: #selector(changeUserInfo), for: .touchUpInside)
         backgroundview.addSubview(userinfoButton)
         
         nicknameLabel.font = UIFont.boldSystemFont(ofSize: 17)
