@@ -26,6 +26,9 @@ class UserinfoViewModel:NSObject{
     /// 认证图标
     var verifyImg:UIImage?
     
+    /// 认证文字
+    var verifyString = "未认证"
+    
     init(model:UserInfo) {
         
         self.model = model
@@ -52,6 +55,7 @@ class UserinfoViewModel:NSObject{
         switch Int(model.verified) {
         case 1:
             verifyImg = UIImage(named: "profile_verifysuccess")
+            verifyString = "已认证"
         default:
             verifyImg = UIImage()
         }

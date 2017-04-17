@@ -17,7 +17,7 @@ class EUProfileViewController: EUBaseViewController {
     let reputationLabel = UILabel()
 
     /// 用户头像
-    let logoimg = UIImageView()
+    var logoimg = UIImageView()
     
     /// 认证
     let verifyimgview = UIImageView()
@@ -453,10 +453,10 @@ extension EUProfileViewController{
     }
     
     @objc fileprivate func changeUserInfo(){
-        print("zzzzzzzz")
         let vc = EUChangeUserInfoController()
+        vc.logoimg = self.logoimg.image
         vc.viewmodel = userinfoviewmodel
-        navigationController?.present(vc, animated: true, completion: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
