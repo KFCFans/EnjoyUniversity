@@ -61,8 +61,14 @@ class EUMyCommunityViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableview.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
+        tableview.separatorStyle = .none
+        tableview.backgroundColor = UIColor.init(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
+        view.backgroundColor = UIColor.init(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
+        refreshControl?.backgroundColor = UIColor.white
         initSpinner()
         initTableHeadView()
+        
     }
 
     
@@ -152,7 +158,6 @@ extension EUMyCommunityViewController{
         announcedetail.textColor = UIColor.black
         announceview.addSubview(announcedetail)
         
-        tableview.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         tableview.tableHeaderView = headview
         
     }
@@ -169,6 +174,7 @@ extension EUMyCommunityViewController{
                                   options: [.transition(.fade(1))],
                                   progressBlock: nil,
                                   completionHandler: nil)
+        tableview.tableHeaderView = headview
     }
     
     
@@ -207,6 +213,78 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
         titleButtonView.setTitle(communityauthorutylist.communityauthoritylist[row].cmname ?? "", for: .normal)
         self.cmid = self.communityauthorutylist.communityauthoritylist[row].cmid
 
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = CommunityFuctionCell(text: "通讯录", leftimg: UIImage(named: "cm_contacts"))
+        return cell
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+}
+
+
+
+/// 自定义 cell
+class CommunityFuctionCell:UITableViewCell{
+    
+    var cellview = UIView()
+    
+    var textlabel = UILabel()
+    
+    var leftimageview = UIImageView()
+    
+    var indicatorimageview = UIImageView()
+    
+    init(text:String,leftimg:UIImage?) {
+        super.init(style: .default, reuseIdentifier: nil)
+        self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 100)
+        self.backgroundColor =  UIColor.init(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
+        
+        cellview.frame = CGRect(x: 32, y: 5, width: frame.width - 64, height: 90)
+        cellview.backgroundColor = UIColor.white
+        cellview.layer.masksToBounds = true
+        cellview.layer.cornerRadius = 10
+        addSubview(cellview)
+        
+        
+        textlabel.text = text
+        cellview.addSubview(textlabel)
+        
+        leftimageview.image = leftimg
+        addSubview(leftimageview)
+        
+        indicatorimageview.image = UIImage(named: "cm_indicator")
+        addSubview(indicatorimageview)
+        
+        setupUI()
+        
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI(){
+        
+        leftimageview.frame.size = CGSize(width: 50, height: 50)
+        leftimageview.center.y = cellview.center.y
+        leftimageview.center.x = cellview.frame.minX
+        
+        textlabel.font = UIFont.boldSystemFont(ofSize: 15)
+        textlabel.textColor = UIColor.black
+        textlabel.frame = CGRect(x: 100, y: 37.5, width: 200, height: 15)
+        textlabel.center.y = cellview.center.y
+        
+        indicatorimageview.frame.size = CGSize(width: 50, height: 50)
+        indicatorimageview.center.y = cellview.center.y
+        indicatorimageview.center.x = cellview.frame.maxX
+        
     }
     
 }
