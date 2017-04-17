@@ -181,19 +181,46 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
             let alert = UIAlertController(title: "修改" + userinfotitle[indexPath.row], message: nil, preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (tv) in
                 // 设置textview
+                if indexPath.row == 4{
+                    tv.keyboardType = .numberPad
+                }
             })
             let confirm = UIAlertAction(title: "确定", style: .default, handler: { (_) in
                 
                 let text = alert.textFields?.first?.text
+                if text == nil || text?.characters.count == 0{
+                    SwiftyProgressHUD.showFaildHUD(text: "无效输入", duration: 1)
+                    return
+                }
                 tableView.cellForRow(at: indexPath)?.detailTextLabel?.text = text
                 
             })
+            
             let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
             alert.addAction(cancel)
             alert.addAction(confirm)
             present(alert, animated: true, completion: nil)
-            
         }
+        
+        if indexPath.section == 1{
+            switch indexPath.row {
+            case 0:
+                if viewmodel?.model?.verified == 0{
+                    navigationController?.pushViewController(EUVerifyViewController(), animated: true)
+                }else{
+                    SwiftyProgressHUD.showWarnHUD(text: "您已认证", duration: 1)
+                }
+                break
+            case 1:
+                navigationController?.pushViewController(EUChangePasswordController(), animated: true)
+                break
+            case 2:
+                break
+            default:
+                break
+            }
+        }
+
         
     }
     
@@ -208,7 +235,9 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
         
         
     }
-    
-    
+}
+
+// MARK: - 监听方法
+extension EUChangeUserInfoController{
     
 }

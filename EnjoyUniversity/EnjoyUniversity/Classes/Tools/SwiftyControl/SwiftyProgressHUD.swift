@@ -71,7 +71,7 @@ class SwiftyProgressHUD: UIView {
             initHUDViewWithLabel(imgname: "hud_error", text: hudtext ?? "错误")
             break
         case .warn:
-            initHUDViewWithLabel(imgname: "hud_warn", text: hudtext ?? "警告")
+            initHUDViewWithLabel(imgname: "hud_notice", text: hudtext ?? "警告")
         case .loading:
             let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
             indicator.frame = CGRect(x: 10, y: 10, width: 40, height: 40)

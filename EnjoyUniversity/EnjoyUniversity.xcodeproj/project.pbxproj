@@ -45,6 +45,7 @@
 		36690ACB1E9C93420027B314 /* EUActivityMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36690ACA1E9C93420027B314 /* EUActivityMemberCell.swift */; };
 		36690AD11E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */; };
 		366BA80B1EA4F9F80079132A /* EUChangeUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366BA80A1EA4F9F80079132A /* EUChangeUserInfoController.swift */; };
+		366BA80D1EA509410079132A /* EUChangePasswordController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366BA80C1EA509410079132A /* EUChangePasswordController.swift */; };
 		3671B5AA1EA1E6F0002F66AC /* EUMyCommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671B5A91EA1E6F0002F66AC /* EUMyCommunityViewController.swift */; };
 		3671B5AC1EA201B2002F66AC /* CommunityAuthority.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671B5AB1EA201B2002F66AC /* CommunityAuthority.swift */; };
 		3671B5AE1EA20299002F66AC /* CommunityAuthorityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671B5AD1EA20299002F66AC /* CommunityAuthorityListViewModel.swift */; };
@@ -141,6 +142,7 @@
 		36690ACA1E9C93420027B314 /* EUActivityMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityMemberCell.swift; sourceTree = "<group>"; };
 		36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityParticipatorsViewController.swift; sourceTree = "<group>"; };
 		366BA80A1EA4F9F80079132A /* EUChangeUserInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangeUserInfoController.swift; sourceTree = "<group>"; };
+		366BA80C1EA509410079132A /* EUChangePasswordController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangePasswordController.swift; sourceTree = "<group>"; };
 		3671B5A91EA1E6F0002F66AC /* EUMyCommunityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyCommunityViewController.swift; sourceTree = "<group>"; };
 		3671B5AB1EA201B2002F66AC /* CommunityAuthority.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityAuthority.swift; sourceTree = "<group>"; };
 		3671B5AD1EA20299002F66AC /* CommunityAuthorityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityAuthorityListViewModel.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				3680A5861E9DF36300E6013F /* EUFeedBackViewController.swift */,
 				36F1A71D1E9E28C600BEF9A5 /* EUVerifyViewController.swift */,
 				366BA80A1EA4F9F80079132A /* EUChangeUserInfoController.swift */,
+				366BA80C1EA509410079132A /* EUChangePasswordController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -869,6 +872,7 @@
 				3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */,
 				3664E1EB1E9759F60041259B /* SwiftyTextField.swift in Sources */,
 				364D6FB01E9A4CC200297EA8 /* UserInfoViewModel.swift in Sources */,
+				366BA80D1EA509410079132A /* EUChangePasswordController.swift in Sources */,
 				360FA3F01E95032F002A5FF0 /* RequestResult.swift in Sources */,
 				36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */,
 				36BDBB4A1E6452090075A3ED /* Community.swift in Sources */,
