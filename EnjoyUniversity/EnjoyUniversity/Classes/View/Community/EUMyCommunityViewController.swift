@@ -16,14 +16,17 @@ class EUMyCommunityViewController: EUBaseViewController {
     lazy var spinnerview = SwiftySpinner(frame: UIScreen.main.bounds)
     let titleButtonView = UIButton()
     
-    /// 公告
+    /// 公告栏相关
+    // 公告栏视图（包括背景）
+    let headview = UIView()
+    // 公告栏视图
+    var announceview = UIView()
+    // 公告
     let announcedetail = UILabel()
-    
-    /// 社团 LOGO
+    // 社团 LOGO
     let communitylogo = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 97, y: 0, width: 50, height: 50))
-    
-    /// 公告栏高度
-    var announceHeight:CGFloat = 0
+    // 公告栏高度
+    var announceHeight:CGFloat = 15
     
     lazy var communityauthorutylist = CommunityAuthorityListViewModel()
     
@@ -50,9 +53,8 @@ class EUMyCommunityViewController: EUBaseViewController {
     /// 社团信息的视图模型
     var viewmodel:CommunityViewModel?{
         didSet{
-            announcedetail.text = viewmodel?.communitymodel?.cmAnnouncement
             announceHeight = viewmodel?.myannouncementHeight ?? 0
-            setupTableHeadView()
+            reloadHeadView()
         }
     }
 
@@ -60,7 +62,7 @@ class EUMyCommunityViewController: EUBaseViewController {
         super.viewDidLoad()
 
         initSpinner()
-        setupTableHeadView()
+        initTableHeadView()
     }
 
     
@@ -122,19 +124,20 @@ extension EUMyCommunityViewController{
         spinnerview.delegate = self
     }
     
-    fileprivate func setupTableHeadView(){
+    /// 初始化公告视图
+    fileprivate func initTableHeadView(){
         
-        let headview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: 100 + announceHeight + 40))
+        headview.frame =  CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: 100 + announceHeight + 50)
         headview.backgroundColor = UIColor.init(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
         
-        let announceview = UIView(frame: CGRect(x: 16, y: 15, width: headview.frame.width - 32, height: headview.frame.height - 30))
+        announceview.frame = CGRect(x: 16, y: 15, width: headview.frame.width - 32, height: headview.frame.height - 30)
         announceview.backgroundColor = UIColor.white
         headview.addSubview(announceview)
         
-        let announcelabel = UILabel(frame: CGRect(x: 20, y: 30, width: 100, height: 17))
+        let announcelabel = UILabel(frame: CGRect(x: 20, y: 30, width: 100, height: 25))
         announcelabel.text = "公告"
         announcelabel.textColor = UIColor.black
-        announcelabel.font = UIFont.boldSystemFont(ofSize: 17)
+        announcelabel.font = UIFont.boldSystemFont(ofSize: 25)
         announceview.addSubview(announcelabel)
         
         communitylogo.center.y = announcelabel.center.y
@@ -143,6 +146,7 @@ extension EUMyCommunityViewController{
         announceview.addSubview(communitylogo)
         
         announcedetail.frame = CGRect(x: 20, y: 100, width: announceview.frame.width - 40, height: announceHeight)
+        announcedetail.text = "公告正在加载中..."
         announcedetail.numberOfLines = 0
         announcedetail.font = UIFont.boldSystemFont(ofSize: 15)
         announcedetail.textColor = UIColor.black
@@ -151,8 +155,22 @@ extension EUMyCommunityViewController{
         tableview.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         tableview.tableHeaderView = headview
         
-        
     }
+    
+    /// 获取数据后对公告视图重新布局
+    fileprivate func reloadHeadView(){
+        
+        headview.frame =  CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width , height: 100 + announceHeight + 50)
+        announceview.frame = CGRect(x: 16, y: 15, width: headview.frame.width - 32, height: headview.frame.height - 30)
+        announcedetail.frame = CGRect(x: 20, y: 100, width: announceview.frame.width - 40, height: announceHeight)
+        announcedetail.text = viewmodel?.communitymodel?.cmAnnouncement ?? "暂无公告"
+        communitylogo.kf.setImage(with: URL(string: viewmodel?.communityLogoUrl ?? ""),
+                                  placeholder: UIImage(named: "eu_placeholder"),
+                                  options: [.transition(.fade(1))],
+                                  progressBlock: nil,
+                                  completionHandler: nil)
+    }
+    
     
 }
 
@@ -181,6 +199,11 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
     }
     
     func swiftySpinnerDidSelectRowAt(cell: SwiftySpinnerCell, row: Int) {
+        
+        // 选择了其它社团才需要重新加载数据
+        if self.communityauthorutylist.communityauthoritylist[row].cmid == cmid{
+            return
+        }
         titleButtonView.setTitle(communityauthorutylist.communityauthoritylist[row].cmname ?? "", for: .normal)
         self.cmid = self.communityauthorutylist.communityauthoritylist[row].cmid
 
