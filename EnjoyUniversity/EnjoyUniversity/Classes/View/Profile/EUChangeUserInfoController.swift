@@ -251,11 +251,16 @@ extension EUChangeUserInfoController{
     
     @objc fileprivate func outLogin(){
         
-        EUNetworkManager.shared.userAccount.outLogin()
-        SwiftyProgressHUD.showSuccessHUD(duration: 1)
-        present(EULoginViewController(), animated: true, completion: nil)
-        
-        
+        let alert = UIAlertController(title: "您确定要退出登陆吗?", message: nil, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let confirm = UIAlertAction(title: "退出", style: .destructive) { (_) in
+            EUNetworkManager.shared.userAccount.outLogin()
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            self.present(EULoginViewController(), animated: true, completion: nil)
+        }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
     }
     
 }
