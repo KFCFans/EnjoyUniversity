@@ -368,10 +368,29 @@ extension EUCommunityInfoViewController{
         
     }
     
+    /// 收藏社团
     @objc fileprivate func collectButtonIsClicked(){
+        
+        guard let cmid = viewmodel?.communitymodel?.cmid else {
+            return
+        }
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.collectCommunity(cmid: cmid) { (netsuccess, collectsuccess) in
+            SwiftyProgressHUD.hide()
+            if !netsuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !collectsuccess{
+                SwiftyProgressHUD.showWarnHUD(text: "您已收藏", duration: 1)
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+        }
         
     }
     
+    /// 显示二维码
     @objc fileprivate func showQRCode(){
         
         let vc = EUShowQRCodeViewController()
@@ -380,6 +399,7 @@ extension EUCommunityInfoViewController{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
+    /// 参加社团
     @objc fileprivate func participateCommunity(){
         
         guard let cmid = viewmodel?.communitymodel?.cmid, let cmname = viewmodel?.communitymodel?.cmName else {

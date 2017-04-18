@@ -872,6 +872,32 @@ extension EUNetworkManager{
         }
     }
     
+    /// 收藏社团
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 完成回调
+    func collectCommunity(cmid:Int,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/collectcm"
+        
+        let parm = ["uid":userAccount.uid,"cmid":cmid] as [String : Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 500{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+        }
+        
+    }
+    
     
 
 }
