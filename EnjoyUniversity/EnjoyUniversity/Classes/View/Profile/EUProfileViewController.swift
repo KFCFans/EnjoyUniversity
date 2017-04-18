@@ -122,6 +122,7 @@ extension EUProfileViewController{
         
         let settingbtn = UIButton()
         settingbtn.setImage(UIImage(named: "profile_setting"), for: .normal)
+        settingbtn.addTarget(nil, action: #selector(didClickSystemSettings), for: .touchUpInside)
         backgroundview.addSubview(settingbtn)
         
         let moreimg = UIImageView()
@@ -458,5 +459,9 @@ extension EUProfileViewController{
         vc.viewmodel = userinfoviewmodel
         navigationController?.pushViewController(vc, animated: true)
     }
-    
+    @objc fileprivate func didClickSystemSettings(){
+        
+        navigationController?.pushViewController(EUSystemSettingsController(), animated: true)
+        
+    }
 }

@@ -12,7 +12,7 @@ class EUChangeUserInfoController: EUBaseViewController {
     
     
     let userinfotitle = ["头像","昵称","性别","姓名","学号","专业"]
-    let securitytitle = ["校友认证","修改密码","更改手机号"]
+    let securitytitle = ["校友认证","修改密码"]
     
     /// 头像视图
     let logoimgview = UIImageView(frame: CGRect(x: 280, y: 10, width: 50, height: 50))
@@ -341,5 +341,7 @@ extension EUChangeUserInfoController{
         }
         
     }
+    
+
     
 }
