@@ -758,6 +758,32 @@ extension EUNetworkManager{
         }
     }
     
+    /// 根据旧密码修改密码
+    ///
+    /// - Parameters:
+    ///   - oldpwd: 旧密码
+    ///   - newpwd: 新密码
+    ///   - completion: 完成回调
+    func changePasswordByOldPassword(oldpwd:String,newpwd:String,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/user/changepwd"
+        
+        let parm = ["uid":userAccount.uid,"newpwd":newpwd,"oldpwd":oldpwd] as [String : Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 401{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+        }
+        
+    }
+    
 
 }
 
