@@ -791,6 +791,34 @@ extension EUNetworkManager{
         }
     }
     
+    /// 更新用户信息
+    ///
+    /// - Parameters:
+    ///   - userinfo: 用户信息
+    ///   - completion: 完成回调
+    func updateUserInfo(user:UserInfo,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/info/changeinfo"
+        
+        var parm = Parameters()
+        parm["uid"] = user.uid
+        parm["avatar"] = user.avatar
+        parm["gender"] = user.gender
+        parm["nickname"] = user.nickname
+        parm["professionclass"] = user.professionclass
+        parm["name"] = user.name
+        parm["studentid"] = user.studentid
+        parm["userdescription"] = user.userdescription
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            completion(true)
+        }
+    }
+    
     
 
 }

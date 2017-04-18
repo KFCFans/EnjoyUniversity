@@ -19,7 +19,7 @@ class UserInfo: NSObject {
     /// 昵称
     var nickname:String?
     
-    /// 性别 男1女0
+    /// 性别 男0 女1 保密2
     var gender:Int = 0
     
     /// 专业班级

@@ -11,7 +11,7 @@ import UIKit
 class EUChangeUserInfoController: EUBaseViewController {
     
     
-    let userinfotitle = ["头像","昵称","性别","姓名","学号","专业","个人简介"]
+    let userinfotitle = ["头像","昵称","性别","姓名","学号","专业"]
     let securitytitle = ["校友认证","修改密码","更改手机号"]
     
     /// 头像视图
@@ -23,11 +23,17 @@ class EUChangeUserInfoController: EUBaseViewController {
     /// 头像
     var logoimg:UIImage?
     
+    /// 是否修改了头像
+    var logoIsChanged:Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navitem.title = "个人信息"
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        
+        let rightbtn = UIBarButtonItem(title: "保存", style: .done, target: nil, action: #selector(changeUserInfo))
+        navitem.rightBarButtonItem = rightbtn
         
         let buttonview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 84))
         buttonview.backgroundColor = UIColor.init(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
@@ -240,6 +246,8 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
         }
         
         logoimgview.image = resultimg
+        logoIsChanged = true
+        logoimg = resultimg
         picker.dismiss(animated: true, completion: nil)
         
         
@@ -261,6 +269,77 @@ extension EUChangeUserInfoController{
         alert.addAction(cancel)
         alert.addAction(confirm)
         present(alert, animated: true, completion: nil)
+    }
+    
+    @objc fileprivate func changeUserInfo(){
+        
+        guard let nickname = tableview.cellForRow(at: IndexPath(row: 1, section: 0))?.detailTextLabel?.text,let user = viewmodel?.model,
+              let sexstirng  = tableview.cellForRow(at: IndexPath(row: 2, section: 0))?.detailTextLabel?.text,
+              let name = tableview.cellForRow(at: IndexPath(row: 3, section: 0))?.detailTextLabel?.text,
+              let schoolnum = tableview.cellForRow(at: IndexPath(row: 4, section: 0))?.detailTextLabel?.text,
+              let professclass = tableview.cellForRow(at: IndexPath(row: 5, section: 0))?.detailTextLabel?.text else{
+                return
+        }
+        var sex = 0
+        switch sexstirng {
+        case "男":
+            sex = 0
+            break
+            case "女":
+            sex = 1
+            break
+        default:
+            sex = 2
+        }
+        
+        let userinfo = user
+        userinfo.nickname = nickname
+        userinfo.gender = sex
+        userinfo.name = name
+        userinfo.studentid = Int64(schoolnum) ?? 0
+        userinfo.professionclass = professclass
+        
+        if logoIsChanged && logoimg != nil{
+            // 上传头像
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.uploadPicture(choice: .UserLogo, uploadimg: logoimg!, completion: { (isSuccess, address) in
+                
+                if !isSuccess{
+                    SwiftyProgressHUD.hide()
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                // 取图片名，不需要后缀
+                let picname = address?.components(separatedBy: ".").first ?? ""
+                userinfo.avatar = picname
+                EUNetworkManager.shared.updateUserInfo(user: userinfo, completion: { (isSuccess) in
+                    SwiftyProgressHUD.hide()
+                    if !isSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                        return
+                    }
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    self.viewmodel?.model = userinfo
+                    self.viewmodel?.reloadData()
+                    _ = self.navigationController?.popViewController(animated: true)
+                })
+                
+            })
+            
+        }else{
+            EUNetworkManager.shared.updateUserInfo(user: userinfo, completion: { (isSuccess) in
+                SwiftyProgressHUD.hide()
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                self.viewmodel?.model = userinfo
+                self.viewmodel?.reloadData()
+                _ = self.navigationController?.popViewController(animated: true)
+            })
+        }
+        
     }
     
 }

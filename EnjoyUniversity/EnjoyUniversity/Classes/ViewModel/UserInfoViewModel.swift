@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class UserinfoViewModel:NSObject{
+class UserinfoViewModel{
     
     /// UserInfo 模型
     var model:UserInfo?
@@ -30,9 +30,15 @@ class UserinfoViewModel:NSObject{
     var verifyString = "未认证"
     
     init(model:UserInfo) {
-        
         self.model = model
+        reloadData()
+    }
+    
+    func reloadData(){
         
+        guard let model = model else {
+            return
+        }
         /// 计算性别
         switch model.gender {
         case 0:
@@ -59,6 +65,9 @@ class UserinfoViewModel:NSObject{
         default:
             verifyImg = UIImage()
         }
-        
+
     }
+    
+    
+    
 }
