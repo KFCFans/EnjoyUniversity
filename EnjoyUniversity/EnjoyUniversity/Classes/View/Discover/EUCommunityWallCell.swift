@@ -16,7 +16,7 @@ class EUCommunityWallCell: UITableViewCell {
         didSet{
             communityName.text = communityModel?.communitymodel?.cmName
             communityIntro.text = communityModel?.communitymodel?.cmDetail
-            let logourl = URL(string: communityModel?.communitymodel?.cmLogo ?? "")
+            let logourl = URL(string: communityModel?.communityLogoUrl ?? "")
             let bgiurl = URL(string: communityModel?.communitymodel?.cmBackground ?? "")
             communityIcon.kf.setImage(with: logourl,
                                       placeholder: UIImage(named: "Facebook_25"),
@@ -49,15 +49,7 @@ class EUCommunityWallCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        frame = CGRect(x: 0, y: 0, width: 400, height: 360)
-        layoutIfNeeded()
         
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
 
 }

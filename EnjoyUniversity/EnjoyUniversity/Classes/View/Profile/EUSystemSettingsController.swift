@@ -16,6 +16,8 @@ class EUSystemSettingsController: EUBaseViewController {
         super.viewDidLoad()
         navitem.title = "系统设置"
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        
+        tableview.tableFooterView = UIView()
 
         
     }

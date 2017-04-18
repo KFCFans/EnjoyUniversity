@@ -22,7 +22,13 @@ class EUCommunityInfoViewController: UIViewController {
             typeLabel.text = viewmodel?.communityAttr
             schoolLabel.text = viewmodel?.communitySchool
             //FIXME: 用此 uid 加载社长信息 & 缺少已加入的小伙伴
-            bossLabel.text = "现任社长:\(viewmodel?.communitymodel?.cmBoss ?? 15061883391)"
+            bossLabel.text = "现任社长:\(viewmodel?.communitymodel?.cmBoss ?? 0)"
+            
+            logoImg.kf.setImage(with: URL(string: viewmodel?.communityLogoUrl ?? ""),
+                                placeholder: UIImage(named: "eu_placeholder"),
+                                options: [.transition(.fade(1))],
+                                progressBlock: nil,
+                                completionHandler: nil)
             
         }
         
@@ -128,14 +134,12 @@ extension EUCommunityInfoViewController{
         
         // Logo
         logoImg.frame = CGRect(x: (UIScreen.main.bounds.width - 50) / 2, y: 50, width: 50, height: 50)
-        logoImg.image = UIImage(named: "logo")
         backgroudImage.addSubview(logoImg)
         
         // 标题
         titleLabel.frame = CGRect(x: 0, y: 110, width: UIScreen.main.bounds.width, height: 16)
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        titleLabel.text = "江南大学 iOS 开发俱乐部"
         titleLabel.textColor = UIColor.white
         
         

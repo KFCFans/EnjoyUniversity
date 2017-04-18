@@ -35,6 +35,9 @@ class CommunityViewModel{
     /// Logo 的 URL
     var communityLogoUrl:String = ""
     
+    /// 背景的 URL
+    var communityBackgroundURL:String = ""
+    
     init(model:Community) {
      
         communitymodel = model
@@ -51,8 +54,11 @@ class CommunityViewModel{
         // 计算简介高度
         detailHeight = calculateLabelHeight(text: model.cmDetail ?? "", width: UIScreen.main.bounds.width - 30, font: 14)
         
-        // 拼接url
-        communityLogoUrl = PICTURESERVERADDRESS + "/community/logo/" + (model.cmLogo ?? "") + ".jpg"
+        // 拼接 LOGO URL
+        communityLogoUrl = PICTURESERVERADDRESS + "/community/logo/" + (model.cmLogo ?? "") + ".png"
+        
+        // 拼接 背景 URL
+        communityBackgroundURL = PICTURESERVERADDRESS + "/community/background/" + (model.cmBackground ?? "") + ".jpg"
         
         // 社团属性
         switch model.cmAttr {
