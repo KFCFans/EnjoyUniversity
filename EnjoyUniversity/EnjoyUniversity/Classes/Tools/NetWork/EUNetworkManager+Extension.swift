@@ -843,6 +843,35 @@ extension EUNetworkManager{
         }
     }
     
+    /// 申请加入社团
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 完成回调
+    func participateCommunity(cmid:Int,reason:String?,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/participatecm"
+        
+        var parm = ["uid":userAccount.uid,"cmid":cmid] as [String : Any]
+        if let reason = reason{
+            parm["reason"] = reason
+        }
+        
+        tokenRequest(urlString: url, parameters: parm) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            // 已参加
+            if status == 500{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+        }
+    }
+    
     
 
 }

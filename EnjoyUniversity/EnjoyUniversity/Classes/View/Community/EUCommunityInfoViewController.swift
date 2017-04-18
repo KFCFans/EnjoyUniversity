@@ -337,6 +337,7 @@ extension EUCommunityInfoViewController{
         let changeButton = UIButton(frame: CGRect(x: 12, y: UIScreen.main.bounds.height - 50, width: UIScreen.main.bounds.width - 24, height: 44))
         changeButton.backgroundColor = UIColor.orange
         changeButton.setTitle("申请加入", for: .normal)
+        changeButton.addTarget(nil, action: #selector(participateCommunity), for: .touchUpInside)
         view.addSubview(changeButton)
         
     }
@@ -377,6 +378,36 @@ extension EUCommunityInfoViewController{
         vc.activityName = viewmodel?.communitymodel?.cmName
         vc.qrString = viewmodel?.qrcodeString
         self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc fileprivate func participateCommunity(){
+        
+        guard let cmid = viewmodel?.communitymodel?.cmid,guard let cmname = viewmodel?.communitymodel?.cmName else {
+            return
+        }
+        
+        let alert = SwiftyAlertController(title: "申请理由", message: "\n\n\n\n", preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        let confirm = UIAlertAction(title: "确定", style: .default) { (_) in
+            
+            let participatereason = alert.textview.text
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.participateCommunity(cmid: cmid, reason: participatereason, completion: { (isSuccess, joinedSuccess) in
+                SwiftyProgressHUD.hide()
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                if !joinedSuccess{
+                    SwiftyProgressHUD.showWarnHUD(text: "您已申请", duration: 1)
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            })
+        }
+        alert.addAction(cancel)
+        alert.addAction(confirm)
+        present(alert, animated: true, completion: nil)
         
     }
     
