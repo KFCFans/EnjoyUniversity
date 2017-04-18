@@ -789,8 +789,8 @@ extension EUNetworkManager{
             let userdict = ["uid":self.userAccount.uid,"accesstoken":token] as [String : Any]
             self.userAccount.saveToUserDefaults(dict: userdict)
         }
-        
     }
+    
     
 
 }

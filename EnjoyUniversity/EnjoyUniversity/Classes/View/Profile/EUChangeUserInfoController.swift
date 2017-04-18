@@ -28,6 +28,15 @@ class EUChangeUserInfoController: EUBaseViewController {
         
         navitem.title = "个人信息"
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
+        
+        let buttonview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 84))
+        buttonview.backgroundColor = UIColor.init(red: 247/255, green: 247/255, blue: 247/255, alpha: 1)
+        tableview.tableFooterView = buttonview
+        let outbtn = UIButton(frame: CGRect(x: 10, y: 20, width: buttonview.frame.width - 20, height: 44))
+        outbtn.backgroundColor = UIColor.init(red: 1, green: 119/255, blue: 0, alpha: 1)
+        outbtn.setTitle("退出登陆", for: .normal)
+        outbtn.addTarget(nil, action: #selector(outLogin), for: .touchUpInside)
+        buttonview.addSubview(outbtn)
     }
     
 }
@@ -239,5 +248,14 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
 
 // MARK: - 监听方法
 extension EUChangeUserInfoController{
+    
+    @objc fileprivate func outLogin(){
+        
+        EUNetworkManager.shared.userAccount.outLogin()
+        SwiftyProgressHUD.showSuccessHUD(duration: 1)
+        present(EULoginViewController(), animated: true, completion: nil)
+        
+        
+    }
     
 }

@@ -49,6 +49,14 @@ class EUserAccount: NSObject {
         
     }
     
+    /// 退出登陆时自动销毁
+    func outLogin(){
+        uid = 0
+        accesstoken = nil
+        UserDefaults.standard.removeObject(forKey: "accesstoken")
+        UserDefaults.standard.removeObject(forKey: "uid")
+    }
+    
 }
 
 
