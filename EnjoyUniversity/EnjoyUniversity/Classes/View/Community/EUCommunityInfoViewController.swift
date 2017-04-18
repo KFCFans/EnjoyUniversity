@@ -382,7 +382,7 @@ extension EUCommunityInfoViewController{
     
     @objc fileprivate func participateCommunity(){
         
-        guard let cmid = viewmodel?.communitymodel?.cmid,guard let cmname = viewmodel?.communitymodel?.cmName else {
+        guard let cmid = viewmodel?.communitymodel?.cmid, let cmname = viewmodel?.communitymodel?.cmName else {
             return
         }
         
@@ -392,7 +392,7 @@ extension EUCommunityInfoViewController{
             
             let participatereason = alert.textview.text
             SwiftyProgressHUD.showLoadingHUD()
-            EUNetworkManager.shared.participateCommunity(cmid: cmid, reason: participatereason, completion: { (isSuccess, joinedSuccess) in
+            EUNetworkManager.shared.participateCommunity(cmid: cmid, reason: participatereason, cmname: cmname,completion: { (isSuccess, joinedSuccess) in
                 SwiftyProgressHUD.hide()
                 if !isSuccess{
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)

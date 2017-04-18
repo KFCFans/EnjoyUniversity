@@ -848,16 +848,16 @@ extension EUNetworkManager{
     /// - Parameters:
     ///   - cmid: 社团 ID
     ///   - completion: 完成回调
-    func participateCommunity(cmid:Int,reason:String?,completion:@escaping (Bool,Bool)->()){
+    func participateCommunity(cmid:Int,reason:String?,cmname:String,completion:@escaping (Bool,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/community/participatecm"
         
-        var parm = ["uid":userAccount.uid,"cmid":cmid] as [String : Any]
-        if let reason = reason{
+        var parm = ["uid":userAccount.uid,"cmid":cmid,"cmname":cmname] as [String : Any]
+        if  reason != nil && reason!.characters.count > 0{
             parm["reason"] = reason
         }
         
-        tokenRequest(urlString: url, parameters: parm) { (_, isSuccess, status) in
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
             
             if !isSuccess{
                 completion(false,false)
