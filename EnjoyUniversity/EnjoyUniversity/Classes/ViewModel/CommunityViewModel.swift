@@ -38,6 +38,9 @@ class CommunityViewModel{
     /// 背景的 URL
     var communityBackgroundURL:String = ""
     
+    /// 二维码
+    var qrcodeString:String = ""
+    
     init(model:Community) {
      
         communitymodel = model
@@ -59,6 +62,9 @@ class CommunityViewModel{
         
         // 拼接 背景 URL
         communityBackgroundURL = PICTURESERVERADDRESS + "/community/background/" + (model.cmBackground ?? "") + ".jpg"
+        
+        // 拼接二维码
+        qrcodeString = QRCODEPREFIX + "cmid=\(model.cmid)"
         
         // 社团属性
         switch model.cmAttr {

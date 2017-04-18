@@ -10,6 +10,7 @@ import UIKit
 
 class EUCommunityInfoViewController: UIViewController {
     
+    lazy var listviewmodel = CommunityAuthorityListViewModel()
 
     var viewmodel:CommunityViewModel?{
         
@@ -87,6 +88,7 @@ class EUCommunityInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        loadData()
         setupCommonUI()
         setupNavUI()
         setupAnnouncementUI()
@@ -99,6 +101,24 @@ class EUCommunityInfoViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func loadData(){
+        
+        guard let cmid = viewmodel?.communitymodel?.cmid else {
+            return
+        }
+        
+        listviewmodel.loadCommunityMember(cmid: cmid) { (isSuccess) in
+            
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            self.numLabel.text = "小伙伴们:有\(self.listviewmodel.communitymemberlist.count)个小伙伴哦"
+            
+        }
+        
     }
     
 
@@ -245,7 +265,6 @@ extension EUCommunityInfoViewController{
         avenrollimg.image = UIImage(named: "cm_participate")
         numview.addSubview(avenrollimg)
         
-        numLabel.text = "小伙伴们:有10个小伙伴哦"
         numLabel.textColor = UIColor.darkGray
         numLabel.frame = CGRect(x: 40, y: 15, width: 200, height: 14)
         numLabel.font = UIFont.boldSystemFont(ofSize: 14)
@@ -353,6 +372,11 @@ extension EUCommunityInfoViewController{
     }
     
     @objc fileprivate func showQRCode(){
+        
+        let vc = EUShowQRCodeViewController()
+        vc.activityName = viewmodel?.communitymodel?.cmName
+        vc.qrString = viewmodel?.qrcodeString
+        self.navigationController?.pushViewController(vc, animated: true)
         
     }
     
