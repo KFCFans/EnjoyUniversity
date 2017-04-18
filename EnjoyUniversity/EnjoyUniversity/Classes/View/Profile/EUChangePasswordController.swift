@@ -95,7 +95,7 @@ class EUChangePasswordController: EUBaseViewController {
                 return
             }
             SwiftyProgressHUD.showSuccessHUD(duration: 1)
-            _ = navigationController?.popViewController(animated: true)
+            _ = self.navigationController?.popViewController(animated: true)
         }
         
     }

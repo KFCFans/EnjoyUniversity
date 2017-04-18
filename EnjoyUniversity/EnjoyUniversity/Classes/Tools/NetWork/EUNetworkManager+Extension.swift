@@ -770,7 +770,7 @@ extension EUNetworkManager{
         
         let parm = ["uid":userAccount.uid,"newpwd":newpwd,"oldpwd":oldpwd] as [String : Any]
         
-        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (token, isSuccess, status) in
             if !isSuccess{
                 completion(false,false)
                 return
@@ -779,7 +779,15 @@ extension EUNetworkManager{
                 completion(true,false)
                 return
             }
+            
+            guard let token = token as? String else{
+                completion(true,false)
+                return
+            }
             completion(true,true)
+            self.userAccount.accesstoken = token
+            let userdict = ["uid":self.userAccount.uid,"accesstoken":token] as [String : Any]
+            self.userAccount.saveToUserDefaults(dict: userdict)
         }
         
     }
