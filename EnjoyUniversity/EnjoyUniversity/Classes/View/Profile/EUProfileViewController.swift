@@ -171,6 +171,7 @@ extension EUProfileViewController{
                                                   textcolor: UIColor.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1),
                                                   imgwidth: 35,
                                                   shadowimgwidth: 40)
+        activitycollectBtn.addTarget(nil, action: #selector(showMyActivityCollections), for: .touchUpInside)
         buttonview.addSubview(activitycollectBtn)
         
         let communitycollectBtn = EUActivityButton(frame: CGRect(x: UIScreen.main.bounds.width/4 * 3, y: 6, width: UIScreen.main.bounds.width/4, height: 75),
@@ -463,5 +464,9 @@ extension EUProfileViewController{
         
         navigationController?.pushViewController(EUSystemSettingsController(), animated: true)
         
+    }
+    
+    @objc fileprivate func showMyActivityCollections(){
+        navigationController?.pushViewController(EUActivityCollectionController(), animated: true)
     }
 }

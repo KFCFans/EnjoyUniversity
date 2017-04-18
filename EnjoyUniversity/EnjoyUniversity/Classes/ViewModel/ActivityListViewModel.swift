@@ -21,6 +21,9 @@ class ActivityListViewModel{
     // 用户创建的所有活动
     var createdlist = [ActivityViewModel]()
     
+    // 用户收藏的所有活动
+    var collectedlist = [ActivityViewModel]()
+    
     /// 加载活动数据
     ///
     /// - Parameters:
@@ -102,7 +105,7 @@ class ActivityListViewModel{
             
             // 判断是否需要刷新
             if modelarray.count == 0{
-                completion(true)
+                completion(false)
                 return
             }
             
@@ -152,7 +155,7 @@ class ActivityListViewModel{
             
             // 判断是否需要刷新
             if modelarray.count == 0{
-                completion(true)
+                completion(false)
                 return
             }
             
@@ -181,6 +184,49 @@ class ActivityListViewModel{
             
         }
         
+    }
+    
+    /// 加载我收藏的活动
+    ///
+    /// - Parameter completion: 完成回调 网络请求是否成功,是否有数据
+    func loadMyCollectedActivity(completion:@escaping (Bool,Bool)->()){
+        
+        EUNetworkManager.shared.getMyActivityCollection { (isSuccess, array) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            guard let array = array,let modelarray = NSArray.yy_modelArray(with: Activity.self, json: array) as? [Activity] else{
+                completion(true, false)
+                return
+            }
+            if modelarray.count == 0{
+                completion(true,false)
+                return
+            }
+            
+            // 接受数据
+            var tempvmlist = [ActivityViewModel]()
+            
+            for model in modelarray{
+                tempvmlist.append(ActivityViewModel(model: model))
+            }
+            
+            tempvmlist = tempvmlist.sorted(by: { (x:ActivityViewModel, y:ActivityViewModel) -> Bool in
+                
+                return Int(x.activitymodel.avStarttime ?? "0") ?? 0 < Int(y.activitymodel.avStarttime ?? "0") ?? 0
+            })
+            // 将已结束的活动放倒最末端
+            self.collectedlist = tempvmlist
+            for (index,viewmodel) in tempvmlist.enumerated(){
+                if viewmodel.isFinished{
+                    self.collectedlist.remove(at: index)
+                    self.collectedlist.append(viewmodel)
+                }
+            }
+            completion(true,true)
+        }
         
     }
     

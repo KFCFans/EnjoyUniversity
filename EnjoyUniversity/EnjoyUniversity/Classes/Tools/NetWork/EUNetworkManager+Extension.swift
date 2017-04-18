@@ -377,6 +377,29 @@ extension EUNetworkManager{
         }
     }
     
+    /// 获取我收藏的活动
+    ///
+    /// - Parameter completion: 完成回调
+    func getMyActivityCollection(completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/collectedav"
+        
+        let parm = ["uid":userAccount.uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+    }
+    
     
 }
 
@@ -889,6 +912,32 @@ extension EUNetworkManager{
                 completion(false,false)
                 return
             }
+            if status == 500{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+        }
+    }
+    
+    /// 取消收藏活动
+    ///
+    /// - Parameters:
+    ///   - avid: 活动ID
+    ///   - completion: 完成回调
+    func discollectActivity(avid:Int,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/discollectav"
+        
+        let parm = ["uid":userAccount.uid,"avid":avid] as [String : Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            
             if status == 500{
                 completion(true,false)
                 return

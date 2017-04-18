@@ -17,6 +17,7 @@
 		3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */; };
 		3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */; };
 		36247B5C1EA640FF006F29F1 /* SwiftyAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36247B5B1EA640FF006F29F1 /* SwiftyAlertController.swift */; };
+		36247B5E1EA66643006F29F1 /* EUActivityCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36247B5D1EA66643006F29F1 /* EUActivityCollectionController.swift */; };
 		362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665701E8FE118005ED501 /* EUActivityViewController.swift */; };
 		362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665721E8FE162005ED501 /* EUActivityCell.swift */; };
 		362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362665731E8FE162005ED501 /* EUActivityCell.xib */; };
@@ -116,6 +117,7 @@
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityInfoViewController.swift; sourceTree = "<group>"; };
 		36247B5B1EA640FF006F29F1 /* SwiftyAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyAlertController.swift; sourceTree = "<group>"; };
+		36247B5D1EA66643006F29F1 /* EUActivityCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCollectionController.swift; sourceTree = "<group>"; };
 		362665701E8FE118005ED501 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
 		362665721E8FE162005ED501 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
 		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 				366BA80A1EA4F9F80079132A /* EUChangeUserInfoController.swift */,
 				366BA80C1EA509410079132A /* EUChangePasswordController.swift */,
 				3673A5EB1EA5C8D6003C29C3 /* EUSystemSettingsController.swift */,
+				36247B5D1EA66643006F29F1 /* EUActivityCollectionController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -893,6 +896,7 @@
 				36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */,
 				36BDBB391E64135A0075A3ED /* EUMainViewController.swift in Sources */,
 				362665711E8FE118005ED501 /* EUActivityViewController.swift in Sources */,
+				36247B5E1EA66643006F29F1 /* EUActivityCollectionController.swift in Sources */,
 				363908AC1E9F6AC800E67958 /* EURegisterInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

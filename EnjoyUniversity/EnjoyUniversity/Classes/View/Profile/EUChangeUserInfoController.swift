@@ -15,7 +15,7 @@ class EUChangeUserInfoController: EUBaseViewController {
     let securitytitle = ["校友认证","修改密码"]
     
     /// 头像视图
-    let logoimgview = UIImageView(frame: CGRect(x: 280, y: 10, width: 50, height: 50))
+    let logoimgview = UIImageView(frame: CGRect(x: UIScreen.main.bounds.width - 95, y: 10, width: 50, height: 50))
     
     /// 视图模型数据源
     var viewmodel:UserinfoViewModel?
