@@ -61,6 +61,7 @@ class EUMyCommunityViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         tableview.contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         tableview.separatorStyle = .none
         tableview.backgroundColor = UIColor.init(red: 237/255, green: 237/255, blue: 237/255, alpha: 1)
