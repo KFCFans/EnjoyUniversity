@@ -15,7 +15,7 @@ class EUMyCommunityViewController: EUBaseViewController {
     
     /// 下拉选择框相关
     lazy var spinnerview = SwiftySpinner(frame: UIScreen.main.bounds)
-    let titleButtonView = UIButton()
+    let titleButtonView = SwiftyTitleButton()
     
     /// 公告栏相关
     // 公告栏视图

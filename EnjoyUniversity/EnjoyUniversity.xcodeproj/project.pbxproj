@@ -29,6 +29,8 @@
 		364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */; };
 		36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */; };
 		364D6FB01E9A4CC200297EA8 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */; };
+		364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */; };
+		364E7D271EA7A24A00BC2756 /* SwiftyTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */; };
 		3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
 		36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36568C8D1E99CD5000BA9A71 /* UserInfo.swift */; };
@@ -130,6 +132,8 @@
 		364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUShowQRCodeViewController.swift; sourceTree = "<group>"; };
 		36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterViewController.swift; sourceTree = "<group>"; };
 		364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
+		364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyDropdownMenu.swift; sourceTree = "<group>"; };
+		364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTitleButton.swift; sourceTree = "<group>"; };
 		3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
 		36568C8D1E99CD5000BA9A71 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -268,6 +272,8 @@
 				363AC75B1E936167008350CC /* SwiftyTimePicker.swift */,
 				3671B5AF1EA213E1002F66AC /* SwiftySpinner.swift */,
 				36247B5B1EA640FF006F29F1 /* SwiftyAlertController.swift */,
+				364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */,
+				364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */,
 			);
 			path = SwiftyControl;
 			sourceTree = "<group>";
@@ -838,6 +844,7 @@
 				3680A5871E9DF36300E6013F /* EUFeedBackViewController.swift in Sources */,
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
+				364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */,
 				364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */,
 				364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */,
 				36247B5C1EA640FF006F29F1 /* SwiftyAlertController.swift in Sources */,
@@ -893,6 +900,7 @@
 				36BDBB4A1E6452090075A3ED /* Community.swift in Sources */,
 				36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */,
 				36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */,
+				364E7D271EA7A24A00BC2756 /* SwiftyTitleButton.swift in Sources */,
 				36839BFC1E8D457800612729 /* Activity.swift in Sources */,
 				360FA3E91E94DB75002A5FF0 /* SwiftyPhotoClipper.swift in Sources */,
 				363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */,
