@@ -11,9 +11,19 @@ import YYModel
 
 class CommunityListViewModel{
     
+    /// 我参加的活动视图模型列表
     lazy var modelList = [CommunityViewModel]()
     
+    /// 我收藏的活动视图模型列表
+    lazy var collectedlist = [CommunityViewModel]()
     
+    
+    
+    /// 加载社团列表
+    ///
+    /// - Parameters:
+    ///   - isPullUp: 是否为上拉加载更多
+    ///   - completion: 完成回调
     func loadCommunityList(isPullUp:Bool,completion:@escaping (Bool,Bool)->()){
         
         var page = 1
@@ -55,8 +65,30 @@ class CommunityListViewModel{
             completion(true,true)
         }
         
+    }
+    
+    /// 加载我收藏的社团列表
+    ///
+    /// - Parameter completion: 完成回调
+    func loadMyCommunityCollection(completion:@escaping (Bool,Bool)->()){
         
-        
+        EUNetworkManager.shared.getMyCommunityCollection { (isSuccess, array) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            guard let array = array,let modelarray = NSArray.yy_modelArray(with: Community.self, json: array) as? [Community] else{
+                completion(true,false)
+                return
+            }
+            
+            for model in modelarray{
+                self.collectedlist.append(CommunityViewModel(model: model))
+            }
+            completion(true,true)
+        }
+    
     }
     
     

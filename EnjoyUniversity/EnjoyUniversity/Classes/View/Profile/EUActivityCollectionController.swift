@@ -58,7 +58,14 @@ extension EUActivityCollectionController{
         return cell
     }
     
-    // 滑动删除
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
+        
+        let vc = EUActivityViewController()
+        vc.viewmodel = viewmodellist.collectedlist[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
     /// 左滑删除
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
         return .delete

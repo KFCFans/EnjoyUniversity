@@ -400,6 +400,29 @@ extension EUNetworkManager{
         }
     }
     
+    /// 获取我收藏的社团
+    ///
+    /// - Parameter completion: 完成回调
+    func getMyCommunityCollection(completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/collectedcm"
+        
+        let parm = ["uid":userAccount.uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+        
+    }
+    
     
 }
 
