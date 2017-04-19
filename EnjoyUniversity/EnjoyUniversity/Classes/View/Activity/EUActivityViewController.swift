@@ -307,7 +307,17 @@ extension EUActivityViewController{
         }
         
         
+        // activityStatus 0默认 1我参加的 2我创建的
         if activityStatus == 0 {
+            
+            let nowdate = Date().timeIntervalSince1970 * 1000
+            let enroll = Double(viewmodel?.activitymodel.avEnrolldeadline ?? "") ?? 0
+            
+            // 活动已经开始签到或者报名截止
+            if registerCode > 1000 || nowdate < enroll{
+                SwiftyProgressHUD.showFaildHUD(text: "报名已截止", duration: 1)
+                return
+            }
             
             // 参加活动
             SwiftyProgressHUD.showLoadingHUD()
