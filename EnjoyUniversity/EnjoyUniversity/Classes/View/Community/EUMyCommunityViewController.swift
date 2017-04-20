@@ -250,7 +250,12 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            navigationController?.pushViewController(EUCommunityContactController(), animated: true)
+            guard let cmid = viewmodel?.communitymodel?.cmid else {
+                return
+            }
+            let vc = EUCommunityContactController()
+            vc.cmid = cmid
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

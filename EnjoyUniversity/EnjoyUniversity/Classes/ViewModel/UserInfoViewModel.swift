@@ -29,8 +29,23 @@ class UserinfoViewModel{
     /// 认证文字
     var verifyString = "未认证"
     
+    /// 职务(只有社团通讯录用到)
+    var positionString:String?
+    
     init(model:UserInfo) {
         self.model = model
+        
+        switch model.position {
+        case 1:
+            positionString = "社员"
+        case 2:
+            positionString = "管理员"
+        case 3:
+            positionString = "社长"
+        default:
+            positionString = nil
+        }
+        
         reloadData()
     }
     

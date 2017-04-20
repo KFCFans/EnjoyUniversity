@@ -43,7 +43,7 @@ class UserInfo: NSObject {
     /// 入学年份
     var grade:Int = 0
     
-    /// 职位（不属于这个表，将就着用）
+    /// 职位（不属于这个表，将就着用） -3表示提交申请，－2表示进行笔试，－1表示进行面试，1表示成员，2表示管理员 3表示社长
     var position:Int = -4
     
     init(uid:Int64,avatar:String?,nickname:String,gender:Int,professionclass:String,studentid:Int64,name:String,userdescription:String?) {

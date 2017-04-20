@@ -423,6 +423,32 @@ extension EUNetworkManager{
         
     }
     
+    /// 获取社团通讯录
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 完成回调
+    func getCommunityContactsByID(cmid:Int,completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/contacts"
+        
+        let parm = ["cmid":cmid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+        
+    }
+    
     
 }
 

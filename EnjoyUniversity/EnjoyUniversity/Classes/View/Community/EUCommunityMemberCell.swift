@@ -23,6 +23,7 @@ class EUCommunityMemberCell: UITableViewCell {
     var viewmodel:UserinfoViewModel?{
         didSet{
             nameLabel.text = viewmodel?.model?.name
+            positionLabel.text = viewmodel?.positionString
             
         }
     }

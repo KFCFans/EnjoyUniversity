@@ -10,6 +10,12 @@ import UIKit
 
 class EUCommunityContactController: EUBaseViewController {
     
+    
+    lazy var viewmodellist = UserInfoListViewModel()
+    
+    /// 社团 ID，从上层传入
+    var cmid:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -25,6 +31,21 @@ class EUCommunityContactController: EUBaseViewController {
         view.insertSubview(dropdownmenuview, belowSubview: navbar)
     }
     
+    /// 加载社团通讯录
+    override func loadData() {
+        viewmodellist.loadCommunityContactsInfoList(cmid: cmid) { (isSuccess, hasData) in
+            self.refreshControl?.endRefreshing()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !hasData{
+                // 显示空空如也
+                return
+            }
+            self.tableview.reloadData()
+        }
+    }
 
 }
 
@@ -36,11 +57,12 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewmodellist.communityContactsList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = EUCommunityMemberCell()
+        cell.viewmodel = viewmodellist.communityContactsList[indexPath.row]
         return cell
     }
     
