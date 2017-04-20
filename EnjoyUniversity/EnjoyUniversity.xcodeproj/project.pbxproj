@@ -31,6 +31,8 @@
 		364D6FB01E9A4CC200297EA8 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */; };
 		364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */; };
 		364E7D271EA7A24A00BC2756 /* SwiftyTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */; };
+		364E7D291EA7A37100BC2756 /* EUCommunityContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D281EA7A37100BC2756 /* EUCommunityContactController.swift */; };
+		364E7D2B1EA7A81400BC2756 /* EUCommunityMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D2A1EA7A81400BC2756 /* EUCommunityMemberCell.swift */; };
 		3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
 		36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36568C8D1E99CD5000BA9A71 /* UserInfo.swift */; };
@@ -134,6 +136,8 @@
 		364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyDropdownMenu.swift; sourceTree = "<group>"; };
 		364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTitleButton.swift; sourceTree = "<group>"; };
+		364E7D281EA7A37100BC2756 /* EUCommunityContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityContactController.swift; sourceTree = "<group>"; };
+		364E7D2A1EA7A81400BC2756 /* EUCommunityMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityMemberCell.swift; sourceTree = "<group>"; };
 		3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
 		36568C8D1E99CD5000BA9A71 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -292,6 +296,8 @@
 			children = (
 				3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */,
 				3671B5A91EA1E6F0002F66AC /* EUMyCommunityViewController.swift */,
+				364E7D281EA7A37100BC2756 /* EUCommunityContactController.swift */,
+				364E7D2A1EA7A81400BC2756 /* EUCommunityMemberCell.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -845,6 +851,7 @@
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
 				364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */,
+				364E7D291EA7A37100BC2756 /* EUCommunityContactController.swift in Sources */,
 				364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */,
 				364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */,
 				36247B5C1EA640FF006F29F1 /* SwiftyAlertController.swift in Sources */,
@@ -862,6 +869,7 @@
 				3671B5B01EA213E1002F66AC /* SwiftySpinner.swift in Sources */,
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
 				3671B5AC1EA201B2002F66AC /* CommunityAuthority.swift in Sources */,
+				364E7D2B1EA7A81400BC2756 /* EUCommunityMemberCell.swift in Sources */,
 				3662E64C1E9B60C3000955DA /* UserInfoListViewModel.swift in Sources */,
 				36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */,
 				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,

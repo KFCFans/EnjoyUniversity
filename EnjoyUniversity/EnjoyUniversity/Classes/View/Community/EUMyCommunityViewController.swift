@@ -246,5 +246,14 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 95
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            navigationController?.pushViewController(EUCommunityContactController(), animated: true)
+        default:
+            break
+        }
+    }
 }
 

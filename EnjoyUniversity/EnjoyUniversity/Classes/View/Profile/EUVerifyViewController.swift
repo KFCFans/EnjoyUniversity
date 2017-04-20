@@ -78,6 +78,9 @@ class EUVerifyViewController: EUBaseViewController,UIImagePickerControllerDelega
             return
         }
         
+        //FIXME: - 上传
+        print(verifyImg.description + name + schoolid.description)
+        
     }
     
     /// 选取图片

@@ -40,6 +40,12 @@ class UserInfo: NSObject {
     /// 用户验证信息
     var verified:Int = 0
     
+    /// 入学年份
+    var grade:Int = 0
+    
+    /// 职位（不属于这个表，将就着用）
+    var position:Int = -4
+    
     init(uid:Int64,avatar:String?,nickname:String,gender:Int,professionclass:String,studentid:Int64,name:String,userdescription:String?) {
         
         self.uid = uid
