@@ -67,10 +67,12 @@ extension EUCommunityMemberCell{
         
         let phoneBtn = UIButton()
         phoneBtn.setImage(UIImage(named: "cm_phone"), for: .normal)
+        phoneBtn.addTarget(self, action: #selector(startPhoneCall), for: .touchUpInside)
         addSubview(phoneBtn)
         
         let smsBtn = UIButton()
         smsBtn.setImage(UIImage(named: "cm_sms"), for: .normal)
+        smsBtn.addTarget(self, action: #selector(startSms), for: .touchUpInside)
         addSubview(smsBtn)
         
         logoImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -227,6 +229,30 @@ extension EUCommunityMemberCell{
                                            attribute: .right,
                                            multiplier: 1.0,
                                            constant: -15)])
+    }
+    
+}
+
+// MARK: - 监听方法
+extension EUCommunityMemberCell{
+    
+    /// 打电话
+    @objc fileprivate func startPhoneCall(){
+        
+        guard let phone = viewmodel?.model?.uid else {
+            return
+        }
+        UIApplication.shared.open(URL(string: "telprompt://\(phone)")!, options: [:], completionHandler: nil)
+        
+    }
+    
+    /// 发短信
+    @objc fileprivate func startSms(){
+        
+        guard let phone = viewmodel?.model?.uid else {
+            return
+        }
+        UIApplication.shared.open(URL(string: "sms://\(phone)")!, options: [:], completionHandler: nil)
     }
     
 }

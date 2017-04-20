@@ -52,6 +52,7 @@ class SwiftyDropdownMenu: UIView {
         shadowview.frame = CGRect(origin: orgin, size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         shadowview.backgroundColor = UIColor.black
         shadowview.alpha = 0
+        frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: dropdownmenu.frame.maxY)
         setupUI()
     }
     
@@ -123,10 +124,13 @@ extension SwiftyDropdownMenu{
         
         menuIsOnView = false
         buttonarray[datasourceIndex].isSelected = false
-        UIView.animate(withDuration: 0.25) { 
+        UIView.animate(withDuration: 0.25, animations: { 
             self.tableview.frame.origin = CGPoint(x: 0, y: -self.tableview.frame.height)
             self.shadowview.alpha = 0
+        }) { (_) in
+            self.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: self.dropdownmenu.frame.maxY)
         }
+        
         
     }
     
@@ -145,6 +149,7 @@ extension SwiftyDropdownMenu{
         
         menuIsOnView = true
         datasourceIndex = btn.tag
+        frame = UIScreen.main.bounds
         let count = CGFloat(buttondatasource[datasourceIndex].count)
         tableview.frame = CGRect(x: 0, y: -count*CGFloat(44), width: UIScreen.main.bounds.width, height: count*CGFloat(44))
         tableview.reloadData()

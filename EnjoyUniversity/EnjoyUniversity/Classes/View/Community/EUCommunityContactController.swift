@@ -46,6 +46,7 @@ class EUCommunityContactController: EUBaseViewController {
         let dropdownmenuview = SwiftyDropdownMenu(orgin: CGPoint(x: 0, y: 64), array: dropdownmenu)
         dropdownmenuview.delegate = self
         view.insertSubview(dropdownmenuview, belowSubview: navbar)
+        
     }
     
     /// 加载社团通讯录
