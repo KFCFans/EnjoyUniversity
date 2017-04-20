@@ -14,7 +14,7 @@ class EUCommunityContactController: EUBaseViewController {
     lazy var viewmodellist = UserInfoListViewModel()
     
     /// 用于存放筛选后的数据
-    var tempviewmodellist:[UserinfoViewModel]?
+    var tempviewmodellist = [UserinfoViewModel]()
     
     /// 社团 ID，从上层传入
     var cmid:Int = 0
@@ -63,12 +63,12 @@ class EUCommunityContactController: EUBaseViewController {
 extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tempviewmodellist?.count ?? 0
+        return tempviewmodellist.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = EUCommunityMemberCell()
-        cell.viewmodel = tempviewmodellist?[indexPath.row]
+        cell.viewmodel = tempviewmodellist[indexPath.row]
         return cell
     }
     
@@ -94,7 +94,7 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
         }
         
         // 清空原来的数据
-        tempviewmodellist?.removeAll()
+        tempviewmodellist.removeAll()
         // 筛选性别
         for viewmodel in viewmodellist.communityContactsList {
             
@@ -104,7 +104,28 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
             }
             
             if (sexIndex - 1) == (viewmodel.model?.gender ?? 0){
-                tempviewmodellist?.append(viewmodel)
+                tempviewmodellist.append(viewmodel)
+            }
+        }
+        // 筛选职位
+        var positiontemp = [UserinfoViewModel]()
+        for viewmodel in tempviewmodellist{
+            
+            if positonIndex == 0{
+                positiontemp = tempviewmodellist
+                break
+            }
+            if (4 - positonIndex) == (viewmodel.model?.position ?? 0){
+                positiontemp.append(viewmodel)
+            }
+        }
+        self.tempviewmodellist = positiontemp
+        // 筛选年级
+        var gradetemp = [UserinfoViewModel]()
+        for viewmodel in tempviewmodellist{
+            if gradeIndex == 0{
+                gradetemp = tempviewmodellist
+                break
             }
             
         }
