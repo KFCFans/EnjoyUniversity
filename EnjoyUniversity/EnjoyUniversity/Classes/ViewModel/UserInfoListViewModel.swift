@@ -100,6 +100,7 @@ class UserInfoListViewModel{
                 completion(true,false)
                 return
             }
+            self.communityContactsList.removeAll()
             for model in modelarray{
                 // 去除正在审核的人
                 if model.position < 0{
