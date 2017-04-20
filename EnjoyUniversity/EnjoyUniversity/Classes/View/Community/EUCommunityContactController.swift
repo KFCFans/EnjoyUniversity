@@ -61,47 +61,11 @@ class EUCommunityContactController: EUBaseViewController {
                 // 显示空空如也
                 return
             }
-            self.tempviewmodellist = self.viewmodellist.communityContactsList
-            self.tableview.reloadData()
+            self.filterContacts()
         }
     }
-
-}
-
-// MARK: - 代理方法
-extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tempviewmodellist.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = EUCommunityMemberCell()
-        cell.viewmodel = tempviewmodellist[indexPath.row]
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
-    }
-    
-    /// 下拉选择
-    func swiftyDropdownMenu(_ swiftyDropdownMenu: SwiftyDropdownMenu, didSelectRowAt indexPath: IndexPath) {
-        
-        switch indexPath.section {
-        case 0:
-            sexIndex = indexPath.row
-            break
-        case 1:
-            positonIndex = indexPath.row
-            break
-        case 2:
-            gradeIndex = indexPath.row
-            break
-        default:
-            break
-        }
-        
+    func filterContacts(){
         // 清空原来的数据
         tempviewmodellist.removeAll()
         // 筛选性别
@@ -142,6 +106,44 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
         }
         self.tempviewmodellist = temp
         tableview.reloadData()
+    }
+
+}
+
+// MARK: - 代理方法
+extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return tempviewmodellist.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = EUCommunityMemberCell()
+        cell.viewmodel = tempviewmodellist[indexPath.row]
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
+    /// 下拉选择
+    func swiftyDropdownMenu(_ swiftyDropdownMenu: SwiftyDropdownMenu, didSelectRowAt indexPath: IndexPath) {
+        
+        switch indexPath.section {
+        case 0:
+            sexIndex = indexPath.row
+            break
+        case 1:
+            positonIndex = indexPath.row
+            break
+        case 2:
+            gradeIndex = indexPath.row
+            break
+        default:
+            break
+        }
+        filterContacts()
     }
     
 }
