@@ -34,7 +34,7 @@ class Community:NSObject{
     // 社团公告
     var cmAnnouncement:String?
     
-    // 社团是否开启招新 默认0不开启
+    // 社团是否开启招新 默认0关闭，1开启招新
     var cmRecruit:Int = 0
     
     // 社团热度，后期用于排序

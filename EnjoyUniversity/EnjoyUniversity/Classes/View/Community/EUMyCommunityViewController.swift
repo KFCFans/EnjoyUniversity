@@ -256,8 +256,10 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
             let vc = EUCommunityContactController()
             vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
-        
-            
+        case 3:
+            let vc = EURecruitmentViewController()
+            vc.viewmodel = viewmodel
+            navigationController?.pushViewController(vc, animated: true)
         default:
             break
         }

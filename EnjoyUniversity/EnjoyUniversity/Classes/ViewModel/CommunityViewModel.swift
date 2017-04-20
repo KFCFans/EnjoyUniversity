@@ -41,6 +41,9 @@ class CommunityViewModel{
     /// 二维码
     var qrcodeString:String = ""
     
+    /// 是否开启招新
+    var isRecruiting:Bool = false
+    
     init(model:Community) {
      
         communitymodel = model
@@ -65,6 +68,9 @@ class CommunityViewModel{
         
         // 拼接二维码
         qrcodeString = QRCODEPREFIX + "cmid=\(model.cmid)"
+        
+        // 招新状态
+        isRecruiting = model.cmRecruit == 1 ? true : false
         
         // 社团属性
         switch model.cmAttr {

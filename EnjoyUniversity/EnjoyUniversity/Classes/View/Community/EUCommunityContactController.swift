@@ -32,6 +32,7 @@ class EUCommunityContactController: EUBaseViewController {
 
         navitem.title = "内部通讯录"
         tableview.contentInset = UIEdgeInsetsMake(104, 0, 0, 0)
+        tableview.tableFooterView = UITableView()
         
         // 获取当前年份
         let currentdate = Date().timeIntervalSince1970 * 1000
@@ -58,7 +59,7 @@ class EUCommunityContactController: EUBaseViewController {
                 return
             }
             if !hasData{
-                // 显示空空如也
+                // 理论上不可能没人（至少有社长，所有不需要做）
                 return
             }
             self.filterContacts()
@@ -120,6 +121,7 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = EUCommunityMemberCell()
         cell.viewmodel = tempviewmodellist[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
     
