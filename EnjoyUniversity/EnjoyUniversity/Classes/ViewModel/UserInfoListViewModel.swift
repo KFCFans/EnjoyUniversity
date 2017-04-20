@@ -107,6 +107,9 @@ class UserInfoListViewModel{
                 }
                 self.communityContactsList.append(UserinfoViewModel(model: model))
             }
+            self.communityContactsList.sort(by: { (x, y) -> Bool in
+                return x.model?.position ?? 0 > y.model?.position ?? 0
+            })
             completion(true,true)
         }
     }
