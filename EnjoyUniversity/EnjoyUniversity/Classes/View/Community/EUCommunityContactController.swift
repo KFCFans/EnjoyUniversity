@@ -116,30 +116,30 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
             }
         }
         // 筛选职位
-        var positiontemp = [UserinfoViewModel]()
+        var temp = [UserinfoViewModel]()
         for viewmodel in tempviewmodellist{
             
             if positonIndex == 0{
-                positiontemp = tempviewmodellist
+                temp = tempviewmodellist
                 break
             }
             if (4 - positonIndex) == (viewmodel.model?.position ?? 0){
-                positiontemp.append(viewmodel)
+                temp.append(viewmodel)
             }
         }
-        self.tempviewmodellist = positiontemp
+        self.tempviewmodellist = temp
         // 筛选年级
-        var gradetemp = [UserinfoViewModel]()
+        temp.removeAll()
         for viewmodel in tempviewmodellist{
             if gradeIndex == 0{
-                gradetemp = tempviewmodellist
+                temp = tempviewmodellist
                 break
             }
             if (currentYear - gradeIndex + 1) == (viewmodel.model?.grade ?? 0) {
-                gradetemp.append(viewmodel)
+                temp.append(viewmodel)
             }
         }
-        self.tempviewmodellist = gradetemp
+        self.tempviewmodellist = temp
         tableview.reloadData()
     }
     
