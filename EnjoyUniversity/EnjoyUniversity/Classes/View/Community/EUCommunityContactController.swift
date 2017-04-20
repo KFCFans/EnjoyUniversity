@@ -24,16 +24,24 @@ class EUCommunityContactController: EUBaseViewController {
     var positonIndex = 0
     var gradeIndex = 0
     
+    /// 当前年份
+    var currentYear:Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         navitem.title = "内部通讯录"
         tableview.contentInset = UIEdgeInsetsMake(104, 0, 0, 0)
         
-        // FIXME : - 全部年级中的年级应该是动态生成的
+        // 获取当前年份
+        let currentdate = Date().timeIntervalSince1970 * 1000
+        let currentyear = Int(timeStampToString(timeStamp: "\(currentdate)", formate: "YYYY") ?? "") ?? 0
+        let gradearray = ["全部年级","\(currentyear) 级","\(currentyear-1) 级","\(currentyear-2) 级","\(currentyear-3) 级"]
+        self.currentYear = currentyear
+        
         let dropdownmenu = [["所有性别","男","女","保密"],
                             ["全部职位","社长","管理员","社员"],
-                            ["全部年级","2017级","2016级","2015级","2014级"]]
+                            gradearray]
         
         let dropdownmenuview = SwiftyDropdownMenu(orgin: CGPoint(x: 0, y: 64), array: dropdownmenu)
         dropdownmenuview.delegate = self
@@ -127,9 +135,11 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
                 gradetemp = tempviewmodellist
                 break
             }
-            
+            if (currentYear - gradeIndex + 1) == (viewmodel.model?.grade ?? 0) {
+                gradetemp.append(viewmodel)
+            }
         }
-     
+        self.tempviewmodellist = gradetemp
         tableview.reloadData()
     }
     
