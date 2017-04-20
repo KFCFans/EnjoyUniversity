@@ -39,15 +39,10 @@ class SwiftySpinner: UIView {
         backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.6)
         spinnertableview.layer.masksToBounds = true
         spinnertableview.layer.cornerRadius = 10
-        let uef = UIBlurEffect(style: .extraLight)
-        let vs = UIVisualEffectView(effect: uef)
-        vs.alpha = 1.0
-        vs.frame = spinnertableview.bounds
-        spinnertableview.backgroundView = vs
         spinnertableview.separatorStyle = .none
         spinnertableview.delegate = self
         spinnertableview.dataSource = self
-        spinnertableview.backgroundColor = UIColor.clear
+        spinnertableview.backgroundColor = UIColor.white
         addSubview(spinnertableview)
         let tapgesture = UITapGestureRecognizer(target: self, action: #selector(removeSpinner))
         tapgesture.delegate = self
