@@ -24,7 +24,16 @@ class EUCommunityMemberCell: UITableViewCell {
         didSet{
             nameLabel.text = viewmodel?.model?.name
             positionLabel.text = viewmodel?.positionString
-            
+            logoImageView.kf.setImage(with: URL(string: viewmodel?.headsculptureurl ?? ""),
+                                     placeholder: UIImage(named: "av_leader"),
+                                     options: [.transition(.fade(1))],
+                                     progressBlock: nil,
+                                     completionHandler: { (image, _, _, _) in
+                                        guard let image = image else {
+                                            return
+                                        }
+                                        self.logoImageView.image = avatarImage(image: image, size: CGSize(width: 50, height: 50), opaque: false, backColor: nil)
+            })
         }
     }
 
@@ -48,7 +57,7 @@ extension EUCommunityMemberCell{
         addSubview(logoImageView)
         
         nameLabel.textColor = UIColor.black
-        nameLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 15)
         addSubview(nameLabel)
         
         positionLabel.text = "主席"
@@ -114,21 +123,21 @@ extension EUCommunityMemberCell{
                                                          toItem: nil,
                                                          attribute: .notAnAttribute,
                                                          multiplier: 1.0,
-                                                         constant: 16)])
+                                                         constant: 15)])
         addConstraints([NSLayoutConstraint(item: nameLabel,
-                                           attribute: .bottom,
+                                           attribute: .top,
                                            relatedBy: .equal,
                                            toItem: self,
-                                           attribute: .centerY,
+                                           attribute: .top,
                                            multiplier: 1.0,
-                                           constant: -5),
+                                           constant: 12),
                         NSLayoutConstraint(item: nameLabel,
                                            attribute: .left,
                                            relatedBy: .equal,
                                            toItem: logoImageView,
                                            attribute: .right,
                                            multiplier: 1.0,
-                                           constant: 8)])
+                                           constant: 16)])
         
         // 职务
         positionLabel.addConstraints([NSLayoutConstraint(item: positionLabel,
@@ -146,19 +155,19 @@ extension EUCommunityMemberCell{
                                                      multiplier: 1.0,
                                                      constant: 13)])
         addConstraints([NSLayoutConstraint(item: positionLabel,
-                                           attribute: .top,
+                                           attribute: .bottom,
                                            relatedBy: .equal,
                                            toItem: self,
-                                           attribute: .centerY,
+                                           attribute: .bottom,
                                            multiplier: 1.0,
-                                           constant: 5),
+                                           constant: -12),
                         NSLayoutConstraint(item: positionLabel,
                                            attribute: .left,
                                            relatedBy: .equal,
                                            toItem: logoImageView,
                                            attribute: .right,
                                            multiplier: 1.0,
-                                           constant: 8)])
+                                           constant: 16)])
         
         // 电话
         phoneBtn.addConstraints([NSLayoutConstraint(item: phoneBtn,

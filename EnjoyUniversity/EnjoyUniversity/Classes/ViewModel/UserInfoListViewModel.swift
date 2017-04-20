@@ -101,6 +101,10 @@ class UserInfoListViewModel{
                 return
             }
             for model in modelarray{
+                // 去除正在审核的人
+                if model.position < 0{
+                    continue
+                }
                 self.communityContactsList.append(UserinfoViewModel(model: model))
             }
             completion(true,true)
