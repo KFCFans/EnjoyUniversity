@@ -23,9 +23,14 @@ class EURecruitmentViewController: EUBaseViewController {
         navitem.title = "招新管理"
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        
+    @objc fileprivate func changeRecruitStatus(switchcontrol:UISwitch){
+    
+        // 开启招新
+        if switchcontrol.isOn == true{
+            
+        }else{
+            // 结束招新
+        }
     }
     
 
@@ -51,6 +56,7 @@ extension EURecruitmentViewController{
         if indexPath.section == 0 && indexPath.row == 0{
             cell.textLabel?.text = "开启招新"
             let switchControl = UISwitch()
+            switchControl.addTarget(self, action: #selector(changeRecruitStatus(switchcontrol:)), for: .valueChanged)
             switchControl.center.y = cell.center.y
             switchControl.frame.origin.x = UIScreen.main.bounds.width - switchControl.frame.width - 20
             switchControl.isOn = viewmodel?.isRecruiting ?? false
