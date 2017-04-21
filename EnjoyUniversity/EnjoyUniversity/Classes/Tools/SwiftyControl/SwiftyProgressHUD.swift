@@ -15,6 +15,7 @@ class SwiftyProgressHUD: UIView {
         case error
         case warn
         case loading
+        case bigwarn
     }
     
     /// 自动消失的 HUD 持续时间
@@ -72,6 +73,8 @@ class SwiftyProgressHUD: UIView {
             break
         case .warn:
             initHUDViewWithLabel(imgname: "hud_notice", text: hudtext ?? "警告")
+        case .bigwarn:
+            initBigHUDViewWithLabel(imgname: "hud_error", text: hudtext ?? "错误")
         case .loading:
             let indicator = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
             indicator.frame = CGRect(x: 10, y: 10, width: 40, height: 40)
@@ -107,6 +110,11 @@ class SwiftyProgressHUD: UIView {
     /// 加载的 HUD
     static func showLoadingHUD(){
         SwiftyProgressHUD(text: nil, type: .loading).show()
+    }
+    
+    /// 比较大的 HUD
+    static func showBigFaildHUD(text:String,duration:TimeInterval){
+        SwiftyProgressHUD(text: text, type: .bigwarn, duration: duration, hudwidth: 100).show()
     }
     
     func show(){
@@ -151,6 +159,22 @@ class SwiftyProgressHUD: UIView {
         hudview.addSubview(imageview)
         
         let label = UILabel(frame: CGRect(x: 0, y: 55, width: 80, height: 20))
+        label.text = text
+        label.textColor = UIColor.white
+        label.font = UIFont.boldSystemFont(ofSize: 14)
+        label.textAlignment = .center
+        hudview.addSubview(label)
+        
+    }
+    
+    private func initBigHUDViewWithLabel(imgname:String,text:String){
+        
+        
+        let imageview = UIImageView(frame: CGRect(x: 20, y: 10, width: 60, height: 60))
+        imageview.image = UIImage(named: imgname)
+        hudview.addSubview(imageview)
+        
+        let label = UILabel(frame: CGRect(x: 0, y: 75, width: 100, height: 20))
         label.text = text
         label.textColor = UIColor.white
         label.font = UIFont.boldSystemFont(ofSize: 14)

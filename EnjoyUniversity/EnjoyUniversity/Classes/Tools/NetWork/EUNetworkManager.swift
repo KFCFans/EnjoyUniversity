@@ -37,6 +37,7 @@ class EUNetworkManager{
         request.responseJSON { (response) in
             
             if response.result.isSuccess {
+                
                 guard let dict = response.result.value as? [String:Any],let statuscode = dict["status"] as? Int,let json = dict["data"]  else{
                     completion(nil,false,400)
                     return
@@ -44,7 +45,12 @@ class EUNetworkManager{
                 
                 if statuscode == 403{
                     
-                    //FIXME: - 通知推送用户登陆信息过期，需要重写登陆
+                    SwiftyProgressHUD.showBigFaildHUD(text: "登陆信息失效", duration: 2)
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2, execute: {
+                       
+                        self.userAccount.outLogin()
+                        UIApplication.shared.keyWindow?.rootViewController?.present(EULoginViewController(), animated: true, completion: nil)
+                    })
                     return
                 }
 
