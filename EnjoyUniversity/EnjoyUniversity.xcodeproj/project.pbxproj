@@ -14,6 +14,7 @@
 		360FA3E91E94DB75002A5FF0 /* SwiftyPhotoClipper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */; };
 		360FA3ED1E94E653002A5FF0 /* SwiftyTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */; };
 		360FA3F01E95032F002A5FF0 /* RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360FA3EF1E95032F002A5FF0 /* RequestResult.swift */; };
+		36124A161EA9F893004B6B10 /* EUCommunityManageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36124A151EA9F893004B6B10 /* EUCommunityManageViewController.swift */; };
 		3618A8B31E8A9E18002069B5 /* VPListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */; };
 		3619C4B11E90EA17005FEA5E /* EUCommunityInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */; };
 		36247B5C1EA640FF006F29F1 /* SwiftyAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36247B5B1EA640FF006F29F1 /* SwiftyAlertController.swift */; };
@@ -122,6 +123,7 @@
 		360FA3E81E94DB75002A5FF0 /* SwiftyPhotoClipper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyPhotoClipper.swift; path = ../SwiftyPhotoClipper.swift; sourceTree = "<group>"; };
 		360FA3EC1E94E653002A5FF0 /* SwiftyTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTextView.swift; sourceTree = "<group>"; };
 		360FA3EF1E95032F002A5FF0 /* RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestResult.swift; sourceTree = "<group>"; };
+		36124A151EA9F893004B6B10 /* EUCommunityManageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityManageViewController.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityInfoViewController.swift; sourceTree = "<group>"; };
 		36247B5B1EA640FF006F29F1 /* SwiftyAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyAlertController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				3678F85D1EA89129006C586C /* EURecruitmentViewController.swift */,
 				36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */,
 				3678F85F1EA8A52A006C586C /* EUCommunityNotifyController.swift */,
+				36124A151EA9F893004B6B10 /* EUCommunityManageViewController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -898,6 +901,7 @@
 				36690AD11E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift in Sources */,
 				3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */,
 				36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */,
+				36124A161EA9F893004B6B10 /* EUCommunityManageViewController.swift in Sources */,
 				36F1A71E1E9E28C600BEF9A5 /* EUVerifyViewController.swift in Sources */,
 				365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */,
 				3662E6541E9BB961000955DA /* EUProfileTableViewCell.swift in Sources */,
