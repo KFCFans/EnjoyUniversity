@@ -34,9 +34,14 @@ class CommunityAuthorityListViewModel{
                 completion(true,false)
                 return
             }
-            
+            for model in temp{
+                if model.position < 0{
+                    continue
+                }
+                self.communityauthoritylist.append(model)
+            }
             // 排序
-            self.communityauthoritylist = temp.sorted(by: { (x:CommunityAuthority, y:CommunityAuthority) -> Bool in
+            self.communityauthoritylist.sort(by: { (x, y) -> Bool in
                 return x.lastselect > y.lastselect
             })
             

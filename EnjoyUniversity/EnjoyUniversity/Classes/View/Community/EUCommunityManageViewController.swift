@@ -64,6 +64,14 @@ class EUCommunityManageViewController: EUBaseViewController {
         super.tableView(tableView, didSelectRowAt: indexPath)
         if indexPath.section == 2 || indexPath.section == 3 || indexPath.section == 4{
             
+            guard let position = communityauthoritylist?.communityauthoritylist[communityauthoritylistIndex].position else {
+                return
+            }
+            if position != 3{
+                SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
+                return
+            }
+            
             let vc = EUCommunityMemberManageController()
             vc.cmid = cmid
             
