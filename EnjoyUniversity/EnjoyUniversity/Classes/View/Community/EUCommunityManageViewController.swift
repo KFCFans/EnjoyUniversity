@@ -13,13 +13,19 @@ class EUCommunityManageViewController: EUBaseViewController {
     /// 社团 ID，上层传入
     var cmid:Int = 0
     
+    /// 社团权力列表
+    var communityauthoritylist:CommunityAuthorityListViewModel?
+    var communityauthoritylistIndex:Int = 0
+    
     let functionarray = [["社团信息"],
                          ["发布公告"],
-                         ["设置管理员","移除社团成员"],
+                         ["设置管理员","取消管理员"],
+                         ["移除社员"],
                          ["转交社团"]]
     let fuctionimgarray = [["cm_changecm"],
                            ["cm_announce"],
-                           ["cm_manager","cm_remove"],
+                           ["cm_manager","cm_removemanager"],
+                           ["cm_manager"],
                            ["cm_givecm"]]
 
     override func viewDidLoad() {
@@ -56,15 +62,23 @@ class EUCommunityManageViewController: EUBaseViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
-        if indexPath.section == 2 || indexPath.section == 3{
+        if indexPath.section == 2 || indexPath.section == 3 || indexPath.section == 4{
             
             let vc = EUCommunityMemberManageController()
             vc.cmid = cmid
             
-            if indexPath.section == 2{
+            switch indexPath.section {
+            case 2:
                 vc.choice = indexPath.row
-            }else{
+                break
+            case 3:
                 vc.choice = 2
+                break
+            case 4:
+                vc.choice = 3
+                break
+            default:
+                break
             }
             
             navigationController?.pushViewController(vc, animated: true)

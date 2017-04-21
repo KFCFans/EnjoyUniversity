@@ -32,6 +32,7 @@ class EUMyCommunityViewController: EUBaseViewController {
     var defaultCommunity:Int?
     
     lazy var communityauthorutylist = CommunityAuthorityListViewModel()
+    var communityauthoritylistIndex:Int = 0
     
     /// 下拉选择框
     var loadDataFinished:Bool = false{
@@ -239,6 +240,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
         titleButtonView.setTitle(communityauthorutylist.communityauthoritylist[row].cmname ?? "", for: .normal)
         self.cmid = self.communityauthorutylist.communityauthoritylist[row].cmid
         self.position = self.communityauthorutylist.communityauthoritylist[row].position
+        self.communityauthoritylistIndex = row
 
     }
     
@@ -279,6 +281,8 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
         case 2:
             let vc = EUCommunityManageViewController()
             vc.cmid = cmid
+            vc.communityauthoritylist = communityauthorutylist
+            vc.communityauthoritylistIndex = communityauthoritylistIndex
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             let vc = EURecruitmentViewController()

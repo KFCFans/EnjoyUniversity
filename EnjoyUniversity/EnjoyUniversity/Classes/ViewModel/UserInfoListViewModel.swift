@@ -137,6 +137,7 @@ class UserInfoListViewModel{
             }
             self.communityMemberList.removeAll()
             for model in modelarray{
+  
                 self.communityMemberList.append(UserinfoViewModel(model: model))
             }
             completion(true,true)
