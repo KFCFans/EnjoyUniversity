@@ -270,6 +270,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
         switch indexPath.row {
         case 0:
             guard let cmid = viewmodel?.communitymodel?.cmid else {
@@ -278,13 +279,29 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
             let vc = EUCommunityContactController()
             vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            if position < 2{
+                SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
+                return
+            }
+            let vc = EUCommunityNotifyController()
+            navigationController?.pushViewController(vc, animated: true)
+            break
         case 2:
+            if position < 2{
+                SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
+                return
+            }
             let vc = EUCommunityManageViewController()
             vc.cmid = cmid
             vc.communityauthoritylist = communityauthorutylist
             vc.communityauthoritylistIndex = communityauthoritylistIndex
             navigationController?.pushViewController(vc, animated: true)
         case 3:
+            if position < 2{
+                SwiftyProgressHUD.showFaildHUD(text: "无权限", duration: 1)
+                return
+            }
             let vc = EURecruitmentViewController()
             vc.viewmodel = viewmodel
             vc.position = position

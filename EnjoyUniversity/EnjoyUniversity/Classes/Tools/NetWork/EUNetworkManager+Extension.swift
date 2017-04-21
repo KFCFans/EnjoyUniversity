@@ -559,7 +559,7 @@ extension EUNetworkManager{
         parameters["avRegister"] = activity.avRegister
         parameters["avLogo"] = activity.avLogo
         
-        tokenRequest(urlString: url, method: .get, parameters: parameters) { (_, isSuccess, status) in
+        tokenRequest(urlString: url, method: .post, parameters: parameters) { (_, isSuccess, status) in
             
             if !isSuccess{
                 completion(false,false)
