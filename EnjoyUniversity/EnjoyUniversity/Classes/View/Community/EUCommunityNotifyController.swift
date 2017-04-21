@@ -17,12 +17,9 @@ class EUCommunityNotifyController: EUBaseViewController {
         navitem.title = "通知"
         let rightBtn = UIBarButtonItem(title: "发送", style: .plain, target: nil, action: #selector(sendCommunityNotification))
         navitem.rightBarButtonItem = rightBtn
-        
-        let notifyTextview = SwiftyTextView(frame: CGRect(x: 20, y: 20, width: UIScreen.main.bounds.width, height: 200), textContainer: nil, placeholder: "")
     }
     
     @objc fileprivate func sendCommunityNotification(){
-        
         
     }
 

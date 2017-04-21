@@ -1009,6 +1009,29 @@ extension EUNetworkManager{
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, _, _) in
             // 后台执行，失败了也没办法，无需处理任何事情
         }
+    }
+    
+    /// 改变社团招新状态（需要实现权限判断）
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - startRecruit: 开启招新／结束招新
+    ///   - completion: 完成回调
+    func changeCommunityRecruitmentState(cmid:Int,startRecruit:Bool,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/changerecruit"
+        
+        let recruit = startRecruit ? 1 : 0
+        
+        let parm = ["cmid":cmid,"recruit":recruit]
+        
+        tokenRequest(urlString: url, parameters: parm) { (_, isSuccess, _) in
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            completion(true)
+        }
         
     }
     

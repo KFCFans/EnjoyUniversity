@@ -12,6 +12,12 @@ class EURecruitmentViewController: EUBaseViewController {
     
     let functionArray = ["待审核","已笔试","已面试"]
     
+    /// 记录职位（上层传入）
+    var position = -1
+    
+    /// 记录当前社团 ID（上层传入）
+    var cmid = 0
+    
     var viewmodel:CommunityViewModel?
 
     override func viewDidLoad() {
@@ -24,12 +30,31 @@ class EURecruitmentViewController: EUBaseViewController {
     }
 
     @objc fileprivate func changeRecruitStatus(switchcontrol:UISwitch){
+        
+        // 只有管理员或社长才能发起招新
+        if position < 2{
+            SwiftyProgressHUD.showFaildHUD(text: "没有权限", duration: 1)
+            switchcontrol.isOn = viewmodel?.isRecruiting ?? false
+            return
+        }
     
         // 开启招新
         if switchcontrol.isOn == true{
             
         }else{
             // 结束招新
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.changeCommunityRecruitmentState(cmid: cmid, startRecruit: false, completion: { (isSuccess) in
+                SwiftyProgressHUD.hide()
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    switchcontrol.isOn = true
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                self.viewmodel?.isRecruiting = false
+                self.viewmodel?.communitymodel?.cmRecruit = 0
+            })
         }
     }
     

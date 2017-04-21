@@ -54,6 +54,9 @@ class EUMyCommunityViewController: EUBaseViewController {
         }
     }
     
+    /// 记录当前社团所拥有的权力
+    var position = 0
+    
     /// 社团信息的视图模型
     var viewmodel:CommunityViewModel?{
         didSet{
@@ -234,6 +237,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
         refreshControl?.beginRefreshing()
         titleButtonView.setTitle(communityauthorutylist.communityauthoritylist[row].cmname ?? "", for: .normal)
         self.cmid = self.communityauthorutylist.communityauthoritylist[row].cmid
+        self.position = self.communityauthorutylist.communityauthoritylist[row].position
 
     }
     
@@ -274,6 +278,8 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
         case 3:
             let vc = EURecruitmentViewController()
             vc.viewmodel = viewmodel
+            vc.position = position
+            vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
