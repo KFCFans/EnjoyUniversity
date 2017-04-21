@@ -406,6 +406,11 @@ extension EUCommunityInfoViewController{
             return
         }
         
+        if !(viewmodel?.isRecruiting ?? false) {
+            SwiftyProgressHUD.showFaildHUD(text: "未开启招新", duration: 1)
+            return
+        }
+        
         let alert = SwiftyAlertController(title: "申请理由", message: "\n\n\n\n", preferredStyle: .alert)
         let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
         let confirm = UIAlertAction(title: "确定", style: .default) { (_) in
