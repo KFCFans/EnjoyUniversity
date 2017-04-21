@@ -33,6 +33,7 @@ class EURecruitmentViewController: EUBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         if let viewmodel = viewmodel{
             switchControl.isOn = viewmodel.isRecruiting
+            tableview.reloadData()
         }
     }
 
@@ -67,6 +68,7 @@ class EURecruitmentViewController: EUBaseViewController {
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
                 self.viewmodel?.isRecruiting = false
                 self.viewmodel?.communitymodel?.cmRecruit = 0
+                _ = self.navigationController?.popViewController(animated: true)
             })
         }
     }
