@@ -1071,11 +1071,52 @@ extension EUNetworkManager{
         let parm = ["cmid":cmid,"cmAnnouncement":announcement] as [String:Any]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in
+            
+            completion(isSuccess)
+        }
+    }
+    
+    /// 管理社团
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - uid: 被管理者 ID
+    ///   - position: 职务 2表示管理员 3表示社长
+    ///   - completion: 完成回调
+    func manageCommunity(cmid:Int,uid:Int64,position:Int,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/managecm"
+        
+        let parm = ["uid":uid,"cmid":cmid,"position":position] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in
+            completion(isSuccess)
+        }
+    }
+    
+    /// 离开社团（暂时设计为被迫离开 TTTT）
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - uid: 用户 ID
+    ///   - completion: 完成回调
+    func leaveCommunity(cmid:Int,uid:Int64,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/leavecm"
+        
+        let parm = ["uid":uid,"cmid":cmid] as [String:Any]
+        
+        tokenRequest(urlString: url, parameters: parm) { (_, isSuccess, status) in
             if !isSuccess{
-                completion(false)
+                completion(false,false)
                 return
             }
-            completion(true)
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            completion(true,false)
+            
         }
         
     }

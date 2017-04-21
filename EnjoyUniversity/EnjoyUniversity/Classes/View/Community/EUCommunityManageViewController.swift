@@ -60,6 +60,13 @@ class EUCommunityManageViewController: EUBaseViewController {
             
             let vc = EUCommunityMemberManageController()
             vc.cmid = cmid
+            
+            if indexPath.section == 2{
+                vc.choice = indexPath.row
+            }else{
+                vc.choice = 2
+            }
+            
             navigationController?.pushViewController(vc, animated: true)
             
         }

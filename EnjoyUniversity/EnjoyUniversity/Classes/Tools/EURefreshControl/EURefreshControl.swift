@@ -31,7 +31,6 @@ class EURefreshControl: UIControl {
     /// 最少下拉量
     let MINPullToRefreshHeight:CGFloat = 60
     
-    
     // MARK: - 构造函数
     override init(frame: CGRect) {
         super.init(frame: frame)
