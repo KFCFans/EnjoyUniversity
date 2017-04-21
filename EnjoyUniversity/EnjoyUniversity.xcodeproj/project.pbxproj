@@ -84,6 +84,7 @@
 		36BDBB4A1E6452090075A3ED /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB491E6452090075A3ED /* Community.swift */; };
 		36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */; };
 		36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */; };
+		36C34A0A1EA9CB6E00739C9B /* EUStartRecruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */; };
 		36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */; };
 		36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */; };
 		36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */; };
@@ -197,6 +198,7 @@
 		36BDBB491E6452090075A3ED /* Community.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityWallCell.swift; sourceTree = "<group>"; };
 		36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUCommunityWallCell.xib; sourceTree = "<group>"; };
+		36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartRecruitViewController.swift; sourceTree = "<group>"; };
 		36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshControl.swift; sourceTree = "<group>"; };
 		36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshView.swift; sourceTree = "<group>"; };
 		36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EURefreshView.xib; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				364E7D281EA7A37100BC2756 /* EUCommunityContactController.swift */,
 				364E7D2A1EA7A81400BC2756 /* EUCommunityMemberCell.swift */,
 				3678F85D1EA89129006C586C /* EURecruitmentViewController.swift */,
+				36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */,
 				3678F85F1EA8A52A006C586C /* EUCommunityNotifyController.swift */,
 			);
 			path = Community;
@@ -889,6 +892,7 @@
 				366BA80B1EA4F9F80079132A /* EUChangeUserInfoController.swift in Sources */,
 				36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */,
 				3664E1EC1E9759F60041259B /* SwiftyVerificationCodeView.swift in Sources */,
+				36C34A0A1EA9CB6E00739C9B /* EUStartRecruitViewController.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
 				36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */,
 				36690AD11E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift in Sources */,

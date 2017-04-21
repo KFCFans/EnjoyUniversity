@@ -12,11 +12,11 @@ class EURecruitmentViewController: EUBaseViewController {
     
     let functionArray = ["待审核","已笔试","已面试"]
     
+    /// 是否开启招新开关
+    let switchControl = UISwitch()
+    
     /// 记录职位（上层传入）
     var position = -1
-    
-    /// 记录当前社团 ID（上层传入）
-    var cmid = 0
     
     var viewmodel:CommunityViewModel?
 
@@ -28,8 +28,19 @@ class EURecruitmentViewController: EUBaseViewController {
         tableview.tableFooterView = UIView()
         navitem.title = "招新管理"
     }
+    
+    /// pop 回来的时候设置开关状态
+    override func viewWillAppear(_ animated: Bool) {
+        if let viewmodel = viewmodel{
+            switchControl.isOn = viewmodel.isRecruiting
+        }
+    }
 
     @objc fileprivate func changeRecruitStatus(switchcontrol:UISwitch){
+        
+        guard let cmid = viewmodel?.communitymodel?.cmid else {
+            return
+        }
         
         // 只有管理员或社长才能发起招新
         if position < 2{
@@ -40,7 +51,9 @@ class EURecruitmentViewController: EUBaseViewController {
     
         // 开启招新
         if switchcontrol.isOn == true{
-            
+            let vc = EUStartRecruitViewController()
+            vc.viewmodel = viewmodel
+            navigationController?.pushViewController(vc, animated: true)
         }else{
             // 结束招新
             SwiftyProgressHUD.showLoadingHUD()
@@ -80,7 +93,6 @@ extension EURecruitmentViewController{
         let cell = UITableViewCell()
         if indexPath.section == 0 && indexPath.row == 0{
             cell.textLabel?.text = "开启招新"
-            let switchControl = UISwitch()
             switchControl.addTarget(self, action: #selector(changeRecruitStatus(switchcontrol:)), for: .valueChanged)
             switchControl.center.y = cell.center.y
             switchControl.frame.origin.x = UIScreen.main.bounds.width - switchControl.frame.width - 20

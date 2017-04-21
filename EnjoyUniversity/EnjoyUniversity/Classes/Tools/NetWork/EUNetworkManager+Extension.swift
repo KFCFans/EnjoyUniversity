@@ -1032,9 +1032,30 @@ extension EUNetworkManager{
             }
             completion(true)
         }
-        
     }
     
+    
+    /// 更改社团公告
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - announcement: 公告内容
+    ///   - completion: 完成回调
+    func changeCommunityAnnouncement(cmid:Int,announcement:String,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/changecm"
+        
+        let parm = ["cmid":cmid,"cmAnnouncement":announcement] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in
+            if !isSuccess{
+                completion(false)
+                return
+            }
+            completion(true)
+        }
+        
+    }
     
 
 }

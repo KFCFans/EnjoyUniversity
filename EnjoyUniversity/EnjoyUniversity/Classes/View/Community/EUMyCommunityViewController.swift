@@ -119,6 +119,7 @@ class EUMyCommunityViewController: EUBaseViewController {
             self.spinnerview.datalist = datalist
             self.loadDataFinished = true
             self.cmid = self.communityauthorutylist.communityauthoritylist.first?.cmid ?? 0
+            self.position = self.communityauthorutylist.communityauthoritylist.first?.position ?? 0
         }
     }
     
@@ -279,7 +280,6 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
             let vc = EURecruitmentViewController()
             vc.viewmodel = viewmodel
             vc.position = position
-            vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
         default:
             break
