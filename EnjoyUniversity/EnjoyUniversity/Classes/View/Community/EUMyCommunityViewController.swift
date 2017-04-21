@@ -28,6 +28,9 @@ class EUMyCommunityViewController: EUBaseViewController {
     // 公告栏高度
     var announceHeight:CGFloat = 15
     
+    /// 记录本次的默认社团值
+    var defaultCommunity:Int?
+    
     lazy var communityauthorutylist = CommunityAuthorityListViewModel()
     
     /// 下拉选择框
@@ -37,6 +40,7 @@ class EUMyCommunityViewController: EUBaseViewController {
             if loadDataFinished && communityauthorutylist.communityauthoritylist.count > 0{
                 titleButtonView.setTitle(communityauthorutylist.communityauthoritylist.first?.cmname, for: .normal)
                 titleButtonView.isEnabled = true
+                defaultCommunity = communityauthorutylist.communityauthoritylist.first?.lastselect
                 spinnerview.reloadData()
             }
             
@@ -70,7 +74,18 @@ class EUMyCommunityViewController: EUBaseViewController {
         refreshControl?.backgroundColor = UIColor.white
         initSpinner()
         initTableHeadView()
-        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+     
+        // 只有 pop 回去才需要回写数据库
+        if self.navigationController?.viewControllers.index(of: self) != nil{
+            return
+        }
+        guard let defaultCommunity = defaultCommunity else {
+            return
+        }
+        EUNetworkManager.shared.setDefaultCommunity(cmid: cmid, num: defaultCommunity + 1)
     }
 
     

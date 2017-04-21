@@ -60,6 +60,7 @@
 		3671CFD31E98FF5D00FACF91 /* EUserInfoInputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671CFD21E98FF5D00FACF91 /* EUserInfoInputViewController.swift */; };
 		3673A5EC1EA5C8D6003C29C3 /* EUSystemSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3673A5EB1EA5C8D6003C29C3 /* EUSystemSettingsController.swift */; };
 		3678F85E1EA89129006C586C /* EURecruitmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678F85D1EA89129006C586C /* EURecruitmentViewController.swift */; };
+		3678F8601EA8A52A006C586C /* EUCommunityNotifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678F85F1EA8A52A006C586C /* EUCommunityNotifyController.swift */; };
 		3680A5871E9DF36300E6013F /* EUFeedBackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680A5861E9DF36300E6013F /* EUFeedBackViewController.swift */; };
 		36839BFC1E8D457800612729 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFB1E8D457800612729 /* Activity.swift */; };
 		36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFD1E8D476300612729 /* AvtivityViewModel.swift */; };
@@ -166,6 +167,7 @@
 		3671CFD21E98FF5D00FACF91 /* EUserInfoInputViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUserInfoInputViewController.swift; sourceTree = "<group>"; };
 		3673A5EB1EA5C8D6003C29C3 /* EUSystemSettingsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSystemSettingsController.swift; sourceTree = "<group>"; };
 		3678F85D1EA89129006C586C /* EURecruitmentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURecruitmentViewController.swift; sourceTree = "<group>"; };
+		3678F85F1EA8A52A006C586C /* EUCommunityNotifyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityNotifyController.swift; sourceTree = "<group>"; };
 		3680A5861E9DF36300E6013F /* EUFeedBackViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUFeedBackViewController.swift; sourceTree = "<group>"; };
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		36839BFD1E8D476300612729 /* AvtivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvtivityViewModel.swift; sourceTree = "<group>"; };
@@ -301,6 +303,7 @@
 				364E7D281EA7A37100BC2756 /* EUCommunityContactController.swift */,
 				364E7D2A1EA7A81400BC2756 /* EUCommunityMemberCell.swift */,
 				3678F85D1EA89129006C586C /* EURecruitmentViewController.swift */,
+				3678F85F1EA8A52A006C586C /* EUCommunityNotifyController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -895,6 +898,7 @@
 				365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */,
 				3662E6541E9BB961000955DA /* EUProfileTableViewCell.swift in Sources */,
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
+				3678F8601EA8A52A006C586C /* EUCommunityNotifyController.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				363447961E97B11300F49EBC /* EUserAccount.swift in Sources */,
 				36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */,

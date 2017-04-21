@@ -446,7 +446,6 @@ extension EUNetworkManager{
             }
             completion(true,json)
         }
-        
     }
     
     
@@ -992,6 +991,23 @@ extension EUNetworkManager{
                 return
             }
             completion(true,true)
+        }
+        
+    }
+    
+    /// 设置默认社团（下次进入时默认进入本次最后选中的社团）
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - num: 本次的最大值 ＋ 1
+    func setDefaultCommunity(cmid:Int,num:Int){
+        
+        let url = SERVERADDRESS + "/eu/community/setdefaultcm"
+        
+        let parm = ["cmid":cmid,"uid":userAccount.uid,"num":num] as [String : Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, _, _) in
+            // 后台执行，失败了也没办法，无需处理任何事情
         }
         
     }
