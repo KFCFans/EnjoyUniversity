@@ -10,6 +10,9 @@ import UIKit
 
 class EUCommunityManageViewController: EUBaseViewController {
     
+    /// 社团 ID，上层传入
+    var cmid:Int = 0
+    
     let functionarray = [["社团信息"],
                          ["发布公告"],
                          ["设置管理员","移除社团成员"],
@@ -53,5 +56,12 @@ class EUCommunityManageViewController: EUBaseViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
+        if indexPath.section == 2 || indexPath.section == 3{
+            
+            let vc = EUCommunityMemberManageController()
+            vc.cmid = cmid
+            navigationController?.pushViewController(vc, animated: true)
+            
+        }
     }
 }

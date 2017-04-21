@@ -119,7 +119,7 @@ extension EUCommunityContactController:SwiftyDropdownMenuDelegate{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = EUCommunityMemberCell()
+        let cell = EUCommunityContactCell()
         cell.viewmodel = tempviewmodellist[indexPath.row]
         cell.selectionStyle = .none
         return cell

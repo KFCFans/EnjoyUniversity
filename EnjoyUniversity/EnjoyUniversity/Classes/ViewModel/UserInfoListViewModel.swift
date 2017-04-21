@@ -24,6 +24,9 @@ class UserInfoListViewModel{
     /// 社团通讯录
     lazy var communityContactsList = [UserinfoViewModel]()
     
+    /// 社团成员列表
+    lazy var communityMemberList = [UserinfoViewModel]()
+    
     /// 加载活动参与者信息
     ///
     /// - Parameters:
@@ -114,4 +117,31 @@ class UserInfoListViewModel{
             completion(true,true)
         }
     }
+    
+    /// 加载社团成员列表
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 完成回调
+    func loadCommunityMemberList(cmid:Int,completion:@escaping (Bool,Bool)->()){
+        
+        EUNetworkManager.shared.getCommunityMemberInfoList(cmid: cmid) { (isSuccess, json) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            guard let json = json ,let modelarray = NSArray.yy_modelArray(with: UserInfo.self, json: json) as? [UserInfo] else{
+                completion(true,false)
+                return
+            }
+            self.communityMemberList.removeAll()
+            for model in modelarray{
+                self.communityMemberList.append(UserinfoViewModel(model: model))
+            }
+            completion(true,true)
+        }
+        
+    }
+    
 }

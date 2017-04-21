@@ -112,11 +112,9 @@ extension EUNetworkManager{
         paramters["page"] = page
         paramters["rows"] = rows
         
-        request(urlString: url, parameters: paramters) { (json, isSuccess,_) in
-            
+        request(urlString: url, method: .post, parameters: paramters) { (json, isSuccess, _) in
             let array = json as? [[String:Any]]
             completion(array, isSuccess)
-            
         }
         
     }
@@ -446,6 +444,31 @@ extension EUNetworkManager{
             }
             completion(true,json)
         }
+    }
+    
+    /// 获取社团成员列表信息
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 完成回调
+    func getCommunityMemberInfoList(cmid:Int,completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/memberinfolist"
+        
+        let parm = ["cmid":cmid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+        
     }
     
     

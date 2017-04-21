@@ -278,6 +278,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
             navigationController?.pushViewController(vc, animated: true)
         case 2:
             let vc = EUCommunityManageViewController()
+            vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
         case 3:
             let vc = EURecruitmentViewController()
