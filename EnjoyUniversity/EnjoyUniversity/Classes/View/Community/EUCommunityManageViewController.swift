@@ -84,6 +84,8 @@ class EUCommunityManageViewController: EUBaseViewController {
                 break
             case 4:
                 vc.choice = 3
+                vc.communityauthoritylist = communityauthoritylist
+                vc.communityauthoritylistIndex = communityauthoritylistIndex
                 break
             default:
                 break

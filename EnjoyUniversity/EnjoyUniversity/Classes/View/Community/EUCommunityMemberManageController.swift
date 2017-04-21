@@ -16,6 +16,10 @@ class EUCommunityMemberManageController: EUBaseViewController {
     /// 功能 0表示设置管理员 1表示移除管理员 2表示移除社员 3表示转交社团
     var choice:Int = -1
     
+    /// 社团权力列表
+    var communityauthoritylist:CommunityAuthorityListViewModel?
+    var communityauthoritylistIndex:Int = 0
+    
     /// 左滑操作
     var tableviewrowAction:UITableViewRowAction?
     
@@ -219,6 +223,7 @@ class EUCommunityMemberManageController: EUBaseViewController {
             }
             
             SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            self.communityauthoritylist?.communityauthoritylist[self.communityauthoritylistIndex].position = 2
             _ = self.navigationController?.popViewController(animated: true)
         }
     }
