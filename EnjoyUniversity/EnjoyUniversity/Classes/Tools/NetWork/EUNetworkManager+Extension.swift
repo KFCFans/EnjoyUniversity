@@ -1118,7 +1118,32 @@ extension EUNetworkManager{
             completion(true,false)
             
         }
+    }
+    
+    /// 移交社团（权限判断在本地完成）
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - newboss: 新任社长 ID
+    ///   - completion: 完成回调
+    func changeCommunityBoss(cmid:Int,newboss:Int64,completion:@escaping (Bool,Bool)->()){
         
+        let url = SERVERADDRESS + "/eu/community/delivercm"
+        
+        let parm = ["newboss":newboss,"oldboss":userAccount.uid,"cmid":cmid] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            completion(true,false)
+        }
     }
     
 

@@ -86,7 +86,7 @@ class EUCommunityMemberManageController: EUBaseViewController {
                 let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
                 let confirm = UIAlertAction(title: "转交", style: .default, handler: { (_) in
                     
-                    
+                    self.giveCommunityToOthers(row: indexpath.row)
                 })
                 alert.addAction(cancel)
                 alert.addAction(confirm)
@@ -161,6 +161,29 @@ class EUCommunityMemberManageController: EUBaseViewController {
             self.tableview.reloadData()
             SwiftyProgressHUD.showSuccessHUD(duration: 1)
         }
+    }
+    /// 转交社团
+    private func giveCommunityToOthers(row:Int){
+        
+        guard let newboss = userinfolistviewmodel.communityMemberList[row].model?.uid else {
+            return
+        }
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.changeCommunityBoss(cmid: cmid, newboss: newboss) { (isSuccess, success) in
+            SwiftyProgressHUD.hide()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !success{
+                SwiftyProgressHUD.showFaildHUD(text: "异常", duration: 1)
+                return
+            }
+            self.userinfolistviewmodel.communityMemberList[row].model?.position = 3
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
+        
     }
     
 
