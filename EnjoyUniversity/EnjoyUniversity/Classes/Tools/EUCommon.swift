@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// 总服务器地址
 public let SERVERADDRESS = "https://euswag.com"
@@ -19,3 +20,8 @@ public let EUREQUESTCOUNT = 10
 
 /// 二维码前缀
 public let QRCODEPREFIX = "www.euswag.com?"
+
+
+/// 颜色
+/// 文本输入框的黑色
+public let TEXTVIEWCOLOR = UIColor.init(red: 49/255, green: 49/255, blue: 49/255, alpha: 1)

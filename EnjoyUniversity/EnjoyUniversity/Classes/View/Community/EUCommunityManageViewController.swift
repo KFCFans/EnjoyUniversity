@@ -62,7 +62,17 @@ class EUCommunityManageViewController: EUBaseViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
-        if indexPath.section == 2 || indexPath.section == 3 || indexPath.section == 4{
+        
+        
+        if indexPath.section == 0{
+            
+        }
+        else if indexPath.section == 1{
+            let vc = EUCommunityAnnounceController()
+            vc.cmid = cmid
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if indexPath.section == 2 || indexPath.section == 3 || indexPath.section == 4{
             
             guard let position = communityauthoritylist?.communityauthoritylist[communityauthoritylistIndex].position else {
                 return

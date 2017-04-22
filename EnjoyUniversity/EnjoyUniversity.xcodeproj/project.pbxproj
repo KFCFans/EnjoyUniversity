@@ -41,6 +41,7 @@
 		36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36568C8D1E99CD5000BA9A71 /* UserInfo.swift */; };
 		365DDFFA1E8FFBB0007CE665 /* EUCreatedActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */; };
 		365DDFFC1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */; };
+		365FE22E1EAADB7E003507F5 /* EUCommunityAnnounceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 365FE22D1EAADB7E003507F5 /* EUCommunityAnnounceController.swift */; };
 		366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366112361E9661E8005D0A96 /* EULoginViewController.swift */; };
 		3662E64C1E9B60C3000955DA /* UserInfoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */; };
 		3662E6541E9BB961000955DA /* EUProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3662E6531E9BB961000955DA /* EUProfileTableViewCell.swift */; };
@@ -152,6 +153,7 @@
 		36568C8D1E99CD5000BA9A71 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
 		365DDFF91E8FFBB0007CE665 /* EUCreatedActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCreatedActivityViewController.swift; sourceTree = "<group>"; };
 		365DDFFB1E8FFBED007CE665 /* EUBaseAvtivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUBaseAvtivityViewController.swift; sourceTree = "<group>"; };
+		365FE22D1EAADB7E003507F5 /* EUCommunityAnnounceController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityAnnounceController.swift; sourceTree = "<group>"; };
 		366112361E9661E8005D0A96 /* EULoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EULoginViewController.swift; sourceTree = "<group>"; };
 		3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoListViewModel.swift; sourceTree = "<group>"; };
 		3662E6531E9BB961000955DA /* EUProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUProfileTableViewCell.swift; sourceTree = "<group>"; };
@@ -316,6 +318,7 @@
 				3678F85F1EA8A52A006C586C /* EUCommunityNotifyController.swift */,
 				36124A151EA9F893004B6B10 /* EUCommunityManageViewController.swift */,
 				36124A171EAA03AF004B6B10 /* EUCommunityMemberManageController.swift */,
+				365FE22D1EAADB7E003507F5 /* EUCommunityAnnounceController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */,
 				366BA80B1EA4F9F80079132A /* EUChangeUserInfoController.swift in Sources */,
 				36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */,
+				365FE22E1EAADB7E003507F5 /* EUCommunityAnnounceController.swift in Sources */,
 				3664E1EC1E9759F60041259B /* SwiftyVerificationCodeView.swift in Sources */,
 				36C34A0A1EA9CB6E00739C9B /* EUStartRecruitViewController.swift in Sources */,
 				3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */,
