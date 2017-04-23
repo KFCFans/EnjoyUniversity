@@ -151,6 +151,7 @@ extension EUProfileViewController{
                                              textcolor: UIColor.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1),
                                              imgwidth: 35,
                                              shadowimgwidth: 40)
+        myactivityBtn.addTarget(nil, action: #selector(showMyActivities), for: .touchUpInside)
         buttonview.addSubview(myactivityBtn)
         
         let mycommunityBtn = EUActivityButton(frame: CGRect(x: UIScreen.main.bounds.width/4, y: 6, width: UIScreen.main.bounds.width/4, height: 75),
@@ -161,6 +162,7 @@ extension EUProfileViewController{
                                               textcolor: UIColor.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1),
                                               imgwidth: 35,
                                               shadowimgwidth: 40)
+        mycommunityBtn.addTarget(nil, action: #selector(showMyCommunities), for: .touchUpInside)
         buttonview.addSubview(mycommunityBtn)
         
         let activitycollectBtn = EUActivityButton(frame: CGRect(x: UIScreen.main.bounds.width/2, y: 6, width: UIScreen.main.bounds.width/4, height: 75),
@@ -445,14 +447,11 @@ extension EUProfileViewController{
 extension EUProfileViewController{
     
     @objc fileprivate func showMyActivities(){
-        
-        
-        
-    
+        navigationController?.pushViewController(EUMyActivityViewController(), animated: true)
     }
     
     @objc fileprivate func showMyCommunities(){
-    
+        navigationController?.pushViewController(EUMyCommunityViewController(), animated: true)
     }
     
     @objc fileprivate func changeUserInfo(){
