@@ -30,6 +30,11 @@ class EUCommunityInfoViewController: UIViewController {
                                 options: [.transition(.fade(1))],
                                 progressBlock: nil,
                                 completionHandler: nil)
+            backgroudImage.kf.setImage(with: URL(string: viewmodel?.communityBackgroundURL ?? ""),
+                                       placeholder: UIImage(named: "wallbackground"),
+                                       options: [.transition(.fade(1))],
+                                       progressBlock: nil,
+                                       completionHandler: nil)
             
         }
         
@@ -136,7 +141,6 @@ extension EUCommunityInfoViewController{
         view.backgroundColor = UIColor.init(colorLiteralRed: 242.0/255.0, green: 242.0/255.0, blue: 242/255.0, alpha: 1)
         
         // 背景图(后面用 Kingfisher 加载)
-        backgroudImage.image = UIImage(named: "tempbackground")
         backgroudImage.clipsToBounds = true
         
         // 返回按钮

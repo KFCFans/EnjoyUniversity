@@ -86,6 +86,9 @@ extension EUDiscoverViewController{
 
         // 注册可重用 Cell
         tableview.register(UINib(nibName: "EUCommunityWallCell", bundle: nil), forCellReuseIdentifier: COMMUNITYWALLCELLID)
+        
+        // 取消分割线
+        tableview.separatorStyle = .none
 
         // 底部加载视图
         let loadmoreview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 44))
