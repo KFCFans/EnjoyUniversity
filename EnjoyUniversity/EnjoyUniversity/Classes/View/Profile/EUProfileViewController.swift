@@ -413,7 +413,9 @@ extension EUProfileViewController{
         }
         
         
-        let cell = EUProfileTableViewCell(image: UIImage(named: picname)!, title: title, style: UITableViewCellStyle.default, reuseIdentifier: nil)
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: nil)
+        cell.textLabel?.text = title
+        cell.imageView?.image = UIImage(named: picname)
         cell.accessoryType = .disclosureIndicator
         
         return cell
