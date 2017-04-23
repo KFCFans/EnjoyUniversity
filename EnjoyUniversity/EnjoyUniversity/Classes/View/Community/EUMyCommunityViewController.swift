@@ -295,6 +295,8 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
             }
             let vc = EUCommunityManageViewController()
             vc.cmid = cmid
+            vc.viewmodel = viewmodel
+            vc.communityLogo = communitylogo.image
             vc.communityauthoritylist = communityauthorutylist
             vc.communityauthoritylistIndex = communityauthoritylistIndex
             navigationController?.pushViewController(vc, animated: true)

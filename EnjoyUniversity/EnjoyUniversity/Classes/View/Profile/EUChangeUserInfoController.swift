@@ -249,8 +249,6 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
         logoIsChanged = true
         logoimg = resultimg
         picker.dismiss(animated: true, completion: nil)
-        
-        
     }
 }
 

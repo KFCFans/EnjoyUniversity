@@ -1172,6 +1172,30 @@ extension EUNetworkManager{
         }
     }
     
+    /// 修改社团信息
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - logoname: 社团 logo 地址
+    ///   - announcement: 社团公告
+    ///   - detail: 社团详情
+    ///   - completion: 完成回调
+    func changeCommunityInfo(cmid:Int,logoname:String?,announcement:String,detail:String,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/changecm"
+        
+        var parm = ["cmid":cmid,"cmAnnouncement":announcement,"cmDetail":detail] as [String:Any]
+        
+        if let logoname = logoname{
+            parm["cmLogo"] = logoname
+        }
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in
+            completion(isSuccess)
+        }
+        
+    }
+    
 
 }
 

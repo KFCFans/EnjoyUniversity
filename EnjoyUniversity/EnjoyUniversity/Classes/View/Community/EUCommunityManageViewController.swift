@@ -13,6 +13,12 @@ class EUCommunityManageViewController: EUBaseViewController {
     /// 社团 ID，上层传入
     var cmid:Int = 0
     
+    /// 社团视图模型，上层传入
+    var viewmodel:CommunityViewModel?
+    
+    /// 社团 Logo，上层传入
+    var communityLogo:UIImage?
+    
     /// 社团权力列表
     var communityauthoritylist:CommunityAuthorityListViewModel?
     var communityauthoritylistIndex:Int = 0
@@ -65,7 +71,10 @@ class EUCommunityManageViewController: EUBaseViewController {
         
         
         if indexPath.section == 0{
-            
+            let vc = EUChangeCommunityInfoController()
+            vc.communityLogo = communityLogo
+            vc.viewmodel = viewmodel
+            navigationController?.pushViewController(vc, animated: true)
         }
         else if indexPath.section == 1{
             let vc = EUCommunityAnnounceController()
