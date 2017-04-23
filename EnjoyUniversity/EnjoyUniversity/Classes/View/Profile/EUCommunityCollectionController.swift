@@ -89,4 +89,11 @@ extension EUCommunityCollectionController{
         }
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = EUCommunityInfoViewController()
+        vc.viewmodel = communitylistviewmodel.collectedlist[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 }
