@@ -51,7 +51,7 @@ class EUVerifyViewController: EUBaseViewController,UIImagePickerControllerDelega
             return
         }
         
-        let picname = "\(EUNetworkManager.shared.userAccount.uid)"
+        let picname = "\(EUNetworkManager.shared.userAccount.uid).jpg"
         EUNetworkManager.shared.uploadVerifyPicture(name: picname, uploadimg: verifyImg) { (isSuccess) in
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
