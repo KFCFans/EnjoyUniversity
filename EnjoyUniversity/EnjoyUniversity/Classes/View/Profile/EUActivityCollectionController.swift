@@ -63,6 +63,8 @@ extension EUActivityCollectionController{
         
         let vc = EUActivityViewController()
         vc.viewmodel = viewmodellist.collectedlist[indexPath.row]
+        // 防止 pop 回 rootviewcontroller
+        vc.activityStatus = -1
         navigationController?.pushViewController(vc, animated: true)
     }
     
