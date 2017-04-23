@@ -36,7 +36,7 @@ class EUChoseContactsController: EUBaseViewController {
         navitem.title = "选择联系人"
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         
-        let rightBtn = UIBarButtonItem(title: "fas", style: .plain, target: nil, action: #selector(sendNotification))
+        let rightBtn = UIBarButtonItem(title: "发送", style: .plain, target: nil, action: #selector(sendNotification))
         navitem.rightBarButtonItem = rightBtn
         
         // 开启多选
