@@ -27,6 +27,9 @@ class EUChoseContactsController: EUBaseViewController {
     /// 保存选中的 index
     var selectIndexArray = [[Int]]()
     
+    /// 保存每个去选中个数
+    var selectNum = [Int]()
+    
     /// 可重用cell ID
     var EUCHOSECONTACTSCELL = "EUCHOSECONTACTSCELL"
 
@@ -42,6 +45,9 @@ class EUChoseContactsController: EUBaseViewController {
         // 开启多选
         tableview.allowsMultipleSelection = true
         tableview.register(EUCommunityMemberCell.self, forCellReuseIdentifier: EUCHOSECONTACTSCELL)
+        
+        tableview.tableFooterView = UIView()
+        tableview.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 10))
     }
     
     override func loadData() {
@@ -73,13 +79,15 @@ class EUChoseContactsController: EUBaseViewController {
             guard let grade = viewmodel.model?.grade else {
                 continue
             }
-            let index = 4 - (currentyear - grade)
+            let index = currentyear - grade
             sectionarray[index].datasource.append(viewmodel)
         }
         var i = 0
         for _ in 0..<sectionarray.count{
             sectionarray[i].titleLabel.text = "\(currentyear - i) 级"
             selectIndexArray.append(Array(repeating: 0, count: sectionarray[i].datasource.count))
+            sectionarray[i].numLabel.text = "0/\(sectionarray[i].datasource.count)"
+            selectNum.append(0)
             i += 1
         }
      
@@ -104,13 +112,11 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
         let cell = (tableView.dequeueReusableCell(withIdentifier: EUCHOSECONTACTSCELL) as? EUCommunityMemberCell) ?? EUCommunityMemberCell()
         cell.viewmodel = sectionarray[indexPath.section].datasource[indexPath.row]
         cell.selectionStyle = .none
-        if ((tableview.indexPathsForSelectedRows?.index(of: indexPath)) != nil){
-            cell.accessoryType = .checkmark
-        }else{
-            cell.accessoryType = .none
-        }
+
         if selectIndexArray[indexPath.section][indexPath.row] == 1{
             cell.accessoryType = .checkmark
+//            cell.isSelected = true
+            tableView.cellForRow(at: indexPath)?.isSelected = true
         }
         return cell
     }
@@ -131,6 +137,10 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
         return 60
     }
     
+    func tableView(_ tableView: UITableView, willSelectRowAt indexPath: IndexPath) -> IndexPath? {
+        return indexPath
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         selectIndexArray[indexPath.section][indexPath.row] = 1
@@ -138,6 +148,8 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
         if (selectIndexArray[indexPath.section].min() ?? 0) == 1{
             sectionarray[indexPath.section].circleBtn.isSelected = true
         }
+        selectNum[indexPath.section] += 1
+        sectionarray[indexPath.section].numLabel.text = "\(selectNum[indexPath.section])/\(sectionarray[indexPath.section].datasource.count)"
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
@@ -145,6 +157,9 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
         selectIndexArray[indexPath.section][indexPath.row] = 0
         tableview.cellForRow(at: indexPath)?.accessoryType = .none
         sectionarray[indexPath.section].circleBtn.isSelected = false
+        
+        selectNum[indexPath.section] -= 1
+        sectionarray[indexPath.section].numLabel.text = "\(selectNum[indexPath.section])/\(sectionarray[indexPath.section].datasource.count)"
     }
     
     
@@ -161,6 +176,14 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
             selectIndexArray[sectionView.section][index] = replace
         }
         tableview.reloadSections(IndexSet(integer: sectionView.section), with: .automatic)
+        
+        if isSelected{
+            selectNum[sectionView.section] = sectionarray[sectionView.section].datasource.count
+            sectionarray[sectionView.section].numLabel.text = "\(selectNum[sectionView.section])/\(sectionarray[sectionView.section].datasource.count)"
+        }else{
+            selectNum[sectionView.section] = 0
+            sectionarray[sectionView.section].numLabel.text = "\(selectNum[sectionView.section])/\(sectionarray[sectionView.section].datasource.count)"
+        }
         
     }
 
@@ -192,9 +215,11 @@ protocol FoldSectionViewDelegate {
 }
 class FoldSectionView: UIView {
     
-    var titleLabel = UILabel()
+    let titleLabel = UILabel()
     
-    let circleBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 36, y: 0, width: 24, height: 24))
+    let numLabel = UILabel()
+    
+    let circleBtn = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 36, y: 10, width: 24, height: 24))
     
     var section:Int = 0
     
@@ -219,6 +244,11 @@ class FoldSectionView: UIView {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         titleLabel.textColor = UIColor.black
         addSubview(titleLabel)
+        
+        numLabel.frame = CGRect(x: UIScreen.main.bounds.width - 65, y: 15, width: 40, height: 14)
+        numLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        numLabel.textColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
+        addSubview(numLabel)
         
         circleBtn.setImage(UIImage(named: "cm_circle"), for: .normal)
         circleBtn.setImage(UIImage(named: "cm_circleselect"), for: .selected)
