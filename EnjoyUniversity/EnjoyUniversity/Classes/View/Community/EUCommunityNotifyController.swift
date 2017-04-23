@@ -36,16 +36,17 @@ class EUCommunityNotifyController: EUBaseViewController {
     
     @objc private func didClickChoseBtn(){
         
+        // 如果作为公告，直接修改公告
+        guard let notification = notifyTextView.text else{
+            SwiftyProgressHUD.showBigFaildHUD(text: "请输入通知", duration: 1)
+            return
+        }
+        if notification.characters.count < 1{
+            SwiftyProgressHUD.showBigFaildHUD(text: "请输入通知", duration: 1)
+            return
+        }
+        
         if announceSwitch.isOn{
-            // 如果作为公告，直接修改公告
-            guard let notification = notifyTextView.text else{
-                SwiftyProgressHUD.showBigFaildHUD(text: "请输入通知", duration: 1)
-                return
-            }
-            if notification.characters.count < 1{
-                SwiftyProgressHUD.showBigFaildHUD(text: "请输入通知", duration: 1)
-                return
-            }
             SwiftyProgressHUD.showLoadingHUD()
             EUNetworkManager.shared.changeCommunityAnnouncement(cmid: cmid, announcement: notification) { (isSuccess) in
                 
@@ -56,10 +57,16 @@ class EUCommunityNotifyController: EUBaseViewController {
                 }
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
                 let vc = EUChoseContactsController()
+                vc.shouleSendSms = self.smsSwitch.isOn
+                vc.notifycationText = notification
+                vc.cmid = self.cmid
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }else{
             let vc = EUChoseContactsController()
+            vc.shouleSendSms = smsSwitch.isOn
+            vc.notifycationText = notification
+            vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
         }
         
