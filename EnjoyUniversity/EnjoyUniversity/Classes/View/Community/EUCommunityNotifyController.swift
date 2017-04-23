@@ -29,6 +29,8 @@ class EUCommunityNotifyController: EUBaseViewController {
         tableview.tableHeaderView = notifyTextView
         tableview.tableFooterView = UIView()
         
+        notifyTextView.font = UIFont.boldSystemFont(ofSize: 15)
+        
         navitem.title = "发送通知"
         let rightBtn = UIBarButtonItem(title: "选择联系人", style: .plain, target: nil, action: #selector(didClickChoseBtn))
         navitem.rightBarButtonItem = rightBtn
