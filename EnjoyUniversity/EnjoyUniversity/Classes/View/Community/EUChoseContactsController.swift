@@ -42,8 +42,6 @@ class EUChoseContactsController: EUBaseViewController {
         let rightBtn = UIBarButtonItem(title: "发送", style: .plain, target: nil, action: #selector(sendNotification))
         navitem.rightBarButtonItem = rightBtn
         
-        // 开启多选
-        tableview.allowsMultipleSelection = true
         tableview.register(EUCommunityMemberCell.self, forCellReuseIdentifier: EUCHOSECONTACTSCELL)
         
         tableview.tableFooterView = UIView()
@@ -142,26 +140,26 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        
-        selectIndexArray[indexPath.section][indexPath.row] = 1
-        tableview.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        if (selectIndexArray[indexPath.section].min() ?? 0) == 1{
-            sectionarray[indexPath.section].circleBtn.isSelected = true
+        if selectIndexArray[indexPath.section][indexPath.row] == 1{
+            selectIndexArray[indexPath.section][indexPath.row] = 0
+            tableview.cellForRow(at: indexPath)?.accessoryType = .none
+            sectionarray[indexPath.section].circleBtn.isSelected = false
+            
+            selectNum[indexPath.section] -= 1
+            sectionarray[indexPath.section].numLabel.text = "\(selectNum[indexPath.section])/\(sectionarray[indexPath.section].datasource.count)"
+
+        }else{
+            selectIndexArray[indexPath.section][indexPath.row] = 1
+            tableview.cellForRow(at: indexPath)?.accessoryType = .checkmark
+            if (selectIndexArray[indexPath.section].min() ?? 0) == 1{
+                sectionarray[indexPath.section].circleBtn.isSelected = true
+            }
+            selectNum[indexPath.section] += 1
+            sectionarray[indexPath.section].numLabel.text = "\(selectNum[indexPath.section])/\(sectionarray[indexPath.section].datasource.count)"
         }
-        selectNum[indexPath.section] += 1
-        sectionarray[indexPath.section].numLabel.text = "\(selectNum[indexPath.section])/\(sectionarray[indexPath.section].datasource.count)"
-    }
-    
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         
-        selectIndexArray[indexPath.section][indexPath.row] = 0
-        tableview.cellForRow(at: indexPath)?.accessoryType = .none
-        sectionarray[indexPath.section].circleBtn.isSelected = false
         
-        selectNum[indexPath.section] -= 1
-        sectionarray[indexPath.section].numLabel.text = "\(selectNum[indexPath.section])/\(sectionarray[indexPath.section].datasource.count)"
-    }
-    
+    }    
     
     
     func foldSectionViewdidClicked(sectionView: FoldSectionView, isExpand: Bool) {
