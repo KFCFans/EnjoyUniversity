@@ -157,9 +157,7 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
             selectNum[indexPath.section] += 1
             sectionarray[indexPath.section].numLabel.text = "\(selectNum[indexPath.section])/\(sectionarray[indexPath.section].datasource.count)"
         }
-        
-        
-    }    
+    }
     
     
     func foldSectionViewdidClicked(sectionView: FoldSectionView, isExpand: Bool) {
@@ -191,6 +189,15 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
 extension EUChoseContactsController{
     
     @objc fileprivate func sendNotification(){
+        var phonelist = [Int64]()
+        // 获取名单
+        for (i,array) in selectIndexArray.enumerated(){
+            for (j,selectindex) in array.enumerated(){
+                if selectindex == 1{
+                    phonelist.append(sectionarray[i].datasource[j].model?.uid ?? 0)
+                }
+            }
+        }
         
     }
     
