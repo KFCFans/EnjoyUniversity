@@ -82,7 +82,7 @@ class CommunityListViewModel{
                 completion(true,false)
                 return
             }
-            
+            self.collectedlist.removeAll()
             for model in modelarray{
                 self.collectedlist.append(CommunityViewModel(model: model))
             }

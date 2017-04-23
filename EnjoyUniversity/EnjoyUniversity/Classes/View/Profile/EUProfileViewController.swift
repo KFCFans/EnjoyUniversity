@@ -182,6 +182,7 @@ extension EUProfileViewController{
                                                    textcolor: UIColor.init(red: 92/255, green: 92/255, blue: 92/255, alpha: 1),
                                                    imgwidth: 35,
                                                    shadowimgwidth: 40)
+        communitycollectBtn.addTarget(nil, action: #selector(showMyCommunityCollections), for: .touchUpInside)
         buttonview.addSubview(communitycollectBtn)
         
         tableview.tableHeaderView = headview
@@ -468,5 +469,9 @@ extension EUProfileViewController{
     
     @objc fileprivate func showMyActivityCollections(){
         navigationController?.pushViewController(EUActivityCollectionController(), animated: true)
+    }
+    
+    @objc fileprivate func showMyCommunityCollections(){
+        navigationController?.pushViewController(EUCommunityCollectionController(), animated: true)
     }
 }

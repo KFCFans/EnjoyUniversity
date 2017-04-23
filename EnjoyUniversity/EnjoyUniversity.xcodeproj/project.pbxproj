@@ -89,6 +89,7 @@
 		36BDBB4A1E6452090075A3ED /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB491E6452090075A3ED /* Community.swift */; };
 		36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */; };
 		36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */; };
+		36C05D581EACC83200ADC433 /* EUCommunityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */; };
 		36C34A0A1EA9CB6E00739C9B /* EUStartRecruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */; };
 		36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */; };
 		36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */; };
@@ -208,6 +209,7 @@
 		36BDBB491E6452090075A3ED /* Community.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityWallCell.swift; sourceTree = "<group>"; };
 		36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUCommunityWallCell.xib; sourceTree = "<group>"; };
+		36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityCollectionCell.swift; sourceTree = "<group>"; };
 		36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartRecruitViewController.swift; sourceTree = "<group>"; };
 		36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshControl.swift; sourceTree = "<group>"; };
 		36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshView.swift; sourceTree = "<group>"; };
@@ -520,6 +522,7 @@
 				366BA80C1EA509410079132A /* EUChangePasswordController.swift */,
 				3673A5EB1EA5C8D6003C29C3 /* EUSystemSettingsController.swift */,
 				36247B5D1EA66643006F29F1 /* EUActivityCollectionController.swift */,
+				36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */,
 				366DCC801EA70EE000A2F496 /* EUCommunityCollectionController.swift */,
 			);
 			path = Profile;
@@ -889,6 +892,7 @@
 				36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */,
 				366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */,
 				36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */,
+				36C05D581EACC83200ADC433 /* EUCommunityCollectionCell.swift in Sources */,
 				3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */,
 				3671CFD31E98FF5D00FACF91 /* EUserInfoInputViewController.swift in Sources */,
 				3671B5AA1EA1E6F0002F66AC /* EUMyCommunityViewController.swift in Sources */,

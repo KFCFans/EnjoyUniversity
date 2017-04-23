@@ -1018,6 +1018,32 @@ extension EUNetworkManager{
         
     }
     
+    /// 取消收藏社团
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 完成回调
+    func discollectCommunity(cmid:Int,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/community/discollectcm"
+        
+        let parm = ["uid":userAccount.uid,"cmid":cmid] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            
+            if status == 500{
+                completion(true,false)
+                return
+            }
+            completion(true,true)
+        }
+        
+    }
+    
     /// 设置默认社团（下次进入时默认进入本次最后选中的社团）
     ///
     /// - Parameters:

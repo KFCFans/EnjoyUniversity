@@ -26,7 +26,7 @@ class EUActivityCollectionController: EUBaseViewController {
     
     override func loadData() {
         
-        
+        refreshControl?.beginRefreshing()
         viewmodellist.loadMyCollectedActivity { (isSuccess, hasValue) in
         
             self.refreshControl?.endRefreshing()
