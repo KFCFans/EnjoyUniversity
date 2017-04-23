@@ -25,7 +25,7 @@ class EUCommunityManageViewController: EUBaseViewController {
     let fuctionimgarray = [["cm_changecm"],
                            ["cm_announce"],
                            ["cm_manager","cm_removemanager"],
-                           ["cm_manager"],
+                           ["cm_remove"],
                            ["cm_givecm"]]
 
     override func viewDidLoad() {

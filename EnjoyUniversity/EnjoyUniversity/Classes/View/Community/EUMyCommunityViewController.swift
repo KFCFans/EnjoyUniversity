@@ -285,6 +285,7 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
                 return
             }
             let vc = EUCommunityNotifyController()
+            vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
             break
         case 2:
