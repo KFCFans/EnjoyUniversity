@@ -45,10 +45,10 @@ class EUChoseContactsController: EUBaseViewController {
         tableview.register(EUCommunityMemberCell.self, forCellReuseIdentifier: EUCHOSECONTACTSCELL)
         
         tableview.tableFooterView = UIView()
-        tableview.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 10))
     }
     
     override func loadData() {
+        
         viewmodellist.loadCommunityContactsInfoList(cmid: cmid) { (isSuccess, hasData) in
             self.refreshControl?.endRefreshing()
             if !isSuccess{
@@ -69,8 +69,13 @@ class EUChoseContactsController: EUBaseViewController {
         let currentdate = Date().timeIntervalSince1970 * 1000
         let currentyear = Int(timeStampToString(timeStamp: "\(currentdate)", formate: "YYYY") ?? "") ?? 0
         
-        for _ in 0...4{
-            sectionarray.append(FoldSectionView(frame: CGRect(x: 0, y: 0, width: tableview.frame.width, height: 44)))
+        for i in 0...4{
+            if sectionarray.count == 5{
+                sectionarray[i].datasource.removeAll()
+            }else{
+                sectionarray.append(FoldSectionView(frame: CGRect(x: 0, y: 0, width: tableview.frame.width, height: 44)))
+            }
+            
         }
         
         for viewmodel in viewmodellist.communityContactsList{
