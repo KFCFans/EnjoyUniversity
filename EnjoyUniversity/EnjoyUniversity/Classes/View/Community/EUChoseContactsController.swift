@@ -115,7 +115,6 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
 
         if selectIndexArray[indexPath.section][indexPath.row] == 1{
             cell.accessoryType = .checkmark
-//            cell.isSelected = true
             tableView.cellForRow(at: indexPath)?.isSelected = true
         }
         return cell
@@ -142,6 +141,7 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         
         selectIndexArray[indexPath.section][indexPath.row] = 1
         tableview.cellForRow(at: indexPath)?.accessoryType = .checkmark
