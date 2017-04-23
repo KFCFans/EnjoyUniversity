@@ -12,11 +12,7 @@ class EUVerifyViewController: EUBaseViewController,UIImagePickerControllerDelega
     
     var verifyImg:UIImage?
     
-    let nametextfield = UITextField(frame: CGRect(x: 0, y: 88, width: UIScreen.main.bounds.width, height: 54))
-    
-    let schoolnumber = UITextField(frame: CGRect(x: 0, y: 142 ,width: UIScreen.main.bounds.width, height: 54))
-    
-    let addphotoBtn = UIButton(frame: CGRect(x: 0, y: 220, width: UIScreen.main.bounds.width, height: 200))
+    let addphotoBtn = UIButton(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,29 +31,10 @@ class EUVerifyViewController: EUBaseViewController,UIImagePickerControllerDelega
     private func setupUI(){
         
         let warnlabel = UILabel(frame: CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: 24))
-        warnlabel.text = "请您如实准确填写本人信息，否则驳回认证"
+        warnlabel.text = "上传校园卡或学生证正面照片"
         warnlabel.textAlignment = .center
         warnlabel.textColor = UIColor.init(red: 1, green: 119/255, blue: 0, alpha: 1)
         view.addSubview(warnlabel)
-        
-        
-        nametextfield.backgroundColor = UIColor.white
-        nametextfield.leftViewMode = .always
-        nametextfield.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
-        nametextfield.placeholder = "姓名"
-        nametextfield.font = UIFont.boldSystemFont(ofSize: 15)
-        nametextfield.textColor = UIColor.init(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
-        view.addSubview(nametextfield)
-        
-        schoolnumber.backgroundColor = UIColor.white
-        schoolnumber.leftViewMode = .always
-        schoolnumber.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 10))
-        schoolnumber.placeholder = "学号"
-        schoolnumber.keyboardType = .numberPad
-        schoolnumber.font = UIFont.boldSystemFont(ofSize: 15)
-        schoolnumber.textColor = UIColor.init(red: 157/255, green: 157/255, blue: 157/255, alpha: 1)
-        view.addSubview(schoolnumber)
-        
         
         addphotoBtn.setImage(UIImage(named: "profile_addphoto"), for: .normal)
         addphotoBtn.addTarget(nil, action: #selector(selectVerifyPhoto), for: .touchUpInside)
@@ -73,13 +50,16 @@ class EUVerifyViewController: EUBaseViewController,UIImagePickerControllerDelega
             SwiftyProgressHUD.showFaildHUD(text: "请选取图片", duration: 1)
             return
         }
-        guard let name = nametextfield.text ,let schoolid = schoolnumber.text  else {
-            SwiftyProgressHUD.showFaildHUD(text: "信息不全", duration: 1)
-            return
-        }
         
-        //FIXME: - 上传
-        print(verifyImg.description + name + schoolid.description)
+        let picname = "\(EUNetworkManager.shared.userAccount.uid)"
+        EUNetworkManager.shared.uploadVerifyPicture(name: picname, uploadimg: verifyImg) { (isSuccess) in
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            _ = self.navigationController?.popViewController(animated: true)
+        }
         
     }
     

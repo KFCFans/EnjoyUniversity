@@ -61,9 +61,11 @@ class EUChangeCommunityInfoController: EUBaseViewController,UIImagePickerControl
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                     return
                 }
-                // 取图片名，不需要后缀
-                let picname = address?.components(separatedBy: ".").first
-                EUNetworkManager.shared.changeCommunityInfo(cmid: cmid, logoname: picname, announcement: announcement, detail: cmdetail, completion: { (isSuccess) in
+                guard let address = address else{
+                    SwiftyProgressHUD.showFaildHUD(text: "上传失败", duration: 1)
+                    return
+                }
+                EUNetworkManager.shared.changeCommunityInfo(cmid: cmid, logoname: address, announcement: announcement, detail: cmdetail, completion: { (isSuccess) in
                     SwiftyProgressHUD.hide()
                     if !isSuccess{
                         SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)

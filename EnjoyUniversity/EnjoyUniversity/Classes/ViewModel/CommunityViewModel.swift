@@ -61,7 +61,7 @@ class CommunityViewModel{
         detailHeight = calculateLabelHeight(text: model.cmDetail ?? "", width: UIScreen.main.bounds.width - 30, font: 14)
         
         // 拼接 LOGO URL
-        communityLogoUrl = PICTURESERVERADDRESS + "/community/logo/" + (model.cmLogo ?? "") + ".png"
+        communityLogoUrl = PICTURESERVERADDRESS + "/community/logo/" + (model.cmLogo ?? "")
         
         // 拼接 背景 URL
         communityBackgroundURL = PICTURESERVERADDRESS + "/community/background/" + (model.cmBackground ?? "") + ".jpg"

@@ -1272,6 +1272,39 @@ extension EUNetworkManager{
             })
             
         }
+    }
+    
+    /// 上传认证图片
+    ///
+    /// - Parameters:
+    ///   - name: 认证图片命名
+    ///   - uploadimg: 图片
+    ///   - completion: 完成回调
+    func uploadVerifyPicture(name:String,uploadimg:UIImage,completion:@escaping (Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/upload/verify"
+        //将选择的图片保存到Document目录下
+        let fileManager = FileManager.default
+        let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
+        let filePath = "\(rootPath)/\(name).jpg"
+        let imageData = UIImageJPEGRepresentation(uploadimg, 1.0)
+        fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
+        
+        if fileManager.fileExists(atPath: filePath){
+            Alamofire.upload(multipartFormData: { (multipartdata) in
+                multipartdata.append(URL(fileURLWithPath: filePath), withName: "file", fileName: name, mimeType: "image/jpg")
+            }, to: url, encodingCompletion: { (encodingResult) in
+                switch encodingResult{
+                case .success(request: _, streamingFromDisk: _, streamFileURL: _):
+                    completion(true)
+                    break
+                case .failure(_):
+                    completion(false)
+                    break
+                }
+            })
+        }
+
         
     }
     
