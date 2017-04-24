@@ -1,5 +1,5 @@
 //
-//  EUSearchActivityViewController.swift
+//  EUSearchCommunityController.swift
 //  EnjoyUniversity
 //
 //  Created by lip on 17/4/24.
@@ -8,35 +8,37 @@
 
 import UIKit
 
-class EUSearchActivityController: EUBaseViewController,UISearchBarDelegate {
-
-    lazy var listviewmodel = ActivityListViewModel()
+class EUSearchCommunityController: EUBaseViewController,UISearchBarDelegate {
     
-    let SEARCHACTIVITYCELL = "SEARCHACTIVITYCELL"
+    lazy var listviewmodel = CommunityListViewModel()
     
     var keyword:String?
     
     var isPullUp:Bool = false
+    
+    var SEARCHCOMMUNITYCELL = "SEARCHCOMMUNITYCELL"
     
     // 底部刷新指示器
     let indicator = UIActivityIndicatorView(activityIndicatorStyle: .white)
     
     // 底部说明文本
     let indicatorlabel = UILabel()
-    
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
         
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
-        tableview.register(UINib(nibName: "EUActivityCell", bundle: nil), forCellReuseIdentifier: SEARCHACTIVITYCELL)
-        tableview.keyboardDismissMode = .onDrag
         tableview.tableFooterView = UIView()
+        tableview.register(EUCommunityCollectionCell.self, forCellReuseIdentifier: SEARCHCOMMUNITYCELL)
+        tableview.keyboardDismissMode = .onDrag
         
         let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 60, height: 30))
         searchbar.delegate = self
         searchbar.searchBarStyle = .minimal
         if keyword == nil{
-            searchbar.placeholder = "搜索校园活动"
+            searchbar.placeholder = "搜索大学社团"
             searchbar.becomeFirstResponder()
         }else{
             searchbar.text = keyword
@@ -45,39 +47,43 @@ class EUSearchActivityController: EUBaseViewController,UISearchBarDelegate {
         let titleview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 60, height: 30))
         titleview.addSubview(searchbar)
         navitem.titleView = titleview
+
         
     }
     
     override func loadData() {
+        
         guard let keyword = keyword else {
             return
         }
+        
         refreshControl?.beginRefreshing()
-        listviewmodel.loadSearchedActivity(keyword: keyword, isPullup: isPullUp) { (isSuccess, hasData) in
+        listviewmodel.loadSearchedCommunity(keyword: keyword, isPullUp: isPullUp) { (isSuccess, hadData) in
             self.refreshControl?.endRefreshing()
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
-            if !hasData{
-                return
+            if !hadData{
+                // 空空如也
             }
             self.tableview.reloadData()
         }
+        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listviewmodel.searchedlist.count
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return listviewmodel.searchList.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableview.dequeueReusableCell(withIdentifier: SEARCHACTIVITYCELL) as? EUActivityCell ?? EUActivityCell()
-        cell.activityVM = listviewmodel.searchedlist[indexPath.row]
+        let cell = (tableView.dequeueReusableCell(withIdentifier: SEARCHCOMMUNITYCELL) as? EUCommunityCollectionCell) ?? EUCommunityCollectionCell()
+        cell.viewmodel = listviewmodel.searchList[indexPath.row]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -87,7 +93,7 @@ class EUSearchActivityController: EUBaseViewController,UISearchBarDelegate {
         }
         self.keyword = keyword
         refreshControl?.beginRefreshing()
-        listviewmodel.loadSearchedActivity(keyword: keyword, isPullup: false) { (isSuccess, hasData) in
+        listviewmodel.loadSearchedCommunity(keyword: keyword, isPullUp: false) { (isSuccess, hasData) in
             self.refreshControl?.endRefreshing()
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
@@ -103,8 +109,8 @@ class EUSearchActivityController: EUBaseViewController,UISearchBarDelegate {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         super.tableView(tableView, didSelectRowAt: indexPath)
         
-        let vc = EUActivityViewController()
-        vc.viewmodel = listviewmodel.searchedlist[indexPath.row]
+        let vc = EUCommunityInfoViewController()
+        vc.viewmodel = listviewmodel.searchList[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -122,11 +128,13 @@ class EUSearchActivityController: EUBaseViewController,UISearchBarDelegate {
             return
         }
         
-        if (currentrow == maxrow - 1) && !isPullUp && listviewmodel.searchedlist.count > 0 {
+        if (currentrow == maxrow - 1) && !isPullUp && listviewmodel.searchList.count > 0 {
             isPullUp = true
             indicator.startAnimating()
             loadData()
         }
     }
-    
+
+
+
 }

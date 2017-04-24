@@ -518,7 +518,59 @@ extension EUNetworkManager{
             }
             completion(true,json)
         }
+    }
+    
+    /// 搜索社团
+    ///
+    /// - Parameters:
+    ///   - keyword: 关键字
+    ///   - page: 页
+    ///   - rows: 每页行数
+    ///   - completion: 完成回调
+    func searchCommunity(keyword:String,page:Int,rows:Int,completion:@escaping (Bool,[[String:Any]]?)->()){
         
+        let url = SERVERADDRESS + "/eu/community/search"
+        
+        let parm = ["keyword":keyword,"page":page,"rows":rows] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+    }
+    
+    /// 搜索用户
+    ///
+    /// - Parameters:
+    ///   - keyword: 关键词
+    ///   - page: 页
+    ///   - rows: 每页行数
+    ///   - completion: 完成回调
+    func searchUser(keyword:String,page:Int,rows:Int,completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/info/search"
+        
+        let parm = ["keyword":keyword,"page":page,"rows":rows] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
     }
     
     

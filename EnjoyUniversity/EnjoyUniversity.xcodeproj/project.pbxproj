@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		262F97B75474F25664E9074A /* Pods_EnjoyUniversityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D885B98299ED2C5A1AA6E7F /* Pods_EnjoyUniversityUITests.framework */; };
+		360674651EAE11AC0023159D /* EUSearchCommunityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360674641EAE11AC0023159D /* EUSearchCommunityController.swift */; };
+		360674671EAE19730023159D /* EUSearchUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360674661EAE19730023159D /* EUSearchUserController.swift */; };
 		36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */; };
 		3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3609A01D1E909E9D007FD55C /* EUActivityButton.swift */; };
 		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
@@ -123,6 +125,8 @@
 /* Begin PBXFileReference section */
 		24C99E6F09D2570C831C0D9D /* Pods-EnjoyUniversityUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversityUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversityUITests/Pods-EnjoyUniversityUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		33300CEBB8EF0944BE216447 /* Pods-EnjoyUniversity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversity.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversity/Pods-EnjoyUniversity.release.xcconfig"; sourceTree = "<group>"; };
+		360674641EAE11AC0023159D /* EUSearchCommunityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchCommunityController.swift; sourceTree = "<group>"; };
+		360674661EAE19730023159D /* EUSearchUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchUserController.swift; sourceTree = "<group>"; };
 		36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartActivityViewController.swift; sourceTree = "<group>"; };
 		3609A01D1E909E9D007FD55C /* EUActivityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityButton.swift; sourceTree = "<group>"; };
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
@@ -272,6 +276,8 @@
 			children = (
 				36B164191E65A59E00B589B4 /* EUSearchViewController.swift */,
 				366F00D61EADDA2B00BFFC4F /* EUSearchActivityController.swift */,
+				360674641EAE11AC0023159D /* EUSearchCommunityController.swift */,
+				360674661EAE19730023159D /* EUSearchUserController.swift */,
 			);
 			name = Search;
 			path = Profile/Search;
@@ -894,6 +900,7 @@
 				3671B5AE1EA20299002F66AC /* CommunityAuthorityListViewModel.swift in Sources */,
 				362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */,
 				36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */,
+				360674671EAE19730023159D /* EUSearchUserController.swift in Sources */,
 				366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */,
 				36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */,
 				36C05D581EACC83200ADC433 /* EUCommunityCollectionCell.swift in Sources */,
@@ -934,6 +941,7 @@
 				36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
 				36EC19981E9893D400A08AC4 /* SwiftyProgressHUD.swift in Sources */,
+				360674651EAE11AC0023159D /* EUSearchCommunityController.swift in Sources */,
 				36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */,
 				36BDBB3B1E6416840075A3ED /* EUBaseViewController.swift in Sources */,
 				3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */,

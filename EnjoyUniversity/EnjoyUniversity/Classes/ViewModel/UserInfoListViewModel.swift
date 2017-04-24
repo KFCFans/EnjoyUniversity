@@ -27,6 +27,9 @@ class UserInfoListViewModel{
     /// 社团成员列表
     lazy var communityMemberList = [UserinfoViewModel]()
     
+    /// 搜索用户列表
+    lazy var searchList = [UserinfoViewModel]()
+    
     /// 加载活动参与者信息
     ///
     /// - Parameters:
@@ -141,6 +144,51 @@ class UserInfoListViewModel{
                 self.communityMemberList.append(UserinfoViewModel(model: model))
             }
             completion(true,true)
+        }
+    }
+    
+    /// 搜索用户列表
+    ///
+    /// - Parameters:
+    ///   - keyword: 关键字
+    ///   - page: 页
+    ///   - rows: 每页行数
+    ///   - completion: 完成回调
+    func loadSearchedUserList(keyword:String,isPullUp:Bool,page:Int,rows:Int,completion:@escaping (Bool,Bool)->()){
+        
+        var page = 1
+        let rows = EUREQUESTCOUNT
+        
+        if isPullUp {
+            if searchList.count >= rows {
+                // swift 整数相处直接舍弃余数
+                page = searchList.count / rows + 1
+            }
+        }
+        EUNetworkManager.shared.searchUser(keyword: keyword, page: page, rows: rows) { (isSuccess, json) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            guard let json = json ,let modelarray = NSArray.yy_modelArray(with: UserInfo.self, json: json) as? [UserInfo] else{
+                completion(true,false)
+                return
+            }
+            
+            var temp = [UserinfoViewModel]
+            for model in modelarray{
+                temp.append(UserinfoViewModel(model: model))
+            }
+            
+            if isPullUp{
+                self.searchList = self.searchList + temp
+            }else{
+                self.searchList = temp
+            }
+            
+            completion(true,true)
+            
         }
         
     }

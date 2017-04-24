@@ -234,7 +234,6 @@ extension EUHomeViewController{
             indicator.startAnimating()
             loadData()
         }
-        
     }
     
     

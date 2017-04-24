@@ -11,11 +11,14 @@ import YYModel
 
 class CommunityListViewModel{
     
-    /// 我参加的活动视图模型列表
+    /// 我参加的社团视图模型列表
     lazy var modelList = [CommunityViewModel]()
     
-    /// 我收藏的活动视图模型列表
+    /// 我收藏的社团视图模型列表
     lazy var collectedlist = [CommunityViewModel]()
+    
+    /// 我搜索的社团视图模型列表
+    lazy var searchList = [CommunityViewModel]()
     
     
     
@@ -88,7 +91,44 @@ class CommunityListViewModel{
             }
             completion(true,true)
         }
+    }
     
+    /// 加载我搜索的社团列表
+    ///
+    /// - Parameters:
+    ///   - keyword: 关键字
+    ///   - completion: 完成回调
+    func loadSearchedCommunity(keyword:String,isPullUp:Bool,completion:@escaping (Bool,Bool)->()){
+        var page = 1
+        let rows = EUREQUESTCOUNT
+        
+        if isPullUp {
+            if searchList.count >= rows {
+                // swift 整数相处直接舍弃余数
+                page = searchList.count / rows + 1
+            }
+        }
+        
+        EUNetworkManager.shared.searchCommunity(keyword: keyword, page: page, rows: rows) { (isSuccess, array) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            guard let array = array,let modelarray = NSArray.yy_modelArray(with: Community.self, json: array) as? [Community] else{
+                completion(true,false)
+                return
+            }
+            var temp = [CommunityViewModel]()
+            for model in modelarray{
+                temp.append(CommunityViewModel(model: model))
+            }
+            if isPullUp{
+                self.searchList = self.searchList + temp
+            }else{
+                self.searchList = temp
+            }
+            completion(true,true)
+        }
     }
     
     
