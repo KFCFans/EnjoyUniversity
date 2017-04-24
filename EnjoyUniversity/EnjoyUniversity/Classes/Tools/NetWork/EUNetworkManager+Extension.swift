@@ -468,6 +468,56 @@ extension EUNetworkManager{
             }
             completion(true,json)
         }
+    }
+    
+    /// 搜索 活动／社团／用户 数量
+    ///
+    /// - Parameters:
+    ///   - keyword: 关键字
+    ///   - compeltion: 完成回调
+    func getSearchNum(keyword:String,compeltion:@escaping (Bool,[String:Int]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/common/searchnum"
+        
+        let parm = ["keyword":keyword]
+        
+        request(urlString: url, method: .post, parameters: parm) { (dict, isSuccess, _) in
+            
+            if !isSuccess{
+                compeltion(false,nil)
+                return
+            }
+            guard let dict = dict as? [String:Int] else{
+                compeltion(true,nil)
+                return
+            }
+            compeltion(true,dict)
+        }
+        
+    }
+    
+    /// 搜索活动
+    ///
+    /// - Parameters:
+    ///   - keyword: 关键字
+    ///   - completion: 完成回调
+    func searchActivity(keyword:String,page:Int,rows:Int,completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/activity/search"
+        
+        let parm = ["keyword":keyword,"page":page,"rows":rows] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
         
     }
     

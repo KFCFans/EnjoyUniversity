@@ -25,3 +25,5 @@ public let QRCODEPREFIX = "www.euswag.com?"
 /// 颜色
 /// 文本输入框的黑色
 public let TEXTVIEWCOLOR = UIColor.init(red: 49/255, green: 49/255, blue: 49/255, alpha: 1)
+
+public let BACKGROUNDCOLOR = UIColor.init(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)

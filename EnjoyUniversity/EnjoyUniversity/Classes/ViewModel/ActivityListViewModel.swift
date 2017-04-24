@@ -24,6 +24,9 @@ class ActivityListViewModel{
     // 用户收藏的所有活动
     var collectedlist = [ActivityViewModel]()
     
+    // 用户搜索的所有活动
+    var searchedlist = [ActivityViewModel]()
+    
     /// 加载活动数据
     ///
     /// - Parameters:
@@ -230,4 +233,41 @@ class ActivityListViewModel{
         
     }
     
+    /// 加载搜索的活动
+    ///
+    /// - Parameter completion: 完成回调
+    func loadSearchedActivity(keyword:String,isPullup:Bool,completion:@escaping (Bool,Bool)->()){
+        
+        var page = 1
+        let rows = EUREQUESTCOUNT
+        
+        if searchedlist.count >= rows{
+            page = searchedlist.count / rows + 1
+        }
+        
+        EUNetworkManager.shared.searchActivity(keyword: keyword, page: page, rows: rows) { (isSuccess, array) in
+            
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            guard let array = array,let modelarray = NSArray.yy_modelArray(with: Activity.self, json: array) as? [Activity] else{
+                completion(true,false)
+                return
+            }
+            
+            var temp = [ActivityViewModel]()
+            for model in modelarray{
+                temp.append(ActivityViewModel(model: model))
+            }
+            
+            if isPullup{
+                
+            }else{
+                
+            }
+            
+        }
+        
+    }
 }
