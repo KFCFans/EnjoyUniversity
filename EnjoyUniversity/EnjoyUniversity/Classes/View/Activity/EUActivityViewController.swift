@@ -39,6 +39,9 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     /// 这是第几个，用于删除
     var row:Int = 0
     
+    /// 是否直接 pop 回根控制器，用于二维码跳转
+    var shouldPopToRootViewController:Bool = false
+    
     
     /// ViewModel 数据源
     var viewmodel:ActivityViewModel?{
@@ -380,7 +383,7 @@ extension EUActivityViewController{
     /// 返回按钮
     override func backButtonIsClicked() {
         
-        if activityStatus == 0{
+        if shouldPopToRootViewController{
         
             _ = navigationController?.popToRootViewController(animated: true)
         }else{

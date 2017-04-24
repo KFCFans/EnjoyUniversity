@@ -66,6 +66,7 @@ extension EUSearchViewController{
         searchbar.searchBarStyle = .minimal
         searchbar.barTintColor = UIColor.white
         searchbar.delegate = self
+        searchbar.becomeFirstResponder()
         
     }
     

@@ -140,6 +140,7 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
                             return
                         }
                         vc.viewmodel = viewmodel
+                        vc.shouldPopToRootViewController = true
                         self.navigationController?.pushViewController(vc, animated: true)
                     })
                     
