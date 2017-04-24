@@ -174,6 +174,10 @@ extension EUSearchViewController{
     
     @objc fileprivate func searchUser(){
         
+        let vc = EUSearchUserController()
+        vc.keyword = keyword
+        navigationController?.pushViewController(vc, animated: true)
+        
     }
     
 }

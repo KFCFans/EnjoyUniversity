@@ -154,7 +154,7 @@ class UserInfoListViewModel{
     ///   - page: 页
     ///   - rows: 每页行数
     ///   - completion: 完成回调
-    func loadSearchedUserList(keyword:String,isPullUp:Bool,page:Int,rows:Int,completion:@escaping (Bool,Bool)->()){
+    func loadSearchedUserList(keyword:String,isPullUp:Bool,completion:@escaping (Bool,Bool)->()){
         
         var page = 1
         let rows = EUREQUESTCOUNT
@@ -176,7 +176,7 @@ class UserInfoListViewModel{
                 return
             }
             
-            var temp = [UserinfoViewModel]
+            var temp = [UserinfoViewModel]()
             for model in modelarray{
                 temp.append(UserinfoViewModel(model: model))
             }

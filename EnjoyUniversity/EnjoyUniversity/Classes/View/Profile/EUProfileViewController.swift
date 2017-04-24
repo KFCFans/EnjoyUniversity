@@ -30,7 +30,7 @@ class EUProfileViewController: EUBaseViewController {
             verifyimgview.image = userinfoviewmodel?.verifyImg
             let avatarurl = userinfoviewmodel?.headsculptureurl ?? ""
             logoimg.kf.setImage(with: URL(string: avatarurl),
-                                placeholder: UIImage(named: "profile_dug"),
+                                placeholder: UIImage(named: "profile_templogo"),
                                 options: [.transition(.fade(1))],
                                 progressBlock: nil,
                                 completionHandler: nil)

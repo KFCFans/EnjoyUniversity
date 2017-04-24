@@ -10,6 +10,7 @@
 		262F97B75474F25664E9074A /* Pods_EnjoyUniversityUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D885B98299ED2C5A1AA6E7F /* Pods_EnjoyUniversityUITests.framework */; };
 		360674651EAE11AC0023159D /* EUSearchCommunityController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360674641EAE11AC0023159D /* EUSearchCommunityController.swift */; };
 		360674671EAE19730023159D /* EUSearchUserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360674661EAE19730023159D /* EUSearchUserController.swift */; };
+		360674691EAE1F2B0023159D /* EUUserInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360674681EAE1F2B0023159D /* EUUserInfoCell.swift */; };
 		36098EB51E9264B900C77CC3 /* EUStartActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */; };
 		3609A01E1E909E9D007FD55C /* EUActivityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3609A01D1E909E9D007FD55C /* EUActivityButton.swift */; };
 		360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */; };
@@ -127,6 +128,7 @@
 		33300CEBB8EF0944BE216447 /* Pods-EnjoyUniversity.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EnjoyUniversity.release.xcconfig"; path = "Pods/Target Support Files/Pods-EnjoyUniversity/Pods-EnjoyUniversity.release.xcconfig"; sourceTree = "<group>"; };
 		360674641EAE11AC0023159D /* EUSearchCommunityController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchCommunityController.swift; sourceTree = "<group>"; };
 		360674661EAE19730023159D /* EUSearchUserController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchUserController.swift; sourceTree = "<group>"; };
+		360674681EAE1F2B0023159D /* EUUserInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUUserInfoCell.swift; sourceTree = "<group>"; };
 		36098EB41E9264B900C77CC3 /* EUStartActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartActivityViewController.swift; sourceTree = "<group>"; };
 		3609A01D1E909E9D007FD55C /* EUActivityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityButton.swift; sourceTree = "<group>"; };
 		360EC8A41E7177ED0009B08E /* EUPlusButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUPlusButtonView.swift; sourceTree = "<group>"; };
@@ -277,6 +279,7 @@
 				36B164191E65A59E00B589B4 /* EUSearchViewController.swift */,
 				366F00D61EADDA2B00BFFC4F /* EUSearchActivityController.swift */,
 				360674641EAE11AC0023159D /* EUSearchCommunityController.swift */,
+				360674681EAE1F2B0023159D /* EUUserInfoCell.swift */,
 				360674661EAE19730023159D /* EUSearchUserController.swift */,
 			);
 			name = Search;
@@ -886,6 +889,7 @@
 				3680A5871E9DF36300E6013F /* EUFeedBackViewController.swift in Sources */,
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				366C8EA31EAC69F3003CEAEE /* EUChoseContactsController.swift in Sources */,
+				360674691EAE1F2B0023159D /* EUUserInfoCell.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
 				364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */,
 				364E7D291EA7A37100BC2756 /* EUCommunityContactController.swift in Sources */,
