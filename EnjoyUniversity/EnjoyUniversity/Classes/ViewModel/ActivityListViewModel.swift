@@ -262,11 +262,11 @@ class ActivityListViewModel{
             }
             
             if isPullup{
-                
+                self.searchedlist = self.searchedlist + temp
             }else{
-                
+                self.searchedlist = temp
             }
-            
+            completion(true,true)
         }
         
     }

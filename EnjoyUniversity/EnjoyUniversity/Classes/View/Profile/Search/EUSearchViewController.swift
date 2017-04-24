@@ -21,6 +21,8 @@ class EUSearchViewController: EUBaseViewController {
     
     /// 显示搜索到的用户数量
     let userLabel = UILabel()
+    
+    var keyword:String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +133,7 @@ extension EUSearchViewController:UISearchBarDelegate{
             SwiftyProgressHUD.showBigFaildHUD(text: "请输入收藏内容", duration: 1)
             return
         }
+        self.keyword = keyword
         SwiftyProgressHUD.showLoadingHUD()
         EUNetworkManager.shared.getSearchNum(keyword: keyword) { (isSuccess, dict) in
             SwiftyProgressHUD.hide()
@@ -155,7 +158,9 @@ extension EUSearchViewController:UISearchBarDelegate{
 extension EUSearchViewController{
     
     @objc fileprivate func searchActivity(){
-        
+        let vc = EUSearchActivityController()
+        vc.keyword = keyword
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc fileprivate func searchCommunity(){
