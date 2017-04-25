@@ -440,6 +440,8 @@ extension EUProfileViewController{
             }else{
                 openQQToContactUs()
             }
+        }else if indexPath.section == 3{
+            navigationController?.pushViewController(EUAboutUsViewController(), animated: true)
         }
     }
     

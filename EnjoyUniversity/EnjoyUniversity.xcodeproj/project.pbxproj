@@ -95,6 +95,7 @@
 		36C05D581EACC83200ADC433 /* EUCommunityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */; };
 		36C05D5A1EACE38B00ADC433 /* EUChangeCommunityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */; };
 		36C34A0A1EA9CB6E00739C9B /* EUStartRecruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */; };
+		36CA3B781EAEF200008E390F /* EUAboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA3B771EAEF200008E390F /* EUAboutUsViewController.swift */; };
 		36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */; };
 		36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */; };
 		36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */; };
@@ -219,6 +220,7 @@
 		36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityCollectionCell.swift; sourceTree = "<group>"; };
 		36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangeCommunityInfoController.swift; sourceTree = "<group>"; };
 		36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartRecruitViewController.swift; sourceTree = "<group>"; };
+		36CA3B771EAEF200008E390F /* EUAboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUAboutUsViewController.swift; sourceTree = "<group>"; };
 		36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshControl.swift; sourceTree = "<group>"; };
 		36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshView.swift; sourceTree = "<group>"; };
 		36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EURefreshView.xib; sourceTree = "<group>"; };
@@ -536,6 +538,7 @@
 				36247B5D1EA66643006F29F1 /* EUActivityCollectionController.swift */,
 				36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */,
 				366DCC801EA70EE000A2F496 /* EUCommunityCollectionController.swift */,
+				36CA3B771EAEF200008E390F /* EUAboutUsViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -903,6 +906,7 @@
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
 				3671B5AE1EA20299002F66AC /* CommunityAuthorityListViewModel.swift in Sources */,
 				362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */,
+				36CA3B781EAEF200008E390F /* EUAboutUsViewController.swift in Sources */,
 				36638A7C1E8A785700E6DF17 /* EUCommon.swift in Sources */,
 				360674671EAE19730023159D /* EUSearchUserController.swift in Sources */,
 				366112371E9661E8005D0A96 /* EULoginViewController.swift in Sources */,
