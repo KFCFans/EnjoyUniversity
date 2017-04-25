@@ -37,7 +37,6 @@ class EUAboutUsViewController: EUBaseViewController {
             return
         }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
-        
     }
     
 }

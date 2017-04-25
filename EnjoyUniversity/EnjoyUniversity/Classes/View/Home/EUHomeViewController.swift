@@ -43,8 +43,8 @@ class EUHomeViewController: EUBaseViewController {
         setupViewPager()
         
         setupTableView()
-
         
+        searchbar.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -169,7 +169,7 @@ extension EUHomeViewController{
 }
 
 // MARK: - 代理相关方法
-extension EUHomeViewController{
+extension EUHomeViewController:UISearchBarDelegate{
     
     // 实现导航栏随着视图滑动而变化
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -234,6 +234,11 @@ extension EUHomeViewController{
             indicator.startAnimating()
             loadData()
         }
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        navigationController?.pushViewController(EUSearchViewController(), animated: true)
+        return false
     }
     
     
