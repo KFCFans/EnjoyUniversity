@@ -21,6 +21,9 @@ public let EUREQUESTCOUNT = 10
 /// 二维码前缀
 public let QRCODEPREFIX = "www.euswag.com?"
 
+/// 客服 QQ
+public let customQQ = 729950490
+
 
 /// 颜色
 /// 文本输入框的黑色

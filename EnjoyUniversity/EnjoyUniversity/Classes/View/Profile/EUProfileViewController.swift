@@ -434,8 +434,12 @@ extension EUProfileViewController{
         if indexPath.section == 0{
             self.navigationController?.pushViewController(EUVerifyViewController(), animated: true)
         }
-        else if indexPath.section == 1 && indexPath.row == 0 {
-            self.navigationController?.pushViewController(EUFeedBackViewController(), animated: true)
+        else if indexPath.section == 1  {
+            if indexPath.row == 0{
+                self.navigationController?.pushViewController(EUFeedBackViewController(), animated: true)
+            }else{
+                openQQToContactUs()
+            }
         }
     }
     
@@ -475,4 +479,21 @@ extension EUProfileViewController{
     @objc fileprivate func showMyCommunityCollections(){
         navigationController?.pushViewController(EUCommunityCollectionController(), animated: true)
     }
+}
+
+// MARK: - 一些小方法
+extension EUProfileViewController{
+ 
+    /// 联系客服 (打开 QQ)
+    fileprivate func openQQToContactUs(){
+        
+        let qq = "mqq://im/chat?chat_type=wpa&uin=\(customQQ)&version=1&src_type=web"
+        guard let url = URL(string: qq) else{
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    
+    
 }
