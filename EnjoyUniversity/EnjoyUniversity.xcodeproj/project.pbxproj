@@ -99,6 +99,17 @@
 		36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */; };
 		36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */; };
 		36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */; };
+		36EB2A2B1EB1A46B00DE5248 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A2A1EB1A46B00DE5248 /* CoreFoundation.framework */; };
+		36EB2A2D1EB1A47300DE5248 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A2C1EB1A47300DE5248 /* CFNetwork.framework */; };
+		36EB2A2F1EB1A47A00DE5248 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A2E1EB1A47A00DE5248 /* CoreTelephony.framework */; };
+		36EB2A311EB1A48200DE5248 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A301EB1A48200DE5248 /* SystemConfiguration.framework */; };
+		36EB2A331EB1A48A00DE5248 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A321EB1A48A00DE5248 /* CoreGraphics.framework */; };
+		36EB2A351EB1A49100DE5248 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A341EB1A49100DE5248 /* Foundation.framework */; };
+		36EB2A371EB1A49A00DE5248 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A361EB1A49A00DE5248 /* UIKit.framework */; };
+		36EB2A391EB1A4A000DE5248 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A381EB1A4A000DE5248 /* Security.framework */; };
+		36EB2A3B1EB1A4AE00DE5248 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A3A1EB1A4AE00DE5248 /* libz.tbd */; };
+		36EB2A3D1EB1A4BC00DE5248 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A3C1EB1A4BC00DE5248 /* UserNotifications.framework */; };
+		36EB2A3F1EB1A4CA00DE5248 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A3E1EB1A4CA00DE5248 /* libresolv.tbd */; };
 		36EC19981E9893D400A08AC4 /* SwiftyProgressHUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EC19971E9893D400A08AC4 /* SwiftyProgressHUD.swift */; };
 		36ECC23A1E6E61160003C4D8 /* EUQRScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ECC2391E6E61160003C4D8 /* EUQRScanViewController.swift */; };
 		36ECC23C1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36ECC23B1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift */; };
@@ -141,6 +152,7 @@
 		36124A191EAA05AB004B6B10 /* EUCommunityMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityMemberCell.swift; sourceTree = "<group>"; };
 		3618A8B21E8A9E18002069B5 /* VPListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VPListViewModel.swift; sourceTree = "<group>"; };
 		3619C4B01E90EA17005FEA5E /* EUCommunityInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityInfoViewController.swift; sourceTree = "<group>"; };
+		361B003D1EB1D801005EBBAC /* EnjoyUniversity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "EnjoyUniversity-Bridging-Header.h"; sourceTree = "<group>"; };
 		36247B5B1EA640FF006F29F1 /* SwiftyAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyAlertController.swift; sourceTree = "<group>"; };
 		36247B5D1EA66643006F29F1 /* EUActivityCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCollectionController.swift; sourceTree = "<group>"; };
 		362665701E8FE118005ED501 /* EUActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityViewController.swift; sourceTree = "<group>"; };
@@ -195,6 +207,7 @@
 		3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
 		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyViewPager.swift; path = ../../View/Home/SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
+		36A94F681EB1963100A504A7 /* EnjoyUniversity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnjoyUniversity.entitlements; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36BDBAFC1E640A390075A3ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -224,6 +237,17 @@
 		36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshControl.swift; sourceTree = "<group>"; };
 		36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshView.swift; sourceTree = "<group>"; };
 		36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EURefreshView.xib; sourceTree = "<group>"; };
+		36EB2A2A1EB1A46B00DE5248 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		36EB2A2C1EB1A47300DE5248 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		36EB2A2E1EB1A47A00DE5248 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		36EB2A301EB1A48200DE5248 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		36EB2A321EB1A48A00DE5248 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		36EB2A341EB1A49100DE5248 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		36EB2A361EB1A49A00DE5248 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		36EB2A381EB1A4A000DE5248 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		36EB2A3A1EB1A4AE00DE5248 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		36EB2A3C1EB1A4BC00DE5248 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		36EB2A3E1EB1A4CA00DE5248 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		36EC19971E9893D400A08AC4 /* SwiftyProgressHUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyProgressHUD.swift; sourceTree = "<group>"; };
 		36ECC2391E6E61160003C4D8 /* EUQRScanViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUQRScanViewController.swift; sourceTree = "<group>"; };
 		36ECC23B1E6E61ED0003C4D8 /* EUScannerBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUScannerBackgroundView.swift; sourceTree = "<group>"; };
@@ -242,6 +266,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36EB2A3F1EB1A4CA00DE5248 /* libresolv.tbd in Frameworks */,
+				36EB2A3D1EB1A4BC00DE5248 /* UserNotifications.framework in Frameworks */,
+				36EB2A3B1EB1A4AE00DE5248 /* libz.tbd in Frameworks */,
+				36EB2A391EB1A4A000DE5248 /* Security.framework in Frameworks */,
+				36EB2A371EB1A49A00DE5248 /* UIKit.framework in Frameworks */,
+				36EB2A351EB1A49100DE5248 /* Foundation.framework in Frameworks */,
+				36EB2A331EB1A48A00DE5248 /* CoreGraphics.framework in Frameworks */,
+				36EB2A311EB1A48200DE5248 /* SystemConfiguration.framework in Frameworks */,
+				36EB2A2F1EB1A47A00DE5248 /* CoreTelephony.framework in Frameworks */,
+				36EB2A2D1EB1A47300DE5248 /* CFNetwork.framework in Frameworks */,
+				36EB2A2B1EB1A46B00DE5248 /* CoreFoundation.framework in Frameworks */,
 				4A09239C9EBBFB7FAA027601 /* Pods_EnjoyUniversity.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -268,6 +303,17 @@
 		2F6B1969AAE023ED04C96E5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				36EB2A3E1EB1A4CA00DE5248 /* libresolv.tbd */,
+				36EB2A3C1EB1A4BC00DE5248 /* UserNotifications.framework */,
+				36EB2A3A1EB1A4AE00DE5248 /* libz.tbd */,
+				36EB2A381EB1A4A000DE5248 /* Security.framework */,
+				36EB2A361EB1A49A00DE5248 /* UIKit.framework */,
+				36EB2A341EB1A49100DE5248 /* Foundation.framework */,
+				36EB2A321EB1A48A00DE5248 /* CoreGraphics.framework */,
+				36EB2A301EB1A48200DE5248 /* SystemConfiguration.framework */,
+				36EB2A2E1EB1A47A00DE5248 /* CoreTelephony.framework */,
+				36EB2A2C1EB1A47300DE5248 /* CFNetwork.framework */,
+				36EB2A2A1EB1A46B00DE5248 /* CoreFoundation.framework */,
 				8BCCA5B4356283FD015B60FB /* Pods_EnjoyUniversity.framework */,
 				F27AC698DB569A544136CFAC /* Pods_EnjoyUniversityTests.framework */,
 				3D885B98299ED2C5A1AA6E7F /* Pods_EnjoyUniversityUITests.framework */,
@@ -386,6 +432,7 @@
 		36BDBAF01E640A380075A3ED = {
 			isa = PBXGroup;
 			children = (
+				361B003D1EB1D801005EBBAC /* EnjoyUniversity-Bridging-Header.h */,
 				36BDBAFB1E640A390075A3ED /* EnjoyUniversity */,
 				36BDBB101E640A390075A3ED /* EnjoyUniversityTests */,
 				36BDBB1B1E640A390075A3ED /* EnjoyUniversityUITests */,
@@ -408,6 +455,7 @@
 		36BDBAFB1E640A390075A3ED /* EnjoyUniversity */ = {
 			isa = PBXGroup;
 			children = (
+				36A94F681EB1963100A504A7 /* EnjoyUniversity.entitlements */,
 				36BDBB2C1E6412C60075A3ED /* Classes */,
 				36BDBAFC1E640A390075A3ED /* AppDelegate.swift */,
 				36BDBB031E640A390075A3ED /* Assets.xcassets */,
@@ -679,6 +727,11 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 7PZ7W7SYEE;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					36BDBB0C1E640A390075A3ED = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1106,6 +1159,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = EnjoyUniversity/EnjoyUniversity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JiQi Teng (7PZ7W7SYEE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7PZ7W7SYEE;
@@ -1116,6 +1170,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EnjoyUniversity-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1126,6 +1181,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_ENTITLEMENTS = EnjoyUniversity/EnjoyUniversity.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JiQi Teng (7PZ7W7SYEE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 7PZ7W7SYEE;
@@ -1136,6 +1192,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "EnjoyUniversity-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

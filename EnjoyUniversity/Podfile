@@ -7,6 +7,7 @@ target 'EnjoyUniversity' do
   pod 'Alamofire', '~> 4.4'
   pod 'Kingfisher'
   pod 'YYModel'
+  pod 'JPush', '3.0.5'
 
   # Pods for EnjoyUniversity
 

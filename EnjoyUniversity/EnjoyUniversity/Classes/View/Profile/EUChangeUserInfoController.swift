@@ -11,7 +11,7 @@ import UIKit
 class EUChangeUserInfoController: EUBaseViewController {
     
     
-    let userinfotitle = ["头像","昵称","性别","姓名","学号","专业"]
+    let userinfotitle = ["头像","昵称","性别","姓名","学号","专业","入学年份"]
     let securitytitle = ["校友认证","修改密码"]
     
     /// 头像视图
@@ -88,7 +88,7 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
                 cell.detailTextLabel?.text = viewmodel?.model?.professionclass
                 break
             case 6:
-                cell.detailTextLabel?.text = "点击修改"
+                cell.detailTextLabel?.text = "\(viewmodel?.model?.grade ?? 0)"
             default:
                 break
             }
@@ -275,6 +275,7 @@ extension EUChangeUserInfoController{
               let sexstirng  = tableview.cellForRow(at: IndexPath(row: 2, section: 0))?.detailTextLabel?.text,
               let name = tableview.cellForRow(at: IndexPath(row: 3, section: 0))?.detailTextLabel?.text,
               let schoolnum = tableview.cellForRow(at: IndexPath(row: 4, section: 0))?.detailTextLabel?.text,
+              let grade = Int(tableview.cellForRow(at: IndexPath(row: 6, section: 0))?.detailTextLabel?.text ?? ""),
               let professclass = tableview.cellForRow(at: IndexPath(row: 5, section: 0))?.detailTextLabel?.text else{
                 return
         }
@@ -296,6 +297,7 @@ extension EUChangeUserInfoController{
         userinfo.name = name
         userinfo.studentid = Int64(schoolnum) ?? 0
         userinfo.professionclass = professclass
+        userinfo.grade = grade
         
         if logoIsChanged && logoimg != nil{
             // 上传头像

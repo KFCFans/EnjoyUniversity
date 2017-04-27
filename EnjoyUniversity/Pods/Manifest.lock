@@ -1,18 +1,24 @@
 PODS:
   - Alamofire (4.4.0)
+  - JCore (1.1.3)
+  - JPush (3.0.5):
+    - JCore (~> 1.1.1)
   - Kingfisher (3.6.0)
   - YYModel (1.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
+  - JPush (= 3.0.5)
   - Kingfisher
   - YYModel
 
 SPEC CHECKSUMS:
   Alamofire: dc44b1600b800eb63da6a19039a0083d62a6a62d
+  JCore: dff3c50e9a7522a508cd9096ca79165968e1aed3
+  JPush: dd0b776998aa705a6242b947bf72e5a640387cfe
   Kingfisher: 300035f9a40634dc9b452d946c9f22250688fecd
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 9f5eac173d0a9b48cc2e0718392c0c74c781623b
+PODFILE CHECKSUM: 92f2faca0e9bfe6adb13e52ef310cf574f3c9e2e
 
 COCOAPODS: 1.2.0
