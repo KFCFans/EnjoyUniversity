@@ -40,16 +40,19 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
     
     // 注册APNs成功并上报DeviceToken
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        print(deviceToken)
+        
         JPUSHService.registerDeviceToken(deviceToken)
+        
+        
     }
 }
 
+
+// JPush
 extension AppDelegate:JPUSHRegisterDelegate{
     
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
         
-        print(">JPUSHRegisterDelegate jpushNotificationCenter didReceive");
         let userInfo = response.notification.request.content.userInfo
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
             JPUSHService.handleRemoteNotification(userInfo)
@@ -60,12 +63,14 @@ extension AppDelegate:JPUSHRegisterDelegate{
     
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
         
-        print(">JPUSHRegisterDelegate jpushNotificationCenter willPresent");
+        
         let userInfo = notification.request.content.userInfo
         if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
             JPUSHService.handleRemoteNotification(userInfo)
         }
-        completionHandler(Int(UNAuthorizationOptions.alert.rawValue))// 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+        
+        // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+        completionHandler(Int(UNAuthorizationOptions.alert.rawValue))
         
     }
     

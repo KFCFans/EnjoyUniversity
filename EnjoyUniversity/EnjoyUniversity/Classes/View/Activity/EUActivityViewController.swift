@@ -317,7 +317,7 @@ extension EUActivityViewController{
             let enroll = Double(viewmodel?.activitymodel.avEnrolldeadline ?? "") ?? 0
             
             // 活动已经开始签到或者报名截止
-            if registerCode > 1000 || nowdate < enroll{
+            if registerCode > 1000 || nowdate > enroll{
                 SwiftyProgressHUD.showFaildHUD(text: "报名已截止", duration: 1)
                 return
             }
@@ -334,6 +334,10 @@ extension EUActivityViewController{
                     SwiftyProgressHUD.showFaildHUD(text: "您已参加", duration: 1)
                     return
                 }
+                
+                // 设置 JPush 的 tag
+                let set = NSSet(object: "av\(avid)" as NSString) as! Set<AnyHashable>
+                JPUSHService.setTags(set, alias: nil, callbackSelector: nil, object: nil)
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
                 
             }
@@ -358,6 +362,10 @@ extension EUActivityViewController{
                         SwiftyProgressHUD.showFaildHUD(text: "已退出", duration: 1)
                         return
                     }
+                    
+                    // 设置 JPush 的 tag
+                    JPUSHService.setTags([], alias: nil, callbackSelector: nil, object: nil)
+                    
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)
                     self.activitylistviewmodel?.participatedlist.remove(at: self.row)
                     _ = self.navigationController?.popViewController(animated: true)
