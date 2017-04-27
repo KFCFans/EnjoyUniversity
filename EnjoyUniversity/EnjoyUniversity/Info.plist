@@ -26,6 +26,10 @@
 	<string>使用相机扫描二维码</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>读取相册中的二维码</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

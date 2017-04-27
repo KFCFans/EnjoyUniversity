@@ -43,6 +43,11 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
         
         JPUSHService.registerDeviceToken(deviceToken)
         
+        // 注册别名
+        if let uid = UserDefaults.standard.string(forKey: "uid"){
+            JPUSHService.setAlias(uid, callbackSelector: nil, object: nil)
+        }
+        
         
     }
 }

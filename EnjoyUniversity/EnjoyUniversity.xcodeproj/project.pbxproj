@@ -76,6 +76,8 @@
 		3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */; };
 		3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */; };
 		3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */; };
+		36979E751EB242930041A61B /* EUCommunityVerifyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36979E741EB242930041A61B /* EUCommunityVerifyCell.swift */; };
+		36979E771EB246B00041A61B /* EUCommunityVerifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36979E761EB246B00041A61B /* EUCommunityVerifyController.swift */; };
 		36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B164191E65A59E00B589B4 /* EUSearchViewController.swift */; };
 		36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBAFC1E640A390075A3ED /* AppDelegate.swift */; };
 		36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB031E640A390075A3ED /* Assets.xcassets */; };
@@ -207,6 +209,8 @@
 		3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
 		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyViewPager.swift; path = ../../View/Home/SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
+		36979E741EB242930041A61B /* EUCommunityVerifyCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityVerifyCell.swift; sourceTree = "<group>"; };
+		36979E761EB246B00041A61B /* EUCommunityVerifyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityVerifyController.swift; sourceTree = "<group>"; };
 		36A94F681EB1963100A504A7 /* EnjoyUniversity.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = EnjoyUniversity.entitlements; sourceTree = "<group>"; };
 		36B164191E65A59E00B589B4 /* EUSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUSearchViewController.swift; sourceTree = "<group>"; };
 		36BDBAF91E640A390075A3ED /* EnjoyUniversity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EnjoyUniversity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -385,6 +389,8 @@
 				36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */,
 				36124A171EAA03AF004B6B10 /* EUCommunityMemberManageController.swift */,
 				365FE22D1EAADB7E003507F5 /* EUCommunityAnnounceController.swift */,
+				36979E741EB242930041A61B /* EUCommunityVerifyCell.swift */,
+				36979E761EB246B00041A61B /* EUCommunityVerifyController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -728,6 +734,9 @@
 						DevelopmentTeam = 7PZ7W7SYEE;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -957,6 +966,7 @@
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
 				3678F85E1EA89129006C586C /* EURecruitmentViewController.swift in Sources */,
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
+				36979E771EB246B00041A61B /* EUCommunityVerifyController.swift in Sources */,
 				3671B5AE1EA20299002F66AC /* CommunityAuthorityListViewModel.swift in Sources */,
 				362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */,
 				36CA3B781EAEF200008E390F /* EUAboutUsViewController.swift in Sources */,
@@ -999,6 +1009,7 @@
 				3678F8601EA8A52A006C586C /* EUCommunityNotifyController.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				363447961E97B11300F49EBC /* EUserAccount.swift in Sources */,
+				36979E751EB242930041A61B /* EUCommunityVerifyCell.swift in Sources */,
 				36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
 				36EC19981E9893D400A08AC4 /* SwiftyProgressHUD.swift in Sources */,
