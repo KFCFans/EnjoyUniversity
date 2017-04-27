@@ -431,6 +431,11 @@ extension EUCommunityInfoViewController{
                     SwiftyProgressHUD.showWarnHUD(text: "您已申请", duration: 1)
                     return
                 }
+                
+                // 设置 JPush Tag
+                let jpushSet = NSSet(object: "applycm\(cmid)") as! Set<AnyHashable>
+                JPUSHService.setTags(jpushSet, callbackSelector: nil, object: nil)
+                
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
             })
         }
