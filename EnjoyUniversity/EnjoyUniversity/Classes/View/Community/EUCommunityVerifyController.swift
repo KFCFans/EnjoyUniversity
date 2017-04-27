@@ -10,12 +10,29 @@ import UIKit
 
 class EUCommunityVerifyController: EUBaseViewController {
 
-    let COMMUNITYVERIFYCELL = "COMMUNITYVERIFYCELL"
+    fileprivate let COMMUNITYVERIFYCELL = "COMMUNITYVERIFYCELL"
+    
+    /// 根据此状态确定控制器作用
+    var communityApplyStatus:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navitem.title = "待审核"
+        switch communityApplyStatus {
+        case 0:
+            navitem.title = "待审核"
+            break
+        case 1:
+            navitem.title = "已审核"
+        case 2:
+            navitem.title = "已笔试"
+            break
+        case 3:
+            navitem.title = "已面试"
+            break
+        default:
+            break
+        }
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         tableview.register(EUCommunityVerifyCell.self, forCellReuseIdentifier: COMMUNITYVERIFYCELL)
     }

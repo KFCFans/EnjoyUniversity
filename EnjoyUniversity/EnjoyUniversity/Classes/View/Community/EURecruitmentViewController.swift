@@ -113,8 +113,9 @@ extension EURecruitmentViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 && indexPath.row == 0{
+        if indexPath.section == 1{
             let vc = EUCommunityVerifyController()
+            vc.communityApplyStatus = indexPath.row
             navigationController?.pushViewController(vc, animated: true)
         }
     }

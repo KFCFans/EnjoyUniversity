@@ -21,6 +21,37 @@ class EUCommunityVerifyCell: UITableViewCell {
     let classLabel = UILabel()
     
     let sexImageView = UIImageView()
+    
+    /// 数据源
+    var viewmodel:UserinfoViewModel?{
+        didSet{
+            nameLabel.text = viewmodel?.model?.name
+            phoneLabel.text = "\(viewmodel?.model?.uid ?? 0)"
+            schoolIdLabel.text = "\(viewmodel?.model?.studentid ?? 0)"
+            classLabel.text = viewmodel?.model?.professionclass
+            nameLabel.sizeToFit()
+            sexImageView.frame.origin = CGPoint(x: nameLabel.frame.maxX + 7, y: 24)
+            switch viewmodel?.model?.gender ?? 3{
+            case 0:
+                sexImageView.image = UIImage(named: "user_man")
+                break
+            case 1:
+                sexImageView.image = UIImage(named: "user_woman")
+                break
+            case 3:
+                sexImageView.image = UIImage(named: "user_secret")
+                break
+            default:
+                break
+            }
+            logoImgView.kf.setImage(with: URL(string: viewmodel?.headsculptureurl ?? ""),
+                                      placeholder: UIImage(named: "profile_templogo"),
+                                      options: [.transition(.fade(1))],
+                                      progressBlock: nil) { (image, _, _, _) in
+                                        self.logoImgView.image = avatarImage(image: image, size: CGSize(width: 50, height: 50), opaque: true, backColor: UIColor.white)
+            }
+        }
+    }
 
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -36,29 +67,29 @@ class EUCommunityVerifyCell: UITableViewCell {
         logoImgView.frame = CGRect(x: 12, y: 15, width: 84, height: 84)
         addSubview(logoImgView)
         
-        nameLabel.frame = CGRect(x: 108, y: 15, width: 100, height: 18)
+        nameLabel.frame = CGRect(x: 108, y: 10, width: 100, height: 16)
         nameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         nameLabel.text = "用户名"
         nameLabel.sizeToFit()
         nameLabel.textColor = TEXTVIEWCOLOR
         addSubview(nameLabel)
         
-        sexImageView.frame = CGRect(x: nameLabel.frame.maxX + 7, y: 15, width: 15, height: 15)
+        sexImageView.frame = CGRect(x: nameLabel.frame.maxX + 7, y: 10, width: 15, height: 15)
         addSubview(sexImageView)
         
-        schoolIdLabel.frame = CGRect(x: 108, y: 43, width: 100, height: 14)
+        schoolIdLabel.frame = CGRect(x: 108, y: 36, width: 100, height: 14)
         schoolIdLabel.font = UIFont.boldSystemFont(ofSize: 14)
         schoolIdLabel.textColor = TEXTVIEWCOLOR
         schoolIdLabel.text = "1030414119"
         addSubview(schoolIdLabel)
         
-        phoneLabel.frame = CGRect(x: 108, y: 67, width: 120, height: 14)
+        phoneLabel.frame = CGRect(x: 108, y: 60, width: 120, height: 14)
         phoneLabel.font = UIFont.boldSystemFont(ofSize: 14)
         phoneLabel.textColor = TEXTVIEWCOLOR
         phoneLabel.text = "15061883391"
         addSubview(phoneLabel)
         
-        classLabel.frame = CGRect(x: 108, y: 91, width: UIScreen.main.bounds.width - 100, height: 12)
+        classLabel.frame = CGRect(x: 108, y: 84, width: UIScreen.main.bounds.width - 100, height: 12)
         classLabel.font = UIFont.boldSystemFont(ofSize: 12)
         classLabel.textColor = TEXTVIEWCOLOR
         classLabel.text = "江南大学物联网工程学院计科 1401"
