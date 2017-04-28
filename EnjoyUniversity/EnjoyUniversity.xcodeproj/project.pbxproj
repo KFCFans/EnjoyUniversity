@@ -28,6 +28,7 @@
 		362665751E8FE162005ED501 /* EUActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665721E8FE162005ED501 /* EUActivityCell.swift */; };
 		362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 362665731E8FE162005ED501 /* EUActivityCell.xib */; };
 		362665771E8FE162005ED501 /* EUMyActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362665741E8FE162005ED501 /* EUMyActivityViewController.swift */; };
+		36333E701EB3667C00A6BBF1 /* EURecruitNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36333E6F1EB3667C00A6BBF1 /* EURecruitNotificationController.swift */; };
 		363447961E97B11300F49EBC /* EUserAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363447951E97B11300F49EBC /* EUserAccount.swift */; };
 		363908AC1E9F6AC800E67958 /* EURegisterInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363908AB1E9F6AC800E67958 /* EURegisterInfoViewController.swift */; };
 		363AC75C1E936167008350CC /* SwiftyTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363AC75B1E936167008350CC /* SwiftyTimePicker.swift */; };
@@ -161,6 +162,7 @@
 		362665721E8FE162005ED501 /* EUActivityCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityCell.swift; sourceTree = "<group>"; };
 		362665731E8FE162005ED501 /* EUActivityCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUActivityCell.xib; sourceTree = "<group>"; };
 		362665741E8FE162005ED501 /* EUMyActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMyActivityViewController.swift; sourceTree = "<group>"; };
+		36333E6F1EB3667C00A6BBF1 /* EURecruitNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURecruitNotificationController.swift; sourceTree = "<group>"; };
 		363447951E97B11300F49EBC /* EUserAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUserAccount.swift; sourceTree = "<group>"; };
 		363908AB1E9F6AC800E67958 /* EURegisterInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterInfoViewController.swift; sourceTree = "<group>"; };
 		363AC75B1E936167008350CC /* SwiftyTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyTimePicker.swift; path = ../../View/Activity/SwiftyTimePicker.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 				365FE22D1EAADB7E003507F5 /* EUCommunityAnnounceController.swift */,
 				36979E741EB242930041A61B /* EUCommunityVerifyCell.swift */,
 				36979E761EB246B00041A61B /* EUCommunityVerifyController.swift */,
+				36333E6F1EB3667C00A6BBF1 /* EURecruitNotificationController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -964,6 +967,7 @@
 				36690ACB1E9C93420027B314 /* EUActivityMemberCell.swift in Sources */,
 				36C05D5A1EACE38B00ADC433 /* EUChangeCommunityInfoController.swift in Sources */,
 				36BDBAFD1E640A390075A3ED /* AppDelegate.swift in Sources */,
+				36333E701EB3667C00A6BBF1 /* EURecruitNotificationController.swift in Sources */,
 				3678F85E1EA89129006C586C /* EURecruitmentViewController.swift in Sources */,
 				36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */,
 				36979E771EB246B00041A61B /* EUCommunityVerifyController.swift in Sources */,

@@ -10,7 +10,7 @@ import UIKit
 
 class EURecruitmentViewController: EUBaseViewController {
     
-    let functionArray = ["待审核","已审核","已笔试","已面试"]
+    let functionArray = ["待审核","待笔试","待面试"]
     
     /// 是否开启招新开关
     let switchControl = UISwitch()

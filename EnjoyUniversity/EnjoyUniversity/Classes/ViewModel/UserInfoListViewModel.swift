@@ -31,7 +31,7 @@ class UserInfoListViewModel{
     lazy var searchList = [UserinfoViewModel]()
     
     /// 申请社团成员列表
-    lazy var applecmMemberList = [UserinfoViewModel]()
+    lazy var applycmMemberList = [UserinfoViewModel]()
     
     /// 加载活动参与者信息
     ///
@@ -211,13 +211,13 @@ class UserInfoListViewModel{
                 completion(true,false)
                 return
             }
-            self.applecmMemberList.removeAll()
+            self.applycmMemberList.removeAll()
             for model in modelarray{
                 // 去除正在审核的人
                 if model.position > 0{
                     continue
                 }
-                self.applecmMemberList.append(UserinfoViewModel(model: model))
+                self.applycmMemberList.append(UserinfoViewModel(model: model))
             }
             completion(true,true)
         }

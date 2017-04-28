@@ -1437,3 +1437,59 @@ extension EUNetworkManager{
     }
     
 }
+
+// MARK: - 推送接口
+extension EUNetworkManager{
+    
+    /// 别名 alias 推送消息
+    ///
+    /// - Parameters:
+    ///   - alias: 别名
+    ///   - alert: 推送消息内容
+    ///   - completion: 完成回调
+    func pushNotificationByAlias(alias:String,alert:String,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/push/aliaspush"
+        
+        let parm = ["alias":alias,"alert":alert]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            completion(true,false)
+        }
+    }
+    
+    /// 标签 Tag 推送消息
+    ///
+    /// - Parameters:
+    ///   - tag: 标签
+    ///   - alert: 推送的内容
+    ///   - completion: 完成回调
+    func pushNotificationByTag(tag:String,alert:String,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/push/tagpush"
+        
+        let parm = ["pushtag":tag,"alert":alert]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            completion(true,false)
+        }
+        
+    }
+    
+}

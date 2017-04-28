@@ -38,12 +38,9 @@ class EUCommunityVerifyController: EUBaseViewController {
             navitem.title = "待审核"
             break
         case 1:
-            navitem.title = "已审核"
+            navitem.title = "待笔试"
         case 2:
-            navitem.title = "已笔试"
-            break
-        case 3:
-            navitem.title = "已面试"
+            navitem.title = "待面试"
             break
         default:
             break
@@ -55,7 +52,13 @@ class EUCommunityVerifyController: EUBaseViewController {
         let rightBtn = UIBarButtonItem(title: "选择", style: .plain, target: self, action: #selector(didClickSelectButton))
         navitem.rightBarButtonItem = rightBtn
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if selectStatus{
+            print(tempviewmodellist.count)
+            tableview.reloadData()
+        }
     }
     
     override func loadData() {
@@ -77,7 +80,7 @@ class EUCommunityVerifyController: EUBaseViewController {
     
     private func choseData(){
         tempviewmodellist.removeAll()
-        for viewmodel in listviewmodel.applecmMemberList {
+        for viewmodel in listviewmodel.applycmMemberList {
             guard let position = viewmodel.model?.position else {
                 continue
             }
@@ -139,55 +142,26 @@ extension EUCommunityVerifyController{
         if !selectStatus{
         
             selectStatus = true
-            btn.title = "通过"
+            btn.title = "下一步"
             let allselectBtn = UIBarButtonItem(title: "全选", style: .plain, target: nil, action: #selector(didClickSelectAllBtn(btn:)))
             navitem.rightBarButtonItems = [btn,allselectBtn]
             
         }else{
             
-            // 通过的进入下一轮 待审核，已面试肯定有下一步的通知，所以肯定发短信
-            let nextposition = communityApplyStatus - 2
-            
-            // 拼接用户数据
             var uids = ""
             for (index,_) in selectIndex.enumerated(){
                 if selectIndex[index] == 1{
-                    uids = uids + "\(listviewmodel.applecmMemberList[index].model?.uid ?? 0),"
+                    uids = uids + "\(tempviewmodellist[index].model?.uid ?? 0),"
                 }
             }
             
-            if nextposition == 1 || nextposition == -2{
-                
-                // 直接发送短信 ＋ 进入下一步
-                SwiftyProgressHUD.showLoadingHUD()
-                EUNetworkManager.shared.verifyCommunityApplyUserList(uids: uids, cmid: cmid, position: nextposition, completion: { (netSuccess, updateSuccess) in
-                    SwiftyProgressHUD.hide()
-                    if !netSuccess{
-                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                        return
-                    }
-                    if !updateSuccess{
-                        SwiftyProgressHUD.showFaildHUD(text: "操作失败", duration: 1)
-                        return
-                    }
-                    for (index,_) in self.selectIndex.enumerated(){
-                        if self.selectIndex[index] == 1{
-                            self.listviewmodel.applecmMemberList[index].model?.position = nextposition
-                            self.tempviewmodellist.remove(at: index)
-                        }
-                    }
-                    self.tableview.reloadData()
-                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                })
-                
-            }else{
-
-                // 让用户选择
-                
-            }
-            
-            
-            
+            let vc = EURecruitNotificationController()
+            vc.nextposition = communityApplyStatus - 2
+            vc.uids = uids
+            vc.selectIndex = selectIndex
+            vc.tempviewmodellist = tempviewmodellist
+            vc.cmid = cmid
+            navigationController?.pushViewController(vc, animated: true)
         }
         
         
