@@ -1295,6 +1295,9 @@ extension EUNetworkManager{
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in
             completion(isSuccess)
         }
+    }
+    
+    func verifyCommunityApplyUserList(uids:String){
         
     }
     

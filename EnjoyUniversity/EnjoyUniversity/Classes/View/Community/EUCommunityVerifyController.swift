@@ -22,6 +22,14 @@ class EUCommunityVerifyController: EUBaseViewController {
     /// 社团 ID
     var cmid:Int = 0
     
+    /// 状态
+    var selectStatus:Bool = false
+    
+    /// 只是记录按钮状态
+    var isSelectAll:Bool = false
+    
+    var selectIndex = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -42,6 +50,12 @@ class EUCommunityVerifyController: EUBaseViewController {
         }
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         tableview.register(EUCommunityVerifyCell.self, forCellReuseIdentifier: COMMUNITYVERIFYCELL)
+        tableview.tableFooterView = UIView()
+        
+        let rightBtn = UIBarButtonItem(title: "选择", style: .plain, target: self, action: #selector(didClickSelectButton))
+        navitem.rightBarButtonItem = rightBtn
+        
+        
     }
     
     override func loadData() {
@@ -69,6 +83,7 @@ class EUCommunityVerifyController: EUBaseViewController {
             }
             if (position + 3) == communityApplyStatus{
                 tempviewmodellist.append(viewmodel)
+                selectIndex.append(0)
             }
         }
         tableview.reloadData()
@@ -90,8 +105,75 @@ extension EUCommunityVerifyController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: COMMUNITYVERIFYCELL) as? EUCommunityVerifyCell) ?? EUCommunityVerifyCell()
+        cell.selectionStyle = .none
+        if  isSelectAll {
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
         cell.viewmodel = tempviewmodellist[indexPath.row]
         return cell
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !selectStatus{
+            return
+        }
+        let cell = tableView.cellForRow(at: indexPath)
+        if selectIndex[indexPath.row] == 1{
+            cell?.accessoryType = .none
+            selectIndex[indexPath.row] = 0
+        }else{
+            cell?.accessoryType = .checkmark
+            selectIndex[indexPath.row] = 1
+        }
+    }
+    
+}
 
+// MARK: - 监听方法
+extension EUCommunityVerifyController{
+    
+    /// 选择／发送按钮
+    @objc fileprivate func didClickSelectButton(btn:UIBarButtonItem){
+        
+        if !selectStatus{
+        
+            selectStatus = true
+            btn.title = "通过"
+            let allselectBtn = UIBarButtonItem(title: "全选", style: .plain, target: nil, action: #selector(didClickSelectAllBtn(btn:)))
+            navitem.rightBarButtonItems = [btn,allselectBtn]
+            
+        }else{
+            
+            // 通过的进入下一轮 待审核，已面试肯定有下一步的通知，所以肯定发短信
+            let nextposition = communityApplyStatus - 2
+            
+            if nextposition == 1 || nextposition == -2{
+                
+                // 直接发送短信 ＋ 进入下一步
+                
+            }else{
+                
+                // 让用户选择
+            }
+            
+            
+            
+        }
+        
+        
+    }
+    /// 全选／取消全选按钮
+    @objc fileprivate func didClickSelectAllBtn(btn:UIBarButtonItem){
+        
+        if isSelectAll{
+            isSelectAll = false
+            btn.title = "全选"
+        }else{
+            isSelectAll = true
+            btn.title = "清空"
+        }
+        tableview.reloadData()
+    }
+    
 }
