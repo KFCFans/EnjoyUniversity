@@ -1297,8 +1297,31 @@ extension EUNetworkManager{
         }
     }
     
-    func verifyCommunityApplyUserList(uids:String){
+    /// 批量审核社团申请者
+    ///
+    /// - Parameters:
+    ///   - uids: uid 拼接，逗号隔开
+    ///   - cmid: 社团 ID
+    ///   - position: 职位
+    ///   - completion: 完成回调
+    func verifyCommunityApplyUserList(uids:String,cmid:Int,position:Int,completion:@escaping (Bool,Bool)->()){
         
+        let url = SERVERADDRESS + "/eu/community/verifylist"
+        
+        let parm = ["cmid":cmid,"uids":uids,"position":position] as [String:Any]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            completion(true,false)
+            return
+        }
     }
     
 

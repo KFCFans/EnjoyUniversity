@@ -148,13 +148,35 @@ extension EUCommunityVerifyController{
             // 通过的进入下一轮 待审核，已面试肯定有下一步的通知，所以肯定发短信
             let nextposition = communityApplyStatus - 2
             
+            // 拼接用户数据
+            var uids = ""
+            for (index,_) in selectIndex.enumerated(){
+                if selectIndex[index] == 1{
+                    uids = uids + "\(listviewmodel.applecmMemberList[index].model?.uid ?? 0),"
+                }
+            }
+            
             if nextposition == 1 || nextposition == -2{
                 
                 // 直接发送短信 ＋ 进入下一步
+                SwiftyProgressHUD.showLoadingHUD()
+                EUNetworkManager.shared.verifyCommunityApplyUserList(uids: uids, cmid: cmid, position: nextposition, completion: { (netSuccess, updateSuccess) in
+                    SwiftyProgressHUD.hide()
+                    if !netSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                        return
+                    }
+                    if !updateSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "操作失败", duration: 1)
+                        return
+                    }
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                })
                 
             }else{
-                
+
                 // 让用户选择
+                
             }
             
             
@@ -166,13 +188,19 @@ extension EUCommunityVerifyController{
     /// 全选／取消全选按钮
     @objc fileprivate func didClickSelectAllBtn(btn:UIBarButtonItem){
         
+        var replace = 0
         if isSelectAll{
             isSelectAll = false
             btn.title = "全选"
         }else{
             isSelectAll = true
             btn.title = "清空"
+            replace = 1
         }
+        for (index,_) in selectIndex.enumerated(){
+            selectIndex[index] = replace
+        }
+        
         tableview.reloadData()
     }
     
