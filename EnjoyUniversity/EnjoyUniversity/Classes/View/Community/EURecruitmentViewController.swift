@@ -10,7 +10,7 @@ import UIKit
 
 class EURecruitmentViewController: EUBaseViewController {
     
-    let functionArray = ["待审核","已笔试","已面试"]
+    let functionArray = ["待审核","已审核","已笔试","已面试"]
     
     /// 是否开启招新开关
     let switchControl = UISwitch()
@@ -116,6 +116,7 @@ extension EURecruitmentViewController{
         if indexPath.section == 1{
             let vc = EUCommunityVerifyController()
             vc.communityApplyStatus = indexPath.row
+            vc.cmid = viewmodel?.communitymodel?.cmid ?? 0
             navigationController?.pushViewController(vc, animated: true)
         }
     }

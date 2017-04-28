@@ -9,11 +9,18 @@
 import UIKit
 
 class EUCommunityVerifyController: EUBaseViewController {
+    
+    lazy var listviewmodel = UserInfoListViewModel()
+    
+    lazy var tempviewmodellist = [UserinfoViewModel]()
 
     fileprivate let COMMUNITYVERIFYCELL = "COMMUNITYVERIFYCELL"
     
     /// 根据此状态确定控制器作用
     var communityApplyStatus:Int = 0
+    
+    /// 社团 ID
+    var cmid:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +44,36 @@ class EUCommunityVerifyController: EUBaseViewController {
         tableview.register(EUCommunityVerifyCell.self, forCellReuseIdentifier: COMMUNITYVERIFYCELL)
     }
     
+    override func loadData() {
+        
+        refreshControl?.beginRefreshing()
+        listviewmodel.loadApplyCommunityUserList(cmid: cmid) { (isSuccess, hasData) in
+            self.refreshControl?.endRefreshing()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !hasData{
+                // 暂无成员处理
+            }
+            self.choseData()
+        }
+        
+    }
+    
+    private func choseData(){
+        tempviewmodellist.removeAll()
+        for viewmodel in listviewmodel.applecmMemberList {
+            guard let position = viewmodel.model?.position else {
+                continue
+            }
+            if (position + 3) == communityApplyStatus{
+                tempviewmodellist.append(viewmodel)
+            }
+        }
+        tableview.reloadData()
+    }
+    
 
 }
 
@@ -44,7 +81,7 @@ class EUCommunityVerifyController: EUBaseViewController {
 extension EUCommunityVerifyController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return tempviewmodellist.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -53,6 +90,7 @@ extension EUCommunityVerifyController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: COMMUNITYVERIFYCELL) as? EUCommunityVerifyCell) ?? EUCommunityVerifyCell()
+        cell.viewmodel = tempviewmodellist[indexPath.row]
         return cell
     }
 

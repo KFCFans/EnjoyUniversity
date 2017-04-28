@@ -30,7 +30,7 @@ class EUCommunityVerifyCell: UITableViewCell {
             schoolIdLabel.text = "\(viewmodel?.model?.studentid ?? 0)"
             classLabel.text = viewmodel?.model?.professionclass
             nameLabel.sizeToFit()
-            sexImageView.frame.origin = CGPoint(x: nameLabel.frame.maxX + 7, y: 24)
+            sexImageView.frame.origin.x = nameLabel.frame.maxX + 7
             switch viewmodel?.model?.gender ?? 3{
             case 0:
                 sexImageView.image = UIImage(named: "user_man")
@@ -48,7 +48,9 @@ class EUCommunityVerifyCell: UITableViewCell {
                                       placeholder: UIImage(named: "profile_templogo"),
                                       options: [.transition(.fade(1))],
                                       progressBlock: nil) { (image, _, _, _) in
-                                        self.logoImgView.image = avatarImage(image: image, size: CGSize(width: 50, height: 50), opaque: true, backColor: UIColor.white)
+                                        if let image = image{
+                                            self.logoImgView.image = avatarImage(image: image, size: CGSize(width: 84, height: 84), opaque: true, backColor: UIColor.white)
+                                        }
             }
         }
     }
@@ -75,6 +77,7 @@ class EUCommunityVerifyCell: UITableViewCell {
         addSubview(nameLabel)
         
         sexImageView.frame = CGRect(x: nameLabel.frame.maxX + 7, y: 10, width: 15, height: 15)
+        sexImageView.center.y = nameLabel.center.y
         addSubview(sexImageView)
         
         schoolIdLabel.frame = CGRect(x: 108, y: 36, width: 100, height: 14)

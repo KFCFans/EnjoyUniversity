@@ -21,7 +21,7 @@ class UserInfoListViewModel{
     /// 未完成签到的互动参与者
     lazy var waitingRegisterParticipatorList = [UserinfoViewModel]()
     
-    /// 社团通讯录
+    /// 社团通讯录(权限表和用户表联合查询结果)
     lazy var communityContactsList = [UserinfoViewModel]()
     
     /// 社团成员列表
@@ -29,6 +29,9 @@ class UserInfoListViewModel{
     
     /// 搜索用户列表
     lazy var searchList = [UserinfoViewModel]()
+    
+    /// 申请社团成员列表
+    lazy var applecmMemberList = [UserinfoViewModel]()
     
     /// 加载活动参与者信息
     ///
@@ -191,6 +194,33 @@ class UserInfoListViewModel{
             
         }
         
+    }
+    
+    /// 加载申请参加社团的成员列表
+    ///
+    /// - Parameters:
+    ///   - cmid: 社团 ID
+    ///   - completion: 完成回到
+    func loadApplyCommunityUserList(cmid:Int,completion:@escaping (Bool,Bool)->()){
+        EUNetworkManager.shared.getCommunityContactsByID(cmid: cmid) { (isSuccess, json) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            guard let json = json,let modelarray = NSArray.yy_modelArray(with: UserInfo.self, json: json) as? [UserInfo] else{
+                completion(true,false)
+                return
+            }
+            self.applecmMemberList.removeAll()
+            for model in modelarray{
+                // 去除正在审核的人
+                if model.position > 0{
+                    continue
+                }
+                self.applecmMemberList.append(UserinfoViewModel(model: model))
+            }
+            completion(true,true)
+        }
     }
     
 }
