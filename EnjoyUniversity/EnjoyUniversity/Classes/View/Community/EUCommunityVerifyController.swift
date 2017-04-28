@@ -170,6 +170,13 @@ extension EUCommunityVerifyController{
                         SwiftyProgressHUD.showFaildHUD(text: "操作失败", duration: 1)
                         return
                     }
+                    for (index,_) in self.selectIndex.enumerated(){
+                        if self.selectIndex[index] == 1{
+                            self.listviewmodel.applecmMemberList[index].model?.position = nextposition
+                            self.tempviewmodellist.remove(at: index)
+                        }
+                    }
+                    self.tableview.reloadData()
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)
                 })
                 
