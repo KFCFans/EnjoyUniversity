@@ -48,7 +48,7 @@ class EUChangeUserInfoController: EUBaseViewController {
 }
 
 // MARK: - 代理方法
-extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
+extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigationControllerDelegate,SwiftyGradePickerDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -215,6 +215,18 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
             alert.addAction(cancel)
             alert.addAction(confirm)
             present(alert, animated: true, completion: nil)
+        }else if indexPath.section == 0 && indexPath.row == 6{
+            
+            // 获取当前年份
+            let currentdate = Date().timeIntervalSince1970 * 1000
+            let currentyear = Int(timeStampToString(timeStamp: "\(currentdate)", formate: "YYYY") ?? "") ?? 0
+            var gradeData = [Int]()
+            for i in 0...4{
+                gradeData.append(currentyear - i)
+            }
+            let gradePicker = SwiftyGradePicker(height: 100, gradeData: gradeData)
+            gradePicker.delegate = self
+            view.addSubview(gradePicker)
         }
         
         if indexPath.section == 1{
@@ -249,6 +261,11 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
         logoIsChanged = true
         logoimg = resultimg
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    // 年级选择器
+    func swiftyGradePickerdidSelected(swiftyGradePicker: SwiftyGradePicker, grade: Int) {
+        tableview.cellForRow(at: IndexPath(row: 6, section: 0))?.detailTextLabel?.text = "\(grade)"
     }
 }
 
@@ -327,6 +344,7 @@ extension EUChangeUserInfoController{
             })
             
         }else{
+            SwiftyProgressHUD.showLoadingHUD()
             EUNetworkManager.shared.updateUserInfo(user: userinfo, completion: { (isSuccess) in
                 SwiftyProgressHUD.hide()
                 if !isSuccess{
