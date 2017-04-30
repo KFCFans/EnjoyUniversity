@@ -17,7 +17,7 @@ class EUAboutUsViewController: EUBaseViewController {
         tableview.removeFromSuperview()
         
         let logoImgView = UIImageView(frame: CGRect(x: (UIScreen.main.bounds.width - 140)/2, y: 130, width: 140, height: 140))
-        logoImgView.image = UIImage(named: "eu_placeholder")
+        logoImgView.image = UIImage(named: "profile_logo")
         view.addSubview(logoImgView)
         
         let websiteBtn = UIButton()
