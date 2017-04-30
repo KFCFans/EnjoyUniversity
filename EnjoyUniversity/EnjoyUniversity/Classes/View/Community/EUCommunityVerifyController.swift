@@ -30,6 +30,8 @@ class EUCommunityVerifyController: EUBaseViewController {
     
     var selectIndex = [Int]()
     
+    var originalIndex = [Int]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,8 +58,7 @@ class EUCommunityVerifyController: EUBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if selectStatus{
-            print(tempviewmodellist.count)
-            tableview.reloadData()
+            loadData()
         }
     }
     
@@ -80,13 +81,14 @@ class EUCommunityVerifyController: EUBaseViewController {
     
     private func choseData(){
         tempviewmodellist.removeAll()
-        for viewmodel in listviewmodel.applycmMemberList {
+        for (index,viewmodel) in listviewmodel.applycmMemberList.enumerated() {
             guard let position = viewmodel.model?.position else {
                 continue
             }
             if (position + 3) == communityApplyStatus{
                 tempviewmodellist.append(viewmodel)
                 selectIndex.append(0)
+                originalIndex.append(index)
             }
         }
         tableview.reloadData()
@@ -158,8 +160,6 @@ extension EUCommunityVerifyController{
             let vc = EURecruitNotificationController()
             vc.nextposition = communityApplyStatus - 2
             vc.uids = uids
-            vc.selectIndex = selectIndex
-            vc.tempviewmodellist = tempviewmodellist
             vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
         }

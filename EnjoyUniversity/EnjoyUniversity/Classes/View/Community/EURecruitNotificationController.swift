@@ -19,10 +19,6 @@ class EURecruitNotificationController: EUBaseViewController {
     /// 联系人列表,上层传入
     var uids:String?
     
-    /// 上层传入，用于返回更新后的数据
-    var tempviewmodellist:[UserinfoViewModel]?
-    lazy var selectIndex = [Int]()
-    
     /// 是否开启短袖发送
     let smsSwitch = UISwitch()
     
@@ -108,16 +104,6 @@ class EURecruitNotificationController: EUBaseViewController {
                     return
                 }
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                let temp = self.tempviewmodellist
-                self.tempviewmodellist?.removeAll()
-                for (index,_) in self.selectIndex.enumerated(){
-                    if self.selectIndex[index] == 0{
-                        if let viewmodel = temp?[index]{
-                            self.tempviewmodellist?.append(viewmodel)
-                        }
-                        
-                    }
-                }
                 _ = self.navigationController?.popViewController(animated: true)
             })
             // FIXME: - 短信发送

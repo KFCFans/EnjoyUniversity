@@ -10,6 +10,10 @@ import UIKit
 
 class EUActivityNotificationController: EUBaseViewController {
     
+    var avid:Int = 0
+    
+    let notificationtextview = SwiftyTextView(frame: CGRect(x: 5, y: 74, width: UIScreen.main.bounds.width - 10, height: 180), textContainer: nil, placeholder: "填写活动通知")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -17,7 +21,7 @@ class EUActivityNotificationController: EUBaseViewController {
         
         view.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
         
-        let notificationtextview = SwiftyTextView(frame: CGRect(x: 5, y: 74, width: UIScreen.main.bounds.width - 10, height: 180), textContainer: nil, placeholder: "填写活动通知")
+
         notificationtextview.font = UIFont.boldSystemFont(ofSize: 15)
         notificationtextview.becomeFirstResponder()
         view.addSubview(notificationtextview)
@@ -29,8 +33,23 @@ class EUActivityNotificationController: EUBaseViewController {
     
     @objc fileprivate func sendActivityNotification(){
         
-        print("Notification")
-        
+        guard let notificationText = notificationtextview.text else {
+            return
+        }
+        let tag = "av\(avid)"
+        SwiftyProgressHUD.showLoadingHUD()
+        EUNetworkManager.shared.pushNotificationByTag(tag: tag, alert: notificationText) { (netSuccess, pushSuccess) in
+            SwiftyProgressHUD.hide()
+            if !netSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !pushSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "推送失败", duration: 1)
+                return
+            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+        }
     }
 
 }
