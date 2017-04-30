@@ -157,11 +157,38 @@ extension EUCommunityVerifyController{
                 }
             }
             
+            // 如果是待审核询问是否要进行笔试
+            if communityApplyStatus == 0{
+                
+                let alert = UIAlertController(title: "是否需要进行笔试", message: nil, preferredStyle: .alert)
+                let cancel = UIAlertAction(title: "否", style: .cancel, handler: { (_) in
+                    let vc = EURecruitNotificationController()
+                    vc.nextposition = self.communityApplyStatus - 1
+                    vc.uids = uids
+                    vc.cmid = self.cmid
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+                let confirm = UIAlertAction(title: "是", style: .default, handler: { (_) in
+                    let vc = EURecruitNotificationController()
+                    vc.nextposition = self.communityApplyStatus - 2
+                    vc.uids = uids
+                    vc.cmid = self.cmid
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+                alert.addAction(cancel)
+                alert.addAction(confirm)
+                present(alert, animated: true, completion: nil)
+                
+            }
+            
+            // 其他的直接跳转
             let vc = EURecruitNotificationController()
             vc.nextposition = communityApplyStatus - 2
             vc.uids = uids
             vc.cmid = cmid
             navigationController?.pushViewController(vc, animated: true)
+            
+            
         }
         
         
