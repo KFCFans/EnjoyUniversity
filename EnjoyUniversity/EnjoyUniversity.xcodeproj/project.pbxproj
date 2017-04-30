@@ -40,6 +40,7 @@
 		364E7D271EA7A24A00BC2756 /* SwiftyTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */; };
 		364E7D291EA7A37100BC2756 /* EUCommunityContactController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D281EA7A37100BC2756 /* EUCommunityContactController.swift */; };
 		364E7D2B1EA7A81400BC2756 /* EUCommunityContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D2A1EA7A81400BC2756 /* EUCommunityContactCell.swift */; };
+		364F825A1EB5B8340088F5A3 /* SwiftyGradePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364F82591EB5B8340088F5A3 /* SwiftyGradePicker.swift */; };
 		3653B06F1E9110760023A0B7 /* CommunityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */; };
 		3654511C1E8D1A400046F037 /* CommunityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */; };
 		36568C8E1E99CD5000BA9A71 /* UserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36568C8D1E99CD5000BA9A71 /* UserInfo.swift */; };
@@ -174,6 +175,7 @@
 		364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTitleButton.swift; sourceTree = "<group>"; };
 		364E7D281EA7A37100BC2756 /* EUCommunityContactController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityContactController.swift; sourceTree = "<group>"; };
 		364E7D2A1EA7A81400BC2756 /* EUCommunityContactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityContactCell.swift; sourceTree = "<group>"; };
+		364F82591EB5B8340088F5A3 /* SwiftyGradePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyGradePicker.swift; sourceTree = "<group>"; };
 		3653B06E1E9110760023A0B7 /* CommunityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityViewModel.swift; sourceTree = "<group>"; };
 		3654511B1E8D1A400046F037 /* CommunityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommunityListViewModel.swift; sourceTree = "<group>"; };
 		36568C8D1E99CD5000BA9A71 /* UserInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfo.swift; sourceTree = "<group>"; };
@@ -362,6 +364,7 @@
 				36247B5B1EA640FF006F29F1 /* SwiftyAlertController.swift */,
 				364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */,
 				364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */,
+				364F82591EB5B8340088F5A3 /* SwiftyGradePicker.swift */,
 			);
 			path = SwiftyControl;
 			sourceTree = "<group>";
@@ -1012,6 +1015,7 @@
 				3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */,
 				3678F8601EA8A52A006C586C /* EUCommunityNotifyController.swift in Sources */,
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
+				364F825A1EB5B8340088F5A3 /* SwiftyGradePicker.swift in Sources */,
 				363447961E97B11300F49EBC /* EUserAccount.swift in Sources */,
 				36979E751EB242930041A61B /* EUCommunityVerifyCell.swift in Sources */,
 				36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */,
