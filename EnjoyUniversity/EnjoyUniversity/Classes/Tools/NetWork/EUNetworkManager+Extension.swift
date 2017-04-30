@@ -691,7 +691,6 @@ extension EUNetworkManager{
         parm["professionclass"] = user.professionclass
         parm["name"] = user.name
         parm["studentid"] = user.studentid
-        parm["userdescription"] = user.userdescription
         
         parm["reputation"] = 100
         parm["verified"] = 0
@@ -1028,7 +1027,6 @@ extension EUNetworkManager{
         parm["professionclass"] = user.professionclass
         parm["name"] = user.name
         parm["studentid"] = user.studentid
-        parm["userdescription"] = user.userdescription
         parm["grade"] = user.grade
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, _) in

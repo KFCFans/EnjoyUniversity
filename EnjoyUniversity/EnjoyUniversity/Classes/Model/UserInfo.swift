@@ -31,9 +31,6 @@ class UserInfo: NSObject {
     /// 姓名
     var name:String?
     
-    /// 个人描述
-    var userdescription:String?
-    
     /// 用户节操值 满分100
     var reputation:Int = 0
     
@@ -46,7 +43,7 @@ class UserInfo: NSObject {
     /// 职位（不属于这个表，将就着用） -3表示提交申请，－2表示进行笔试，－1表示进行面试，1表示成员，2表示管理员 3表示社长
     var position:Int = -4
     
-    init(uid:Int64,avatar:String?,nickname:String,gender:Int,professionclass:String,studentid:Int64,name:String,userdescription:String?) {
+    init(uid:Int64,avatar:String?,nickname:String,gender:Int,professionclass:String,studentid:Int64,name:String,grade:Int) {
         
         self.uid = uid
         self.nickname = nickname
@@ -55,7 +52,7 @@ class UserInfo: NSObject {
         self.professionclass = professionclass
         self.name = name
         self.studentid = studentid
-        self.userdescription = userdescription
+        self.grade = grade
     }
     
     override init() {
