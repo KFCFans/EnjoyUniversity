@@ -117,7 +117,7 @@ class EURecruitNotificationController: EUBaseViewController {
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                     return
                 }
-                if pushSuccess{
+                if !pushSuccess{
                     SwiftyProgressHUD.showFaildHUD(text: "推送失败", duration: 1)
                     return
                 }
