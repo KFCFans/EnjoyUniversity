@@ -14,7 +14,13 @@ class EURecruitNotificationController: EUBaseViewController {
     var cmid:Int = 0
     
     /// 下一级 －2笔试 －1面试 1加入成功 －10拒绝
-    var nextposition = -3
+    var nextposition = -3{
+        didSet{
+            if nextposition == 0{
+                nextposition = 1
+            }
+        }
+    }
     
     /// 联系人列表,上层传入
     var uids:String?
@@ -61,7 +67,19 @@ class EURecruitNotificationController: EUBaseViewController {
         nextSwitch.isOn = true
 
         if indexPath.section == 1{
-            cell.textLabel?.text = "通过评选"
+            switch nextposition {
+            case 1:
+                cell.textLabel?.text = "通过面试"
+                break
+            case -1:
+                cell.textLabel?.text = "通过笔试"
+                break
+            case -2:
+                cell.textLabel?.text = "通过审核"
+                break
+            default:
+                break
+            }
             cell.addSubview(nextSwitch)
         }else{
             cell.textLabel?.text = "短信通知"
