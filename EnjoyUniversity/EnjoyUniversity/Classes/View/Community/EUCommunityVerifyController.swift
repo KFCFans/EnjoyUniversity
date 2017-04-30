@@ -16,6 +16,8 @@ class EUCommunityVerifyController: EUBaseViewController {
 
     fileprivate let COMMUNITYVERIFYCELL = "COMMUNITYVERIFYCELL"
     
+    let rightBtn = UIBarButtonItem(title: "选择", style: .plain, target: self, action: #selector(didClickSelectButton))
+    
     /// 根据此状态确定控制器作用
     var communityApplyStatus:Int = 0
     
@@ -29,8 +31,6 @@ class EUCommunityVerifyController: EUBaseViewController {
     var isSelectAll:Bool = false
     
     var selectIndex = [Int]()
-    
-    var originalIndex = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,7 +51,6 @@ class EUCommunityVerifyController: EUBaseViewController {
         tableview.register(EUCommunityVerifyCell.self, forCellReuseIdentifier: COMMUNITYVERIFYCELL)
         tableview.tableFooterView = UIView()
         
-        let rightBtn = UIBarButtonItem(title: "选择", style: .plain, target: self, action: #selector(didClickSelectButton))
         navitem.rightBarButtonItem = rightBtn
         
     }
@@ -81,14 +80,14 @@ class EUCommunityVerifyController: EUBaseViewController {
     
     private func choseData(){
         tempviewmodellist.removeAll()
-        for (index,viewmodel) in listviewmodel.applycmMemberList.enumerated() {
+        selectIndex.removeAll()
+        for (_,viewmodel) in listviewmodel.applycmMemberList.enumerated() {
             guard let position = viewmodel.model?.position else {
                 continue
             }
             if (position + 3) == communityApplyStatus{
                 tempviewmodellist.append(viewmodel)
                 selectIndex.append(0)
-                originalIndex.append(index)
             }
         }
         tableview.reloadData()
@@ -127,9 +126,13 @@ extension EUCommunityVerifyController{
         if selectIndex[indexPath.row] == 1{
             cell?.accessoryType = .none
             selectIndex[indexPath.row] = 0
+            if (selectIndex.max() ?? 1) == 0{
+                rightBtn.isEnabled = false
+            }
         }else{
             cell?.accessoryType = .checkmark
             selectIndex[indexPath.row] = 1
+            rightBtn.isEnabled = true
         }
     }
     
@@ -145,6 +148,7 @@ extension EUCommunityVerifyController{
         
             selectStatus = true
             btn.title = "下一步"
+            btn.isEnabled = false
             let allselectBtn = UIBarButtonItem(title: "全选", style: .plain, target: nil, action: #selector(didClickSelectAllBtn(btn:)))
             navitem.rightBarButtonItems = [btn,allselectBtn]
             
@@ -200,10 +204,12 @@ extension EUCommunityVerifyController{
         if isSelectAll{
             isSelectAll = false
             btn.title = "全选"
+            rightBtn.isEnabled = false
         }else{
             isSelectAll = true
             btn.title = "清空"
             replace = 1
+            rightBtn.isEnabled = true
         }
         for (index,_) in selectIndex.enumerated(){
             selectIndex[index] = replace
