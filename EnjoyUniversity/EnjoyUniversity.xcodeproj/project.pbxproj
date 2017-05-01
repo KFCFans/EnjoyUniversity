@@ -96,6 +96,7 @@
 		36BDBB4A1E6452090075A3ED /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB491E6452090075A3ED /* Community.swift */; };
 		36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */; };
 		36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */; };
+		36BF7EEC1EB7703B0068F95E /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */; };
 		36C05D581EACC83200ADC433 /* EUCommunityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */; };
 		36C05D5A1EACE38B00ADC433 /* EUChangeCommunityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */; };
 		36C34A0A1EA9CB6E00739C9B /* EUStartRecruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */; };
@@ -238,6 +239,7 @@
 		36BDBB491E6452090075A3ED /* Community.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
 		36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityWallCell.swift; sourceTree = "<group>"; };
 		36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUCommunityWallCell.xib; sourceTree = "<group>"; };
+		36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityCollectionCell.swift; sourceTree = "<group>"; };
 		36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangeCommunityInfoController.swift; sourceTree = "<group>"; };
 		36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartRecruitViewController.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 				360FA3EB1E94E639002A5FF0 /* SwiftyControl */,
 				3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */,
 				36638A7B1E8A785700E6DF17 /* EUCommon.swift */,
+				36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1017,6 +1020,7 @@
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				364F825A1EB5B8340088F5A3 /* SwiftyGradePicker.swift in Sources */,
 				363447961E97B11300F49EBC /* EUserAccount.swift in Sources */,
+				36BF7EEC1EB7703B0068F95E /* SQLiteManager.swift in Sources */,
 				36979E751EB242930041A61B /* EUCommunityVerifyCell.swift in Sources */,
 				36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,
