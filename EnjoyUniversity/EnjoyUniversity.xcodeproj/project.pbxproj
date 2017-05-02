@@ -57,7 +57,6 @@
 		3664E1EB1E9759F60041259B /* SwiftyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664E1E91E9759F60041259B /* SwiftyTextField.swift */; };
 		3664E1EC1E9759F60041259B /* SwiftyVerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3664E1EA1E9759F60041259B /* SwiftyVerificationCodeView.swift */; };
 		3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */; };
-		3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */; };
 		36690ACB1E9C93420027B314 /* EUActivityMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36690ACA1E9C93420027B314 /* EUActivityMemberCell.swift */; };
 		36690AD11E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */; };
 		366BA80B1EA4F9F80079132A /* EUChangeUserInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 366BA80A1EA4F9F80079132A /* EUChangeUserInfoController.swift */; };
@@ -96,7 +95,6 @@
 		36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB441E6417280075A3ED /* EUProfileViewController.swift */; };
 		36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB471E641E190075A3ED /* Bundle+Extension.swift */; };
 		36BDBB4A1E6452090075A3ED /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB491E6452090075A3ED /* Community.swift */; };
-		36BF7EEC1EB7703B0068F95E /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */; };
 		36C05D581EACC83200ADC433 /* EUCommunityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */; };
 		36C05D5A1EACE38B00ADC433 /* EUChangeCommunityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */; };
 		36C34A0A1EA9CB6E00739C9B /* EUStartRecruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */; };
@@ -193,7 +191,6 @@
 		3664E1E91E9759F60041259B /* SwiftyTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTextField.swift; sourceTree = "<group>"; };
 		3664E1EA1E9759F60041259B /* SwiftyVerificationCodeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyVerificationCodeView.swift; sourceTree = "<group>"; };
 		3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageCell.swift; sourceTree = "<group>"; };
-		3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUMessageCell.xib; sourceTree = "<group>"; };
 		36690ACA1E9C93420027B314 /* EUActivityMemberCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityMemberCell.swift; sourceTree = "<group>"; };
 		36690AD01E9CA2FE0027B314 /* EUActivityParticipatorsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityParticipatorsViewController.swift; sourceTree = "<group>"; };
 		366BA80A1EA4F9F80079132A /* EUChangeUserInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangeUserInfoController.swift; sourceTree = "<group>"; };
@@ -239,7 +236,6 @@
 		36BDBB441E6417280075A3ED /* EUProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUProfileViewController.swift; sourceTree = "<group>"; };
 		36BDBB471E641E190075A3ED /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		36BDBB491E6452090075A3ED /* Community.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
-		36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityCollectionCell.swift; sourceTree = "<group>"; };
 		36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangeCommunityInfoController.swift; sourceTree = "<group>"; };
 		36C34A091EA9CB6E00739C9B /* EUStartRecruitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUStartRecruitViewController.swift; sourceTree = "<group>"; };
@@ -529,7 +525,6 @@
 				360FA3EB1E94E639002A5FF0 /* SwiftyControl */,
 				3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */,
 				36638A7B1E8A785700E6DF17 /* EUCommon.swift */,
-				36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -585,7 +580,6 @@
 			children = (
 				36BDBB421E6417180075A3ED /* EUMessageViewController.swift */,
 				3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */,
-				3666ABDC1E7016CF008E4B6B /* EUMessageCell.xib */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -792,7 +786,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */,
-				3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */,
 				36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */,
 				362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */,
 			);
@@ -1021,7 +1014,6 @@
 				360EC8A51E7177ED0009B08E /* EUPlusButtonView.swift in Sources */,
 				364F825A1EB5B8340088F5A3 /* SwiftyGradePicker.swift in Sources */,
 				363447961E97B11300F49EBC /* EUserAccount.swift in Sources */,
-				36BF7EEC1EB7703B0068F95E /* SQLiteManager.swift in Sources */,
 				36979E751EB242930041A61B /* EUCommunityVerifyCell.swift in Sources */,
 				36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */,
 				36BDBB431E6417180075A3ED /* EUMessageViewController.swift in Sources */,

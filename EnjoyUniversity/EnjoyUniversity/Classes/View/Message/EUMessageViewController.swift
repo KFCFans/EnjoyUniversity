@@ -10,22 +10,34 @@ import UIKit
 
 class EUMessageViewController: EUBaseViewController {
     
-    let EUMESSAGECELL = "EUMESSAGECELL"
+    let notificationName = ["活动通知","社团通知","系统通知"]
+    let notificationPicName = ["notify_activity","notify_community","notify_system"]
+    var notificationDetail = ["您没有活动通知","您没有社团通知","您没有系统通知"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        tableview.register(UINib(nibName: "EUMessageCell", bundle: nil), forCellReuseIdentifier: EUMESSAGECELL)
         
         // 巧妙解决 tableview 下面多余的分割线
         tableview.tableFooterView = UIView()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
+    override func loadData() {
+        refreshControl?.beginRefreshing()
+        EUNetworkManager.shared.getNotificationLite { (isSuccess, dict) in
+            self.refreshControl?.endRefreshing()
+            if !isSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            guard let dict = dict else{
+                return
+            }
+            self.notificationDetail[0] = dict["activityNotification"] ?? "您没有活动通知"
+            self.notificationDetail[1] = dict["communityNotification"] ?? "您没有社团通知"
+            self.notificationDetail[2] = dict["systemNotification"] ?? "您没有系统通知"
+            self.tableview.reloadData()
+        }
+    }
 
 }
 
@@ -56,9 +68,17 @@ extension EUMessageViewController{
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableview.dequeueReusableCell(withIdentifier: EUMESSAGECELL) as! EUMessageCell
+        let cell = EUMessageCell(style: .default, reuseIdentifier: nil)
+        cell.titleLabel.text = notificationName[indexPath.row]
+        cell.iconimageView.image = UIImage(named: notificationPicName[indexPath.row])
+        cell.detailLabel.text = notificationDetail[indexPath.row]
+        
         return cell
         
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
     }
     
     

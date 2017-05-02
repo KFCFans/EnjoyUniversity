@@ -2,15 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Appointment Reminders_909090_50.png",
+      "filename" : "notify_community.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "notify_community@2X.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
+      "filename" : "notify_community@3X.png",
       "scale" : "3x"
     }
   ],

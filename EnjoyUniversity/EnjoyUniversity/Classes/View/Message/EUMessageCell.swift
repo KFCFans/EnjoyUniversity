@@ -10,15 +10,35 @@ import UIKit
 
 class EUMessageCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var iconimageView = UIImageView()
+    
+    var titleLabel = UILabel()
+    
+    var detailLabel = UILabel()
+    
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupUI(){
+        
+        iconimageView.frame = CGRect(x: 16, y: 7.5, width: 50, height: 50)
+        addSubview(iconimageView)
+        
+        titleLabel.frame = CGRect(x: 77, y: 15, width: 100, height: 15)
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        addSubview(titleLabel)
+        
+        detailLabel.frame = CGRect(x: 77, y: 40, width: UIScreen.main.bounds.width - 18 - 77, height: 13)
+        detailLabel.font = UIFont.boldSystemFont(ofSize: 13)
+        detailLabel.lineBreakMode = .byTruncatingTail
+        addSubview(detailLabel)
     }
     
 }

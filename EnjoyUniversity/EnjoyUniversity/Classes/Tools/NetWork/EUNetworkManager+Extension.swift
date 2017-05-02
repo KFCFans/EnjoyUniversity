@@ -573,6 +573,28 @@ extension EUNetworkManager{
         }
     }
     
+    /// 获取 3 个消息的第一条
+    ///
+    /// - Parameter completion: 完成回调
+    func getNotificationLite(completion:@escaping (Bool,[String:String]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/notification/msglite"
+        
+        let parm = ["uid":userAccount.uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (dict, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let dict = dict as? [String:String] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,dict)
+        }
+    }
+    
     
 }
 

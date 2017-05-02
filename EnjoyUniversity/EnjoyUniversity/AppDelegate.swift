@@ -39,11 +39,12 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
         // UShare
         UMSocialManager.default().umSocialAppkey = UShareAppKey
         UMSocialManager.default().setPlaform(.sina, appKey: WeiBoAppKey, appSecret: WeiBoAppSecret, redirectURL: WeiBoRedirectUrl)
+        UMSocialManager.default().removePlatformProvider(with: .wechatFavorite)
 
         return true
     }
     
-    // 注册APNs成功并上报DeviceToken
+    /// 注册APNs成功并上报DeviceToken
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         
         JPUSHService.registerDeviceToken(deviceToken)
