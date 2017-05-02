@@ -85,7 +85,7 @@ extension EUDiscoverViewController{
         
 
         // 注册可重用 Cell
-        tableview.register(UINib(nibName: "EUCommunityWallCell", bundle: nil), forCellReuseIdentifier: COMMUNITYWALLCELLID)
+        tableview.register(EUCommunityWallCell.self, forCellReuseIdentifier: COMMUNITYWALLCELLID)
         
         // 取消分割线
         tableview.separatorStyle = .none

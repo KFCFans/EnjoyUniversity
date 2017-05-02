@@ -36,6 +36,7 @@
 		364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */; };
 		36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */; };
 		3649873B1EB82AAE00D73071 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3649873A1EB82AAE00D73071 /* libsqlite3.tbd */; };
+		3649873D1EB82CF300D73071 /* EUCommunityWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649873C1EB82CF300D73071 /* EUCommunityWallCell.swift */; };
 		364D6FB01E9A4CC200297EA8 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */; };
 		364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */; };
 		364E7D271EA7A24A00BC2756 /* SwiftyTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */; };
@@ -95,8 +96,6 @@
 		36BDBB451E6417280075A3ED /* EUProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB441E6417280075A3ED /* EUProfileViewController.swift */; };
 		36BDBB481E641E190075A3ED /* Bundle+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB471E641E190075A3ED /* Bundle+Extension.swift */; };
 		36BDBB4A1E6452090075A3ED /* Community.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB491E6452090075A3ED /* Community.swift */; };
-		36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */; };
-		36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */; };
 		36BF7EEC1EB7703B0068F95E /* SQLiteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */; };
 		36C05D581EACC83200ADC433 /* EUCommunityCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */; };
 		36C05D5A1EACE38B00ADC433 /* EUChangeCommunityInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */; };
@@ -173,6 +172,7 @@
 		364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUShowQRCodeViewController.swift; sourceTree = "<group>"; };
 		36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterViewController.swift; sourceTree = "<group>"; };
 		3649873A1EB82AAE00D73071 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		3649873C1EB82CF300D73071 /* EUCommunityWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityWallCell.swift; sourceTree = "<group>"; };
 		364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyDropdownMenu.swift; sourceTree = "<group>"; };
 		364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTitleButton.swift; sourceTree = "<group>"; };
@@ -239,8 +239,6 @@
 		36BDBB441E6417280075A3ED /* EUProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUProfileViewController.swift; sourceTree = "<group>"; };
 		36BDBB471E641E190075A3ED /* Bundle+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extension.swift"; sourceTree = "<group>"; };
 		36BDBB491E6452090075A3ED /* Community.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Community.swift; sourceTree = "<group>"; };
-		36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityWallCell.swift; sourceTree = "<group>"; };
-		36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EUCommunityWallCell.xib; sourceTree = "<group>"; };
 		36BF7EEB1EB7703B0068F95E /* SQLiteManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SQLiteManager.swift; sourceTree = "<group>"; };
 		36C05D571EACC83200ADC433 /* EUCommunityCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUCommunityCollectionCell.swift; sourceTree = "<group>"; };
 		36C05D591EACE38B00ADC433 /* EUChangeCommunityInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUChangeCommunityInfoController.swift; sourceTree = "<group>"; };
@@ -558,8 +556,7 @@
 			isa = PBXGroup;
 			children = (
 				36BDBB401E64170D0075A3ED /* EUDiscoverViewController.swift */,
-				36BDBB4B1E6454030075A3ED /* EUCommunityWallCell.swift */,
-				36BDBB4D1E64541E0075A3ED /* EUCommunityWallCell.xib */,
+				3649873C1EB82CF300D73071 /* EUCommunityWallCell.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -797,7 +794,6 @@
 				36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */,
 				3666ABDE1E7016CF008E4B6B /* EUMessageCell.xib in Resources */,
 				36BDBB041E640A390075A3ED /* Assets.xcassets in Resources */,
-				36BDBB4E1E64541E0075A3ED /* EUCommunityWallCell.xib in Resources */,
 				362665761E8FE162005ED501 /* EUActivityCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -996,6 +992,7 @@
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
 				3671B5AC1EA201B2002F66AC /* CommunityAuthority.swift in Sources */,
 				364E7D2B1EA7A81400BC2756 /* EUCommunityContactCell.swift in Sources */,
+				3649873D1EB82CF300D73071 /* EUCommunityWallCell.swift in Sources */,
 				3662E64C1E9B60C3000955DA /* UserInfoListViewModel.swift in Sources */,
 				36B1641A1E65A59E00B589B4 /* EUSearchViewController.swift in Sources */,
 				36BDBB411E64170D0075A3ED /* EUDiscoverViewController.swift in Sources */,
@@ -1042,7 +1039,6 @@
 				36638A7A1E8A77C200E6DF17 /* EUNetworkManager+Extension.swift in Sources */,
 				36BDBB4A1E6452090075A3ED /* Community.swift in Sources */,
 				36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */,
-				36BDBB4C1E6454030075A3ED /* EUCommunityWallCell.swift in Sources */,
 				364E7D271EA7A24A00BC2756 /* SwiftyTitleButton.swift in Sources */,
 				36839BFC1E8D457800612729 /* Activity.swift in Sources */,
 				360FA3E91E94DB75002A5FF0 /* SwiftyPhotoClipper.swift in Sources */,
