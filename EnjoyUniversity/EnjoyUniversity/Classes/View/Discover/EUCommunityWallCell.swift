@@ -75,13 +75,27 @@ class EUCommunityWallCell: UITableViewCell {
         communityName.translatesAutoresizingMaskIntoConstraints = false
         
         // 社团名称
-        communityBGI.addConstraint(NSLayoutConstraint(item: communityName,
+        communityBGI.addConstraints([NSLayoutConstraint(item: communityName,
+                                                        attribute: .left,
+                                                        relatedBy: .equal,
+                                                        toItem: communityBGI,
+                                                        attribute: .left,
+                                                        multiplier: 1.0,
+                                                        constant: 20),
+                                     NSLayoutConstraint(item: communityName,
+                                                        attribute: .right,
+                                                        relatedBy: .equal,
+                                                        toItem: communityBGI,
+                                                        attribute: .right,
+                                                        multiplier: 1.0,
+                                                        constant: -20),
+                                     NSLayoutConstraint(item: communityName,
                                                         attribute: .centerY,
                                                         relatedBy: .equal,
                                                         toItem: communityBGI,
                                                         attribute: .centerY,
                                                         multiplier: 1.0,
-                                                        constant: 0))
+                                                        constant: 0)])
         communityName.addConstraints([NSLayoutConstraint(item: communityName,
                                                          attribute: .width,
                                                          relatedBy: .equal,
@@ -148,7 +162,14 @@ class EUCommunityWallCell: UITableViewCell {
                                                         toItem: communityName,
                                                         attribute: .bottom,
                                                         multiplier: 1.0,
-                                                        constant: 20)])
+                                                        constant: 20),
+                                     NSLayoutConstraint(item: communityIntro,
+                                                        attribute: .bottom,
+                                                        relatedBy: .lessThanOrEqual,
+                                                        toItem: communityBGI,
+                                                        attribute: .bottom,
+                                                        multiplier: 1.0,
+                                                        constant: -10)])
         
     }
 
