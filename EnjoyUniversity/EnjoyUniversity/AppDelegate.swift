@@ -34,7 +34,10 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
             UNAuthorizationOptions.sound.rawValue)
         JPUSHService.register(forRemoteNotificationConfig: entiity, delegate: self)
         // 注册极光推送
-        JPUSHService.setup(withOption: launchOptions, appKey: "7dd9d0f83f93c23e2c295dc0", channel:"App Store" , apsForProduction: false);
+        JPUSHService.setup(withOption: launchOptions, appKey: "7dd9d0f83f93c23e2c295dc0", channel:"App Store" , apsForProduction: false)
+        
+        // UShare
+        UMSocialManager.default().umSocialAppkey = "57b432afe0f55a9832001a0a"
 
         return true
     }
