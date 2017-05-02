@@ -35,6 +35,7 @@
 		364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */; };
 		364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */; };
 		36457E151E9F3BD10036CBA6 /* EURegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */; };
+		3649873B1EB82AAE00D73071 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 3649873A1EB82AAE00D73071 /* libsqlite3.tbd */; };
 		364D6FB01E9A4CC200297EA8 /* UserInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */; };
 		364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */; };
 		364E7D271EA7A24A00BC2756 /* SwiftyTitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */; };
@@ -171,6 +172,7 @@
 		364231A11E9CEFE200FAB080 /* EUActivityNotificationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUActivityNotificationController.swift; sourceTree = "<group>"; };
 		364231C11E9D19D500FAB080 /* EUShowQRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUShowQRCodeViewController.swift; sourceTree = "<group>"; };
 		36457E141E9F3BD10036CBA6 /* EURegisterViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURegisterViewController.swift; sourceTree = "<group>"; };
+		3649873A1EB82AAE00D73071 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInfoViewModel.swift; sourceTree = "<group>"; };
 		364E7D241EA7A24300BC2756 /* SwiftyDropdownMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyDropdownMenu.swift; sourceTree = "<group>"; };
 		364E7D261EA7A24A00BC2756 /* SwiftyTitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyTitleButton.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3649873B1EB82AAE00D73071 /* libsqlite3.tbd in Frameworks */,
 				36EB2A3F1EB1A4CA00DE5248 /* libresolv.tbd in Frameworks */,
 				36EB2A3D1EB1A4BC00DE5248 /* UserNotifications.framework in Frameworks */,
 				36EB2A3B1EB1A4AE00DE5248 /* libz.tbd in Frameworks */,
@@ -313,6 +316,7 @@
 		2F6B1969AAE023ED04C96E5A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3649873A1EB82AAE00D73071 /* libsqlite3.tbd */,
 				36EB2A3E1EB1A4CA00DE5248 /* libresolv.tbd */,
 				36EB2A3C1EB1A4BC00DE5248 /* UserNotifications.framework */,
 				36EB2A3A1EB1A4AE00DE5248 /* libz.tbd */,
