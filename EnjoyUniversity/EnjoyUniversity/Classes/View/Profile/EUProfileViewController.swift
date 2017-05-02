@@ -440,7 +440,10 @@ extension EUProfileViewController{
             }else{
                 openQQToContactUs()
             }
-        }else if indexPath.section == 3{
+        }else if indexPath.section == 2{
+            shareUs()
+        }
+        else if indexPath.section == 3{
             navigationController?.pushViewController(EUAboutUsViewController(), animated: true)
         }
     }
@@ -481,7 +484,8 @@ extension EUProfileViewController{
     @objc fileprivate func showMyCommunityCollections(){
         navigationController?.pushViewController(EUCommunityCollectionController(), animated: true)
     }
-}
+    
+    }
 
 // MARK: - 一些小方法
 extension EUProfileViewController{
@@ -495,6 +499,14 @@ extension EUProfileViewController{
         }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
+    
+    /// 分享我们
+    fileprivate func shareUs(){
+        
+        shareImageAndText(text: "享受你的大学生活～", image: UIImage(named: "profile_logo"), currentViewController: self)
+        
+    }
+
     
     
     

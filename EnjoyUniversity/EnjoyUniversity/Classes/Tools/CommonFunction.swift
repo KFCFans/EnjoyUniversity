@@ -189,5 +189,25 @@ func createQRForString(qrString: String?, qrImageName: String?) -> UIImage?{
 }
 
 
+func shareImageAndText(text:String,image:UIImage?,currentViewController:UIViewController){
+    
+    let message = UMSocialMessageObject()
+    message.text = text
+    
+    let messageimg = UMShareImageObject()
+    messageimg.shareImage = image
+    
+    message.shareObject = messageimg
+    
+    UMSocialUIManager.showShareMenuViewInWindow { (type, dict) in
+        
+        UMSocialManager.default().share(to: type, messageObject: message, currentViewController: currentViewController, completion: { (result, error) in
+            
+        })
+        
+    }
+    
+}
+
 
 

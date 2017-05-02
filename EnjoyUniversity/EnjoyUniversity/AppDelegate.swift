@@ -37,7 +37,8 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
         JPUSHService.setup(withOption: launchOptions, appKey: "7dd9d0f83f93c23e2c295dc0", channel:"App Store" , apsForProduction: false)
         
         // UShare
-        UMSocialManager.default().umSocialAppkey = "57b432afe0f55a9832001a0a"
+        UMSocialManager.default().umSocialAppkey = UShareAppKey
+        UMSocialManager.default().setPlaform(.sina, appKey: WeiBoAppKey, appSecret: WeiBoAppSecret, redirectURL: WeiBoRedirectUrl)
 
         return true
     }
