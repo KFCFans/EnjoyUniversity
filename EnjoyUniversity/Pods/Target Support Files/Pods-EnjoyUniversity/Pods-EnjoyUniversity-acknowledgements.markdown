@@ -58,6 +58,11 @@ SOFTWARE.
 
 
 
+## UMengUShare
+
+Copyright 2011 - 2017 UMeng.com. All rights reserved.
+
+
 ## YYModel
 
 The MIT License (MIT)

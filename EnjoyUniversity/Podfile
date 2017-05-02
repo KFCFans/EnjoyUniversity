@@ -8,6 +8,10 @@ target 'EnjoyUniversity' do
   pod 'Kingfisher'
   pod 'YYModel'
   pod 'JPush', '3.0.5'
+  pod ‘UMengUShare/UI’
+  pod ‘UMengUShare/Social/ReducedWeChat'
+  pod ‘UMengUShare/Social/ReducedQQ'
+  pod ‘UMengUShare/Social/ReducedSina'
 
   # Pods for EnjoyUniversity
 

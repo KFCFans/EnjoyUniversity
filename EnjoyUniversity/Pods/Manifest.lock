@@ -4,12 +4,27 @@ PODS:
   - JPush (3.0.5):
     - JCore (~> 1.1.1)
   - Kingfisher (3.6.0)
+  - UMengUShare/Core (6.4.3):
+    - UMengUShare/Network
+  - UMengUShare/Network (6.4.3)
+  - UMengUShare/Social/ReducedQQ (6.4.3):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedSina (6.4.3):
+    - UMengUShare/Core
+  - UMengUShare/Social/ReducedWeChat (6.4.3):
+    - UMengUShare/Core
+  - UMengUShare/UI (6.4.3):
+    - UMengUShare/Core
   - YYModel (1.0.4)
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
   - JPush (= 3.0.5)
   - Kingfisher
+  - UMengUShare/Social/ReducedQQ
+  - UMengUShare/Social/ReducedSina
+  - UMengUShare/Social/ReducedWeChat
+  - UMengUShare/UI
   - YYModel
 
 SPEC CHECKSUMS:
@@ -17,8 +32,9 @@ SPEC CHECKSUMS:
   JCore: dff3c50e9a7522a508cd9096ca79165968e1aed3
   JPush: dd0b776998aa705a6242b947bf72e5a640387cfe
   Kingfisher: 300035f9a40634dc9b452d946c9f22250688fecd
+  UMengUShare: d39cb682598df87ebdd3c055d03d00eb0102d42c
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: 92f2faca0e9bfe6adb13e52ef310cf574f3c9e2e
+PODFILE CHECKSUM: 2bbe2f2050cb79f144609179cf81977972eccc47
 
 COCOAPODS: 1.2.0
