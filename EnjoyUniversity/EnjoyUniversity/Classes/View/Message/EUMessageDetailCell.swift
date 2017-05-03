@@ -89,6 +89,7 @@ class EUMessageDetailCell: UITableViewCell {
         
         notificationDetailLabel.frame = CGRect(x: 10, y: 10, width: detailShadowView.frame.width - 20, height: 14)
         notificationDetailLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        notificationDetailLabel.numberOfLines = 0
         notificationDetailLabel.textColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
         detailShadowView.addSubview(notificationDetailLabel)
         

@@ -45,6 +45,6 @@ public let QQAppKey = ""
 public let QQAppSecret = ""
 
 // WeChat
-public let WeChatAppKey = ""
-public let WeChatAppSecret = ""
+public let WeChatAppKey = "wx583a0c3fd9e9f152"
+public let WeChatAppSecret = "018ddfefc159221d970e389b9cbff395"
 

@@ -81,7 +81,6 @@ class ActivityListViewModel{
             }else{
                 self.vmlist = tempvmlist
             }
-            print("加载到的数据条数:\(tempvmlist.count)")
             completion(true, true)
             
         }
@@ -124,13 +123,16 @@ class ActivityListViewModel{
             })
             
             // 将已结束的活动放倒最末端
-            self.participatedlist = tempvmlist
-            for (index,viewmodel) in tempvmlist.enumerated(){
+            self.participatedlist.removeAll()
+            var finishedList = [ActivityViewModel]()
+            for viewmodel in tempvmlist{
                 if viewmodel.isFinished{
-                    self.participatedlist.remove(at: index)
+                    finishedList.append(viewmodel)
+                }else{
                     self.participatedlist.append(viewmodel)
                 }
             }
+            self.participatedlist = self.participatedlist + finishedList
             
             completion(true)
 
@@ -174,13 +176,16 @@ class ActivityListViewModel{
                 return Int(x.activitymodel.avStarttime ?? "0") ?? 0 < Int(y.activitymodel.avStarttime ?? "0") ?? 0
             })
             // 将已结束的活动放倒最末端
-            self.createdlist = tempvmlist
-            for (index,viewmodel) in tempvmlist.enumerated(){
+            self.createdlist.removeAll()
+            var finishedList = [ActivityViewModel]()
+            for viewmodel in tempvmlist{
                 if viewmodel.isFinished{
-                    self.createdlist.remove(at: index)
+                    finishedList.append(viewmodel)
+                }else{
                     self.createdlist.append(viewmodel)
                 }
             }
+            self.createdlist = self.createdlist + finishedList
            
 
             completion(true)
@@ -221,13 +226,16 @@ class ActivityListViewModel{
                 return Int(x.activitymodel.avStarttime ?? "0") ?? 0 < Int(y.activitymodel.avStarttime ?? "0") ?? 0
             })
             // 将已结束的活动放倒最末端
-            self.collectedlist = tempvmlist
-            for (index,viewmodel) in tempvmlist.enumerated(){
+            self.collectedlist.removeAll()
+            var finishedList = [ActivityViewModel]()
+            for viewmodel in tempvmlist{
                 if viewmodel.isFinished{
-                    self.collectedlist.remove(at: index)
+                    finishedList.append(viewmodel)
+                }else{
                     self.collectedlist.append(viewmodel)
                 }
             }
+            self.collectedlist = self.collectedlist + finishedList
             completion(true,true)
         }
         

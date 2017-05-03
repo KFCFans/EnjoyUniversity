@@ -39,6 +39,8 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
         // UShare
         UMSocialManager.default().umSocialAppkey = UShareAppKey
         UMSocialManager.default().setPlaform(.sina, appKey: WeiBoAppKey, appSecret: WeiBoAppSecret, redirectURL: WeiBoRedirectUrl)
+        UMSocialManager.default().setPlaform(.wechatSession, appKey: WeChatAppKey, appSecret: WeChatAppSecret, redirectURL: WeiBoRedirectUrl)
+        UMSocialManager.default().setPlaform(.wechatTimeLine, appKey: WeChatAppKey, appSecret: WeChatAppSecret, redirectURL: WeiBoRedirectUrl)
         UMSocialManager.default().removePlatformProvider(with: .wechatFavorite)
 
         return true

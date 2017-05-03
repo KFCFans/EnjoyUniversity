@@ -26,7 +26,7 @@ class MessageViewModel{
         sendTime = timeStampToString(timeStamp: model.sendtime, formate: "yyyy-MM-dd HH:mm")
         
         // 计算文本高度
-        messageHeight = calculateLabelHeight(text: model.msg ?? "暂时没有消息", width: UIScreen.main.bounds.width - 24, font: 15)
+        messageHeight = calculateLabelHeight(text: model.msg ?? "暂时没有消息", width: UIScreen.main.bounds.width - 103, font: 15)
         
         
     }
