@@ -36,9 +36,9 @@ class EUActivityNotificationController: EUBaseViewController {
         guard let notificationText = notificationtextview.text else {
             return
         }
-        let tag = "av\(avid)"
+        
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.pushNotificationByTag(tag: tag, alert: notificationText) { (netSuccess, pushSuccess) in
+        EUNetworkManager.shared.pushActivityNotificationByTag(avid: avid, alert: notificationText) { (netSuccess, pushSuccess) in
             SwiftyProgressHUD.hide()
             if !netSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)

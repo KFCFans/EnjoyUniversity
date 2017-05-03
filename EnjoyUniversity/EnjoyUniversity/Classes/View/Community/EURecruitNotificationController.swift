@@ -111,7 +111,7 @@ class EURecruitNotificationController: EUBaseViewController {
                 return
             }
             // 发送推送
-            EUNetworkManager.shared.pushNotificationByAlias(alias: uids, alert: notificationtext, completion: { (netSuccess, pushSuccess) in
+            EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: uids, alert: notificationtext,cmid: self.cmid,completion: { (netSuccess, pushSuccess) in
                 SwiftyProgressHUD.hide()
                 if !netSuccess{
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
