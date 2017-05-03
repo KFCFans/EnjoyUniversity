@@ -61,9 +61,7 @@ extension EUMessageViewController{
 extension EUMessageViewController{
  
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return 3
-        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -72,7 +70,6 @@ extension EUMessageViewController{
         cell.titleLabel.text = notificationName[indexPath.row]
         cell.iconimageView.image = UIImage(named: notificationPicName[indexPath.row])
         cell.detailLabel.text = notificationDetail[indexPath.row]
-        
         return cell
         
     }
@@ -81,6 +78,8 @@ extension EUMessageViewController{
         return 65
     }
     
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
     
 }

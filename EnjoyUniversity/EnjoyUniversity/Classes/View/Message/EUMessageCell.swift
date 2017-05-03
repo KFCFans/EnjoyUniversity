@@ -33,11 +33,13 @@ class EUMessageCell: UITableViewCell {
         
         titleLabel.frame = CGRect(x: 77, y: 15, width: 100, height: 15)
         titleLabel.font = UIFont.boldSystemFont(ofSize: 15)
+        titleLabel.textColor = TEXTVIEWCOLOR
         addSubview(titleLabel)
         
         detailLabel.frame = CGRect(x: 77, y: 40, width: UIScreen.main.bounds.width - 18 - 77, height: 13)
         detailLabel.font = UIFont.boldSystemFont(ofSize: 13)
         detailLabel.lineBreakMode = .byTruncatingTail
+        detailLabel.textColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
         addSubview(detailLabel)
     }
     
