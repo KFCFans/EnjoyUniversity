@@ -138,10 +138,13 @@ class EUMessageDetailController: EUBaseViewController {
                 vc.viewmodel = viewmodel
                 self.navigationController?.pushViewController(vc, animated: true)
             })
-            
-            
-            
-            
+        }else if type == .CommunityNotification{
+            guard let cmid = tempviewmodellist[indexPath.row].model?.cmid else{
+                return
+            }
+            let vc = EUMyCommunityViewController()
+            vc.outsidecmid = cmid
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
 

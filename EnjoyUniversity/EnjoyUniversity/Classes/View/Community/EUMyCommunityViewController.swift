@@ -34,9 +34,29 @@ class EUMyCommunityViewController: EUBaseViewController {
     lazy var communityauthorutylist = CommunityAuthorityListViewModel()
     var communityauthoritylistIndex:Int = 0
     
+    /// 外界传入 cmid，用于指定显示
+    var outsidecmid:Int = -1
+    
     /// 下拉选择框
     var loadDataFinished:Bool = false{
         didSet{
+            
+            if outsidecmid != -1 && loadDataFinished{
+                
+                var tempindex = 0
+                for (index,model) in communityauthorutylist.communityauthoritylist.enumerated(){
+                    if model.cmid == outsidecmid{
+                        titleButtonView.setTitle(model.cmname, for: .normal)
+                        titleButtonView.isEnabled = true
+                        tempindex = index
+                    }
+                }
+                let tempmodel = communityauthorutylist.communityauthoritylist[tempindex]
+                communityauthorutylist.communityauthoritylist.remove(at: tempindex)
+                communityauthorutylist.communityauthoritylist.insert(tempmodel, at: 0)
+                spinnerview.reloadData()
+                return
+            }
             
             if loadDataFinished && communityauthorutylist.communityauthoritylist.count > 0{
                 titleButtonView.setTitle(communityauthorutylist.communityauthoritylist.first?.cmname, for: .normal)
