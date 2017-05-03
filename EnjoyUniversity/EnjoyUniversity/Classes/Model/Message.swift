@@ -15,6 +15,9 @@ class Message: NSObject {
     /// 发送时间 共有
     var sendtime:String?
     
+    /// 发送者（标题）
+    var sender:String?
+    
     /// 活动 ID
     var avid:Int = 0
     

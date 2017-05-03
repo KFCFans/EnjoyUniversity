@@ -207,14 +207,23 @@ extension EUChoseContactsController{
         }
         
         // 发送推送
+        SwiftyProgressHUD.showLoadingHUD()
         EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: phonelist, alert: notifycationText, cmid: cmid, cmname: cmname) { (netSuccess, sendSuccess) in
             if !netSuccess{
+                SwiftyProgressHUD.hide()
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
             if !sendSuccess{
+                SwiftyProgressHUD.hide()
                 SwiftyProgressHUD.showFaildHUD(text: "发送失败", duration: 1)
                 return
+            }
+            
+            if !self.shouleSendSms{
+                SwiftyProgressHUD.hide()
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ = self.navigationController?.popViewController(animated: true)
             }
         }
         

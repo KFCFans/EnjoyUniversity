@@ -32,7 +32,6 @@ public let TEXTVIEWCOLOR = UIColor.init(red: 49/255, green: 49/255, blue: 49/255
 public let BACKGROUNDCOLOR = UIColor.init(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
 
 
-
 /// 社交分享 UShare
 public let UShareAppKey = "57b432afe0f55a9832001a0a"
 

@@ -45,6 +45,7 @@ class EUMessageDetailController: EUBaseViewController {
         tableview.register(EUMessageDetailCell.self, forCellReuseIdentifier: MESSAGEDETAILCELL)
         tableview.separatorStyle = .none
         tableview.tableFooterView = UIView()
+        view.backgroundColor = BACKGROUNDCOLOR
         
     }
     
@@ -114,7 +115,7 @@ class EUMessageDetailController: EUBaseViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let detailHeight = tempviewmodellist[indexPath.row].messageHeight
-        return detailHeight + 52
+        return detailHeight + 150
         
     }
 
