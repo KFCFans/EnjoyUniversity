@@ -13,6 +13,8 @@ class EURecruitNotificationController: EUBaseViewController {
     /// 上层传入
     var cmid:Int = 0
     
+    var cmname:String = ""
+    
     /// 下一级 －2笔试 －1面试 1加入成功 －10拒绝
     var nextposition = -3{
         didSet{
@@ -111,7 +113,7 @@ class EURecruitNotificationController: EUBaseViewController {
                 return
             }
             // 发送推送
-            EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: uids, alert: notificationtext,cmid: self.cmid,completion: { (netSuccess, pushSuccess) in
+            EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: uids, alert: notificationtext,cmid: self.cmid,cmname: self.cmname,completion: { (netSuccess, pushSuccess) in
                 SwiftyProgressHUD.hide()
                 if !netSuccess{
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)

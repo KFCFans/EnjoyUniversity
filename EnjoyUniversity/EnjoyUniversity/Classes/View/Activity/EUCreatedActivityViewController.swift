@@ -259,6 +259,7 @@ extension EUCreatedActivityViewController{
     
         let vc = EUActivityNotificationController()
         vc.avid = avid
+        vc.avname = viewmodel?.activitymodel.avTitle ?? ""
         navigationController?.pushViewController(vc, animated: true)
     }
     

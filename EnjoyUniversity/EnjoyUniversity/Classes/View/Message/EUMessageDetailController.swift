@@ -43,6 +43,8 @@ class EUMessageDetailController: EUBaseViewController {
         
         tableview.contentInset = UIEdgeInsetsMake(64, 0, 0, 0)
         tableview.register(EUMessageDetailCell.self, forCellReuseIdentifier: MESSAGEDETAILCELL)
+        tableview.separatorStyle = .none
+        tableview.tableFooterView = UIView()
         
     }
     
@@ -112,7 +114,7 @@ class EUMessageDetailController: EUBaseViewController {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         let detailHeight = tempviewmodellist[indexPath.row].messageHeight
-        return detailHeight + 24 + 12
+        return detailHeight + 52
         
     }
 

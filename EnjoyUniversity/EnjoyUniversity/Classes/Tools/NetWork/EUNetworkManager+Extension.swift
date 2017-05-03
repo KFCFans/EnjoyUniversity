@@ -1532,11 +1532,11 @@ extension EUNetworkManager{
     ///   - alias: 别名
     ///   - alert: 推送消息内容
     ///   - completion: 完成回调
-    func pushCommunityNotificationByAlias(alias:String,alert:String,cmid:Int,completion:@escaping (Bool,Bool)->()){
+    func pushCommunityNotificationByAlias(alias:String,alert:String,cmid:Int,cmname:String,completion:@escaping (Bool,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/push/communityaliaspush"
         
-        let parm = ["alias":alias,"alert":alert,"cmid":cmid] as [String:Any]
+        let parm = ["alias":alias,"alert":alert,"cmid":cmid,"cmname":cmname] as [String:Any]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
             if !isSuccess{
@@ -1557,11 +1557,11 @@ extension EUNetworkManager{
     ///   - tag: 标签
     ///   - alert: 推送的内容
     ///   - completion: 完成回调
-    func pushActivityNotificationByTag(avid:Int,alert:String,completion:@escaping (Bool,Bool)->()){
+    func pushActivityNotificationByTag(avid:Int,avname:String,alert:String,completion:@escaping (Bool,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/push/activitytagpush"
         
-        let parm = ["avid":avid,"alert":alert] as [String : Any]
+        let parm = ["avid":avid,"alert":alert,"avname":avname] as [String : Any]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
             if !isSuccess{

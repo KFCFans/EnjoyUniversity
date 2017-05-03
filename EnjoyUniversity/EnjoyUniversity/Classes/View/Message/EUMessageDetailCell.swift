@@ -15,11 +15,12 @@ class EUMessageDetailCell: UITableViewCell {
 
     var viewmodel:MessageViewModel?{
         didSet{
-            notificationLabel.frame = CGRect(x: 12, y: 12, width: UIScreen.main.bounds.width, height: viewmodel?.messageHeight ?? 0)
+            notificationLabel.frame = CGRect(x: 12, y: 12, width: UIScreen.main.bounds.width - 24, height: viewmodel?.messageHeight ?? 0)
             notificationLabel.text = viewmodel?.model?.msg
             timeLabel.frame.origin.y = 24 + (viewmodel?.messageHeight ?? 0)
             timeLabel.text = viewmodel?.sendTime
             timeLabel.sizeToFit()
+            timeLabel.center.x = center.x
         }
     }
     
@@ -36,7 +37,6 @@ class EUMessageDetailCell: UITableViewCell {
         
         notificationLabel.font = UIFont.boldSystemFont(ofSize: 15)
         timeLabel.font = UIFont.boldSystemFont(ofSize: 13)
-        timeLabel.center.x = center.x
         
         addSubview(notificationLabel)
         addSubview(timeLabel)

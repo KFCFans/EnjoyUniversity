@@ -21,6 +21,8 @@ class EUChoseContactsController: EUBaseViewController {
     /// 社团 ID，上层传入
     var cmid:Int = 0
     
+    var cmname:String = ""
+    
     /// 头部视图数组
     lazy var sectionarray = [FoldSectionView]()
     
@@ -194,16 +196,29 @@ extension EUChoseContactsController:FoldSectionViewDelegate{
 extension EUChoseContactsController{
     
     @objc fileprivate func sendNotification(){
-        var phonelist = [Int64]()
+        var phonelist = ""
         // 获取名单
         for (i,array) in selectIndexArray.enumerated(){
             for (j,selectindex) in array.enumerated(){
                 if selectindex == 1{
-                    phonelist.append(sectionarray[i].datasource[j].model?.uid ?? 0)
+                    phonelist = phonelist + "\(sectionarray[i].datasource[j].model?.uid ?? 0),"
                 }
             }
         }
         
+        // 发送推送
+        EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: phonelist, alert: notifycationText, cmid: cmid, cmname: cmname) { (netSuccess, sendSuccess) in
+            if !netSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                return
+            }
+            if !sendSuccess{
+                SwiftyProgressHUD.showFaildHUD(text: "发送失败", duration: 1)
+                return
+            }
+        }
+        
+        // FIXME: - 短信同步发送
     }
     
 }

@@ -117,6 +117,7 @@ extension EURecruitmentViewController{
             let vc = EUCommunityVerifyController()
             vc.communityApplyStatus = indexPath.row
             vc.cmid = viewmodel?.communitymodel?.cmid ?? 0
+            vc.cmname = viewmodel?.communitymodel?.cmName ?? ""
             navigationController?.pushViewController(vc, animated: true)
         }
     }

@@ -13,6 +13,8 @@ class EUCommunityNotifyController: EUBaseViewController {
     /// 上层传入
     var cmid:Int = 0
     
+    var cmname:String = ""
+    
     /// 是否作为公告
     let announceSwitch = UISwitch()
     
@@ -62,6 +64,7 @@ class EUCommunityNotifyController: EUBaseViewController {
                 vc.shouleSendSms = self.smsSwitch.isOn
                 vc.notifycationText = notification
                 vc.cmid = self.cmid
+                vc.cmname = self.cmname
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }else{
@@ -69,6 +72,7 @@ class EUCommunityNotifyController: EUBaseViewController {
             vc.shouleSendSms = smsSwitch.isOn
             vc.notifycationText = notification
             vc.cmid = cmid
+            vc.cmname = cmname
             navigationController?.pushViewController(vc, animated: true)
         }
         

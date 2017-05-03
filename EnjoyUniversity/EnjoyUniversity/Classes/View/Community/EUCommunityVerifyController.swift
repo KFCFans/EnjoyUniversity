@@ -24,6 +24,8 @@ class EUCommunityVerifyController: EUBaseViewController {
     /// 社团 ID
     var cmid:Int = 0
     
+    var cmname:String = ""
+    
     /// 状态
     var selectStatus:Bool = false
     
@@ -190,6 +192,7 @@ extension EUCommunityVerifyController{
             vc.nextposition = communityApplyStatus - 2
             vc.uids = uids
             vc.cmid = cmid
+            vc.cmname = cmname
             navigationController?.pushViewController(vc, animated: true)
             
             

@@ -12,6 +12,8 @@ class EUActivityNotificationController: EUBaseViewController {
     
     var avid:Int = 0
     
+    var avname:String = ""
+    
     let notificationtextview = SwiftyTextView(frame: CGRect(x: 5, y: 74, width: UIScreen.main.bounds.width - 10, height: 180), textContainer: nil, placeholder: "填写活动通知")
     
     override func viewDidLoad() {
@@ -38,7 +40,7 @@ class EUActivityNotificationController: EUBaseViewController {
         }
         
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.pushActivityNotificationByTag(avid: avid, alert: notificationText) { (netSuccess, pushSuccess) in
+        EUNetworkManager.shared.pushActivityNotificationByTag(avid: avid,avname: avname,alert: notificationText) { (netSuccess, pushSuccess) in
             SwiftyProgressHUD.hide()
             if !netSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
