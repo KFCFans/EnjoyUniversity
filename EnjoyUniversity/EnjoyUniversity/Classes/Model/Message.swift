@@ -26,5 +26,7 @@ class Message: NSObject {
     
     /// 用户 ID
     var uid:Int64 = 0
+    
+    var nexturl:String?
 
 }

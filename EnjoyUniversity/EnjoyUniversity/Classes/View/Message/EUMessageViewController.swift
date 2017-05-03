@@ -78,6 +78,7 @@ extension EUMessageViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
         let vc = EUMessageDetailController()
         switch indexPath.row {
         case 0:

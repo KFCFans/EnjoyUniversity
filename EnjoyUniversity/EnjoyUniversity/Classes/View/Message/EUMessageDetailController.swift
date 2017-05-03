@@ -145,6 +145,16 @@ class EUMessageDetailController: EUBaseViewController {
             let vc = EUMyCommunityViewController()
             vc.outsidecmid = cmid
             self.navigationController?.pushViewController(vc, animated: true)
+        }else{
+            var url = "http://www.euswag.com"
+            if let nexturl = tempviewmodellist[indexPath.row].model?.nexturl {
+                url = nexturl
+                return
+            }
+            
+            // FIXME: - 显示网页,https 升级主页
+            print(url)
+            
         }
     }
 
