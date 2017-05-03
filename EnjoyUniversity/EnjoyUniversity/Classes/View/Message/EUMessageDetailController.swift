@@ -45,7 +45,7 @@ class EUMessageDetailController: EUBaseViewController {
         tableview.register(EUMessageDetailCell.self, forCellReuseIdentifier: MESSAGEDETAILCELL)
         tableview.separatorStyle = .none
         tableview.tableFooterView = UIView()
-        view.backgroundColor = BACKGROUNDCOLOR
+        tableview.backgroundColor = BACKGROUNDCOLOR
         
     }
     
@@ -117,7 +117,32 @@ class EUMessageDetailController: EUBaseViewController {
         
         let detailHeight = tempviewmodellist[indexPath.row].messageHeight
         return detailHeight + 150
-        
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if type == .ActivityNotification{
+            
+            guard let avid = tempviewmodellist[indexPath.row].model?.avid else{
+                return
+            }
+            
+            SwiftyProgressHUD.showLoadingHUD()
+            EUNetworkManager.shared.getActivityInfoByID(avid: avid, completion: { (isSuccess, viewmodel) in
+                SwiftyProgressHUD.hide()
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                let vc = EUActivityViewController()
+                vc.activityStatus = 1
+                vc.viewmodel = viewmodel
+                self.navigationController?.pushViewController(vc, animated: true)
+            })
+            
+            
+            
+            
+        }
     }
 
 }

@@ -25,6 +25,16 @@ class EUMessageDetailCell: UITableViewCell {
     /// 通知头像
     let notificationLogo = UIImageView()
     
+    /// 线
+    let lineView = UIView()
+    
+    /// 查看详情
+    let showmoreLabel = UILabel()
+    
+    // 箭头
+    let moreIndicator = UIImageView()
+    
+    
     /// 选择用于什么通知
     var choice:Int = 0{
         didSet{
@@ -41,8 +51,11 @@ class EUMessageDetailCell: UITableViewCell {
             timeLabel.text = viewmodel?.sendTime
             notificationDetailLabel.text = viewmodel?.model?.msg
             notificationTitileLabel.text = viewmodel?.model?.sender
-            detailShadowView.frame.size = CGSize(width: detailShadowView.frame.width, height: 20 + (viewmodel?.messageHeight ?? 0))
+            detailShadowView.frame.size = CGSize(width: detailShadowView.frame.width, height: 20 + (viewmodel?.messageHeight ?? 0) + 35)
             notificationDetailLabel.frame.size = CGSize(width: detailShadowView.frame.width - 20, height: viewmodel?.messageHeight ?? 0)
+            lineView.frame.origin = CGPoint(x: 10, y: notificationDetailLabel.frame.maxY + 10)
+            showmoreLabel.frame.origin = CGPoint(x: 10, y: notificationDetailLabel.frame.maxY + 21)
+            moreIndicator.frame.origin = CGPoint(x: detailShadowView.frame.width - 22, y: notificationDetailLabel.frame.maxY + 21)
         }
     }
     
@@ -58,6 +71,7 @@ class EUMessageDetailCell: UITableViewCell {
     private func setupUI(){
         
         backgroundColor = BACKGROUNDCOLOR
+        selectionStyle = .none
         
         let timeshadowView = UIView(frame: CGRect(x: (sWidth - 130)/2, y: 4, width: 130, height: 22))
         timeshadowView.backgroundColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
@@ -83,7 +97,7 @@ class EUMessageDetailCell: UITableViewCell {
         notificationTitileLabel.font = UIFont.boldSystemFont(ofSize: 16)
         topshadowView.addSubview(notificationTitileLabel)
         
-        detailShadowView.frame = CGRect(x: 58, y: 69, width: topshadowView.frame.width, height: 20 + (viewmodel?.messageHeight ?? 0))
+        detailShadowView.frame = CGRect(x: 58, y: 69, width: topshadowView.frame.width, height: 20 + (viewmodel?.messageHeight ?? 14) + 35)
         detailShadowView.backgroundColor = UIColor.white
         addSubview(detailShadowView)
         
@@ -93,7 +107,19 @@ class EUMessageDetailCell: UITableViewCell {
         notificationDetailLabel.textColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
         detailShadowView.addSubview(notificationDetailLabel)
         
+        lineView.frame = CGRect(x: 10, y: notificationDetailLabel.frame.maxY , width: detailShadowView.frame.width - 20, height: 1)
+        lineView.backgroundColor = UIColor.init(red: 220/255, green: 224/255, blue: 224/255, alpha: 1)
+        detailShadowView.addSubview(lineView)
         
+        showmoreLabel.frame = CGRect(x: 10, y: notificationDetailLabel.frame.maxY + 11, width: 80, height: 15)
+        showmoreLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        showmoreLabel.textColor = UIColor.init(red: 170/255, green: 170/255, blue: 170/255, alpha: 1)
+        showmoreLabel.text = "查看详情"
+        detailShadowView.addSubview(showmoreLabel)
+        
+        moreIndicator.frame = CGRect(x: detailShadowView.frame.width - 22, y: notificationDetailLabel.frame.maxY + 11, width: 14, height: 14)
+        moreIndicator.image = UIImage(named: "notification_indicator")
+        detailShadowView.addSubview(moreIndicator)
         
     }
 
