@@ -25,6 +25,15 @@ class EUMessageDetailCell: UITableViewCell {
     /// 通知头像
     let notificationLogo = UIImageView()
     
+    /// 选择用于什么通知
+    var choice:Int = 0{
+        didSet{
+            notificationLogo.image = UIImage(named: notificationLogoAraay[choice])
+        }
+    }
+    
+    let notificationLogoAraay = ["notification_avcell","notification_cmcell","notification_syscell"]
+    
     let sWidth = UIScreen.main.bounds.width
 
     var viewmodel:MessageViewModel?{

@@ -108,6 +108,7 @@ class EUMessageDetailController: EUBaseViewController {
         
         let cell = (tableView.dequeueReusableCell(withIdentifier: MESSAGEDETAILCELL) as? EUMessageDetailCell) ?? EUMessageDetailCell()
         cell.viewmodel = tempviewmodellist[indexPath.row]
+        cell.choice = type.hashValue
         return cell
         
     }
