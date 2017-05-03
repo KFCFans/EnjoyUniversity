@@ -76,6 +76,11 @@
 		36839BFC1E8D457800612729 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFB1E8D457800612729 /* Activity.swift */; };
 		36839BFE1E8D476300612729 /* AvtivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFD1E8D476300612729 /* AvtivityViewModel.swift */; };
 		36839C001E8D49FE00612729 /* ActivityListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */; };
+		36926A461EB9936600281E7D /* EUMessageDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36926A451EB9936600281E7D /* EUMessageDetailCell.swift */; };
+		36926A481EB9943C00281E7D /* EUMessageDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36926A471EB9943C00281E7D /* EUMessageDetailController.swift */; };
+		36926A4A1EB9964800281E7D /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36926A491EB9964800281E7D /* Message.swift */; };
+		36926A4C1EB9982E00281E7D /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36926A4B1EB9982E00281E7D /* MessageViewModel.swift */; };
+		36926A4E1EB99A8500281E7D /* MessageListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36926A4D1EB99A8500281E7D /* MessageListViewModel.swift */; };
 		3695A2BD1E6D4DD200F02B8E /* CommonFunction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */; };
 		3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */; };
 		3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */; };
@@ -210,6 +215,11 @@
 		36839BFB1E8D457800612729 /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
 		36839BFD1E8D476300612729 /* AvtivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvtivityViewModel.swift; sourceTree = "<group>"; };
 		36839BFF1E8D49FE00612729 /* ActivityListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityListViewModel.swift; sourceTree = "<group>"; };
+		36926A451EB9936600281E7D /* EUMessageDetailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageDetailCell.swift; sourceTree = "<group>"; };
+		36926A471EB9943C00281E7D /* EUMessageDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUMessageDetailController.swift; sourceTree = "<group>"; };
+		36926A491EB9964800281E7D /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		36926A4B1EB9982E00281E7D /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		36926A4D1EB99A8500281E7D /* MessageListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageListViewModel.swift; sourceTree = "<group>"; };
 		3695A2BC1E6D4DD200F02B8E /* CommonFunction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonFunction.swift; sourceTree = "<group>"; };
 		3695A2BE1E6D764200F02B8E /* SwiftyViewPager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyViewPager.swift; path = ../../View/Home/SwiftyViewPager.swift; sourceTree = "<group>"; };
 		3695A2C01E6D7FA300F02B8E /* EUHomeHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EUHomeHeadView.swift; sourceTree = "<group>"; };
@@ -512,6 +522,7 @@
 				36839BFB1E8D457800612729 /* Activity.swift */,
 				36568C8D1E99CD5000BA9A71 /* UserInfo.swift */,
 				3671B5AB1EA201B2002F66AC /* CommunityAuthority.swift */,
+				36926A491EB9964800281E7D /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -580,6 +591,8 @@
 			children = (
 				36BDBB421E6417180075A3ED /* EUMessageViewController.swift */,
 				3666ABDB1E7016CF008E4B6B /* EUMessageCell.swift */,
+				36926A451EB9936600281E7D /* EUMessageDetailCell.swift */,
+				36926A471EB9943C00281E7D /* EUMessageDetailController.swift */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -612,6 +625,8 @@
 				364D6FAF1E9A4CC200297EA8 /* UserInfoViewModel.swift */,
 				3662E64B1E9B60C3000955DA /* UserInfoListViewModel.swift */,
 				3671B5AD1EA20299002F66AC /* CommunityAuthorityListViewModel.swift */,
+				36926A4B1EB9982E00281E7D /* MessageViewModel.swift */,
+				36926A4D1EB99A8500281E7D /* MessageListViewModel.swift */,
 			);
 			name = ViewModel;
 			path = EnjoyUniversity/Classes/ViewModel;
@@ -957,10 +972,12 @@
 				36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */,
 				366C8EA31EAC69F3003CEAEE /* EUChoseContactsController.swift in Sources */,
 				360674691EAE1F2B0023159D /* EUUserInfoCell.swift in Sources */,
+				36926A4A1EB9964800281E7D /* Message.swift in Sources */,
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
 				364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */,
 				364E7D291EA7A37100BC2756 /* EUCommunityContactController.swift in Sources */,
 				364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */,
+				36926A461EB9936600281E7D /* EUMessageDetailCell.swift in Sources */,
 				364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */,
 				36247B5C1EA640FF006F29F1 /* SwiftyAlertController.swift in Sources */,
 				36690ACB1E9C93420027B314 /* EUActivityMemberCell.swift in Sources */,
@@ -982,6 +999,7 @@
 				3671CFD31E98FF5D00FACF91 /* EUserInfoInputViewController.swift in Sources */,
 				3671B5AA1EA1E6F0002F66AC /* EUMyCommunityViewController.swift in Sources */,
 				3671B5B01EA213E1002F66AC /* SwiftySpinner.swift in Sources */,
+				36926A4C1EB9982E00281E7D /* MessageViewModel.swift in Sources */,
 				3695A2BF1E6D764200F02B8E /* SwiftyViewPager.swift in Sources */,
 				3671B5AC1EA201B2002F66AC /* CommunityAuthority.swift in Sources */,
 				364E7D2B1EA7A81400BC2756 /* EUCommunityContactCell.swift in Sources */,
@@ -1024,7 +1042,9 @@
 				3695A2C11E6D7FA300F02B8E /* EUHomeHeadView.swift in Sources */,
 				3664E1EB1E9759F60041259B /* SwiftyTextField.swift in Sources */,
 				364D6FB01E9A4CC200297EA8 /* UserInfoViewModel.swift in Sources */,
+				36926A4E1EB99A8500281E7D /* MessageListViewModel.swift in Sources */,
 				366BA80D1EA509410079132A /* EUChangePasswordController.swift in Sources */,
+				36926A481EB9943C00281E7D /* EUMessageDetailController.swift in Sources */,
 				3673A5EC1EA5C8D6003C29C3 /* EUSystemSettingsController.swift in Sources */,
 				36124A181EAA03AF004B6B10 /* EUCommunityMemberManageController.swift in Sources */,
 				360FA3F01E95032F002A5FF0 /* RequestResult.swift in Sources */,

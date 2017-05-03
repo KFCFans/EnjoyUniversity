@@ -595,6 +595,70 @@ extension EUNetworkManager{
         }
     }
     
+    /// 获取活动通知
+    ///
+    /// - Parameter completion: 完成回调
+    func getActivityNotifications(completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/notification/activity"
+        
+        let parm = ["uid":userAccount.uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+    }
+    
+    /// 获取社团通知
+    ///
+    /// - Parameter completion: 完成回调
+    func getCommunityNotifications(completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/notification/community"
+        
+        let parm = ["uid":userAccount.uid]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (json, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+    }
+    
+    /// 获取系统通知
+    ///
+    /// - Parameter completion: 完成回调
+    func getSystemNotifications(completion:@escaping (Bool,[[String:Any]]?)->()){
+        
+        let url = SERVERADDRESS + "/eu/notification/system"
+        
+        tokenRequest(urlString: url, method: .post, parameters: nil) { (json, isSuccess, _) in
+            if !isSuccess{
+                completion(false,nil)
+                return
+            }
+            guard let json = json as? [[String:Any]] else{
+                completion(true,nil)
+                return
+            }
+            completion(true,json)
+        }
+    }
+    
     
 }
 

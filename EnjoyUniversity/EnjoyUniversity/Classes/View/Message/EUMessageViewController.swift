@@ -52,7 +52,6 @@ extension EUMessageViewController{
         // 缩进 tableview ，防止被 navbar 遮挡
         tableview.contentInset = UIEdgeInsetsMake(navbar.bounds.height, 0, 0, 0)
     }
-    
 }
 
 
@@ -79,7 +78,18 @@ extension EUMessageViewController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = EUMessageDetailController()
+        switch indexPath.row {
+        case 0:
+            vc.type = .ActivityNotification
+        case 1:
+            vc.type = .CommunityNotification
+        case 2:
+            vc.type = .SystemNotification
+        default:
+            return
+        }
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 }
