@@ -64,7 +64,7 @@ class EUProfileViewController: EUBaseViewController {
     }
     
     override func loadData() {
-        
+        refreshControl = nil
         SwiftyProgressHUD.showLoadingHUD()
         EUNetworkManager.shared.getUserPrivateInfo { (isSuccess, userinfovm) in
             SwiftyProgressHUD.hide()
@@ -189,7 +189,7 @@ extension EUProfileViewController{
         buttonview.addSubview(communitycollectBtn)
         
         tableview.tableHeaderView = headview
-        tableview.bounces = false
+        tableview.bounces = true
         tableview.sectionHeaderHeight = 10
         tableview.tableFooterView = UIView()
         
