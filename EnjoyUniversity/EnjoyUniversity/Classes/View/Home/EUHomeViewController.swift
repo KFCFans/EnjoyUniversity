@@ -99,7 +99,7 @@ extension EUHomeViewController{
         navitem.leftBarButtonItem = leftbtn
         
         // 导航栏右部更多菜单按钮
-        let rightbtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        let rightbtn = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: #selector(didClickAddButton))
         navitem.rightBarButtonItem = rightbtn
         
         // 搜索框视图
@@ -169,7 +169,7 @@ extension EUHomeViewController{
 }
 
 // MARK: - 代理相关方法
-extension EUHomeViewController:UISearchBarDelegate{
+extension EUHomeViewController:UISearchBarDelegate,EUAddPopViewDelegate{
     
     // 实现导航栏随着视图滑动而变化
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -241,17 +241,43 @@ extension EUHomeViewController:UISearchBarDelegate{
         return false
     }
     
+    func euAddPopView(didSelectRowAt: Int) {
+        switch didSelectRowAt {
+        case 0:
+            navigationController?.pushViewController(EUQRScanViewController(), animated: true)
+            break
+        case 1:
+            navigationController?.pushViewController(EUStartActivityViewController(), animated: true)
+            break
+        case 2:
+            let vc = EUMyActivityViewController()
+            vc.isFirstPageSelected = false
+            navigationController?.pushViewController(vc, animated: true)
+            break
+        default:
+            return
+        }
+    }
+    
     
 }
 
 // MARK: - 监听方法
 extension EUHomeViewController{
     
+    /// 点击二维码
     @objc fileprivate func didClickQRCodeScanner(){
         
         let scanner = EUQRScanViewController()
         navigationController?.pushViewController(scanner, animated: true)
         
+    }
+    
+    @objc fileprivate func didClickAddButton(){
+        
+        let popview = EUAddPopView(frame: UIScreen.main.bounds)
+        popview.delegate = self
+        popview.showAddPopView()
     }
     
 }
