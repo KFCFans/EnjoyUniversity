@@ -38,8 +38,9 @@ class EUAddPopView: UIView,UITableViewDelegate,UITableViewDataSource,UIGestureRe
         tableView.delegate = self
         tableView.dataSource = self
         tableView.layer.masksToBounds = true
-        tableView.layer.cornerRadius = 5
+        tableView.layer.cornerRadius = 10
         tableView.separatorStyle = .none
+        tableView.bounces = false
         addSubview(tableView)
         
         // 点击背景返回
@@ -111,6 +112,8 @@ class EUAddPopCell:UITableViewCell{
     
     private func setupUI(){
         
+        selectionStyle = .none
+        
         functionImageView.frame = CGRect(x: 23, y: 14, width: 20, height: 20)
         addSubview(functionImageView)
         
@@ -119,8 +122,8 @@ class EUAddPopCell:UITableViewCell{
         functionLabel.textColor = UIColor.init(red: 62/255, green: 62/255, blue: 62/255, alpha: 1)
         addSubview(functionLabel)
         
-        let lineview = UIView(frame: CGRect(x: 8, y: 43.5, width: 112, height: 0.5))
-        lineview.backgroundColor = backgroundColor
+        let lineview = UIView(frame: CGRect(x: 8, y: 43, width: 112, height: 1))
+        lineview.backgroundColor = BACKGROUNDCOLOR
         addSubview(lineview)
         
     }

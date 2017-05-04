@@ -54,6 +54,7 @@ class EUHomeViewController: EUBaseViewController {
     
     override func loadData(){
         
+        refreshControl?.beginRefreshing()
         if viewpagerlist.imageArray.count == 0{
             // 加载轮播图
             viewpagerlist.loadViewPagers { (_) in

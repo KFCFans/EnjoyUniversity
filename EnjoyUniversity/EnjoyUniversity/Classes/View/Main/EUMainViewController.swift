@@ -23,6 +23,7 @@ class EUMainViewController: UITabBarController {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.white
+        delegate = self
         setupChildViewController(vcarray: childvcArray)
         setupPlusButton()
     }
@@ -123,6 +124,40 @@ extension EUMainViewController{
             })
             
         }
+    }
+    
+}
+
+// MARK: - 代理方法
+extension EUMainViewController:UITabBarControllerDelegate{
+    
+    func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
+        
+        let nextIndex = (childViewControllers as NSArray).index(of: viewController)
+        
+        // 本来就在首页，再点一次应该刷新
+        if selectedIndex == 0 && selectedIndex == nextIndex{
+            print("刷新首页")
+            
+            let homenvc = childViewControllers.first as! UINavigationController
+            let homevc = homenvc.childViewControllers.first as! EUHomeViewController
+            homevc.tableview.setContentOffset(CGPoint(x: 0, y: -60), animated: true)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: {
+                homevc.loadData()
+            })
+        }else if selectedIndex == 1 && selectedIndex == nextIndex{
+            
+            let communitynav = childViewControllers[1] as! UINavigationController
+            let communityvc = communitynav.childViewControllers.first as! EUDiscoverViewController
+            communityvc.tableview.setContentOffset(CGPoint(x: 0, y: -124), animated: true)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.5, execute: { 
+                communityvc.loadData()
+            })
+            
+        }
+        
+        return true
+        
     }
     
 }
