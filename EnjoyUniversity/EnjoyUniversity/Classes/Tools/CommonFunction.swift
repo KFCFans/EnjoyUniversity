@@ -189,22 +189,30 @@ func createQRForString(qrString: String?, qrImageName: String?) -> UIImage?{
 }
 
 
-func shareImageAndText(text:String,image:UIImage?,currentViewController:UIViewController){
+/// 社会化方向
+///
+/// - Parameters:
+///   - sharetitle: 标题
+///   - sharedetail: 内容
+///   - url: 超链接网站
+///   - image: 缩略图
+///   - currentViewController: 当前控制器
+func shareImageAndText(sharetitle:String,sharedetail:String,url:String,image:UIImage?,currentViewController:UIViewController){
     
-    let message = UMSocialMessageObject()
-    message.text = text
+
+    let messageObject = UMSocialMessageObject()
+    let webpageObject = UMShareWebpageObject()
+    webpageObject.webpageUrl = url
+    webpageObject.title = sharetitle
+    webpageObject.descr = sharedetail
+    webpageObject.thumbImage = image
     
-    let messageimg = UMShareImageObject()
-    messageimg.shareImage = image
-    
-    message.shareObject = messageimg
+    messageObject.shareObject = webpageObject
     
     UMSocialUIManager.showShareMenuViewInWindow { (type, dict) in
-        
-        UMSocialManager.default().share(to: type, messageObject: message, currentViewController: currentViewController, completion: { (result, error) in
+        UMSocialManager.default().share(to: type, messageObject: messageObject, currentViewController: currentViewController, completion: { (result, error) in
             
         })
-        
     }
     
 }

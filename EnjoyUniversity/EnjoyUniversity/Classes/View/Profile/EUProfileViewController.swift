@@ -510,7 +510,11 @@ extension EUProfileViewController{
     /// 分享我们
     fileprivate func shareUs(){
         
-        shareImageAndText(text: "享受你的大学生活～", image: UIImage(named: "profile_logo"), currentViewController: self)
+        shareImageAndText(sharetitle: "Enjoy University",
+                          sharedetail: "释放热情，活出精彩，EU 描绘你的大学生活",
+                          url: "http://www.euswag.com",
+                          image: UIImage(named: "profile_logo"),
+                          currentViewController: self)
         
     }
     
