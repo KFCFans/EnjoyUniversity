@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import StoreKit
 
 class EUProfileViewController: EUBaseViewController {
     
@@ -386,7 +387,7 @@ extension EUProfileViewController{
 
 
 // MARK: - 代理方法
-extension EUProfileViewController{
+extension EUProfileViewController:SKStoreProductViewControllerDelegate{
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return profile.count
@@ -445,11 +446,17 @@ extension EUProfileViewController{
         }
         else if indexPath.section == 3{
             navigationController?.pushViewController(EUAboutUsViewController(), animated: true)
+        }else{
+            evaluateEU()
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
+    }
+    
+    func productViewControllerDidFinish(_ viewController: SKStoreProductViewController) {
+        viewController.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -505,6 +512,19 @@ extension EUProfileViewController{
         
         shareImageAndText(text: "享受你的大学生活～", image: UIImage(named: "profile_logo"), currentViewController: self)
         
+    }
+    
+    /// 评价
+    fileprivate func evaluateEU(){
+        let storeproduct = SKStoreProductViewController()
+        storeproduct.delegate = self
+        storeproduct.loadProduct(withParameters: [SKStoreProductParameterITunesItemIdentifier:EUAppID]) { (isSuccess, error) in
+            if let error = error{
+                print(error)
+            }else{
+                self.present(storeproduct, animated: true, completion: nil)
+            }
+        }
     }
 
     
