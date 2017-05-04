@@ -41,6 +41,8 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
         UMSocialManager.default().setPlaform(.sina, appKey: WeiBoAppKey, appSecret: WeiBoAppSecret, redirectURL: WeiBoRedirectUrl)
         UMSocialManager.default().setPlaform(.wechatSession, appKey: WeChatAppKey, appSecret: WeChatAppSecret, redirectURL: WeiBoRedirectUrl)
         UMSocialManager.default().setPlaform(.wechatTimeLine, appKey: WeChatAppKey, appSecret: WeChatAppSecret, redirectURL: WeiBoRedirectUrl)
+        UMSocialManager.default().setPlaform(.QQ, appKey: QQAppKey, appSecret: nil, redirectURL: WeiBoRedirectUrl)
+        UMSocialManager.default().setPlaform(.qzone, appKey: QQAppKey, appSecret: nil, redirectURL: WeiBoRedirectUrl)
         UMSocialManager.default().removePlatformProvider(with: .wechatFavorite)
 
         return true
@@ -83,7 +85,8 @@ extension AppDelegate:JPUSHRegisterDelegate{
         }
         
         // 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
-        completionHandler(Int(UNAuthorizationOptions.alert.rawValue))
+        completionHandler(Int(UNAuthorizationOptions.alert.rawValue|UNAuthorizationOptions.sound.rawValue|UNAuthorizationOptions.badge.rawValue))
+        
         
     }
     

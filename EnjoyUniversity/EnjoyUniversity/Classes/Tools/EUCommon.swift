@@ -44,7 +44,7 @@ public let WeiBoAppSecret = "c315364d1fe63a4a332128ff3609d8df"
 public let WeiBoRedirectUrl = "http://www.euswag.com"
 
 // QQ
-public let QQAppKey = ""
+public let QQAppKey = "101395491"
 public let QQAppSecret = ""
 
 // WeChat
