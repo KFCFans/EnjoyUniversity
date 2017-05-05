@@ -368,8 +368,13 @@ extension EUCommunityInfoViewController{
         
     }
     
+    /// 分享
     @objc fileprivate func shareButtonIsClicked(){
-        
+        shareImageAndText(sharetitle: "社团分享:" + (viewmodel?.communitymodel?.cmName ?? ""),
+                          sharedetail: viewmodel?.communitymodel?.cmDetail ?? "",
+                          url: "http://www.euswag.com?cmid=\(viewmodel?.communitymodel?.cmid ?? 0)",
+                          image: logoImg.image,
+                          currentViewController: self)
     }
     
     /// 收藏社团

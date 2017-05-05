@@ -135,6 +135,7 @@ extension EUCreatedActivityViewController{
         
         // 添加监听事件
         checkBtn.addTarget(nil, action: #selector(checkBtnIsClicked), for: .touchUpInside)
+        shareBtn.addTarget(nil, action: #selector(shareActivity), for: .touchUpInside)
         notifBtn.addTarget(nil, action: #selector(notifyParticipators), for: .touchUpInside)
         registerBtn.addTarget(nil, action: #selector(startRegister), for: .touchUpInside)
         
@@ -376,6 +377,16 @@ extension EUCreatedActivityViewController{
         vc.addPicBtn.setImage(backgroudImage.image, for: .normal)
         navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    /// 分享活动
+    @objc fileprivate func shareActivity(){
+        shareImageAndText(sharetitle: "分享活动:" + (viewmodel?.activitymodel.avTitle ?? ""),
+                          sharedetail: viewmodel?.activitymodel.avDetail ?? "",
+                          url: "http://www.euswag.com?avid=\(viewmodel?.activitymodel.avid ?? 0)",
+            image: backgroudImage.image,
+            currentViewController: self)
+
     }
     
     

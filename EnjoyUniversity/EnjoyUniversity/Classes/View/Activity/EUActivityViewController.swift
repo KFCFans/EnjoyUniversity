@@ -270,7 +270,11 @@ extension EUActivityViewController{
     
     /// 分享活动
     @objc fileprivate func shareButtonIsClicked(){
-        
+        shareImageAndText(sharetitle: "分享活动:" + (viewmodel?.activitymodel.avTitle ?? ""),
+                          sharedetail: viewmodel?.activitymodel.avDetail ?? "",
+                          url: "http://www.euswag.com?avid=\(viewmodel?.activitymodel.avid ?? 0)",
+                          image: backgroudImage.image,
+                          currentViewController: self)
     }
     
     /// 收藏
