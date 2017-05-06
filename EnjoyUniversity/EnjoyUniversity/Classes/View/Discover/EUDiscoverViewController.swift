@@ -43,7 +43,7 @@ class EUDiscoverViewController: EUBaseViewController {
         
         refreshControl?.beginRefreshing()
         
-        communityListVM.loadCommunityList(isPullUp: true) { (isSuccess,needRefresh) in
+        communityListVM.loadCommunityList(isPullUp: isPullUp) { (isSuccess,needRefresh) in
             // 处理刷新数据成功的逻辑，比如收回下拉刷新控件
             self.refreshControl?.endRefreshing()
             self.isPullUp = false

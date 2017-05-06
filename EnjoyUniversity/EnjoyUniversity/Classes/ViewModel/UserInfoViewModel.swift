@@ -67,7 +67,7 @@ class UserinfoViewModel{
         }
         
         /// 拼接头像地址
-        headsculptureurl = PICTURESERVERADDRESS + "/user/" + (model.avatar ?? "") + ".jpg"
+        headsculptureurl = PICTURESERVERADDRESS + "/user/user" + (model.avatar ?? "") + ".jpg"
         
         /// 拼接节操值
         reputationString = "节操值 " + model.reputation.description

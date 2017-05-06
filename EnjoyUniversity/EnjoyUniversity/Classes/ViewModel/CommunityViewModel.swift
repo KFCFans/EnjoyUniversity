@@ -61,10 +61,10 @@ class CommunityViewModel{
         detailHeight = calculateLabelHeight(text: model.cmDetail ?? "", width: UIScreen.main.bounds.width - 30, font: 14)
         
         // 拼接 LOGO URL
-        communityLogoUrl = PICTURESERVERADDRESS + "/community/logo/" + (model.cmLogo ?? "")
+        communityLogoUrl = PICTURESERVERADDRESS + "/community/logo/cmlogo" + (model.cmLogo ?? "") + ".png"
         
         // 拼接 背景 URL
-        communityBackgroundURL = PICTURESERVERADDRESS + "/community/background/" + (model.cmBackground ?? "") + ".jpg"
+        communityBackgroundURL = PICTURESERVERADDRESS + "/community/background/cmbg" + (model.cmBackground ?? "") + ".jpg"
         
         // 拼接二维码
         qrcodeString = QRCODEPREFIX + "cmid=\(model.cmid)"

@@ -1456,10 +1456,10 @@ extension EUNetworkManager{
     ///   - completion: 完成回调（是否成功，图片地址）
     func uploadPicture(choice:UpLoadWhosePicture,uploadimg:UIImage,completion:@escaping (Bool,String?)->()){
         
-        let activityurl = SERVERADDRESS + "/eu/upload/activity"
-        let userlogourl = SERVERADDRESS + "/eu/upload/user"
-        let communitylogourl = SERVERADDRESS + "/eu/upload/community/logo"
-        let communitybackgroundurl = SERVERADDRESS + "/eu/upload/community/background"
+        let activityurl = SERVERADDRESS + "/eu/cos/activity"
+        let userlogourl = SERVERADDRESS + "/eu/cos/user"
+        let communitylogourl = SERVERADDRESS + "/eu/cos/community/logo"
+        let communitybackgroundurl = SERVERADDRESS + "/eu/cos/community/background"
         
         var url = ""
         switch choice {

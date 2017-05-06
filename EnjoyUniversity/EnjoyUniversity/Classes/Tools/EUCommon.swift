@@ -10,10 +10,10 @@ import Foundation
 import UIKit
 
 /// 总服务器地址
-public let SERVERADDRESS = "https://euswag.com"
+public let SERVERADDRESS = "https://api.euswag.com"
 
 /// 图片服务器地址
-public let PICTURESERVERADDRESS = "eu-1251935523.file.myqcloud.com"  //https://euswag.com/picture"
+public let PICTURESERVERADDRESS = "https://eu-1251935523.file.myqcloud.com"  //https://euswag.com/picture"
 
 /// 每次请求希望返回的数据条数
 public let EUREQUESTCOUNT = 10

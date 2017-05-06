@@ -136,7 +136,7 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             self.nicknamelabel.text = name
             self.nicknamelabel.sizeToFit()
             self.reputationlabel.text = "节操值 \(reputation)"
-            self.headimg.kf.setImage(with: URL(string: PICTURESERVERADDRESS + "/user/" + (avaterurl ?? "") + ".jpg"),
+            self.headimg.kf.setImage(with: URL(string: PICTURESERVERADDRESS + "/user/user" + (avaterurl ?? "") + ".jpg"),
                                 placeholder: UIImage(named: "av_leader"),
                                 options: [.transition(.fade(1))],
                                 progressBlock: nil,

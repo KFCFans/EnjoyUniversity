@@ -94,7 +94,8 @@ class ActivityViewModel{
         }
         detailHeight = calculateLabelHeight(text: activitymodel.avDetail ?? "",width: UIScreen.main.bounds.width - 40,font: 14)
         
-        imageURL = PICTURESERVERADDRESS + "/activity/" + (activitymodel.avLogo ?? "") + ".jpg"
+        imageURL = PICTURESERVERADDRESS + "/activity/av" + (activitymodel.avLogo ?? "") + ".jpg"
+        
         
         expectPeople = activitymodel.avExpectnum == 0 ? "人数不限" : "限\(activitymodel.avExpectnum)人"
         
