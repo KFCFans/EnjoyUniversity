@@ -33,6 +33,28 @@ class EURecruitNotificationController: EUBaseViewController {
     /// 是否晋级开关
     let nextSwitch = UISwitch()
     
+    /// 推送成功
+    var pushSuccess = false{
+        didSet{
+            if smsSuccess && pushSuccess{
+                SwiftyProgressHUD.hide()
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ = navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    /// 短信发送成功
+    var smsSuccess = false{
+        didSet{
+            if smsSuccess && pushSuccess{
+                SwiftyProgressHUD.hide()
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ = navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     
     /// 通知输入框
     let notifyTextView = SwiftyTextView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 200), textContainer: nil, placeholder: "赶紧发布通知吧")
@@ -114,20 +136,40 @@ class EURecruitNotificationController: EUBaseViewController {
             }
             // 发送推送
             EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: uids, alert: notificationtext,cmid: self.cmid,cmname: self.cmname,completion: { (netSuccess, pushSuccess) in
-                SwiftyProgressHUD.hide()
+                
                 if !netSuccess{
+                    SwiftyProgressHUD.hide()
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                     return
                 }
                 if !pushSuccess{
+                    SwiftyProgressHUD.hide()
                     SwiftyProgressHUD.showFaildHUD(text: "推送失败", duration: 1)
                     return
                 }
-                SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                _ = self.navigationController?.popViewController(animated: true)
+                if !self.smsSwitch.isOn{
+                    SwiftyProgressHUD.hide()
+                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                    _ = self.navigationController?.popViewController(animated: true)
+                }
+                self.pushSuccess = true
             })
-            // FIXME: - 短信发送
+            
+            if self.smsSwitch.isOn{
+                EUNetworkManager.shared.sendSms(phonelist: uids, alert: notificationtext) { (netSuccess, sendSuccess) in
+                    if !netSuccess{
+                        SwiftyProgressHUD.hide()
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                        return
+                    }
+                    if !sendSuccess{
+                        SwiftyProgressHUD.hide()
+                        SwiftyProgressHUD.showFaildHUD(text: "发送失败", duration: 1)
+                        return
+                    }
+                    self.smsSuccess = true
+                }
+            }
         }
-        
     }
 }

@@ -1410,6 +1410,32 @@ extension EUNetworkManager{
     }
     
 
+    /// 发送短信
+    ///
+    /// - Parameters:
+    ///   - phonelist: 手机号序列 逗号隔开
+    ///   - alert: 发送的内容
+    ///   - completion: 完成回调
+    func sendSms(phonelist:String,alert:String,completion:@escaping (Bool,Bool)->()){
+        
+        let url = SERVERADDRESS + "/eu/push/sms"
+        
+        let parm = ["alert":alert,"phonelist":phonelist]
+        
+        tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
+            if !isSuccess{
+                completion(false,false)
+                return
+            }
+            if status == 200{
+                completion(true,true)
+                return
+            }
+            completion(true,false)
+        }
+    }
+    
+
 }
 
 // MARK: - 上传接口

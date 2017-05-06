@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 选择联系人发送通知
 class EUChoseContactsController: EUBaseViewController {
     
     lazy var viewmodellist = UserInfoListViewModel()
@@ -34,7 +35,29 @@ class EUChoseContactsController: EUBaseViewController {
     
     /// 可重用cell ID
     var EUCHOSECONTACTSCELL = "EUCHOSECONTACTSCELL"
-
+    
+    /// 推送成功
+    var pushSuccess = false{
+        didSet{
+            if smsSuccess && pushSuccess{
+                SwiftyProgressHUD.hide()
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ = navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
+    /// 短信发送成功
+    var smsSuccess = false{
+        didSet{
+            if smsSuccess && pushSuccess{
+                SwiftyProgressHUD.hide()
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ = navigationController?.popViewController(animated: true)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -225,9 +248,25 @@ extension EUChoseContactsController{
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
                 _ = self.navigationController?.popViewController(animated: true)
             }
+            self.pushSuccess = true
         }
         
-        // FIXME: - 短信同步发送
+        /// 发送短信
+        if shouleSendSms{
+            EUNetworkManager.shared.sendSms(phonelist: phonelist, alert: notifycationText) { (netSuccess, sendSuccess) in
+                if !netSuccess{
+                    SwiftyProgressHUD.hide()
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                if !sendSuccess{
+                    SwiftyProgressHUD.hide()
+                    SwiftyProgressHUD.showFaildHUD(text: "发送失败", duration: 1)
+                    return
+                }
+                self.smsSuccess = true
+            }
+        }
     }
     
 }

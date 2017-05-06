@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 我创建的活动
 class EUCreatedActivityViewController: EUBaseAvtivityViewController {
 
     /// 上层传入，用于删除

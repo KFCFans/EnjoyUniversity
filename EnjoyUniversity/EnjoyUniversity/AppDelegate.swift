@@ -34,7 +34,11 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
             UNAuthorizationOptions.sound.rawValue)
         JPUSHService.register(forRemoteNotificationConfig: entiity, delegate: self)
         // 注册极光推送
-        JPUSHService.setup(withOption: launchOptions, appKey: "7dd9d0f83f93c23e2c295dc0", channel:"App Store" , apsForProduction: false)
+        JPUSHService.setup(withOption: launchOptions, appKey: JPushAppKey, channel:"App Store" , apsForProduction: false)
+        
+        // 清除角标
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        JPUSHService.resetBadge()
         
         // UShare
         UMSocialManager.default().umSocialAppkey = UShareAppKey
@@ -57,8 +61,12 @@ class AppDelegate: UIResponder,UIApplicationDelegate {
         if let uid = UserDefaults.standard.string(forKey: "uid"){
             JPUSHService.setAlias(uid, callbackSelector: nil, object: nil)
         }
-        
-        
+    }
+    
+    /// 从后台点击icon进入时清除角标
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        JPUSHService.resetBadge()
     }
 }
 
@@ -71,6 +79,7 @@ extension AppDelegate:JPUSHRegisterDelegate{
         let userInfo = response.notification.request.content.userInfo
         if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
             JPUSHService.handleRemoteNotification(userInfo)
+            
         }
         completionHandler()
         

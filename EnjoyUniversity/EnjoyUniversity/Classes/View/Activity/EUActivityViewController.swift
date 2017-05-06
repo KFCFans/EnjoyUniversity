@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import Kingfisher
 
+/// 我参加的活动
 class EUActivityViewController: EUBaseAvtivityViewController {
     
     // 分享按钮
