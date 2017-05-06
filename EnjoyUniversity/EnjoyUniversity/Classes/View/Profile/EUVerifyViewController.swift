@@ -10,6 +10,12 @@ import UIKit
 
 class EUVerifyViewController: EUBaseViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     
+    /// 用户名，上层传入
+    var userName:String?
+    
+    /// 学号，上层传入
+    var userSchoolId:Int64 = 0
+    
     var verifyImg:UIImage?
     
     let addphotoBtn = UIButton(frame: CGRect(x: 0, y: 100, width: UIScreen.main.bounds.width, height: 200))
@@ -46,13 +52,20 @@ class EUVerifyViewController: EUBaseViewController,UIImagePickerControllerDelega
     /// 上传图片
     @objc private func commitVerifyInfo(){
         
+        guard let userName = userName else{
+            SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+            return
+        }
+        
         guard let verifyImg = verifyImg else {
             SwiftyProgressHUD.showFaildHUD(text: "请选取图片", duration: 1)
             return
         }
         
-        let picname = "\(EUNetworkManager.shared.userAccount.uid).jpg"
+        let picname = "\(userName),\(userSchoolId),\(EUNetworkManager.shared.userAccount.uid)"
+        SwiftyProgressHUD.showLoadingHUD()
         EUNetworkManager.shared.uploadVerifyPicture(name: picname, uploadimg: verifyImg) { (isSuccess) in
+            SwiftyProgressHUD.hide()
             if !isSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return

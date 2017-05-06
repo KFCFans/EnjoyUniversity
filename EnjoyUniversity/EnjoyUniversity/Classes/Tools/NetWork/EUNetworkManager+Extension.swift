@@ -1481,7 +1481,8 @@ extension EUNetworkManager{
         //将选择的图片保存到Document目录下
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
-        let filePath = "\(rootPath)/pickedimage.jpg"
+        let currentTime = Int(Date().timeIntervalSince1970 * 1000)
+        let filePath = "\(rootPath)/\(currentTime)"
         let imageData = UIImageJPEGRepresentation(uploadimg, 1.0)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         //上传图片
@@ -1489,24 +1490,33 @@ extension EUNetworkManager{
 
             Alamofire.upload(multipartFormData: { (multipartdata) in
                 
-                multipartdata.append(URL(fileURLWithPath: filePath), withName: "file")
+//                multipartdata.append(URL(fileURLWithPath: filePath), withName: "file")
+                multipartdata.append(URL(fileURLWithPath: filePath), withName: "file", fileName: "\(currentTime)", mimeType: "image/jpg")
                 
             }, to: url, encodingCompletion: { (encodingResult) in
                 
                 // 接受从服务器返回的参数
-                switch encodingResult {
-                case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
-                    upload.responseJSON(completionHandler: { (json) in
-                        
-                        let dict = json.result.value as? [String:Any] ?? [:]
-                        let address = dict["data"] as? String
-                        completion(true, address)
-                    })
-                    break
-                case .failure( _):
+//                switch encodingResult {
+//                case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
+//                    upload.responseJSON(completionHandler: { (json) in
+//                        
+//                        let dict = json.result.value as? [String:Any] ?? [:]
+//                        let address = dict["data"] as? String
+//                        completion(true, address)
+//                    })
+//                    break
+//                case .failure( _):
+//                    completion(false,nil)
+//                    break
+//                    
+//                }
+                switch encodingResult{
+                case .success(request: _, streamingFromDisk: _, streamFileURL: _):
+                    completion(true,"\(currentTime)")
+                    return
+                case .failure(_):
                     completion(false,nil)
-                    break
-                    
+                    return
                 }
             })
             
@@ -1521,25 +1531,28 @@ extension EUNetworkManager{
     ///   - completion: 完成回调
     func uploadVerifyPicture(name:String,uploadimg:UIImage,completion:@escaping (Bool)->()){
         
-        let url = SERVERADDRESS + "/eu/upload/verify"
+        let url = SERVERADDRESS + "/eu/cos/verify"
         //将选择的图片保存到Document目录下
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
-        let filePath = "\(rootPath)/\(name).jpg"
+        let filePath = "\(rootPath)/verify.jpg"
         let imageData = UIImageJPEGRepresentation(uploadimg, 1.0)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         
         if fileManager.fileExists(atPath: filePath){
+            print(name)
             Alamofire.upload(multipartFormData: { (multipartdata) in
                 multipartdata.append(URL(fileURLWithPath: filePath), withName: "file", fileName: name, mimeType: "image/jpg")
             }, to: url, encodingCompletion: { (encodingResult) in
                 switch encodingResult{
                 case .success(request: _, streamingFromDisk: _, streamFileURL: _):
+                    print("Success")
                     completion(true)
-                    break
+                    return
                 case .failure(_):
                     completion(false)
-                    break
+                    return
+                    
                 }
             })
         }

@@ -433,7 +433,10 @@ extension EUProfileViewController:SKStoreProductViewControllerDelegate{
         super.tableView(tableview, didSelectRowAt: indexPath)
         
         if indexPath.section == 0{
-            self.navigationController?.pushViewController(EUVerifyViewController(), animated: true)
+            let vc = EUVerifyViewController()
+            vc.userName = userinfoviewmodel?.model?.name
+            vc.userSchoolId = userinfoviewmodel?.model?.studentid ?? 0
+            self.navigationController?.pushViewController(vc, animated: true)
         }
         else if indexPath.section == 1  {
             if indexPath.row == 0{
