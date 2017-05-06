@@ -1536,18 +1536,20 @@ extension EUNetworkManager{
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let filePath = "\(rootPath)/verify.jpg"
-        let imageData = UIImageJPEGRepresentation(uploadimg, 1.0)
+        let imageData = UIImageJPEGRepresentation(uploadimg, 0.8)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         
         if fileManager.fileExists(atPath: filePath){
-            print(name)
+            
             Alamofire.upload(multipartFormData: { (multipartdata) in
                 multipartdata.append(URL(fileURLWithPath: filePath), withName: "file", fileName: name, mimeType: "image/jpg")
             }, to: url, encodingCompletion: { (encodingResult) in
                 switch encodingResult{
-                case .success(request: _, streamingFromDisk: _, streamFileURL: _):
-                    print("Success")
-                    completion(true)
+                case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
+                    upload.responseString(completionHandler: { (_) in
+                        completion(true)
+                    })
+                    
                     return
                 case .failure(_):
                     completion(false)
