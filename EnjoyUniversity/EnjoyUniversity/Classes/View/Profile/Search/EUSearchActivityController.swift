@@ -33,18 +33,24 @@ class EUSearchActivityController: EUBaseViewController,UISearchBarDelegate {
         tableview.tableFooterView = UIView()
         
         let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 60, height: 30))
-        searchbar.delegate = self
         searchbar.searchBarStyle = .minimal
-        if keyword == nil{
-            searchbar.placeholder = "搜索校园活动"
-            searchbar.becomeFirstResponder()
-        }else{
-            searchbar.text = keyword
-        }
+        searchbar.barTintColor = UIColor.white
+        searchbar.tintColor = UIColor.white
+        searchbar.delegate = self
         
         let titleview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 60, height: 30))
         titleview.addSubview(searchbar)
         navitem.titleView = titleview
+
+        
+        let searchBarTextField = searchbar.subviews.first?.subviews.last as? UITextField
+        searchBarTextField?.textColor = UIColor.white
+        if keyword == nil{
+            searchBarTextField?.attributedPlaceholder = NSAttributedString(string: "搜索校园活动", attributes: [NSForegroundColorAttributeName:UIColor.white])
+            searchbar.becomeFirstResponder()
+        }else{
+            searchbar.text = keyword
+        }
         
     }
     

@@ -107,10 +107,16 @@ extension EUHomeViewController{
         let searchbarview = UIView(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 30))
         searchbar.searchBarStyle = .minimal
         searchbar.barTintColor = UIColor.white
-        searchbar.placeholder = "搜索活动、社团、人"
         
         searchbarview.addSubview(searchbar)
         navitem.titleView = searchbarview
+        
+        guard let textfield = searchbar.subviews.first?.subviews.last as? UITextField else{
+            return
+        }
+        textfield.attributedPlaceholder = NSAttributedString(string: "搜索活动、社团、人", attributes: [NSForegroundColorAttributeName:UIColor.white])
+        
+        
         
         
         

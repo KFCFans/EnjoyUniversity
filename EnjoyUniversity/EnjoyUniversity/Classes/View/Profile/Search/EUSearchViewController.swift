@@ -61,12 +61,18 @@ extension EUSearchViewController{
     /// 设置搜索栏
     fileprivate func setupSearchBar(){
         
-        //FIXME: - 自定义 UISearchBar ，修改字体颜色
-        searchbar.placeholder = "搜索                                                              "
         searchbar.searchBarStyle = .minimal
         searchbar.barTintColor = UIColor.white
+        searchbar.tintColor = UIColor.white
         searchbar.delegate = self
         searchbar.becomeFirstResponder()
+        
+        if let textfield = searchbar.subviews.first?.subviews.last as? UITextField {
+            textfield.attributedPlaceholder = NSAttributedString(string: "搜索", attributes: [NSForegroundColorAttributeName:UIColor.white])
+            textfield.textColor = UIColor.white
+        }
+        
+        
         
     }
     

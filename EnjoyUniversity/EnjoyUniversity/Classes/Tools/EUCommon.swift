@@ -25,7 +25,7 @@ public let QRCODEPREFIX = "www.euswag.com?"
 public let customQQ = 729950490
 
 /// Apple Store ID 
-public let EUAppID = 587767923
+public let EUAppID = 1229704404
 
 
 /// 颜色

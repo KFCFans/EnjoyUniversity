@@ -37,8 +37,12 @@ class EUSearchCommunityController: EUBaseViewController,UISearchBarDelegate {
         let searchbar = UISearchBar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width - 60, height: 30))
         searchbar.delegate = self
         searchbar.searchBarStyle = .minimal
+        searchbar.barTintColor = UIColor.white
+        searchbar.tintColor = UIColor.white
+        let searchBarTextField = searchbar.subviews.first?.subviews.last as? UITextField
+        searchBarTextField?.textColor = UIColor.white
         if keyword == nil{
-            searchbar.placeholder = "搜索大学社团"
+            searchBarTextField?.attributedPlaceholder = NSAttributedString(string: "搜索大学社团", attributes: [NSForegroundColorAttributeName:UIColor.white])
             searchbar.becomeFirstResponder()
         }else{
             searchbar.text = keyword
