@@ -109,6 +109,16 @@ class EUMessageDetailController: EUBaseViewController {
         let cell = (tableView.dequeueReusableCell(withIdentifier: MESSAGEDETAILCELL) as? EUMessageDetailCell) ?? EUMessageDetailCell()
         cell.viewmodel = tempviewmodellist[indexPath.row]
         cell.choice = type.hashValue
+        switch type {
+        case .ActivityNotification:
+            cell.topshadowView.backgroundColor = UIColor.init(red: 254/255, green: 85/255, blue: 0, alpha: 1)
+            break
+        case .SystemNotification:
+            cell.topshadowView.backgroundColor = UIColor.init(red: 96/255, green: 188/255, blue: 1, alpha: 1)
+            break
+        default:
+            break
+        }
         return cell
         
     }

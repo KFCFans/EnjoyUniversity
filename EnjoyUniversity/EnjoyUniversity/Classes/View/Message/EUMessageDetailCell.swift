@@ -34,6 +34,8 @@ class EUMessageDetailCell: UITableViewCell {
     // 箭头
     let moreIndicator = UIImageView()
     
+    let topshadowView = UIView()
+    
     
     /// 选择用于什么通知
     var choice:Int = 0{
@@ -88,7 +90,7 @@ class EUMessageDetailCell: UITableViewCell {
         notificationLogo.frame = CGRect(x: 10, y: 32, width: 42, height: 42)
         addSubview(notificationLogo)
         
-        let topshadowView = UIView(frame: CGRect(x: 58, y: 33, width: sWidth - 58 - 25, height: 36))
+        topshadowView.frame = CGRect(x: 58, y: 33, width: sWidth - 58 - 25, height: 36)
         topshadowView.backgroundColor = UIColor.init(red: 1, green: 212/255, blue: 48/255, alpha: 1)
         addSubview(topshadowView)
         
