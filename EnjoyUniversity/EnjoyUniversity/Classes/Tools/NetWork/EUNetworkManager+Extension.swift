@@ -1511,8 +1511,17 @@ extension EUNetworkManager{
 //                    
 //                }
                 switch encodingResult{
-                case .success(request: _, streamingFromDisk: _, streamFileURL: _):
-                    completion(true,"\(currentTime)")
+                case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
+                    upload.responseJSON(completionHandler: { (json) in
+                        let dict = json.result.value as? [String:Any] ?? [:]
+                        
+                        let code = (dict["code"] as? Int) ?? -1
+                        if code == 0{
+                            completion(true,"\(currentTime)")
+                            return
+                        }
+                        completion(false,nil)
+                    })
                     return
                 case .failure(_):
                     completion(false,nil)
@@ -1536,7 +1545,7 @@ extension EUNetworkManager{
         let fileManager = FileManager.default
         let rootPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask, true)[0] as String
         let filePath = "\(rootPath)/verify.jpg"
-        let imageData = UIImageJPEGRepresentation(uploadimg, 0.8)
+        let imageData = UIImageJPEGRepresentation(uploadimg, 0.4)
         fileManager.createFile(atPath: filePath, contents: imageData, attributes: nil)
         
         if fileManager.fileExists(atPath: filePath){
@@ -1546,8 +1555,15 @@ extension EUNetworkManager{
             }, to: url, encodingCompletion: { (encodingResult) in
                 switch encodingResult{
                 case .success(request: let upload, streamingFromDisk: _, streamFileURL: _):
-                    upload.responseString(completionHandler: { (_) in
-                        completion(true)
+                    upload.responseJSON(completionHandler: { (json) in
+                        let dict = json.result.value as? [String:Any] ?? [:]
+                        
+                        let code = (dict["code"] as? Int) ?? -1
+                        if code == 0{
+                            completion(true)
+                            return
+                        }
+                        completion(false)
                     })
                     
                     return
