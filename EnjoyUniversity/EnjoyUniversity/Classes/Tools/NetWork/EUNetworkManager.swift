@@ -32,6 +32,8 @@ class EUNetworkManager{
         
         let request = Alamofire.request(urlString, method:method, parameters: parameters, encoding: URLEncoding.default, headers: nil)
         
+        // 设置超时时间
+        
         print("请求网址:\(request)")
         
         request.responseJSON { (response) in
