@@ -10,13 +10,26 @@ import Foundation
 import Alamofire
 
 
-class EUNetworkManager{
+class EUNetworkManager:SessionManager{
     
     /// 用户账户信息
     lazy var userAccount = EUserAccount()
     
+    var sessionManager:SessionManager?
+    
+    override init(configuration: URLSessionConfiguration, delegate: SessionDelegate, serverTrustPolicyManager: ServerTrustPolicyManager?) {
+        super.init()
+    }
+    
     // 创建单例
-    static let shared = EUNetworkManager()
+    static let shared:EUNetworkManager = {
+       
+        let configuration = URLSessionConfiguration.default
+        configuration.timeoutIntervalForRequest = 10
+        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
+        
+        return EUNetworkManager(configuration: configuration, delegate: SessionDelegate(), serverTrustPolicyManager: nil)
+    }()
     
     
     /// 封装网络请求
@@ -30,13 +43,15 @@ class EUNetworkManager{
 
         
         
-        let request = Alamofire.request(urlString, method:method, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+//        let request = Alamofire.request(urlString, method:method, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        let datarequest = request(urlString, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        
         
         // 设置超时时间
         
-        print("请求网址:\(request)")
+        print("请求网址:\(datarequest)")
         
-        request.responseJSON { (response) in
+        datarequest.responseJSON { (response) in
             
             if response.result.isSuccess {
                 
