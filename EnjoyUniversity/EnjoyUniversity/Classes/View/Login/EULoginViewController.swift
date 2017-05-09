@@ -50,7 +50,7 @@ class EULoginViewController: UIViewController {
     var isOldUser:Bool = true
     
     /// 重发短信计时器
-    private var resendtimer:Timer?
+    var resendtimer:Timer?
     
     /// 重发默认
     var resendtime:Int = 60{
@@ -75,7 +75,7 @@ class EULoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        resendtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateResendTime), userInfo: nil, repeats: true)
+        
         
         phoneview = setupPhoneView(orgin: CGPoint(x: 0, y: 0))
         view.addSubview(phoneview!)
@@ -568,6 +568,8 @@ extension EULoginViewController{
     
     fileprivate func setupCodeUI(orgin:CGPoint)->UIView{
         
+        resendtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateResendTime), userInfo: nil, repeats: true)
+        
         let codeview = UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         codeview.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.white
@@ -777,6 +779,8 @@ extension EULoginViewController{
     }
     
     fileprivate func setupNewPasswordUI(orgin:CGPoint)->UIView{
+        
+        
         let setpasswordview = UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         setpasswordview.backgroundColor = UIColor.white
         view.backgroundColor = UIColor.white

@@ -675,12 +675,13 @@ extension EUNetworkManager{
         parm["newpwd"] = newpwd
         
         request(urlString: url, method: .post, parameters: parm) { (json, isSuccess,_) in
+            
             if !isSuccess {
                 completion(false)
                 return
             }
             
-            guard let dict = json as? [String:Any],let accesstoken = dict["accesstoken"] as? String else {
+            guard let accesstoken = json as? String else {
                 completion(false)
                 return
             }
