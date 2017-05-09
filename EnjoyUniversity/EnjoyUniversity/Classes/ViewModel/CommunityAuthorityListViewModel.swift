@@ -34,6 +34,10 @@ class CommunityAuthorityListViewModel{
                 completion(true,false)
                 return
             }
+            if array.count == 0{
+                completion(true,false)
+                return
+            }
             for model in temp{
                 if model.position < 0{
                     continue

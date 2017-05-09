@@ -127,7 +127,7 @@ class EUMyCommunityViewController: EUBaseViewController {
                 return
             }
             if !hasData{
-                self.titleButtonView.setTitle("抓紧时间加入社团哦～", for: .normal)
+                self.titleButtonView.setTitle("我的社团", for: .normal)
                 // FIXME: -  显示空空如也
                 self.tableview.removeFromSuperview()
                 return
