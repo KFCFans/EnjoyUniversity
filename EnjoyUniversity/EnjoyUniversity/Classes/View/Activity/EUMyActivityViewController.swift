@@ -100,9 +100,11 @@ class EUMyActivityViewController: UIViewController {
     func loadParticipatedActivityData(){
         joinedIndicator.beginRefreshing()
         activitylistviewmodel.loadParticipatdActivity { (needRefresh) in
+            self.joinedIndicator.endRefreshing()
             if needRefresh{
                 self.joinedtableView?.reloadData()
-                self.joinedIndicator.endRefreshing()
+            }else{
+                self.joinedtableView?.showPlaceHolderView()
             }
         }
         
@@ -112,9 +114,11 @@ class EUMyActivityViewController: UIViewController {
     func loadCreatedActivityData(){
         createdIndicator.beginRefreshing()
         activitylistviewmodel.loadCreatedActivity { (needRefresh) in
+            self.createdIndicator.endRefreshing()
             if needRefresh{
                 self.createdtableView?.reloadData()
-                self.createdIndicator.endRefreshing()
+            }else{
+                self.createdtableView?.showPlaceHolderView()
             }
         }
     }

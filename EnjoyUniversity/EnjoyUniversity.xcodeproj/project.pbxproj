@@ -108,6 +108,7 @@
 		36E0D5F41E8D40D00072E8C2 /* EURefreshControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */; };
 		36E0D5F51E8D40D00072E8C2 /* EURefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */; };
 		36E0D5F61E8D40D00072E8C2 /* EURefreshView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */; };
+		36E942101EC18FC900EE20BC /* UITableView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36E9420F1EC18FC900EE20BC /* UITableView+Extension.swift */; };
 		36EB2A2B1EB1A46B00DE5248 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A2A1EB1A46B00DE5248 /* CoreFoundation.framework */; };
 		36EB2A2D1EB1A47300DE5248 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A2C1EB1A47300DE5248 /* CFNetwork.framework */; };
 		36EB2A2F1EB1A47A00DE5248 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 36EB2A2E1EB1A47A00DE5248 /* CoreTelephony.framework */; };
@@ -255,6 +256,7 @@
 		36E0D5F11E8D40D00072E8C2 /* EURefreshControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshControl.swift; sourceTree = "<group>"; };
 		36E0D5F21E8D40D00072E8C2 /* EURefreshView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EURefreshView.swift; sourceTree = "<group>"; };
 		36E0D5F31E8D40D00072E8C2 /* EURefreshView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EURefreshView.xib; sourceTree = "<group>"; };
+		36E9420F1EC18FC900EE20BC /* UITableView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Extension.swift"; sourceTree = "<group>"; };
 		36EB2A2A1EB1A46B00DE5248 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		36EB2A2C1EB1A47300DE5248 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		36EB2A2E1EB1A47A00DE5248 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -639,6 +641,7 @@
 			isa = PBXGroup;
 			children = (
 				36BDBB471E641E190075A3ED /* Bundle+Extension.swift */,
+				36E9420F1EC18FC900EE20BC /* UITableView+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -979,6 +982,7 @@
 				3666ABDD1E7016CF008E4B6B /* EUMessageCell.swift in Sources */,
 				364E7D251EA7A24300BC2756 /* SwiftyDropdownMenu.swift in Sources */,
 				364E7D291EA7A37100BC2756 /* EUCommunityContactController.swift in Sources */,
+				36E942101EC18FC900EE20BC /* UITableView+Extension.swift in Sources */,
 				364231A21E9CEFE200FAB080 /* EUActivityNotificationController.swift in Sources */,
 				36926A461EB9936600281E7D /* EUMessageDetailCell.swift in Sources */,
 				364231C21E9D19D500FAB080 /* EUShowQRCodeViewController.swift in Sources */,

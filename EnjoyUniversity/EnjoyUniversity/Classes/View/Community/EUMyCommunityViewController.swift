@@ -129,6 +129,10 @@ class EUMyCommunityViewController: EUBaseViewController {
             if !hasData{
                 self.titleButtonView.setTitle("我的社团", for: .normal)
                 // FIXME: -  显示空空如也
+                let noneImage = UIImageView(image: UIImage(named: "eu_nothing"))
+                noneImage.center.x = self.view.center.x
+                noneImage.center.y = self.view.center.y 
+                self.view.addSubview(noneImage)
                 self.tableview.removeFromSuperview()
                 return
             }
