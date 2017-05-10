@@ -112,112 +112,7 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
             })
             
             let result = metaData.stringValue
-            let infosegment = result?.components(separatedBy: "?").last
-            let info = infosegment?.components(separatedBy: "&") ?? []
-            
-            if info.count == 1{
-                let resultinfo = info.first ?? ""
-                    
-                if resultinfo.hasPrefix("avid="){
-                     captureSession.stopRunning()
-                    guard let avid = Int(resultinfo.substring(from: "avid=".endIndex)) else{
-                        SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
-                        self.captureSession.startRunning()
-                        return
-                    }
-                    let vc = EUActivityViewController()
-                    SwiftyProgressHUD.showLoadingHUD()
-                    EUNetworkManager.shared.getActivityInfoByID(avid: avid, completion: { (isSuccess, viewmodel) in
-                        SwiftyProgressHUD.hide()
-                        if !isSuccess{
-                            SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                            self.captureSession.startRunning()
-                            return
-                        }
-                        guard let viewmodel = viewmodel else{
-                            SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
-                            self.captureSession.startRunning()
-                            return
-                        }
-                        vc.viewmodel = viewmodel
-                        vc.shouldPopToRootViewController = true
-                        self.navigationController?.pushViewController(vc, animated: true)
-                    })
-                    
-                        
-                    }else if resultinfo.hasPrefix("cmid="){
-                    
-                    captureSession.stopRunning()
-                    guard let cmid = Int(resultinfo.substring(from: "cmid=".endIndex)) else{
-                        SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
-                        self.captureSession.startRunning()
-                        return
-                    }
-                    let vc = EUCommunityInfoViewController()
-                    SwiftyProgressHUD.showLoadingHUD()
-                    EUNetworkManager.shared.getCommunityInfoByID(cmid: cmid, completion: { (isSuccess, viewmodel) in
-                        SwiftyProgressHUD.hide()
-                        if !isSuccess{
-                            SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                            self.captureSession.startRunning()
-                            return
-                        }
-                        guard let viewmodel = viewmodel else{
-                            SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
-                            self.captureSession.startRunning()
-                            return
-                        }
-                        vc.viewmodel = viewmodel
-                        self.navigationController?.pushViewController(vc, animated: true)
-                        
-                    })
-
-                    
-                }
-            }else if info.count == 2{
-                
-                let resultinfo1 = info.first ?? ""
-                let resultinfo2 = info.last ?? ""
-                
-                var avid = ""
-                var code = ""
-                if resultinfo1.hasPrefix("avid="){
-                    captureSession.stopRunning()
-                    avid = resultinfo1.substring(from: "avid=".endIndex)
-                    code = resultinfo2.substring(from: "code=".endIndex)
-                }else if resultinfo2.hasPrefix("avid="){
-                    captureSession.stopRunning()
-                    code = resultinfo1.substring(from: "avid=".endIndex)
-                    avid = resultinfo2.substring(from: "code=".endIndex)
-                    }
-                
-                if !((Int(code) ?? 0) > 999){
-                    self.captureSession.startRunning()
-                    return
-                }
-                
-                EUNetworkManager.shared.participateActivityRegist(avid: Int(avid) ?? 0, completion: { (netIsSuccess, registIsSuccess) in
-                    SwiftyProgressHUD.hide()
-                    if !netIsSuccess{
-                        self.captureSession.startRunning()
-                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                        return
-                    }
-                    if !registIsSuccess{
-                        SwiftyProgressHUD.showFaildHUD(text: "二维码无效", duration: 1)
-                        self.captureSession.startRunning()
-                        return
-                    }
-                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                    _ =  self.navigationController?.popViewController(animated: true)
-                    self.dismiss(animated: true, completion: nil)
-                    
-                })
-                
-                }
-            // FIXME: - 直接跳转显示二维码信息 like wechat
-            SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
-            
+            dealScanResult(result: result)
 //            captureSession.stopRunning()
         }
         
@@ -249,10 +144,123 @@ class EUQRScanViewController: EUBaseViewController,AVCaptureMetadataOutputObject
         
 
         // 结果处理
+        let qrcoderesult = result.messageString ?? ""
+        dealScanResult(result: qrcoderesult)
         
        
         picker.dismiss(animated: true, completion: nil)
-        print(result.messageString ?? String())
+        
+        
+    }
+    
+    // 处理结果
+    private func dealScanResult(result:String?){
+        let infosegment = result?.components(separatedBy: "?").last
+        let info = infosegment?.components(separatedBy: "&") ?? []
+        
+        if info.count == 1{
+            let resultinfo = info.first ?? ""
+            
+            if resultinfo.hasPrefix("avid="){
+                captureSession.stopRunning()
+                guard let avid = Int(resultinfo.substring(from: "avid=".endIndex)) else{
+                    SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
+                    self.captureSession.startRunning()
+                    return
+                }
+                let vc = EUActivityViewController()
+                SwiftyProgressHUD.showLoadingHUD()
+                EUNetworkManager.shared.getActivityInfoByID(avid: avid, completion: { (isSuccess, viewmodel) in
+                    SwiftyProgressHUD.hide()
+                    if !isSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                        self.captureSession.startRunning()
+                        return
+                    }
+                    guard let viewmodel = viewmodel else{
+                        SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
+                        self.captureSession.startRunning()
+                        return
+                    }
+                    vc.viewmodel = viewmodel
+                    vc.shouldPopToRootViewController = true
+                    self.navigationController?.pushViewController(vc, animated: true)
+                })
+                
+                
+            }else if resultinfo.hasPrefix("cmid="){
+                
+                captureSession.stopRunning()
+                guard let cmid = Int(resultinfo.substring(from: "cmid=".endIndex)) else{
+                    SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
+                    self.captureSession.startRunning()
+                    return
+                }
+                let vc = EUCommunityInfoViewController()
+                SwiftyProgressHUD.showLoadingHUD()
+                EUNetworkManager.shared.getCommunityInfoByID(cmid: cmid, completion: { (isSuccess, viewmodel) in
+                    SwiftyProgressHUD.hide()
+                    if !isSuccess{
+                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                        self.captureSession.startRunning()
+                        return
+                    }
+                    guard let viewmodel = viewmodel else{
+                        SwiftyProgressHUD.showFaildHUD(text: "加载失败", duration: 1)
+                        self.captureSession.startRunning()
+                        return
+                    }
+                    vc.viewmodel = viewmodel
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                })
+                
+                
+            }
+        }else if info.count == 2{
+            
+            let resultinfo1 = info.first ?? ""
+            let resultinfo2 = info.last ?? ""
+            
+            var avid = ""
+            var code = ""
+            if resultinfo1.hasPrefix("avid="){
+                captureSession.stopRunning()
+                avid = resultinfo1.substring(from: "avid=".endIndex)
+                code = resultinfo2.substring(from: "code=".endIndex)
+            }else if resultinfo2.hasPrefix("avid="){
+                captureSession.stopRunning()
+                code = resultinfo1.substring(from: "avid=".endIndex)
+                avid = resultinfo2.substring(from: "code=".endIndex)
+            }
+            
+            if !((Int(code) ?? 0) > 999){
+                self.captureSession.startRunning()
+                return
+            }
+            
+            EUNetworkManager.shared.participateActivityRegist(avid: Int(avid) ?? 0, completion: { (netIsSuccess, registIsSuccess) in
+                SwiftyProgressHUD.hide()
+                if !netIsSuccess{
+                    self.captureSession.startRunning()
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                if !registIsSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "二维码无效", duration: 1)
+                    self.captureSession.startRunning()
+                    return
+                }
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ =  self.navigationController?.popViewController(animated: true)
+                self.dismiss(animated: true, completion: nil)
+                
+            })
+            
+        }else{
+            // FIXME: - 直接跳转显示二维码信息 like wechat
+            SwiftyProgressHUD.showFaildHUD(text: "二维码错误", duration: 1)
+        }
         
     }
 }
