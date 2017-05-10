@@ -1015,6 +1015,18 @@ extension EULoginViewController{
         if phone.characters.count != 11 {
             return
         }
+        if verifycode != nil{
+            self.codeview = self.setupCodeUI(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+            self.view.addSubview(self.codeview!)
+            UIView.animate(withDuration: 0.5, animations: {
+                self.codeview?.frame.origin = CGPoint.zero
+                self.phoneview?.frame.origin = CGPoint(x: -UIScreen.main.bounds.width, y: 0)
+            }, completion: { (_) in
+                self.phoneview?.removeFromSuperview()
+            })
+
+            return
+        }
         phonenumber = phone
         SwiftyProgressHUD.showLoadingHUD()
         EUNetworkManager.shared.getVerificationCode(phone: phone, isRegister: true) { (isSuccess, code) in
