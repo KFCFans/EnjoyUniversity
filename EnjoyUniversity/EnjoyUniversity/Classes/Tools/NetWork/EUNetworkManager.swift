@@ -15,20 +15,11 @@ class EUNetworkManager:SessionManager{
     /// 用户账户信息
     lazy var userAccount = EUserAccount()
     
-    var sessionManager:SessionManager?
-    
-    override init(configuration: URLSessionConfiguration, delegate: SessionDelegate, serverTrustPolicyManager: ServerTrustPolicyManager?) {
-        super.init()
-    }
-    
     // 创建单例
     static let shared:EUNetworkManager = {
-       
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = 10
-        configuration.httpAdditionalHeaders = SessionManager.defaultHTTPHeaders
         
-        return EUNetworkManager(configuration: configuration, delegate: SessionDelegate(), serverTrustPolicyManager: nil)
+        // 可以在这里配置网络请求参数
+        return EUNetworkManager()
     }()
     
     
