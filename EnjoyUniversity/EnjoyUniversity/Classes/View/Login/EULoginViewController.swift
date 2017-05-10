@@ -568,7 +568,9 @@ extension EULoginViewController{
     
     fileprivate func setupCodeUI(orgin:CGPoint)->UIView{
         
-        resendtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateResendTime), userInfo: nil, repeats: true)
+        if resendtimer == nil{
+            resendtimer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateResendTime), userInfo: nil, repeats: true)
+        }
         
         let codeview = UIView(frame: CGRect(origin: orgin, size: view.frame.size))
         codeview.backgroundColor = UIColor.white
@@ -1086,13 +1088,23 @@ extension EULoginViewController{
             return
         }
         
-        EUNetworkManager.shared.getVerificationCode(phone: phonenumber, isRegister: false) { (isSuccess, code) in
-            if !isSuccess{
-                SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                return
+        if verifycode == nil{
+            EUNetworkManager.shared.getVerificationCode(phone: phonenumber, isRegister: false) { (isSuccess, code) in
+                if !isSuccess{
+                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
+                    return
+                }
+                self.verifycode = code
+                
+                self.codeview = self.setupCodeUI(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.codeview?.frame.origin = CGPoint.zero
+                    self.enterpasswordview?.frame.origin = CGPoint(x: -UIScreen.main.bounds.width, y: 0)
+                }) { (_) in
+                    self.enterpasswordview?.removeFromSuperview()
+                }
             }
-            self.verifycode = code
-            
+        }else{
             self.codeview = self.setupCodeUI(orgin: CGPoint(x: UIScreen.main.bounds.width, y: 0))
             UIView.animate(withDuration: 0.5, animations: {
                 self.codeview?.frame.origin = CGPoint.zero
@@ -1101,6 +1113,8 @@ extension EULoginViewController{
                 self.enterpasswordview?.removeFromSuperview()
             }
         }
+        
+        
         
         
         
