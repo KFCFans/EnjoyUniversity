@@ -723,7 +723,7 @@ extension EULoginViewController{
                                                   toItem: correctcodelabel,
                                                   attribute: .bottom,
                                                   multiplier: 1.0,
-                                                  constant: 15 * scal),
+                                                  constant: 8 * scal),
                                  NSLayoutConstraint(item: verifycode,
                                                     attribute: .centerX,
                                                     relatedBy: .equal,
@@ -752,14 +752,14 @@ extension EULoginViewController{
                                                   toItem: correctcodelabel,
                                                   attribute: .bottom,
                                                   multiplier: 1.0,
-                                                  constant: 63 * scal))
+                                                  constant: 55 * scal))
         codeview.addConstraint(NSLayoutConstraint(item: warnlabel1,
-                                                  attribute: .left,
+                                                  attribute: .right,
                                                   relatedBy: .equal,
                                                   toItem: codeview,
-                                                  attribute: .left,
+                                                  attribute: .centerX,
                                                   multiplier: 1.0,
-                                                  constant: 44 * scal))
+                                                  constant: -18))
         // 法律政策
         codeview.addConstraint(NSLayoutConstraint(item: warnlabel2,
                                                   attribute: .top,
@@ -767,14 +767,14 @@ extension EULoginViewController{
                                                   toItem: correctcodelabel,
                                                   attribute: .bottom,
                                                   multiplier: 1.0,
-                                                  constant: 63 * scal))
+                                                  constant: 55 * scal))
         codeview.addConstraint(NSLayoutConstraint(item: warnlabel2,
                                                   attribute: .left,
                                                   relatedBy: .equal,
                                                   toItem: warnlabel1,
                                                   attribute: .right,
                                                   multiplier: 1.0,
-                                                  constant: 2 * scal))
+                                                  constant: 2))
 
        
         return codeview
