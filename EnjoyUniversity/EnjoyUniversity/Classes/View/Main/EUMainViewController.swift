@@ -119,6 +119,13 @@ extension EUMainViewController{
             
             let nav = EUNavigationController(rootViewController: vc)
             
+            if clsName == "EUQRScanViewController" {
+                if !cameraPermissions(){
+                    SwiftyProgressHUD.showBigFaildHUD(text: "无相机权限", duration: 1)
+                    return
+                }
+            }
+            
             self.present(nav, animated: true, completion: {
                 v?.removeFromSuperview()
             })

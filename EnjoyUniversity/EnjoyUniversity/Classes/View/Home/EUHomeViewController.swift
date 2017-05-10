@@ -251,6 +251,10 @@ extension EUHomeViewController:UISearchBarDelegate,EUAddPopViewDelegate{
     func euAddPopView(didSelectRowAt: Int) {
         switch didSelectRowAt {
         case 0:
+            if !cameraPermissions(){
+                SwiftyProgressHUD.showBigFaildHUD(text: "无相机权限", duration: 1)
+                return
+            }
             navigationController?.pushViewController(EUQRScanViewController(), animated: true)
             break
         case 1:
@@ -274,6 +278,11 @@ extension EUHomeViewController{
     
     /// 点击二维码
     @objc fileprivate func didClickQRCodeScanner(){
+        
+        if !cameraPermissions(){
+            SwiftyProgressHUD.showBigFaildHUD(text: "无相机权限", duration: 1)
+            return
+        }
         
         let scanner = EUQRScanViewController()
         navigationController?.pushViewController(scanner, animated: true)

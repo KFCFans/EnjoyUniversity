@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-
-
+import AVFoundation
+import Photos
 
 /// 创建指定大小和颜色的图片
 ///
@@ -189,7 +189,7 @@ func createQRForString(qrString: String?, qrImageName: String?) -> UIImage?{
 }
 
 
-/// 社会化方向
+/// 社会化分享
 ///
 /// - Parameters:
 ///   - sharetitle: 标题
@@ -215,6 +215,34 @@ func shareImageAndText(sharetitle:String,sharedetail:String,url:String,image:UII
         })
     }
     
+}
+
+
+/// 判断是否拥有相机权限
+///
+/// - Returns: 是／否
+func cameraPermissions() -> Bool{
+    
+    let authStatus:AVAuthorizationStatus = AVCaptureDevice.authorizationStatus(forMediaType: AVMediaTypeVideo)
+    
+    if(authStatus == AVAuthorizationStatus.denied || authStatus == AVAuthorizationStatus.restricted) {
+        return false
+    }else {
+        return true
+    }
+}
+
+/// 判断是否拥有相册权限
+///
+/// - Returns: 是／否
+func PhotoLibraryPermissions() -> Bool {
+    
+    let library:PHAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+    if(library == PHAuthorizationStatus.denied || library == PHAuthorizationStatus.restricted){
+        return false
+    }else {
+        return true
+    }
 }
 
 
