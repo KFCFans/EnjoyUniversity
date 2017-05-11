@@ -16,4 +16,18 @@ extension UITableView{
         addSubview(noneImage)
     }
     
+    func removePlaceHolderView(){
+        
+        for subview in subviews{
+            if let subview = subview as? UIImageView {
+                if let image = subview.image{
+                    if image == UIImage(named: "eu_nothing")!{
+                        subview.removeFromSuperview()
+                    }
+                }
+            }
+        }
+        
+    }
+    
 }

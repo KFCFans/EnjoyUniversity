@@ -26,6 +26,9 @@ class EUCommunityVerifyController: EUBaseViewController {
     
     var cmname:String = ""
     
+    /// 数据是否加载完成
+    var loadFinished:Bool = false
+    
     /// 状态
     var selectStatus:Bool = false
     
@@ -69,12 +72,11 @@ class EUCommunityVerifyController: EUBaseViewController {
         listviewmodel.loadApplyCommunityUserList(cmid: cmid) { (isSuccess, hasData) in
             self.refreshControl?.endRefreshing()
             if !isSuccess{
+                self.tableview.showPlaceHolderView()
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
-            if !hasData{
-                // 暂无成员处理
-            }
+            self.loadFinished = true
             self.choseData()
         }
         
@@ -102,6 +104,13 @@ class EUCommunityVerifyController: EUBaseViewController {
 extension EUCommunityVerifyController{
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tempviewmodellist.count == 0 && loadFinished{
+            tableView.showPlaceHolderView()
+            return 0
+        }
+        if tempviewmodellist.count != 0 && loadFinished{
+            tableView.removePlaceHolderView()
+        }
         return tempviewmodellist.count
     }
 

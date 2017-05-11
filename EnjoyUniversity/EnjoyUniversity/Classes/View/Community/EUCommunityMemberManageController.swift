@@ -23,6 +23,9 @@ class EUCommunityMemberManageController: EUBaseViewController {
     /// 左滑操作
     var tableviewrowAction:UITableViewRowAction?
     
+    /// 是否加载完成
+    var loadFinished:Bool = false
+    
     lazy var userinfolistviewmodel = UserInfoListViewModel()
     
     var tempuserinfolist = [UserinfoViewModel]()
@@ -40,6 +43,7 @@ class EUCommunityMemberManageController: EUBaseViewController {
         userinfolistviewmodel.loadCommunityContactsInfoList(cmid: cmid) { (isSuccess, _) in
             self.refreshControl?.endRefreshing()
             if !isSuccess {
+                self.tableview.showPlaceHolderView()
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
@@ -60,6 +64,7 @@ class EUCommunityMemberManageController: EUBaseViewController {
                 self.userinfolistviewmodel.communityContactsList.removeFirst()
                 self.tempuserinfolist = self.userinfolistviewmodel.communityContactsList
             }
+            self.loadFinished = true
             self.tableview.reloadData()
         }
     }
@@ -139,7 +144,17 @@ class EUCommunityMemberManageController: EUBaseViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if tempuserinfolist.count == 0 && loadFinished{
+            tableView.showPlaceHolderView()
+            return 0
+        }
+        
+        if tempuserinfolist.count != 0 && loadFinished{
+            tableView.removePlaceHolderView()
+        }
         return tempuserinfolist.count
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
