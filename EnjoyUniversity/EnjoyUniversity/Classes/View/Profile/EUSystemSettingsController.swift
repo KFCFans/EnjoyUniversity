@@ -42,6 +42,8 @@ extension EUSystemSettingsController{
         cell.textLabel?.text = settings[indexPath.row]
         if indexPath.row == 0{
             cell.detailTextLabel?.text = caculateCacheSize()
+        }else if indexPath.row == 1{
+            cell.detailTextLabel?.text = "前往 设置-通知-EU"
         }
         return cell
     }
@@ -65,6 +67,17 @@ extension EUSystemSettingsController{
             alert.addAction(confirm)
             alert.addAction(cancel)
             present(alert, animated: true, completion: nil)
+            
+        }else if indexPath.row == 1{
+            
+            guard let identifier = Bundle.main.bundleIdentifier else{
+                return
+            }
+            let str = "App-Prefs:root=NOTIFICATIONS_ID&path=\(identifier)"
+            if let url = URL(string: str){
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            
             
         }
         

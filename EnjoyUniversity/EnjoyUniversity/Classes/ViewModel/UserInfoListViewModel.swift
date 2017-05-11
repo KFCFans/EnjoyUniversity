@@ -54,11 +54,10 @@ class UserInfoListViewModel{
                 completion(true,false)
                 return
             }
-            var temp = [UserinfoViewModel]()
+            self.activityParticipatorList.removeAll()
             for model in modelarray{
-                temp.append(UserinfoViewModel(model: model))
+                self.activityParticipatorList.append(UserinfoViewModel(model: model))
             }
-            self.activityParticipatorList = temp
             completion(true,true)
             
         }
