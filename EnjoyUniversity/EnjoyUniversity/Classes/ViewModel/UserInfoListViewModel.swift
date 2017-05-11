@@ -77,17 +77,17 @@ class UserInfoListViewModel{
                 completion(false,false)
                 return
             }
-            
             guard let json = json,
                 let modelarray = NSArray.yy_modelArray(with: UserInfo.self, json: json) as? [UserInfo] else{
+                    self.waitingRegisterParticipatorList.removeAll()
                     completion(true,false)
                     return
             }
-            var temp = [UserinfoViewModel]()
+            
+            self.waitingRegisterParticipatorList.removeAll()
             for model in modelarray{
-                temp.append(UserinfoViewModel(model: model))
+                self.waitingRegisterParticipatorList.append(UserinfoViewModel(model: model))
             }
-            self.waitingRegisterParticipatorList = temp
             completion(true,true)
         }
         

@@ -10,18 +10,23 @@ import Foundation
 import Alamofire
 
 
-class EUNetworkManager:SessionManager{
+class EUNetworkManager{
     
     /// 用户账户信息
     lazy var userAccount = EUserAccount()
     
+    let manager = Alamofire.SessionManager.default
+    
     // 创建单例
     static let shared:EUNetworkManager = {
-        
         // 可以在这里配置网络请求参数
         return EUNetworkManager()
     }()
     
+    init() {
+        manager.session.configuration.timeoutIntervalForRequest = 10
+        
+    }
     
     /// 封装网络请求
     ///
@@ -35,7 +40,7 @@ class EUNetworkManager:SessionManager{
         
         
 //        let request = Alamofire.request(urlString, method:method, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-        let datarequest = request(urlString, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        let datarequest = manager.request(urlString, method: method, parameters: parameters, encoding: URLEncoding.default, headers: nil)
         
         
         // 设置超时时间

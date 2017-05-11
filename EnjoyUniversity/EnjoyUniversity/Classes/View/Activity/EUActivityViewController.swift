@@ -340,9 +340,6 @@ extension EUActivityViewController{
                     return
                 }
                 
-                // 设置 JPush 的 tag
-                let set = NSSet(object: "av\(avid)" as NSString) as! Set<AnyHashable>
-                JPUSHService.setTags(set, alias: nil, callbackSelector: nil, object: nil)
                 SwiftyProgressHUD.showSuccessHUD(duration: 1)
                 
             }
@@ -367,9 +364,6 @@ extension EUActivityViewController{
                         SwiftyProgressHUD.showFaildHUD(text: "已退出", duration: 1)
                         return
                     }
-                    
-                    // 设置 JPush 的 tag
-                    JPUSHService.setTags([], alias: nil, callbackSelector: nil, object: nil)
                     
                     SwiftyProgressHUD.showSuccessHUD(duration: 1)
                     self.activitylistviewmodel?.participatedlist.remove(at: self.row)

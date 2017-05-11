@@ -65,6 +65,7 @@ class EURegisterInfoViewController: EUBaseViewController {
                 return
             }
             var num = participatorlist.activityParticipatorList.count - participatorlist.waitingRegisterParticipatorList.count
+            
             num = num < 0 ? 0 : num
             self.tableview.reloadData()
             self.notfinishednum.text = "未签到:\(participatorlist.waitingRegisterParticipatorList.count)"

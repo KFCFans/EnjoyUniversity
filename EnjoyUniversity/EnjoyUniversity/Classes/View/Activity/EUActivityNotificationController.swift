@@ -40,7 +40,8 @@ class EUActivityNotificationController: EUBaseViewController {
         }
         
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.pushActivityNotificationByTag(avid: avid,avname: avname,alert: notificationText) { (netSuccess, pushSuccess) in
+        EUNetworkManager.shared.pushActivityNotificationByAlias(alert: notificationText, avid: avid, avname: avname) { (netSuccess, pushSuccess) in
+        
             SwiftyProgressHUD.hide()
             if !netSuccess{
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)

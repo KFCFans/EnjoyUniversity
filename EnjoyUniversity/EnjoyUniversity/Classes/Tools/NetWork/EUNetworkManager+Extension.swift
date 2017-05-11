@@ -1584,7 +1584,7 @@ extension EUNetworkManager{
 // MARK: - 推送接口
 extension EUNetworkManager{
     
-    /// 别名 alias 推送消息
+    /// 推送社团消息
     ///
     /// - Parameters:
     ///   - alias: 别名
@@ -1609,17 +1609,18 @@ extension EUNetworkManager{
         }
     }
     
-    /// 标签 Tag 推送消息
+    /// 推送活动通知
     ///
     /// - Parameters:
-    ///   - tag: 标签
-    ///   - alert: 推送的内容
+    ///   - alert: 通知内容
+    ///   - avid: 活动ID
+    ///   - avname: 活动名称
     ///   - completion: 完成回调
-    func pushActivityNotificationByTag(avid:Int,avname:String,alert:String,completion:@escaping (Bool,Bool)->()){
+    func pushActivityNotificationByAlias(alert:String,avid:Int,avname:String,completion:@escaping (Bool,Bool)->()){
         
-        let url = SERVERADDRESS + "/eu/push/activitytagpush"
+        let url = SERVERADDRESS + "/eu/push/activityPush"
         
-        let parm = ["avid":avid,"alert":alert,"avname":avname] as [String : Any]
+        let parm = ["alert":alert,"avid":avid,"avname":avname] as [String:Any]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
             if !isSuccess{
