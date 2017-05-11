@@ -134,42 +134,26 @@ class EURecruitNotificationController: EUBaseViewController {
                 SwiftyProgressHUD.showFaildHUD(text: "操作失败", duration: 1)
                 return
             }
+            
+            let sendsms = self.smsSwitch.isOn ? 1 : 0
             // 发送推送
-            EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: uids, alert: notificationtext,cmid: self.cmid,cmname: self.cmname,completion: { (netSuccess, pushSuccess) in
+            EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: uids, alert: notificationtext,cmid: self.cmid,cmname: self.cmname,sendsms: sendsms,completion: { (netSuccess, pushSuccess) in
+                SwiftyProgressHUD.hide()
                 
                 if !netSuccess{
-                    SwiftyProgressHUD.hide()
                     SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                     return
                 }
                 if !pushSuccess{
-                    SwiftyProgressHUD.hide()
                     SwiftyProgressHUD.showFaildHUD(text: "推送失败", duration: 1)
                     return
                 }
-                if !self.smsSwitch.isOn{
-                    SwiftyProgressHUD.hide()
-                    SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                    _ = self.navigationController?.popViewController(animated: true)
-                }
+                
+                SwiftyProgressHUD.showSuccessHUD(duration: 1)
+                _ = self.navigationController?.popViewController(animated: true)
                 self.pushSuccess = true
             })
             
-            if self.smsSwitch.isOn{
-                EUNetworkManager.shared.sendSms(phonelist: uids, alert: notificationtext) { (netSuccess, sendSuccess) in
-                    if !netSuccess{
-                        SwiftyProgressHUD.hide()
-                        SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                        return
-                    }
-                    if !sendSuccess{
-                        SwiftyProgressHUD.hide()
-                        SwiftyProgressHUD.showFaildHUD(text: "发送失败", duration: 1)
-                        return
-                    }
-                    self.smsSuccess = true
-                }
-            }
         }
     }
 }

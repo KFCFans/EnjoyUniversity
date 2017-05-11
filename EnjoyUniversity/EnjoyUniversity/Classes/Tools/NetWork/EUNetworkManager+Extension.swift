@@ -1584,17 +1584,21 @@ extension EUNetworkManager{
 // MARK: - 推送接口
 extension EUNetworkManager{
     
+    
     /// 推送社团消息
     ///
     /// - Parameters:
-    ///   - alias: 别名
-    ///   - alert: 推送消息内容
+    ///   - alias: 手机号别名串 eg.15061883391,15061883392
+    ///   - alert: 通知内容
+    ///   - cmid: 社团 ID
+    ///   - cmname: 社团名称
+    ///   - sendsms: 是否发送短信 不发送0 发送1
     ///   - completion: 完成回调
-    func pushCommunityNotificationByAlias(alias:String,alert:String,cmid:Int,cmname:String,completion:@escaping (Bool,Bool)->()){
+    func pushCommunityNotificationByAlias(alias:String,alert:String,cmid:Int,cmname:String,sendsms:Int,completion:@escaping (Bool,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/push/communityaliaspush"
         
-        let parm = ["alias":alias,"alert":alert,"cmid":cmid,"cmname":cmname] as [String:Any]
+        let parm = ["alias":alias,"alert":alert,"cmid":cmid,"cmname":cmname,"sendsms":sendsms] as [String:Any]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
             if !isSuccess{
@@ -1615,12 +1619,13 @@ extension EUNetworkManager{
     ///   - alert: 通知内容
     ///   - avid: 活动ID
     ///   - avname: 活动名称
+    ///   - sendsms: 是否发送短信 不发送0 发送1
     ///   - completion: 完成回调
-    func pushActivityNotificationByAlias(alert:String,avid:Int,avname:String,completion:@escaping (Bool,Bool)->()){
+    func pushActivityNotificationByAlias(alert:String,avid:Int,avname:String,sendsms:Int,completion:@escaping (Bool,Bool)->()){
         
         let url = SERVERADDRESS + "/eu/push/activityPush"
         
-        let parm = ["alert":alert,"avid":avid,"avname":avname] as [String:Any]
+        let parm = ["alert":alert,"avid":avid,"avname":avname,"sendsms":sendsms] as [String:Any]
         
         tokenRequest(urlString: url, method: .post, parameters: parm) { (_, isSuccess, status) in
             if !isSuccess{

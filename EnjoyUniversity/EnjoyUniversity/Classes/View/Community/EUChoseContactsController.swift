@@ -36,28 +36,6 @@ class EUChoseContactsController: EUBaseViewController {
     /// 可重用cell ID
     var EUCHOSECONTACTSCELL = "EUCHOSECONTACTSCELL"
     
-    /// 推送成功
-    var pushSuccess = false{
-        didSet{
-            if smsSuccess && pushSuccess{
-                SwiftyProgressHUD.hide()
-                SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                _ = navigationController?.popViewController(animated: true)
-            }
-        }
-    }
-    
-    /// 短信发送成功
-    var smsSuccess = false{
-        didSet{
-            if smsSuccess && pushSuccess{
-                SwiftyProgressHUD.hide()
-                SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                _ = navigationController?.popViewController(animated: true)
-            }
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -229,43 +207,24 @@ extension EUChoseContactsController{
             }
         }
         
+        // 是否发送短信
+        let sendsms = shouleSendSms ? 1 : 0
+        
         // 发送推送
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: phonelist, alert: notifycationText, cmid: cmid, cmname: cmname) { (netSuccess, sendSuccess) in
+        EUNetworkManager.shared.pushCommunityNotificationByAlias(alias: phonelist, alert: notifycationText, cmid: cmid, cmname: cmname,sendsms: sendsms) { (netSuccess, sendSuccess) in
+            SwiftyProgressHUD.hide()
             if !netSuccess{
-                SwiftyProgressHUD.hide()
                 SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
                 return
             }
             if !sendSuccess{
-                SwiftyProgressHUD.hide()
                 SwiftyProgressHUD.showFaildHUD(text: "发送失败", duration: 1)
                 return
             }
             
-            if !self.shouleSendSms{
-                SwiftyProgressHUD.hide()
-                SwiftyProgressHUD.showSuccessHUD(duration: 1)
-                _ = self.navigationController?.popViewController(animated: true)
-            }
-            self.pushSuccess = true
-        }
-        
-        /// 发送短信
-        if shouleSendSms{
-            EUNetworkManager.shared.sendSms(phonelist: phonelist, alert: notifycationText) { (netSuccess, sendSuccess) in
-                if !netSuccess{
-                    SwiftyProgressHUD.hide()
-                    SwiftyProgressHUD.showFaildHUD(text: "网络异常", duration: 1)
-                    return
-                }
-                if !sendSuccess{
-                    SwiftyProgressHUD.hide()
-                    SwiftyProgressHUD.showFaildHUD(text: "发送失败", duration: 1)
-                    return
-                }
-                self.smsSuccess = true
-            }
+            SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            _ = self.navigationController?.popViewController(animated: true)
         }
     }
     

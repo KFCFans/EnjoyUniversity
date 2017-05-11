@@ -40,7 +40,7 @@ class EUActivityNotificationController: EUBaseViewController {
         }
         
         SwiftyProgressHUD.showLoadingHUD()
-        EUNetworkManager.shared.pushActivityNotificationByAlias(alert: notificationText, avid: avid, avname: avname) { (netSuccess, pushSuccess) in
+        EUNetworkManager.shared.pushActivityNotificationByAlias(alert: notificationText, avid: avid, avname: avname,sendsms: 0) { (netSuccess, pushSuccess) in
         
             SwiftyProgressHUD.hide()
             if !netSuccess{
