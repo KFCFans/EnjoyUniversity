@@ -947,7 +947,7 @@ extension EULoginViewController{
                                                         toItem: lineview,
                                                         attribute: .bottom,
                                                         multiplier: 1.0,
-                                                        constant: scal * 32),
+                                                        constant: scal * 20),
                                      NSLayoutConstraint(item: nextBtn,
                                                         attribute: .centerX,
                                                         relatedBy: .equal,

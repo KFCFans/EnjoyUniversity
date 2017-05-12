@@ -9,6 +9,7 @@
 import UIKit
 protocol SwiftyGradePickerDelegate {
     func swiftyGradePickerdidSelected(swiftyGradePicker:SwiftyGradePicker,grade:Int)
+    func swiftyGradePickerdidCancel(swiftyGradePicker:SwiftyGradePicker)
 }
 class SwiftyGradePicker: UIView {
     
@@ -65,6 +66,7 @@ class SwiftyGradePicker: UIView {
     
     @objc private func cancelDatePicker(){
         
+        delegate?.swiftyGradePickerdidCancel(swiftyGradePicker: self)
         UIView.animate(withDuration: 0.25, animations: {
             self.frame.origin = CGPoint(x: 5, y: UIScreen.main.bounds.height)
         }) { (_) in

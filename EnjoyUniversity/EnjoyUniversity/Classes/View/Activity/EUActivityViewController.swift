@@ -23,7 +23,7 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     let nicknamelabel = UILabel(frame: CGRect(x: 72, y: 20, width: 200, height: 15))
     
     // 主办者标签背景
-    let shaodwview = UIView()
+    let sponsorShadowView = UIView()
 
     // 发起者节操值
     let reputationlabel = UILabel(frame: CGRect(x: 72, y: 41, width: 200, height: 10))
@@ -138,7 +138,7 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             
             self.nicknamelabel.text = name
             self.nicknamelabel.sizeToFit()
-            self.shaodwview.frame.origin.x = self.nicknamelabel.frame.maxX + 5
+            self.sponsorShadowView.frame.origin.x = self.nicknamelabel.frame.maxX + 5
             self.reputationlabel.text = "节操值 \(reputation)"
             self.headimg.kf.setImage(with: URL(string: PICTURESERVERADDRESS + "/user/user" + (avaterurl ?? "") + ".jpg"),
                                 placeholder: UIImage(named: "av_leader"),
@@ -219,17 +219,17 @@ extension EUActivityViewController{
         reputationlabel.font = UIFont.boldSystemFont(ofSize: 10)
         leaderView.addSubview(reputationlabel)
         
-        shaodwview.frame = CGRect(x: 72 + nicknamelabel.frame.width + 5, y: 20, width: 37, height: 15)
-        shaodwview.center.y = nicknamelabel.center.y
-        shaodwview.backgroundColor = UIColor.init(red: 214/255, green: 241/255, blue: 1, alpha: 1)
-        leaderView.addSubview(shaodwview)
+        sponsorShadowView.frame = CGRect(x: 72 + nicknamelabel.frame.width + 5, y: 20, width: 37, height: 15)
+        sponsorShadowView.center.y = nicknamelabel.center.y
+        sponsorShadowView.backgroundColor = UIColor.init(red: 214/255, green: 241/255, blue: 1, alpha: 1)
+        leaderView.addSubview(sponsorShadowView)
         
         let leaderlabel = UILabel(frame: CGRect(x: 0, y: 0, width: 37, height: 15))
         leaderlabel.text = "主办者"
         leaderlabel.textColor = UIColor.init(red: 14/255, green: 36/255, blue: 48/255, alpha: 1)
         leaderlabel.font = UIFont.boldSystemFont(ofSize: 10)
         leaderlabel.textAlignment = .center
-        shaodwview.addSubview(leaderlabel)
+        sponsorShadowView.addSubview(leaderlabel)
         
         
         let phonebtn = UIButton(frame: CGRect(x: leaderView.frame.width - 60, y: 10, width: 50, height: 50))

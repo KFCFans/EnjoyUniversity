@@ -181,6 +181,7 @@ extension EUCommunityVerifyController{
                     vc.nextposition = self.communityApplyStatus - 1
                     vc.uids = uids
                     vc.cmid = self.cmid
+                    vc.cmname = self.cmname
                     self.navigationController?.pushViewController(vc, animated: true)
                 })
                 let confirm = UIAlertAction(title: "是", style: .default, handler: { (_) in
@@ -188,6 +189,7 @@ extension EUCommunityVerifyController{
                     vc.nextposition = self.communityApplyStatus - 2
                     vc.uids = uids
                     vc.cmid = self.cmid
+                    vc.cmname = self.cmname
                     self.navigationController?.pushViewController(vc, animated: true)
                 })
                 alert.addAction(cancel)

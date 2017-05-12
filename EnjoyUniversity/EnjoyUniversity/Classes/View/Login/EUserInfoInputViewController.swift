@@ -24,6 +24,9 @@ class EUserInfoInputViewController: EUBaseViewController {
     /// 用户密码
     var password:String?
     
+    /// 入学年份选择器是否打开
+    var gradePickerIsOpen:Bool = false
+    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -196,16 +199,19 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
             present(alert, animated: true, completion: nil)
         }else if indexPath.section == 0 && indexPath.row == 6{
             
-            // 获取当前年份
-            let currentdate = Date().timeIntervalSince1970 * 1000
-            let currentyear = Int(timeStampToString(timeStamp: "\(currentdate)", formate: "YYYY") ?? "") ?? 0
-            var gradeData = [Int]()
-            for i in 0...4{
-                gradeData.append(currentyear - i)
+            if !gradePickerIsOpen {
+                gradePickerIsOpen = true
+                // 获取当前年份
+                let currentdate = Date().timeIntervalSince1970 * 1000
+                let currentyear = Int(timeStampToString(timeStamp: "\(currentdate)", formate: "YYYY") ?? "") ?? 0
+                var gradeData = [Int]()
+                for i in 0...4{
+                    gradeData.append(currentyear - i)
+                }
+                let gradePicker = SwiftyGradePicker(height: 100, gradeData: gradeData)
+                gradePicker.delegate = self
+                view.addSubview(gradePicker)
             }
-            let gradePicker = SwiftyGradePicker(height: 100, gradeData: gradeData)
-            gradePicker.delegate = self
-            view.addSubview(gradePicker)
         }
         
     }
@@ -223,7 +229,12 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
     
     // 年级选择器
     func swiftyGradePickerdidSelected(swiftyGradePicker: SwiftyGradePicker, grade: Int) {
+        gradePickerIsOpen = false
         tableview.cellForRow(at: IndexPath(row: 6, section: 0))?.detailTextLabel?.text = "\(grade)"
+    }
+    
+    func swiftyGradePickerdidCancel(swiftyGradePicker: SwiftyGradePicker) {
+        gradePickerIsOpen = false
     }
 
 }

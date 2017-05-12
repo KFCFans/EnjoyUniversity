@@ -52,6 +52,7 @@ class EUActivityNotificationController: EUBaseViewController {
                 return
             }
             SwiftyProgressHUD.showSuccessHUD(duration: 1)
+            _ = self.navigationController?.popViewController(animated: true)
         }
     }
 
