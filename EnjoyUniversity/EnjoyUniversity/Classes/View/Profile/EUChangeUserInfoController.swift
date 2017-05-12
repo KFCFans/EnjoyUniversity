@@ -48,6 +48,18 @@ class EUChangeUserInfoController: EUBaseViewController {
         buttonview.addSubview(outbtn)
     }
     
+    // 判断是否可以修改用户信息
+    func canChangeUserInfo()->Bool{
+        guard let verifyState = viewmodel?.model?.verified else{
+            return true
+        }
+        if verifyState == 0{
+            return true
+        }
+        SwiftyProgressHUD.showWarnHUD(text: "您已认证", duration: 1)
+        return false
+    }
+    
 }
 
 // MARK: - 代理方法
@@ -175,6 +187,10 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
             self.present(alter, animated: true, completion: nil)
         }else if indexPath.row == 2 && indexPath.section == 0{
             
+            if !canChangeUserInfo(){
+                return
+            }
+            
             let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
             let manaction = UIAlertAction(title: "男", style: .default, handler: { (_) in
                 tableView.cellForRow(at: indexPath)?.detailTextLabel?.text = "男"
@@ -195,6 +211,12 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
             present(alert, animated: true, completion: nil)
             
         }else if indexPath.section == 0 && indexPath.row != 6{
+            
+            if indexPath.row != 1{
+                if !canChangeUserInfo(){
+                    return
+                }
+            }
             
             let alert = UIAlertController(title: "修改" + userinfotitle[indexPath.row], message: nil, preferredStyle: .alert)
             alert.addTextField(configurationHandler: { (tv) in
@@ -219,6 +241,10 @@ extension EUChangeUserInfoController:UIImagePickerControllerDelegate,UINavigatio
             alert.addAction(confirm)
             present(alert, animated: true, completion: nil)
         }else if indexPath.section == 0 && indexPath.row == 6{
+            
+            if !canChangeUserInfo(){
+                return
+            }
             
             if !gradePickerIsOpen{
                 gradePickerIsOpen = true

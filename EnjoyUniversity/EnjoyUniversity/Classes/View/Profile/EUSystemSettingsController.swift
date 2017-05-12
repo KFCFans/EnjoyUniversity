@@ -49,6 +49,7 @@ extension EUSystemSettingsController{
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        super.tableView(tableView, didSelectRowAt: indexPath)
         
         if indexPath.row == 0{
             
