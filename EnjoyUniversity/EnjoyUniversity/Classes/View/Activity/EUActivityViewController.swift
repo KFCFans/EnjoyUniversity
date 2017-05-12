@@ -21,6 +21,9 @@ class EUActivityViewController: EUBaseAvtivityViewController {
     
     // 发起者昵称
     let nicknamelabel = UILabel(frame: CGRect(x: 72, y: 20, width: 200, height: 15))
+    
+    // 主办者标签背景
+    let shaodwview = UIView()
 
     // 发起者节操值
     let reputationlabel = UILabel(frame: CGRect(x: 72, y: 41, width: 200, height: 10))
@@ -135,6 +138,7 @@ class EUActivityViewController: EUBaseAvtivityViewController {
             
             self.nicknamelabel.text = name
             self.nicknamelabel.sizeToFit()
+            self.shaodwview.frame.origin.x = self.nicknamelabel.frame.maxX + 5
             self.reputationlabel.text = "节操值 \(reputation)"
             self.headimg.kf.setImage(with: URL(string: PICTURESERVERADDRESS + "/user/user" + (avaterurl ?? "") + ".jpg"),
                                 placeholder: UIImage(named: "av_leader"),
@@ -215,7 +219,7 @@ extension EUActivityViewController{
         reputationlabel.font = UIFont.boldSystemFont(ofSize: 10)
         leaderView.addSubview(reputationlabel)
         
-        let shaodwview = UIView(frame: CGRect(x: 72 + nicknamelabel.frame.width + 5, y: 20, width: 37, height: 15))
+        shaodwview.frame = CGRect(x: 72 + nicknamelabel.frame.width + 5, y: 20, width: 37, height: 15)
         shaodwview.center.y = nicknamelabel.center.y
         shaodwview.backgroundColor = UIColor.init(red: 214/255, green: 241/255, blue: 1, alpha: 1)
         leaderView.addSubview(shaodwview)
