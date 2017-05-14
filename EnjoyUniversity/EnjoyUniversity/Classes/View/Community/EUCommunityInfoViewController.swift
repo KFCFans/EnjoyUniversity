@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 社团详情
 class EUCommunityInfoViewController: UIViewController {
     
     lazy var listviewmodel = CommunityAuthorityListViewModel()

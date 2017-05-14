@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 社团通讯录
 class EUCommunityContactController: EUBaseViewController {
     
     

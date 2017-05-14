@@ -10,11 +10,16 @@ import UIKit
 
 class EUShowQRCodeViewController: EUBaseViewController {
     
+    /// 二维码内容
     var qrString:String? = "www.euswag.com"
     
     var qrImageName:String?
     
+    /// 二维码标题
     var activityName:String? = "活动标题"
+    
+    /// 导航栏标题
+    var navTitle:String?
     
     /// 不指定就用默认的文本
     var qrLabelText:String?
@@ -22,7 +27,7 @@ class EUShowQRCodeViewController: EUBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableview.removeFromSuperview()
-        navitem.title = "活动二维码"
+        navitem.title = navTitle ?? "二维码"
         view.backgroundColor = UIColor.init(red: 242/255, green: 242/255, blue: 242/255, alpha: 1)
         setupQRCodeUI()
     }

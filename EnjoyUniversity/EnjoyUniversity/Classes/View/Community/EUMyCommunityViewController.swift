@@ -8,10 +8,11 @@
 
 import UIKit
 
+/// 我的社团
 class EUMyCommunityViewController: EUBaseViewController {
     
-    let function = ["通讯录","社团通知","社团管理","社团招新"]
-    let functionimg = ["cm_contacts","cm_notify","cm_manage","cm_newmember"]
+    let function = ["通讯录","社团通知","社团管理","社团招新","分享社团"]
+    let functionimg = ["cm_contacts","cm_notify","cm_manage","cm_newmember","cm_share"]
     
     /// 下拉选择框相关
     lazy var spinnerview = SwiftySpinner(frame: UIScreen.main.bounds)
@@ -334,6 +335,17 @@ extension EUMyCommunityViewController:SwiftySpinnerDelegate{
             vc.viewmodel = viewmodel
             vc.position = position
             navigationController?.pushViewController(vc, animated: true)
+        case 4:
+            guard let viewmodel = viewmodel else{
+                return
+            }
+            let vc = EUShowQRCodeViewController()
+            vc.activityName = viewmodel.communitymodel?.cmName ?? ""
+            vc.qrLabelText = "扫一扫二维码，了解社团详情"
+            vc.navTitle = "社团二维码"
+            vc.qrString = "www.euswag.com?cmid=\(cmid)"
+            self.navigationController?.pushViewController(vc, animated: true)
+            break
         default:
             break
         }
