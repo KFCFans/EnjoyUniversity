@@ -218,7 +218,7 @@ extension EUserInfoInputViewController:UIImagePickerControllerDelegate,UINavigat
     
     //选择图片成功后代理
     func imagePickerController(_ picker: UIImagePickerController,didFinishPickingMediaWithInfo info: [String : Any]) {
-        guard let resultimg = info[UIImagePickerControllerOriginalImage] as? UIImage else{
+        guard let resultimg = info[UIImagePickerControllerEditedImage] as? UIImage else{
             return
         }
         
